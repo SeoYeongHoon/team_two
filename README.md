@@ -9,6 +9,7 @@ https://app.diagrams.net/#HSeoYeongHoon%2Fteam_two%2Fmain%2Fdff994b8eed4c648.dra
 draw.io 에서 프로세스 확인
 https://app.diagrams.net/#HSeoYeongHoon%2Fteam_two%2Fmain%2Fa259f91d9d058c0f.drawio#%7B%22pageId%22%3A%22C5RBs43oDa-KdzZeNtuy%22%7D
 <br>
+<br>
 main 브랜치에서 작업 X  <br>
 main 브랜치에서 'git checkout -b 브랜치이름' 한 다음에 그 브랜치에서 작업.<br>
 작업 후 해당 브랜치에 push 한 다음, Pull requests 생성. <br>
