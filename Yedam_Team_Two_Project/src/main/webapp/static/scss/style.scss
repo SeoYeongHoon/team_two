@@ -1,7 +1,117 @@
-@import 'theme_color';
+/*@import 'theme_color';
 @import 'variables';
 @import 'mixin';
-@import 'responsive';
+@import 'responsive';*/
+
+// Heading Color
+$heading-color: #242424;
+
+// Text Color
+$text-color: #6d6d6d;
+
+// Default Background
+$bg-default: #fbb710;
+
+// Gray Background
+$bg-gray: #f7f7f7;
+
+// White Color
+$white-color: #ffffff;
+
+// Dark Color
+$dark-color: #131212;
+
+// Border Color
+$border-color: #ebebeb;
+
+// Hover Color
+$hover-color: #fbb710;
+
+// Footer Color
+$footer-color: #2d2d2d;
+
+// Secondary Color
+$secondary-color: #3c3c3c;
+
+// Fonts
+$font-hn-bold: 'helveticaneuebold';
+$font-hn-med: 'helveticaneuemedium';
+
+@mixin trans-duration($time) {
+    -webkit-transition-duration: $time;
+    transition-duration: $time;
+}
+
+@mixin transition($value) {
+    -webkit-transition: $value;
+    transition: $value;
+}
+
+@mixin transform($value) {
+    -webkit-transform: $value;
+    transform: $value;
+}
+
+@mixin animation($value) {
+    -webkit-animation: $value;
+    animation: $value;
+}
+
+@mixin flex-direction($value) {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: $value;
+    flex-direction: $value;
+}
+
+@mixin align-items($value) {
+    -webkit-box-align: $value;
+    -ms-flex-align: $value;
+    -ms-grid-row-align: $value;
+    align-items: $value;
+}
+
+@mixin display-flex($value) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: $value;
+}
+
+@mixin justify-content-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+@mixin justify-content-center {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+@mixin flex($value) {
+    -webkit-box-flex: 0;
+    -ms-flex: $value;
+    flex: $value;
+}
+
+@mixin flex-wrap($value) {
+    -ms-flex-wrap: $value;
+      flex-wrap: $value;
+}
+
+
+$breakpoint-xl: 'only screen and (min-width:1200px)';
+
+$breakpoint-lg: 'only screen and (min-width:992px) and (max-width:1199px)';
+
+$breakpoint-md: 'only screen and (min-width:768px) and (max-width:991px)';
+
+$breakpoint-sm: 'only screen and (min-width:576px) and (max-width:767px)';
+
+$breakpoint-xs: 'only screen and (max-width:767px)';
+
+$breakpoint-xs-landscape: 'only screen and (min-width:480px) and (max-width:767px)';
 
 /* [Master Stylesheet v-1.0.0] */
 
