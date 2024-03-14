@@ -20,7 +20,7 @@ public class TestControl implements Control {
 		System.out.println(list);
 		req.setAttribute("list", list);
 		
-		String path = "WEB-INF/jsp/main.jsp";
+		String path = "jsp/main.tiles";
 		RequestDispatcher dispatch = req.getRequestDispatcher(path);
 		dispatch.forward(req, resp); //페이지 재지정
 	}
