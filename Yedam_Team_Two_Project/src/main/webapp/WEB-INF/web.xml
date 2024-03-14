@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>Yedam_Team_Two_Project</display-name>
+  
+	<!-- 요청 할 URL 규칙 설정, 실행될 서블릿 연결 -->
+	<servlet>
+		<servlet-name>Main</servlet-name>
+		<servlet-class>common.MainController</servlet-class>
+	</servlet>
+		<servlet-mapping>
+			<servlet-name>Main</servlet-name>
+			<url-pattern>*.do</url-pattern>
+		</servlet-mapping>
+	
+	<!--  최초 입장 시, 실행 될 페이지 설정-->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
