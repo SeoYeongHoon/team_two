@@ -23,8 +23,6 @@ public class MainController extends HttpServlet{
 		//xx.do, xxControl()로 구현할 것
 		//작성 예시 : controls.put("/test.do", new testControl());
 		controls.put("/test.do", new TestControl());
-		
-		// 테스
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
