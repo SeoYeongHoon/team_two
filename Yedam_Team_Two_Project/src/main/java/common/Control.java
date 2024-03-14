@@ -10,4 +10,4 @@ public interface Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;
 }
 
-// 수정
+// 
