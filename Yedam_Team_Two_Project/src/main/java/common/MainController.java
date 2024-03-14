@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dongwon.Control.MypageControl;
+
 public class MainController extends HttpServlet{
 	
 	Map<String, Control> controls;
@@ -23,7 +25,7 @@ public class MainController extends HttpServlet{
 		//xx.do, xxControl()로 구현할 것
 		//작성 예시 : controls.put("/test.do", new testControl());
 		controls.put("/test.do", new TestControl());
-		
+		controls.put("/mypage.do", new MypageControl());
 		// 테스 트
 	}
 	@Override
