@@ -35,6 +35,7 @@
   	<!-- 생성 예제 -->
     <!-- <mapper resource="co/yedam/board/mapper/BoardMapper.xml"/> -->
     <mapper resource="common/testMapper.xml" />
+    <mapper resource="hyunook/Login/MemberMapper.xml" />
     <mapper resource="changoh/Payment/PaymentMapper.xml" />
   </mappers>
 </configuration>

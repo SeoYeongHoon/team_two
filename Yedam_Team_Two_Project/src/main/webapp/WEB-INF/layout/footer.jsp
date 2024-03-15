@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!-- ##### Footer Area Start ##### -->
 <footer class="footer_area clearfix">
 	<div class="container">
