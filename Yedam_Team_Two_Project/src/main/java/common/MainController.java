@@ -14,6 +14,12 @@ import changoh.Magazine.PaymentResultControl;
 import younghun.Admin.AdminControl;
 import changoh.Payment.PaymentControl;
 import dongwon.Control.MypageControl;
+import hyunook.Login.LoginControl;
+import hyunook.Login.LoginForm;
+import hyunook.Login.LogoutControl;
+import hyunook.MainPage.MainPage;
+import hyunook.addMember.AddMemberControl;
+import hyunook.addMember.AddMemberForm;
 
 public class MainController extends HttpServlet{
 	
@@ -39,6 +45,16 @@ public class MainController extends HttpServlet{
 		controls.put("/mypage.do", new MypageControl());
 		
 		//현욱
+        //메인페이지
+		controls.put("/main.do", new MainPage());
+		//로그인
+		controls.put("/loginForm.do", new LoginForm());
+		controls.put("/login.do", new LoginControl());
+		//로그아웃
+		controls.put("/logout.do", new LogoutControl());
+		//회원가입
+		controls.put("/addMemberForm.do", new AddMemberForm());
+		controls.put("/addMember.do",new AddMemberControl());
 		
 		//유환
 		

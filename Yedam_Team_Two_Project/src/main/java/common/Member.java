@@ -10,8 +10,8 @@ enum MemberType{
 	MANAGER //관리자
 }
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Member {
 	private String memberId;
 	private MemberType memberType;
