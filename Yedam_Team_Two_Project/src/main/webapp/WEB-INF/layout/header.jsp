@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
 <header class="header-area clearfix">
@@ -23,24 +24,39 @@
 		</ul>
 	</nav>
 	<!-- Button Group -->
-	<div class="amado-btn-group mt-30 mb-100">
-		<a href="#" class="btn amado-btn mb-15">%Discount%</a> <a href="#"
-			class="btn amado-btn active">New this week</a>
-	</div>
-	<!-- Cart Menu -->
-	<div class="cart-fav-search mb-100">
-		<a href="cart.html" class="cart-nav"><img
-			src="../../static/img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
-		<a href="#" class="fav-nav"><img
-			src="../../static/img/core-img/favorites.png" alt=""> Favourite</a>
-		<a href="#" class="search-nav"><img
-			src="../../static/img/core-img/search.png" alt=""> Search</a>
-	</div>
-	<!-- Social Button -->
-	<div class="social-info d-flex justify-content-between">
-		<a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a> <a
-			href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a> <a
-			href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a
-			href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-	</div>
+	<c:choose>
+		<c:when test="${empty logid }">
+			<div class="amado-btn-group mt-30 mb-100">
+				<a href="loginForm.do" class="btn amado-btn mb-15">로그인</a> 
+				<a href="addMemberForm.do" class="btn amado-btn active">회원가입</a>
+			</div>
+		</c:when>
+		<c:otherwise>
+		     <div class="amado-btn-group mt-30 mb-100">
+				<a href="logout.do" class="btn amado-btn mb-15">로그아웃</a> 
+			</div>
+		</c:otherwise>
+	</c:choose>
+		<!-- Cart Menu -->
+		<div class="cart-fav-search mb-100">
+		    <c:choose>
+		      <c:when test="${!empty logName }">
+		      <p>${logName}님 환영합니다.</p> 
+		      <a href="#" class="cart-nav">
+			<img src="../../static/img/core-img/mypage.png" alt="mypage"> 마이페이지 <span></span></a>
+			<a href="cart.html" class="fav-nav">
+			<img src="../../static/img/core-img/cart.png" alt="cart"> 장바구니 <span></span></a>
+			<a href="#" class="fav-nav">
+			<img src="../../static/img/core-img/favorites.png" alt="">고객센터</a> <a href="#" class="search-nav">
+				<img src="../../static/img/core-img/search.png" alt=""> FAQ</a>
+			</c:when>
+			</c:choose>	
+		</div>
+		<!-- Social Button -->
+		<div class="social-info d-flex justify-content-between">
+			<a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a> <a
+				href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a> <a
+				href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a
+				href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		</div>
 </header>

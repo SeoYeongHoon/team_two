@@ -1,4 +1,4 @@
-package hyunook.Control;
+package hyunook.Login;
 
 import java.io.IOException;
 
