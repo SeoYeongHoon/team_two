@@ -118,4 +118,12 @@ CREATE SEQUENCE wish_goods_id_seq
        NOCACHE
        NOORDER;       
        
+CREATE SEQUENCE goods_id_seq
+       INCREMENT BY 1
+       START WITH   0
+       MINVALUE     0
+       MAXVALUE     99999
+       NOCYCLE
+       NOCACHE
+       NOORDER;    
 COMMIT;       

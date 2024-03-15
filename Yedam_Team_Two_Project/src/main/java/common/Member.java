@@ -2,6 +2,7 @@ package common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 enum MemberType{
 	CLIENT, //고객
@@ -10,8 +11,9 @@ enum MemberType{
 }
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Member {
-	private int memberId;
+	private String memberId;
 	private MemberType memberType;
 	private String name;
 	private String password;
