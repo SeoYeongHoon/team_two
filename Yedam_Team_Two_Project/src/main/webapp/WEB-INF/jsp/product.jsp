@@ -4,7 +4,7 @@
 <div></div>
 <div class="single-product-area section-padding-100 clearfix">
             <div class="container-fluid">
-
+            <!-- 상단 화면 -->
                 <div class="row">
                     <div class="col-12">
                         <nav aria-label="breadcrumb">
@@ -22,35 +22,37 @@
                     <div class="col-12 col-lg-7">
                         <div class="single_product_thumb">
                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+                           <!-- 작은화면  -->
                                 <ol class="carousel-indicators">
-                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(img/product-img/pro-big-1.jpg);">
+                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(static/img/product-img/pro-big-1.jpg);">
                                     </li>
-                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(img/product-img/pro-big-2.jpg);">
+                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(static/img/product-img/pro-big-2.jpg);">
                                     </li>
-                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(img/product-img/pro-big-3.jpg);">
+                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(static/img/product-img/pro-big-3.jpg);">
                                     </li>
-                                    <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(img/product-img/pro-big-4.jpg);">
+                                    <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(static/img/product-img/pro-big-4.jpg);">
                                     </li>
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <a class="gallery_img" href="img/product-img/pro-big-1.jpg">
+                                        <a class="gallery_img" href="static/img/product-img/pro-big-1.jpg">
                                             <!-- <img class="d-block w-100" src="#" alt="First slide"> -->
                                         </a>
                                     </div>
+                                    
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="img/product-img/pro-big-2.jpg">
-                                            <img class="d-block w-100" src="img/product-img/pro-big-2.jpg" alt="Second slide">
+                                        <a class="gallery_img" href="../../static/img/product-img/pro-big-2">
+                                            <img class="d-block w-100" src="../../static/img/product-img/pro-big-2" alt="Second slide">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="img/product-img/pro-big-3.jpg">
-                                            <img class="d-block w-100" src="img/product-img/pro-big-3.jpg" alt="Third slide">
+                                        <a class="gallery_img" href="../static/img/product-img/pro-big-3">
+                                            <img class="d-block w-100" src="../static/img/product-img/pro-big-3" alt="Third slide">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="img/product-img/pro-big-4.jpg">
-                                            <img class="d-block w-100" src="img/product-img/pro-big-4.jpg" alt="Fourth slide">
+                                        <a class="gallery_img" href="static/img/product-img/pro-big-4">
+                                            <img class="d-block w-100" src="static/img/product-img/pro-big-4" alt="Fourth slide">
                                         </a>
                                     </div>
                                 </div>
@@ -62,7 +64,7 @@
                             <!-- Product Meta Data -->
                             <div class="product-meta-data">
                                 <div class="line"></div>
-                                <p class="product-price">$금액</p>
+                                <p class="product-price">$3000</p>
                                 <a href="product-details.html">
                                     <h6>상품명</h6>
                                 </a>
@@ -77,7 +79,7 @@
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                     </div>
                                     <div class="review">
-                                        <a href="#">Write A Review</a>
+                                        <a href="#">리뷰를 작성해주세요</a>
                                     </div>
                                 </div>
                                 <!-- Avaiable -->
@@ -85,7 +87,7 @@
                             </div>
 
                             <div class="short_overview my-5">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?</p>
+                                <p>상세 설명 인데 상세 설명 인데 상세 설명 인데 상세 설명 인데 상세 설명 인데 상세 설명 인데 상세 설명 인데 상세 설명 인데 상세 설명 인데 상세 설명 인데 </p>
                             </div>
 
                             <!-- Add to Cart Form -->
@@ -98,15 +100,14 @@
                                         <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
                                     </div> -->
                                     <input value="댓글창"with>
-                                    <input value="댓글창">
-                                    <input value="댓글창">
-                                    <input value="댓글창"><button value=""></button>
+                                    <input value="댓글창"with>
+                                    <input value="댓글창"with>
                                 </div>
                                 <div class="d-flex">
 
-                                    <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
-                                    <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
-                                    <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
+                                    <button type="submit" name="addtocart" value="5" class="btn amado-btn">WISH</button>
+                                    <button type="submit" name="addtocart" value="5" class="btn amado-btn">CART</button>
+                                    <button type="submit" name="addtocart" value="5" class="btn amado-btn">바로 구매</button>
                                 </div>
                             </form>
 
