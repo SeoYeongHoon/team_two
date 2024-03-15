@@ -17,6 +17,7 @@ import changoh.Magazine.MagazineControl;
 import changoh.Magazine.MagazineListControl;
 import changoh.Magazine.PaymentResultControl;
 import younghun.Admin.AdminControl;
+import younghun.Admin.RequestControl;
 import changoh.Payment.PaymentControl;
 
 import youhwan.Control.Productform;
@@ -69,6 +70,7 @@ public class MainController extends HttpServlet{
 		
 		//영훈
 		controls.put("/admin.do", new AdminControl());
+		controls.put("/request.do", new RequestControl());	// 관리자 페이지에 등록된 유저 요청건의 확인 버튼 클릭 시 이동되는 페이지
 	}
 	
 	@Override

@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.name_info {
+	height: 0 !important;
+	padding: 25px !important;
+}
+
+.title_info {
+	height: 0 !important;
+	padding: 25px !important;
+}
+
+.content_info {
+	height: 300px !important;
+	padding: 25px !important;
+}
