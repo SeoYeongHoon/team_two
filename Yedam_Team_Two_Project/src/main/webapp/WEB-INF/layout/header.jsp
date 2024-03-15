@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 <!-- Header Area Start -->
-<div class="main-content-wrapper d-flex clearfix">
 	<header class="header-area clearfix">
 		<!-- Close Icon -->
 		<div class="nav-close">
@@ -25,8 +24,8 @@
 		</nav>
 		<!-- Button Group -->
 		<div class="amado-btn-group mt-30 mb-100">
-			<a href="#" class="btn amado-btn mb-15">%Discount%</a> <a href="#"
-				class="btn amado-btn active">New this week</a>
+			<a href="#" class="btn amado-btn mb-15">로그인</a> <a href="#"
+				class="btn amado-btn active">회원가입</a>
 		</div>
 		<!-- Cart Menu -->
 		<div class="cart-fav-search mb-100">
@@ -45,5 +44,8 @@
 				href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 		</div>
 	</header>
-</div>
+	
+
+
+
 <!-- Header Area End -->

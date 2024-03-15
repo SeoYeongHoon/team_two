@@ -14,8 +14,10 @@
 </style>
 </head>
 <body>
+<div class="main-content-wrapper d-flex clearfix">
 <tiles:insertAttribute name="header" />
 <tiles:insertAttribute name="body" />
+</div>
 <tiles:insertAttribute name="footer" />
 	<!-- <table>
 		<tr>

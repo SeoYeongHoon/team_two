@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dongwon.Control.MypageControl;
+import hyunook.Control.LoginForm;
 
 public class MainController extends HttpServlet{
 	
@@ -26,7 +27,8 @@ public class MainController extends HttpServlet{
 		//작성 예시 : controls.put("/test.do", new testControl());
 		controls.put("/test.do", new TestControl());
 		controls.put("/mypage.do", new MypageControl());
-
+        //로그인
+		controls.put("/loginForm.do", new LoginForm());
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
