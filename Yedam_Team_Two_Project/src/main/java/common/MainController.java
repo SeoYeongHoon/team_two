@@ -8,8 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import younghun.Admin.AdminControl;
+import changoh.Payment.PaymentControl;
+import dongwon.Control.MypageControl;
 
 public class MainController extends HttpServlet{
 	
@@ -25,8 +26,17 @@ public class MainController extends HttpServlet{
 		//xx.do, xxControl()로 구현할 것
 		//작성 예시 : controls.put("/test.do", new testControl());
 		controls.put("/test.do", new TestControl());
+		//우선은 이름으로 컨트롤 분리하고, 나중에 기능으로 묶어서 일괄 분리 한번 더 할게요~
+		//창오
+		controls.put("/payment.do", new PaymentControl());
+		//동원
+		controls.put("/mypage.do", new MypageControl());
 		
-		// Admin 컨트롤
+		//현욱
+		
+		//유환
+		
+		//영훈
 		controls.put("/admin.do", new AdminControl());
 	}
 	@Override
