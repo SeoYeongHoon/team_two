@@ -1,6 +1,5 @@
---테이블 생성
 CREATE TABLE Member(
-	member_id	NUMBER(30)	 PRIMARY KEY,
+	member_id   VARCHAR2(30)	 PRIMARY KEY,
 	member_type	VARCHAR2(20),
 	name	    VARCHAR2(30),
 	password	VARCHAR2(30),
@@ -31,7 +30,7 @@ CREATE TABLE Goods(
 	req_date	DATE           DEFAULT SYSDATE,
 	resp_date	DATE           DEFAULT SYSDATE,
 	category_id	NUMBER	       REFERENCES Categories(category_id),
-	member_id	NUMBER         REFERENCES Member(member_id),
+	member_id	VARCHAR2(30)   REFERENCES Member(member_id),
 	score_id	NUMBER	       REFERENCES ScoreGrade(score_id)
 );
 
@@ -40,13 +39,13 @@ CREATE TABLE QnA(
 	title	    VARCHAR2(100),
 	content	    VARCHAR2(1000),
 	qna_date	DATE            DEFAULT SYSDATE,
-	member_id	NUMBER   	    REFERENCES Member(member_id)
+	member_id	VARCHAR2(30)    REFERENCES Member(member_id)
 );
 
 CREATE TABLE Cart(
 	cart_id	    NUMBER       PRIMARY KEY,
 	goods_id	NUMBER       REFERENCES Goods(goods_id),
-	member_id	NUMBER       REFERENCES Member(member_id)
+	member_id	VARCHAR2(30) REFERENCES Member(member_id)
 );
 
 CREATE TABLE Review(
@@ -54,27 +53,16 @@ CREATE TABLE Review(
 	title	    VARCHAR2(50),
 	content	    VARCHAR2(300),
 	create_date	DATE           DEFAULT SYSDATE,
-	member_id	NUMBER         REFERENCES Member(member_id),
+	member_id	VARCHAR2(30)   REFERENCES Member(member_id),
 	goods_id	NUMBER	       REFERENCES Goods(goods_id),
 	score_id	NUMBER	       REFERENCES ScoreGrade(score_id)
 );
 
 CREATE TABLE wish_list(
 	wish_goods_id	NUMBER            PRIMARY KEY,
-	member_id	    NUMBER      	  REFERENCES Member(member_id),
+	member_id	    VARCHAR2(30)      REFERENCES Member(member_id),
 	goods_id	    NUMBER	          REFERENCES Goods(goods_id)
 );
---테이블 생성 끝
-
---시퀀스 생성
-CREATE SEQUENCE member_id_seq
-       INCREMENT BY 1
-       START WITH   0
-       MINVALUE     0
-       MAXVALUE     99999
-       NOCYCLE
-       NOCACHE
-       NOORDER;
        
 CREATE SEQUENCE category_id_seq
        INCREMENT BY 1
@@ -129,4 +117,5 @@ CREATE SEQUENCE wish_goods_id_seq
        NOCYCLE
        NOCACHE
        NOORDER;       
---시퀀스 생성 끝       
+       
+COMMIT;       
