@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 eclipse.preferences.version=1
 encoding//src/main/webapp/WEB-INF/jsp/product.jsp=UTF-8
+=======
+eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/jsp/error.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/payment.jsp=UTF-8
+>>>>>>> branch 'test' of https://github.com/SeoYeongHoon/team_two.git
