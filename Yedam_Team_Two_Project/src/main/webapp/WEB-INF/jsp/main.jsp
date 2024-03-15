@@ -16,9 +16,7 @@
 	</table>
 	<script>
 		let list = "${list}";
-		
 		console.log(list);
-		
 	</script>
 </body>
 </html>
