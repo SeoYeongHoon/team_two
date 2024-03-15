@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import younghun.Admin.AdminControl;
+
 public class MainController extends HttpServlet{
 	
 	Map<String, Control> controls;
@@ -24,7 +26,8 @@ public class MainController extends HttpServlet{
 		//작성 예시 : controls.put("/test.do", new testControl());
 		controls.put("/test.do", new TestControl());
 		
-		// 테스 트
+		// Admin 컨트롤
+		controls.put("/admin.do", new AdminControl());
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

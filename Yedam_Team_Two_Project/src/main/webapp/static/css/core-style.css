@@ -43,7 +43,7 @@ p {
   line-height: 1.9;
   font-weight: 400; }
 
-a {
+/* a {
   -webkit-transition: all 500ms ease 0s;
   transition: all 500ms ease 0s;
   text-decoration: none;
@@ -58,7 +58,7 @@ a {
     outline: 0 solid transparent;
     color: #131212;
     font-weight: 400;
-    font-size: 12px; }
+    font-size: 12px; } */
 
 ul,
 ol {
