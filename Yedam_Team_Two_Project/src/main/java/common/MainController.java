@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dongwon.Control.MypageControl;
+import youhwan.Control.Productform;
 
 public class MainController extends HttpServlet{
 	
@@ -26,6 +27,8 @@ public class MainController extends HttpServlet{
 		//작성 예시 : controls.put("/test.do", new testControl());
 		controls.put("/test.do", new TestControl());
 		controls.put("/mypage.do", new MypageControl());
+		controls.put("/product.do", new Productform());
+		
 
 	}
 	@Override
