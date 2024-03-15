@@ -15,10 +15,10 @@ public class TestControl implements Control {
 		
 		TestService svc = new TestServiceImpl();
 		
-		List<String> list = svc.showTestList();
-		
-		System.out.println(list);
-		req.setAttribute("list", list);
+//		List<String> list = svc.showTestList();
+//		
+//		System.out.println(list);
+//		req.setAttribute("list", list);
 		
 		String path = "jsp/main.tiles";
 		RequestDispatcher dispatch = req.getRequestDispatcher(path);
