@@ -8,10 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import changoh.Magazine.MagazineControl;
 import changoh.Magazine.MagazineListControl;
 import changoh.Magazine.PaymentResultControl;
+import younghun.Admin.AdminControl;
 import changoh.Payment.PaymentControl;
 import dongwon.Control.MypageControl;
 
@@ -29,7 +29,6 @@ public class MainController extends HttpServlet{
 		//xx.do, xxControl()로 구현할 것
 		//작성 예시 : controls.put("/test.do", new testControl());
 		controls.put("/test.do", new TestControl());
-		
 		//우선은 이름으로 컨트롤 분리하고, 나중에 기능으로 묶어서 일괄 분리 한번 더 할게요~
 		//창오
 		controls.put("/magazineList.do", new MagazineListControl()); //뉴스 리스트 페이지
@@ -44,6 +43,7 @@ public class MainController extends HttpServlet{
 		//유환
 		
 		//영훈
+		controls.put("/admin.do", new AdminControl());
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
