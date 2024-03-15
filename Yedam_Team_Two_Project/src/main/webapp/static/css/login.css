@@ -1,0 +1,56 @@
+* { padding: 0; margin: 0; }
+
+html, body {
+  height: 100%;
+  background: #ffffff;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top:200px;
+  margin-left:300px;
+  height: 100%;
+}
+
+
+#loginBox {
+  width: 450px;
+  text-align: center;
+  background-color: #ffffff;
+}
+.input-form-box {
+  border: 0px solid #ff0000;
+  display: flex;
+  margin-bottom: 5px;
+}
+.input-form-box > span {
+  display: inline-block;
+  text-align: left;
+  padding-top: 10px;
+  min-width: 65px;
+}
+.button-login-box {
+  margin: 10px 0;
+}
+#loginBoxTitle {
+  color:#000000;
+  font-weight: bold;
+  font-size: 32px;
+  text-transform: uppercase;
+  padding: 5px;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #F7FE2E, #DF0101);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#inputBox {
+  margin: 10px;
+}
+
+#inputBox button {
+  padding: 3px 5px;
+  border: 1px;
+}
