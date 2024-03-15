@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dongwon.Support.SupportMapper">
+  <!-- 여기에 기능 구현에 필요한 SQL문 작성하기. -->
+  <!-- resultType에 Member설정하는게 맞는지 확신 안섬. -->
+  <!-- SQL문도 이렇게 작성하는게 맞는지 확신 안섬. -->
+  <!-- 일단 작성해놓고 후에 점검.. -->
+    <select id="info" resultType="Support">
+		SELECT member_id, 
+			   member_type,
+			   name,
+			   password,
+			   email,
+			   tel
+		FROM   Member
+	</select>
+</mapper>

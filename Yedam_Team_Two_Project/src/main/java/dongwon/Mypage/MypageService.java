@@ -1,4 +1,4 @@
-package dongwon.Service;
+package dongwon.Mypage;
 
 public interface MypageService {
 

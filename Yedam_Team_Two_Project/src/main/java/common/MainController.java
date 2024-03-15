@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dongwon.Control.MypageControl;
+import dongwon.Cart.CartControl;
+import dongwon.Mypage.MypageControl;
+import dongwon.QnA.QnAControl;
+import dongwon.Support.SupportControl;
 
 public class MainController extends HttpServlet{
 	
@@ -26,6 +29,9 @@ public class MainController extends HttpServlet{
 		//작성 예시 : controls.put("/test.do", new testControl());
 		controls.put("/test.do", new TestControl());
 		controls.put("/mypage.do", new MypageControl());
+		controls.put("/cart.do", new CartControl());
+		controls.put("/qna.do", new QnAControl());
+		controls.put("/support.do", new SupportControl());
 
 	}
 	@Override

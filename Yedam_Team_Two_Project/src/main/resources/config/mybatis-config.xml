@@ -14,6 +14,15 @@
   <typeAliases>
   	<!-- <typeAlias alias="search" type="co.yedam.common.SearchVO"/> -->
   	<typeAlias alias="Test" type="common.TestClass"/>
+  	
+  	<!-- 동원 작업 typeAlias 시작점-->
+  	<typeAlias alias="Mypage" type="common.Member"/>
+  	<typeAlias alias="Cart" type="common.Goods"/>
+  	<typeAlias alias="QnA" type="dongwon.QnA.QnA"/>
+  	<typeAlias alias="Support" type="dongwon.QnA.QnA"/>
+  	
+  	<!-- 동원 작업 typeAlias 종료점-->
+  	
   </typeAliases>
   
   <environments default="development">
@@ -33,5 +42,12 @@
   	<!-- 생성 예제 -->
     <!-- <mapper resource="co/yedam/board/mapper/BoardMapper.xml"/> -->
     <mapper resource="common/testMapper.xml" />
+    <!-- 동원 작업 경로설정 시작점 -->
+    <mapper resource="dongwon/Mypage/MypageMapper.xml" />
+    <mapper resource="dongwon/Cart/CartMapper.xml" />
+    <mapper resource="dongwon/QnA/QnAMapper.xml" />
+    <mapper resource="dongwon/Support/SupportMapper.xml" />
+    
+    <!-- 동원 작업 경로설정 종료점 -->
   </mappers>
 </configuration>
