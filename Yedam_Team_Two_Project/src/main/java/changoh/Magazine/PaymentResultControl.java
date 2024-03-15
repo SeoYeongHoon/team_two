@@ -1,4 +1,4 @@
-package dongwon.Control;
+package changoh.Magazine;
 
 import java.io.IOException;
 
@@ -7,17 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.Control;
-import dongwon.Service.MypageService;
-import dongwon.Service.MypageServiceImpl;
 
-public class MypageControl implements Control {
+public class PaymentResultControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		MypageService svc = new MypageServiceImpl();
-		
-		
+		// TODO Auto-generated method stub
+
 	}
 
 }

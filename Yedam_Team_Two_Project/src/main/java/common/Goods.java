@@ -4,6 +4,7 @@ import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 enum GoodsState{
 	SALE, //판매중
@@ -18,6 +19,7 @@ enum RequestType{
 }
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Goods {
 	private int goodsId;
 	private String name;
@@ -33,6 +35,6 @@ public class Goods {
 	private Date reqDate;
 	private Date respDate;
 	private int categoryId;
-	private int memberId;
+	private String memberId; //해당 상품을 등록했던 판매자 아이디
 	private int scoreId;
 }
