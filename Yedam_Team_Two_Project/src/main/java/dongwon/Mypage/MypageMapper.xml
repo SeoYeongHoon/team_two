@@ -5,7 +5,7 @@
   <!-- resultType에 Member설정하는게 맞는지 확신 안섬. -->
   <!-- SQL문도 이렇게 작성하는게 맞는지 확신 안섬. -->
   <!-- 일단 작성해놓고 후에 점검.. -->
-    <select id="info" resultType="Mypage">
+    <select id="info" resultType="Member">
 		SELECT member_id, 
 			   member_type,
 			   name,
