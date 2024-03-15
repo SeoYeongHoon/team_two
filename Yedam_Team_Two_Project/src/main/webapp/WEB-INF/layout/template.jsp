@@ -7,27 +7,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../static/css/core-style.css">
-
 <link rel="stylesheet" href="../../static/scss/style.scss">
 <style>
 
 </style>
 </head>
 <body>
-<tiles:insertAttribute name="header" />
-<tiles:insertAttribute name="body" />
+<div class="main-content-wrapper d-flex clearfix">
+	<tiles:insertAttribute name="header" />
+	<tiles:insertAttribute name="body" />
+</div>
 <tiles:insertAttribute name="footer" />
-	<!-- <table>
-		<tr>
-			<td colspan="2"></td>
-		</tr>
-		<tr>
-			<td></td>
-		</tr>
-		<tr>
-			<td colspan="2"></td>
-		</tr>
-	</table> -->
 </body>
 
 <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
