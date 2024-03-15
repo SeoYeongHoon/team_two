@@ -8,12 +8,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dongwon.Cart.CartControl;
+import dongwon.Mypage.MypageControl;
+import dongwon.QnA.QnAControl;
+import dongwon.Support.SupportControl;
 import changoh.Magazine.MagazineControl;
 import changoh.Magazine.MagazineListControl;
 import changoh.Magazine.PaymentResultControl;
 import younghun.Admin.AdminControl;
 import changoh.Payment.PaymentControl;
-import dongwon.Control.MypageControl;
+
 import youhwan.Control.Productform;
 import hyunook.Login.LoginControl;
 import hyunook.Login.LoginForm;
@@ -21,7 +26,6 @@ import hyunook.Login.LogoutControl;
 import hyunook.MainPage.MainPage;
 import hyunook.addMember.AddMemberControl;
 import hyunook.addMember.AddMemberForm;
-
 public class MainController extends HttpServlet{
 	
 	Map<String, Control> controls;
@@ -45,7 +49,9 @@ public class MainController extends HttpServlet{
 		controls.put("/paymentResult.do", new PaymentResultControl());
 		//동원
 		controls.put("/mypage.do", new MypageControl());
-		
+		controls.put("/cart.do", new CartControl());
+		controls.put("/qna.do", new QnAControl());
+		controls.put("/support.do", new SupportControl());
 		//현욱
         //메인페이지
 		controls.put("/main.do", new MainPage());
@@ -64,6 +70,7 @@ public class MainController extends HttpServlet{
 		//영훈
 		controls.put("/admin.do", new AdminControl());
 	}
+	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("service 실행");
