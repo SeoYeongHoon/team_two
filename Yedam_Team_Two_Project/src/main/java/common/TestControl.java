@@ -15,12 +15,12 @@ public class TestControl implements Control {
 		
 		TestService svc = new TestServiceImpl();
 		
-		List<String> list = svc.showTestList();
+//		List<String> list = svc.showTestList();
+//		
+//		System.out.println(list);
+//		req.setAttribute("list", list);
 		
-		System.out.println(list);
-		req.setAttribute("list", list);
-		
-		String path = "WEB-INF/jsp/main.jsp";
+		String path = "jsp/main.tiles";
 		RequestDispatcher dispatch = req.getRequestDispatcher(path);
 		dispatch.forward(req, resp); //페이지 재지정
 	}
