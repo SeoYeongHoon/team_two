@@ -8,6 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import changoh.Magazine.MagazineControl;
+import changoh.Magazine.MagazineListControl;
+import changoh.Magazine.PaymentResultControl;
 import younghun.Admin.AdminControl;
 import changoh.Payment.PaymentControl;
 import dongwon.Control.MypageControl;
@@ -28,7 +31,10 @@ public class MainController extends HttpServlet{
 		controls.put("/test.do", new TestControl());
 		//우선은 이름으로 컨트롤 분리하고, 나중에 기능으로 묶어서 일괄 분리 한번 더 할게요~
 		//창오
+		controls.put("/magazineList.do", new MagazineListControl()); //뉴스 리스트 페이지
+		controls.put("/magazine.do", new MagazineControl()); //뉴스 단일 페이지
 		controls.put("/payment.do", new PaymentControl());
+		controls.put("/paymentResult.do", new PaymentResultControl());
 		//동원
 		controls.put("/mypage.do", new MypageControl());
 		
