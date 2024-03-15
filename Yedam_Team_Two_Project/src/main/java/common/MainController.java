@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import changoh.Payment.PaymentControl;
-import changoh.Payment.TestPaymentRequestControl;
 import dongwon.Control.MypageControl;
 
 public class MainController extends HttpServlet{
@@ -30,7 +29,6 @@ public class MainController extends HttpServlet{
 		
 		//우선은 이름으로 컨트롤 분리하고, 나중에 기능으로 묶어서 일괄 분리 한번 더 할게요~
 		//창오
-		controls.put("/testPaymentRequest.do", new TestPaymentRequestControl());
 		controls.put("/payment.do", new PaymentControl());
 		//동원
 		controls.put("/mypage.do", new MypageControl());
