@@ -1,3 +1,34 @@
+--테이블 일괄 삭제문 출력
+SELECT 'DROP TABLE ' || object_name || ' CASCADE CONSTRAINTS;'
+FROM   user_objects
+WHERE  object_type = 'TABLE';
+
+--테이블 일괄 삭제
+DROP TABLE MEMBER CASCADE CONSTRAINTS;
+DROP TABLE MAGAZINE CASCADE CONSTRAINTS;
+DROP TABLE CATEGORIES CASCADE CONSTRAINTS;
+DROP TABLE SCOREGRADE CASCADE CONSTRAINTS;
+DROP TABLE GOODS CASCADE CONSTRAINTS;
+DROP TABLE QNA CASCADE CONSTRAINTS;
+DROP TABLE CART CASCADE CONSTRAINTS;
+DROP TABLE REVIEW CASCADE CONSTRAINTS;
+DROP TABLE WISH_LIST CASCADE CONSTRAINTS;
+
+--시퀀스 일괄 삭제문 출력
+SELECT 'DROP SEQUENCE ' || object_name || ' ;'
+FROM user_objects
+WHERE object_type = 'SEQUENCE';
+
+--시퀀스 일괄 삭제
+DROP SEQUENCE MEMBER_ID_SEQ ;
+DROP SEQUENCE GOODS_ID_SEQ ;
+DROP SEQUENCE MAGAZINE_ID_SEQ ;
+DROP SEQUENCE QNA_ID_SEQ ;
+DROP SEQUENCE WISH_GOODS_ID_SEQ ;
+DROP SEQUENCE CART_ID_SEQ ;
+DROP SEQUENCE REVIEW_ID_SEQ ;
+
+--테이블 생성
 CREATE TABLE Member(
 	member_id   VARCHAR2(30)	 PRIMARY KEY,
 	member_type	VARCHAR2(20),
@@ -14,7 +45,7 @@ CREATE TABLE Categories(
 
 CREATE TABLE ScoreGrade(
 	score_id	NUMBER        PRIMARY KEY,
-    score       VARCHAR2(10)
+    score       NUMBER
 );
 
 CREATE TABLE Goods(
@@ -63,8 +94,17 @@ CREATE TABLE wish_list(
 	member_id	    VARCHAR2(30)      REFERENCES Member(member_id),
 	goods_id	    NUMBER	          REFERENCES Goods(goods_id)
 );
-       
-CREATE SEQUENCE category_id_seq
+
+CREATE TABLE Magazine (
+    magazine_id NUMBER        PRIMARY KEY,
+    title       VARCHAR(100),
+    content     VARCHAR(1000),
+    image       VARCHAR(300),
+    member_id   VARCHAR(30)   REFERENCES Member(member_id)
+);
+
+--시퀀스 생성
+CREATE SEQUENCE member_id_seq
        INCREMENT BY 1
        START WITH   0
        MINVALUE     0
@@ -72,8 +112,17 @@ CREATE SEQUENCE category_id_seq
        NOCYCLE
        NOCACHE
        NOORDER;
-       
-CREATE SEQUENCE score_id_seq
+
+CREATE SEQUENCE goods_id_seq
+       INCREMENT BY 1
+       START WITH   0
+       MINVALUE     0
+       MAXVALUE     99999
+       NOCYCLE
+       NOCACHE
+       NOORDER;
+
+CREATE SEQUENCE magazine_id_seq
        INCREMENT BY 1
        START WITH   0
        MINVALUE     0
@@ -83,6 +132,15 @@ CREATE SEQUENCE score_id_seq
        NOORDER;
        
 CREATE SEQUENCE qna_id_seq
+       INCREMENT BY 1
+       START WITH   0
+       MINVALUE     0
+       MAXVALUE     99999
+       NOCYCLE
+       NOCACHE
+       NOORDER;
+       
+CREATE SEQUENCE wish_goods_id_seq
        INCREMENT BY 1
        START WITH   0
        MINVALUE     0
@@ -109,13 +167,185 @@ CREATE SEQUENCE review_id_seq
        NOCACHE
        NOORDER;
        
-CREATE SEQUENCE wish_goods_id_seq
-       INCREMENT BY 1
-       START WITH   0
-       MINVALUE     0
-       MAXVALUE     99999
-       NOCYCLE
-       NOCACHE
-       NOORDER;       
-       
-COMMIT;       
+--더미값 넣기(100개 씩)
+BEGIN
+      FOR i IN 1..30
+      LOOP
+      INSERT INTO Categories(category_id,
+                             name)
+      VALUES                (i,
+                             '카테고리' || i);
+      END LOOP;
+      COMMIT;
+END;
+/
+INSERT INTO ScoreGrade(score_id,
+                       score)
+VALUES                (1,
+                       20);
+INSERT INTO ScoreGrade(score_id,
+                       score)
+VALUES                (2,
+                       40);
+INSERT INTO ScoreGrade(score_id,
+                       score)
+VALUES                (3,
+                       60);
+INSERT INTO ScoreGrade(score_id,
+                       score)
+VALUES                (4,
+                       80);
+INSERT INTO ScoreGrade(score_id,
+                       score)
+VALUES                (5,
+                       100);    
+COMMIT;
+
+BEGIN
+      FOR i IN 1..30
+      LOOP
+      INSERT INTO member (member_id,
+                          member_type,
+                          name,
+                          password,
+                          email,
+                          tel)
+       VALUES             ('userId' || i,
+                           'CLIENT',
+                           '고객' || i,
+                           '비밀번호' || i,
+                           '이메일' || i || '@email.com',
+                           '010-1111-1111');        
+      END LOOP;
+      COMMIT;
+END;
+/
+BEGIN
+      FOR i IN 31..60
+      LOOP
+      INSERT INTO member (member_id,
+                          member_type,
+                          name,
+                          password,
+                          email,
+                          tel)
+       VALUES             ('sellerId' || i,
+                           'SELLER',
+                           '판매자' || i,
+                           '비밀번호' || i,
+                           '이메일' || i || '@email.com',
+                           '010-1111-1111');        
+      END LOOP;
+      COMMIT;
+END;
+/
+BEGIN
+      FOR i IN 61..100
+      LOOP
+      INSERT INTO member (member_id,
+                          member_type,
+                          name,
+                          password,
+                          email,
+                          tel)
+       VALUES             ('managerId' || i,
+                           'MANAGER',
+                           '관리자' || i,
+                           '비밀번호' || i,
+                           '이메일' || i || '@email.com',
+                           '010-1111-1111');        
+      END LOOP;
+      COMMIT;
+END;
+/
+BEGIN
+      FOR i IN 1..100
+      LOOP
+      INSERT INTO goods(goods_id,
+                        name,
+                        description,
+                        price,
+                        hashtag,
+                        view_cnt,
+                        image,
+                        goods_state,
+                        req_type,
+                        req_date,
+                        resp_date,
+                        category_id,
+                        member_id,
+                        score_id)
+VALUES                 (goods_id_seq.NEXTVAL,
+                        '상품' || goods_id_seq.CURRVAL,
+                        '상품' || goods_id_seq.CURRVAL || '설명',
+                        1000 + goods_id_seq.CURRVAL,
+                        '#',
+                        0,
+                        '이미지1',
+                        'sale',
+                        'NONE',
+                        SYSDATE,
+                        SYSDATE,
+                        1,
+                        'userId1',
+                        1);     
+      END LOOP;
+      COMMIT;
+END;
+/
+BEGIN
+      FOR i IN 1..100
+      LOOP
+      INSERT INTO Review(review_id,
+                         title,
+                         content,
+                         create_date,
+                         member_id,
+                         goods_id,
+                         score_id)
+      VALUES            (review_id_seq.NEXTVAL,
+                         '제목' || review_id_seq.CURRVAL,
+                         '내용' || review_id_seq.CURRVAL,
+                         SYSDATE,
+                         'userId1',
+                         1,
+                         1);
+      END LOOP;
+      COMMIT;
+END;
+/
+BEGIN
+      FOR i IN 1..100
+      LOOP
+      INSERT INTO Magazine(magazine_id,
+                           title,
+                           content,
+                           image,
+                           member_id)
+      VALUES              (magazine_id_seq.NEXTVAL,
+                           '제목' || magazine_id_seq.CURRVAL,
+                           '내용' || magazine_id_seq.CURRVAL,
+                           '이미지2',
+                           'userId1');
+      END LOOP;
+      COMMIT;
+END;
+/
+BEGIN
+      FOR i IN 1..100
+      LOOP
+      INSERT INTO QnA(qna_id,
+                      title,
+                      content,
+                      qna_date,
+                      member_id)
+      VALUES         (qna_id_seq.NEXTVAL,
+                      '제목' || qna_id_seq.CURRVAL,
+                      '내용' || qna_id_seq.CURRVAL,
+                      SYSDATE,
+                      'userId1');
+      END LOOP;
+      COMMIT;
+END;
+/
+COMMIT;
