@@ -16,13 +16,12 @@
   	<typeAlias alias="Test" type="common.TestClass"/>
   	
   	<!-- 동원 작업 typeAlias 시작점-->
-  	<typeAlias alias="Mypage" type="common.Member"/>
-  	<typeAlias alias="Cart" type="common.Goods"/>
   	<typeAlias alias="QnA" type="dongwon.QnA.QnA"/>
-  	<typeAlias alias="Support" type="dongwon.QnA.QnA"/>
-  	
+  	<typeAlias alias="Cart" type="dongwon.Cart.Cart"/> 	
   	<!-- 동원 작업 typeAlias 종료점-->
   	
+  	<typeAlias alias="member" type="common.Member"/>
+  	<typeAlias alias="goods" type="common.Goods"/>
   </typeAliases>
   
   <environments default="development">
@@ -47,7 +46,7 @@
     <mapper resource="dongwon/Cart/CartMapper.xml" />
     <mapper resource="dongwon/QnA/QnAMapper.xml" />
     <mapper resource="dongwon/Support/SupportMapper.xml" />
-    
     <!-- 동원 작업 경로설정 종료점 -->
+    <mapper resource="changoh/Payment/PaymentMapper.xml" />
   </mappers>
 </configuration>
