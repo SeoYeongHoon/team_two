@@ -4,11 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-enum MemberType{
-	CLIENT, //고객
-	SELLER, //개인 판매자
-	MANAGER //관리자
-}
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,4 +15,10 @@ public class Member {
 	private String password;
 	private String email;
 	private String tel;
+	
+	public enum MemberType{
+		CLIENT, //고객
+		SELLER, //개인 판매자
+		MANAGER //관리자
+	}
 }

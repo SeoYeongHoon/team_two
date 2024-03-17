@@ -9,24 +9,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import changoh.Magazine.MagazineControl;
+import changoh.Magazine.MagazineListControl;
+import changoh.Magazine.PaymentResultControl;
+import changoh.Payment.PaymentControl;
 import dongwon.Cart.CartControl;
 import dongwon.Mypage.MypageControl;
 import dongwon.QnA.QnAControl;
 import dongwon.Support.SupportControl;
-import changoh.Magazine.MagazineControl;
-import changoh.Magazine.MagazineListControl;
-import changoh.Magazine.PaymentResultControl;
-import younghun.Admin.AdminControl;
-import younghun.Admin.RequestControl;
-import changoh.Payment.PaymentControl;
-
-import youhwan.Control.Productform;
+import hyunook.AddMember.AddMemberControl;
+import hyunook.AddMember.AddMemberForm;
+import hyunook.AddMember.SameEmailControl;
+import hyunook.AddMember.SameIdControl;
+import hyunook.AddMember.SameTelControl;
+import hyunook.Find.SearchIdControl;
+import hyunook.Find.SearchIdForm;
+import hyunook.Find.SearchPwControl;
+import hyunook.Find.SearchPwForm;
 import hyunook.Login.LoginControl;
 import hyunook.Login.LoginForm;
 import hyunook.Login.LogoutControl;
 import hyunook.MainPage.MainPage;
-import hyunook.addMember.AddMemberControl;
-import hyunook.addMember.AddMemberForm;
+import youhwan.Control.Productform;
+import younghun.Admin.AdminControl;
+import younghun.Admin.RequestControl;
 public class MainController extends HttpServlet{
 	
 	Map<String, Control> controls;
@@ -54,16 +60,19 @@ public class MainController extends HttpServlet{
 		controls.put("/qna.do", new QnAControl());
 		controls.put("/support.do", new SupportControl());
 		//현욱
-        //메인페이지
-		controls.put("/main.do", new MainPage());
-		//로그인
-		controls.put("/loginForm.do", new LoginForm());
+		controls.put("/main.do", new MainPage()); //메인페이지
+		controls.put("/loginForm.do", new LoginForm());//로그인
 		controls.put("/login.do", new LoginControl());
-		//로그아웃
-		controls.put("/logout.do", new LogoutControl());
-		//회원가입
-		controls.put("/addMemberForm.do", new AddMemberForm());
+		controls.put("/logout.do", new LogoutControl());//로그아웃
+		controls.put("/addMemberForm.do", new AddMemberForm());	//회원가입
 		controls.put("/addMember.do",new AddMemberControl());
+		controls.put("/sameId.do",new SameIdControl());
+		controls.put("/sameEmail.do",new SameEmailControl());
+		controls.put("/sameTel.do",new SameTelControl());
+        controls.put("/searchIdForm.do", new SearchIdForm());//아이디조회 폼
+        controls.put("/searchPwForm.do", new SearchPwForm());//비밀번호조회 폼
+        controls.put("/seachIdControl.do", new SearchIdControl());//아이디조회 컨트롤
+        controls.put("/seachPwControl.do", new SearchPwControl());//비밀번호조회 컨트롤
 		
 		//유환
 		controls.put("/product.do", new Productform());

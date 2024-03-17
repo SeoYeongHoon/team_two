@@ -30,9 +30,9 @@
 		<div id="loginBox">
 
 			<!-- 로그인 페이지 타이틀 -->
-			<div id="loginBoxTitle">Amado Login</div>
+            <h1>비밀번호 조회</h1>
 			<!-- 아이디, 비번, 버튼 박스 -->
-			<form action="login.do" method="post">
+			<form action="" method="post">
 				<div id="inputBox">
 					<c:if test="${!empty message }">
 						<p style="color: red;">${message }</p>
@@ -41,24 +41,20 @@
 						<span>아이디 </span><input type="text" name="id" class="form-control">
 					</div>
 					<div class="input-form-box">
-						<span>비밀번호 </span><input type="password" name="pw"
-							class="form-control">
+						<span>이름 </span><input type="text" name="name" class="form-control">
 					</div>
 
 					<div class="button-login-box">
-						<button type="submit" class="btn btn-primary btn-warning"
-							style="width: 100%">로그인</button>
-					</div>
-					  <c:if test="${!empty message }">
-					  <div class="button-login-box">
-                              <button type="button" class="btn btn-primary btn-primary"
-							style="width: 100%" id="searchId">아이디찾기</button>
+						<label class="findId"></label>
+						<button type="button" class="btn btn-warning" style="width: 100%"
+							id="searchBtn">비밀번호 조회</button>
 					</div>
 					<div class="button-login-box">
-							<button type="button" class="btn btn-primary btn-primary"
-							style="width: 100%" id="searchPw">비밀번호찾기</button>
+						<a href="loginForm.do" class="btn btn-primary" style="width: 100%">로그인</a>
 					</div>
-					  </c:if>
+					<div class="button-login-box">
+						<a href="main.do" class="btn btn-primary" style="width: 100%">메인페이지</a>
+					</div>
 				</div>
 			</form>
 
@@ -67,13 +63,33 @@
 
 	<!-- Bootstrap Bundle with Popper -->
 	<script>
-
-	$('#searchId').click (function() {
-		window.location = "searchIdForm.do";
-	})
-	$('#searchPw').click (function() {
-		window.location = "searchPwForm.do";
-	})
+	 $('#searchBtn').click (function(){
+	    	let id = $('input[name="id"]').val();
+	        let name = $('input[name="name"]').val();
+	    	$.ajax({
+	    		url:'seachPwControl.do',
+	    		method:'post',
+	    		data:{
+	    			id: id,
+	    			name: name
+	    		},
+	    		success:function(result){
+	    			console.log(result)
+	    		    if(result.length === 0){
+	        			$('.findId').css('color','black').text("정보를 조회할 수 없습니다");
+	    		    }
+	    		    else{ 
+	    			    result.forEach(prop =>{
+	    		        console.log(prop.password);
+	    		    	$('.findId').css('color','red').text("password: "+ prop.password);
+	    			   })
+	    			   }
+	    		},
+	    		error: function(xhr, status, error) {
+		            console.error(error);
+		        }
+	    	})
+	    })
 	</script>
 
 </body>

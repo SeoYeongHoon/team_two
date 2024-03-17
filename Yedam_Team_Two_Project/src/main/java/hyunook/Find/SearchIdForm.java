@@ -1,4 +1,4 @@
-package hyunook.addMember;
+package hyunook.Find;
 
 import java.io.IOException;
 
@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Control;
 
-public class AddMemberForm implements Control {
+public class SearchIdForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-		String path = "jsp/addMemberForm.tiles";
+
+		String path = "/jsp/searchIdForm.tiles"; 
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 
