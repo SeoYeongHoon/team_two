@@ -13,4 +13,5 @@ public class Magazine {
 	private String content;
 	private String image;
 	private String memberId;
+	
 }
