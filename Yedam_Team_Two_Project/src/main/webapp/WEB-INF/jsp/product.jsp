@@ -41,8 +41,8 @@
                                     </div>
                                     
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="../../static/img/product-img/pro-big-2">
-                                            <img class="d-block w-100" src="../../static/img/product-img/pro-big-2" alt="Second slide">
+                                        <a class="gallery_img" href="../../static/img/product-img/pro-big-2.jpg">
+                                            <img class="d-block w-100" src="../../static/img/product-img/pro-big-2.jpg" alt="Second slide">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
