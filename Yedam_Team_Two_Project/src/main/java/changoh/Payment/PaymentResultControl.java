@@ -1,4 +1,4 @@
-package changoh.Magazine;
+package changoh.Payment;
 
 import java.io.IOException;
 

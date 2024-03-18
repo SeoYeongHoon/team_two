@@ -15,11 +15,10 @@ import dongwon.QnA.QnAControl;
 import dongwon.Support.SupportControl;
 import changoh.Magazine.MagazineControl;
 import changoh.Magazine.MagazineListControl;
-import changoh.Magazine.PaymentResultControl;
 import younghun.Admin.AdminControl;
 import younghun.Admin.RequestControl;
 import changoh.Payment.PaymentControl;
-
+import changoh.Payment.PaymentResultControl;
 import youhwan.Control.Productform;
 import hyunook.Login.LoginControl;
 import hyunook.Login.LoginForm;
