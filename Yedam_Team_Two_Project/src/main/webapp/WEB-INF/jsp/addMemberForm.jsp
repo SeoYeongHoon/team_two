@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<!DOCTYPE html>
 <div class="cart-table-area section-padding-100">
 	<div class="container-fluid">
 
@@ -55,9 +54,10 @@
                         </div>
 					</div>
 					<div class="col-12 ml-15 mb-3">
-						<label><input type="radio" id="auth" name="auth"
-							value="CLIENT" checked>일반고객</label> <label><input
-							type="radio" id="auth" name="auth" value="SELLER">개인사업자</label>
+						<label class="center"><input type="radio" id="auth" name="auth"
+						 value="CLIENT" checked>일반고객</label> 
+						 <label class="center"><input type="radio" id="auth" name="auth"
+						  value="SELLER">개인사업자</label>
 					</div>
 
 					<div class="cart-btn mt-100">
@@ -83,7 +83,7 @@
 			alert('비밀번호가 일치하지 않습니다')
 		}else if($('#sameId:contains("이미")').length>0||$('#sameEmail:contains("이미")').length>0||
 				 $('#sameTel:contains("이미")').length>0){
-			alert('정보를 올바르게 기입하세요')
+			alert('중복된 값이 있습니다.')
 			return false;
 		} else {
 			return true;
@@ -93,8 +93,8 @@
 	//아이디 중복확인
 	$("#id").on("focusout", function() {
 	    let id = $("#id").val();
-	    
 	    if (id == '' || id.length == 0) {
+	    	 $("#id").css("border","3px solid red");
 	        $("#sameId").css('color', 'red').text("ID를 입력해주세요");
 	        return false;
 	    }
@@ -106,8 +106,10 @@
 	        success: function(result) {
 	        	console.log(result);
 	            if (result > 0) {
+	            	 $("#id").css("border","3px solid red");
 	                $("#sameId").css('color', 'red').text("이미 사용 중인 ID입니다");
 	            } else {
+	            	 $("#id").css("border","3px solid green");
 	                $("#sameId").css('color', 'green').text("사용 가능한 ID입니다");
 	            }
 	        },
@@ -121,6 +123,7 @@
 	    let email = $("#email").val();
 	    
 	    if (email == '' || email.length == 0) {
+         	$("#email").css("border","3px solid red");
 	        $("#sameEmail").css('color', 'red').text("이메일을 입력해주세요");
 	        return false;
 	    }
@@ -132,8 +135,10 @@
 	        success: function(result) {
 	        	console.log(result);
 	            if (result > 0) {
+	            	$("#email").css("border","3px solid red");
 	                $("#sameEmail").css('color', 'red').text("이미 가입한 정보가 있습니다");
 	            } else {
+	            	$("#email").css("border","3px solid green");
 	                $("#sameEmail").css('color', 'green').text("사용 가능한 이메일 입니다");
 	            }
 	        },
@@ -147,6 +152,7 @@
 	    let tel = $("#tel").val();
 	    
 	    if (tel == '' || tel.length == 0) {
+        	$("#tel").css("border","3px solid red");
 	        $("#sameTel").css('color', 'red').text("전화번호를 입력해주세요");
 	        return false;
 	    }
@@ -158,8 +164,10 @@
 	        success: function(result) {
 	        	console.log(result);
 	            if (result > 0) {
+	            	$("#tel").css("border","3px solid red");
 	                $("#sameTel").css('color', 'red').text("이미 가입한 정보가 있습니다");
 	            } else {
+	            	$("#tel").css("border","3px solid green");
 	                $("#sameTel").css('color', 'green').text("사용 가능한 번호 입니다");
 	            }
 	        },

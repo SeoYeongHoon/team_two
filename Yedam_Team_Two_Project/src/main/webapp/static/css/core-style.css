@@ -76,7 +76,8 @@ ol {
 }
 img {
   height: auto;
-  max-width: 100%; }
+  max-width: 100%; 
+  }
 
 /* Spacing */
 .mt-15 {
@@ -167,7 +168,6 @@ img {
     font-weight: 600; }
   .section-heading.text-left {
     text-align: left !important; }
-
 /* Miscellaneous */
 .bg-img {
   background-position: center center;
