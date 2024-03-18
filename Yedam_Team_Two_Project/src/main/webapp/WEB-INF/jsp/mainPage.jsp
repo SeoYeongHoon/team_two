@@ -17,7 +17,7 @@
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
                     <a href="shop.html">
-                        <img src="../../static/img/bg-img/1.jpg" alt="">
+                        <img src="../../static/img/bg-img/매거진 컨셉 제안서 템플릿.png" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -30,7 +30,7 @@
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
                     <a href="shop.html">
-                        <img src="../../static/img/bg-img/2.jpg" alt="">
+                        <img src="../../static/img/bg-img/주황 심플 템플릿 뒷면.png" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
@@ -43,7 +43,7 @@
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
                     <a href="shop.html">
-                        <img src="../../staticimg/bg-img/3.jpg" alt="">
+                        <img src="../../staticimg/bg-img/건설 건축 템플릿.png" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>

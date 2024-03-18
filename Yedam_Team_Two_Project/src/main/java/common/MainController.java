@@ -30,6 +30,8 @@ import hyunook.Login.LoginControl;
 import hyunook.Login.LoginForm;
 import hyunook.Login.LogoutControl;
 import hyunook.MainPage.MainPage;
+import hyunook.ProductList.PrivateListControl;
+import hyunook.ProductList.PrivateListForm;
 import youhwan.Control.Productform;
 import younghun.Admin.AdminControl;
 import younghun.Admin.RequestControl;
@@ -73,7 +75,8 @@ public class MainController extends HttpServlet{
         controls.put("/searchPwForm.do", new SearchPwForm());//비밀번호조회 폼
         controls.put("/seachIdControl.do", new SearchIdControl());//아이디조회 컨트롤
         controls.put("/seachPwControl.do", new SearchPwControl());//비밀번호조회 컨트롤
-		
+		controls.put("/privateListForm.do", new PrivateListForm());//개인상품 리스트
+		controls.put("/privateListControl.do", new PrivateListControl());//개인상품 리스트 컨트롤
 		//유환
 		controls.put("/product.do", new Productform());
 		

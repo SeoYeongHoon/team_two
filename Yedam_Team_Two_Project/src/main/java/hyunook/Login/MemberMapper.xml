@@ -12,7 +12,7 @@
 	</select>
 	<!-- 아이디찾기 -->
     <select id="searchId" parameterType="common.Member" >
-       SELECT member_id
+       SELECT member_id 
        FROM member
        WHERE name = #{name }
        AND email = #{email } 

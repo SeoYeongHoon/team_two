@@ -48,6 +48,8 @@
     <mapper resource="dongwon/Support/SupportMapper.xml" />
     <!-- 동원 작업 경로설정 종료점 -->
     <mapper resource="hyunook/Login/MemberMapper.xml" />
+    <mapper resource="hyunook/ProductList/GoodsMapper.xml" />
+    
     <mapper resource="changoh/Payment/PaymentMapper.xml" />
   </mappers>
 </configuration>
