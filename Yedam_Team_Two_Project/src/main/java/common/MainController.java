@@ -15,13 +15,17 @@ import dongwon.QnA.QnAControl;
 import dongwon.Support.SupportControl;
 import changoh.Magazine.MagazineControl;
 import changoh.Magazine.MagazineListControl;
-import changoh.Magazine.PaymentResultControl;
 import younghun.Admin.AdminControl;
 import younghun.Admin.RequestControl;
 import younghun.Manage.ManageControl;
 import changoh.Payment.PaymentControl;
+<<<<<<< HEAD
+import changoh.Payment.PaymentResultControl;
+import youhwan.Control.Productform;
+=======
 import youhwan.Company.Companyform;
 import youhwan.Product.Productform;
+>>>>>>> branch 'test' of https://github.com/SeoYeongHoon/team_two.git
 import hyunook.Login.LoginControl;
 import hyunook.Login.LoginForm;
 import hyunook.Login.LogoutControl;

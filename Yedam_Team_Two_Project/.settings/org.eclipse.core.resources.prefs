@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 eclipse.preferences.version=1
-encoding//src/main/webapp/WEB-INF/jsp/product.jsp=UTF-8
-=======
-eclipse.preferences.version=1
-encoding//src/main/webapp/WEB-INF/jsp/error.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/jsp/payment.jsp=UTF-8
-=======
-eclipse.preferences.version=1
-<<<<<<< HEAD
-encoding//src/main/webapp/WEB-INF/jsp/loginForm.jsp=UTF-8
-=======
-encoding//src/main/webapp/WEB-INF/jsp/error.jsp=UTF-8
-encoding//src/main/webapp/WEB-INF/jsp/payment.jsp=UTF-8
->>>>>>> branch 'test' of https://github.com/SeoYeongHoon/team_two.git
->>>>>>> branch 'test' of https://github.com/SeoYeongHoon/team_two.git
+encoding//src/main/webapp/WEB-INF/jsp/magazine.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/magazineList.jsp=UTF-8

@@ -14,8 +14,11 @@
   <typeAliases>
   	<!-- <typeAlias alias="search" type="co.yedam.common.SearchVO"/> -->
   	<typeAlias alias="Test" type="common.TestClass"/>
+  	<typeAlias alias="QnA" type="dongwon.QnA.QnA"/>
+  	<typeAlias alias="Cart" type="dongwon.Cart.Cart"/> 	
   	<typeAlias alias="member" type="common.Member"/>
   	<typeAlias alias="goods" type="common.Goods"/>
+  	<typeAlias alias="magazine" type="changoh.Magazine.Magazine"></typeAlias>
   </typeAliases>
   
   <environments default="development">
@@ -35,6 +38,12 @@
   	<!-- 생성 예제 -->
     <!-- <mapper resource="co/yedam/board/mapper/BoardMapper.xml"/> -->
     <mapper resource="common/testMapper.xml" />
+    <mapper resource="dongwon/Mypage/MypageMapper.xml" />
+    <mapper resource="dongwon/Cart/CartMapper.xml" />
+    <mapper resource="dongwon/QnA/QnAMapper.xml" />
+    <mapper resource="dongwon/Support/SupportMapper.xml" />
+    <mapper resource="hyunook/Login/MemberMapper.xml" />
     <mapper resource="changoh/Payment/PaymentMapper.xml" />
+    <mapper resource="changoh/Magazine/MagazineMapper.xml" />
   </mappers>
 </configuration>
