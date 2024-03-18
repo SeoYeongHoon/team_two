@@ -1,10 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
+=======
+                
+    
+    
+>>>>>>> branch 'test' of https://github.com/SeoYeongHoon/team_two.git
     <wb-module deploy-name="Yedam_Team_Two_Project-0.0.1-SNAPSHOT">
+<<<<<<< HEAD
+=======
+                                
+        
+        
+>>>>>>> branch 'test' of https://github.com/SeoYeongHoon/team_two.git
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+<<<<<<< HEAD
+=======
+                                
+        
+        
+>>>>>>> branch 'test' of https://github.com/SeoYeongHoon/team_two.git
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+<<<<<<< HEAD
+=======
+                                
+        
+        
+>>>>>>> branch 'test' of https://github.com/SeoYeongHoon/team_two.git
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+<<<<<<< HEAD
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+=======
+
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+
+        
+>>>>>>> branch 'test' of https://github.com/SeoYeongHoon/team_two.git
         <property name="context-root" value="Yedam_Team_Two_Project"/>
+<<<<<<< HEAD
         <property name="java-output-path" value="/Yedam_Team_Two_Project/target/classes"/>
+=======
+                                
+        
+        
+        <property name="java-output-path" value="/Yedam_Team_Two_Project/build/classes"/>
+                            
+    
+    
+>>>>>>> branch 'test' of https://github.com/SeoYeongHoon/team_two.git
     </wb-module>
+<<<<<<< HEAD
+=======
+            
+
+
+>>>>>>> branch 'test' of https://github.com/SeoYeongHoon/team_two.git
 </project-modules>

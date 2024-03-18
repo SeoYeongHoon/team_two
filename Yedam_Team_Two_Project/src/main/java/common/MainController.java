@@ -17,9 +17,15 @@ import changoh.Magazine.MagazineControl;
 import changoh.Magazine.MagazineListControl;
 import younghun.Admin.AdminControl;
 import younghun.Admin.RequestControl;
+import younghun.Manage.ManageControl;
 import changoh.Payment.PaymentControl;
+<<<<<<< HEAD
 import changoh.Payment.PaymentResultControl;
 import youhwan.Control.Productform;
+=======
+import youhwan.Company.Companyform;
+import youhwan.Product.Productform;
+>>>>>>> branch 'test' of https://github.com/SeoYeongHoon/team_two.git
 import hyunook.Login.LoginControl;
 import hyunook.Login.LoginForm;
 import hyunook.Login.LogoutControl;
@@ -65,11 +71,13 @@ public class MainController extends HttpServlet{
 		controls.put("/addMember.do",new AddMemberControl());
 		
 		//유환
-		controls.put("/product.do", new Productform());
+		controls.put("/product.do", new Productform()); // 상세페이지
+		controls.put("/company.do", new Companyform()); // 회사
 		
 		//영훈
 		controls.put("/admin.do", new AdminControl());
 		controls.put("/request.do", new RequestControl());	// 관리자 페이지에 등록된 유저 요청건의 확인 버튼 클릭 시 이동되는 페이지
+		controls.put("/management.do", new ManageControl()); // 개인 판매자용 상품 관리 페이지
 	}
 	
 	@Override
