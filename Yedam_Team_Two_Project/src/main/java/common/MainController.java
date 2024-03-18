@@ -20,8 +20,8 @@ import younghun.Admin.AdminControl;
 import younghun.Admin.RequestControl;
 import younghun.Manage.ManageControl;
 import changoh.Payment.PaymentControl;
-
-import youhwan.Control.Productform;
+import youhwan.Company.Companyform;
+import youhwan.Product.Productform;
 import hyunook.Login.LoginControl;
 import hyunook.Login.LoginForm;
 import hyunook.Login.LogoutControl;
@@ -67,7 +67,8 @@ public class MainController extends HttpServlet{
 		controls.put("/addMember.do",new AddMemberControl());
 		
 		//유환
-		controls.put("/product.do", new Productform());
+		controls.put("/product.do", new Productform()); // 상세페이지
+		controls.put("/company.do", new Companyform()); // 회사
 		
 		//영훈
 		controls.put("/admin.do", new AdminControl());
