@@ -20,13 +20,13 @@
 						<form id="form" action="management.do" method="post">
 						    <div class="row">
 						        <div class="col-md-12 mb-3">
-						            <input type="text" class="form-control name_info" id="name_info" value="" placeholder="이름" required="">
+						            <input type="text" class="form-control name_info" name="name_info" id="name_info" value="" placeholder="이름" required="">
 						        </div>
 						        <div class="col-md-12 mb-3">
-						            <input type="text" class="form-control title_info" id="title_info" placeholder="제목" value="">
+						            <input type="text" class="form-control title_info" name="title_info" id="title_info" placeholder="제목" value="">
 						        </div>
 						        <div class="col-md-12 mb-3">
-						        	<p><textarea class="form-control content_info" id="content_info" placeholder="내용"  cols="50" rows="10"></textarea></p>
+						        	<p><textarea class="form-control content_info" name="content_info" id="content_info" placeholder="내용"  cols="50" rows="10"></textarea></p>
 						        </div>
 						        <div class="col-12 mb-3">
 							        <div class="nice-select w-100" tabindex="0">

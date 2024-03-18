@@ -8,6 +8,10 @@
 <link rel="stylesheet" href="../../static/css/admin.css">
 </head>
 <body>
+	<%
+		String name = request.getParameter("name_info");
+	%>
+	<h1><%=name %></h1>
 	<div class="container-fluid py-4">
 		<div class="row">
 			<div class="col-12">
@@ -79,5 +83,6 @@
 			</div>
 		</div>
 	</div>
+	<script src="../../static/js/management.js"></script>
 </body>
 </html>
