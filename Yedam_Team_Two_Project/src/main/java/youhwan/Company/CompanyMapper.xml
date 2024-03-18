@@ -2,9 +2,10 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="youhwan.Mapper.ProductMapper">
+<mapper namespace="youhwan.Company.CompanyMapper">
 <!-- 방법1 -->
 	<!-- id="xxMapper의 함수이름" resultType="반환되는 타입" parameterType="파라미터 타입"-->
 	<!-- 반환, 파라미터 타입 경우 : resources/config/mybatis-config.xml 파일의 typeAlias설정되어있는지 확인 -->
 
+	
 </mapper>

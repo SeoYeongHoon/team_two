@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.DataSource;
 import common.Goods;
-import youhwan.Service.ProductService;
 
 public class GoodsListServiceImpl implements GoodsListService{
    SqlSession session = DataSource.getInstance().openSession(true);

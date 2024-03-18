@@ -1,11 +1,10 @@
-package youhwan.Service;
+package youhwan.Product;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
 import common.DataSource;
-import youhwan.Mapper.ProductMapper;
 
 public class ProductServiceImpl implements ProductService {
 	
