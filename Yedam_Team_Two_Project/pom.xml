@@ -84,11 +84,7 @@
 		    <version>2.16.1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.yedam</groupId>
-			<artifactId>BoardApp</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		
    </dependencies>
   
   <build>
