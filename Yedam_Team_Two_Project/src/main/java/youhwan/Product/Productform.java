@@ -1,4 +1,4 @@
-package youhwan.Control;
+package youhwan.Product;
 
 import java.io.IOException;
 
@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.Control;
-import youhwan.Service.ProductService;
-import youhwan.Service.ProductServiceImpl;
 
 public class Productform implements Control {
 
