@@ -1,4 +1,4 @@
-package youhwan.Service;
+package youhwan.Product;
 
 import java.util.List;
 
