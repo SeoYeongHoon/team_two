@@ -11,4 +11,11 @@
                           FROM member
                           WHERE member_type='SELLER')
 	</select>
+	
+	<select id="goodsList">
+		SELECT name,
+			   description,
+			   price
+		FROM goods			   
+	</select>
 </mapper>
