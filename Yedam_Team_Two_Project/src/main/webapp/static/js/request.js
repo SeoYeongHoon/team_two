@@ -2,11 +2,6 @@
  * request.js
  */
 
-const form = document.getElementById('form');
-
-var submit = document.getElementById('submitButton');
-// submit.onclick = showImage;     //Submit 버튼 클릭시 이미지 보여주기
-
 function showImage() {
 	var newImage = document.getElementById('image-show').lastElementChild;
 	newImage.style.visibility = "visible";

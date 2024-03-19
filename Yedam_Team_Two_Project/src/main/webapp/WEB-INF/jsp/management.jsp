@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,9 +30,9 @@
 							<table class="table align-items-center mb-0">
 								<thead>
 									<tr>
-										<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">제목</th>
-										<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">이미지</th>
-										<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">유형</th>
+										<th class="font-weight-bolder">제목</th>
+										<th class="font-weight-bolder">내용</th>
+										<th class="text-center font-weight-bold">유형</th>
 										<th></th>
 										<th class="align-middle">
 											<a href="request.do" class="confirm_btn bg-gradient-danger mb-0 toast-btn">새로 등록</a>
@@ -43,10 +44,8 @@
 										<td class="align-middle">
 											<span class="text-secondary text-xs font-weight-bold"><%=title %></span>
 										</td>
-										<td>
-											<div class="image-show" id="image-show"><%=image %>
-												<img src="<%=image %>">
-											</div>
+										<td class="align-middle">
+											<span class="text-secondary text-xs font-weight-bold"><%=content %></span>
 										</td>
 										<td class="align-middle text-center">
 											<span class="text-secondary text-xs font-weight-bold"><%=type %></span>
