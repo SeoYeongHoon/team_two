@@ -1,4 +1,4 @@
-package changoh.Magazine;
+package hyunook.Find;
 
 import java.io.IOException;
 
@@ -8,12 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Control;
 
-public class PaymentResultControl implements Control {
+public class SearchPwForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+		
+		String path = "/jsp/searchPwForm.tiles"; 
+		req.getRequestDispatcher(path).forward(req, resp);
 	}
 
 }

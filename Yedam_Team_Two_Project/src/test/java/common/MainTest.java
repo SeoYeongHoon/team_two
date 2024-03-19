@@ -1,22 +1,19 @@
 package common;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
-import changoh.Payment.PaymentMapper;
+import changoh.Magazine.Magazine;
+import changoh.Magazine.MagazineMapper;
 
 public class MainTest {
 	public static void main(String[] args) {
 		SqlSession session = DataSource.getInstance().openSession(true); //자동 커밋
-		PaymentMapper mapper = session.getMapper(PaymentMapper.class);
+		MagazineMapper mapper = session.getMapper(MagazineMapper.class);
 		
-		Member mem = new Member();
-		mem.setMemberId("userId01");
-		Member foundMem = mapper.getMember(mem);
-		
-		System.out.println(foundMem.toString());
-		
-		Goods goods = new Goods();
-		goods.setGoodsId(1);
-		
+		List<Magazine> list = mapper.getMagazineList(Integer.parseInt("3"));
+		list.forEach(item -> System.out.println(item.toString()));
+		System.out.println(mapper.getTotalCount());
 	}
 }
