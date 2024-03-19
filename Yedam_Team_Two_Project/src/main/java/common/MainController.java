@@ -17,6 +17,11 @@ import dongwon.Cart.CartControl;
 import dongwon.Mypage.MypageControl;
 import dongwon.QnA.QnAControl;
 import dongwon.Support.SupportControl;
+import hyunook.AddMember.AddMemberControl;
+import hyunook.AddMember.AddMemberForm;
+import hyunook.AddMember.SameEmailControl;
+import hyunook.AddMember.SameIdControl;
+import hyunook.AddMember.SameTelControl;
 import hyunook.Find.SearchIdControl;
 import hyunook.Find.SearchIdForm;
 import hyunook.Find.SearchPwControl;
@@ -27,11 +32,6 @@ import hyunook.Login.LogoutControl;
 import hyunook.MainPage.MainPage;
 import hyunook.ProductList.PrivateListControl;
 import hyunook.ProductList.PrivateListForm;
-import hyunook.addMember.AddMemberControl;
-import hyunook.addMember.AddMemberForm;
-import hyunook.addMember.SameEmailControl;
-import hyunook.addMember.SameIdControl;
-import hyunook.addMember.SameTelControl;
 import youhwan.Company.Companyform;
 import youhwan.Product.Productform;
 import younghun.Admin.AdminControl;
@@ -89,17 +89,20 @@ public class MainController extends HttpServlet {
 		controls.put("/admin.do", new AdminControl());
 		controls.put("/request.do", new RequestControl()); // 관리자 페이지에 등록된 유저 요청건의 확인 버튼 클릭 시 이동되는 페이지
 		controls.put("/management.do", new ManageControl()); // 개인 판매자용 상품 관리 페이지
+		controls.put("/manageForm.do", new ManageForm());
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("service 실행");
+		
 		String uri = req.getRequestURI();
 		String context = req.getContextPath();
 		String path = uri.substring(context.length());
 		
 		Control control = controls.get(path);
 		control.exec(req,  resp); //요점 url에 따른 실행컨트롤을 호출
+    }
+
 	}
-}
 
