@@ -9,25 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import changoh.Magazine.MagazineControl;
+import changoh.Magazine.MagazineListControl;
+import changoh.Magazine.PaymentResultControl;
+import changoh.Payment.PaymentControl;
 import dongwon.Cart.CartControl;
 import dongwon.Mypage.MypageControl;
 import dongwon.QnA.QnAControl;
 import dongwon.Support.SupportControl;
-import changoh.Magazine.MagazineControl;
-import changoh.Magazine.MagazineListControl;
-import changoh.Magazine.PaymentResultControl;
-import younghun.Admin.AdminControl;
-import younghun.Admin.RequestControl;
-import younghun.Manage.ManageControl;
-import changoh.Payment.PaymentControl;
-import youhwan.Company.Companyform;
-import youhwan.Product.Productform;
 import hyunook.Login.LoginControl;
 import hyunook.Login.LoginForm;
 import hyunook.Login.LogoutControl;
 import hyunook.MainPage.MainPage;
 import hyunook.addMember.AddMemberControl;
 import hyunook.addMember.AddMemberForm;
+import youhwan.Company.Companyform;
+import youhwan.Product.ProductControl;
+import youhwan.Product.Productform;
+import younghun.Admin.AdminControl;
+import younghun.Admin.RequestControl;
+import younghun.Manage.ManageControl;
 public class MainController extends HttpServlet{
 	
 	Map<String, Control> controls;
@@ -67,7 +68,8 @@ public class MainController extends HttpServlet{
 		controls.put("/addMember.do",new AddMemberControl());
 		
 		//유환
-		controls.put("/product.do", new Productform()); // 상세페이지
+		controls.put("/product.do", new Productform()); // 상세페이지 폼
+		controls.put("/productControl.do", new ProductControl()); // 상세페이지 컨트롤
 		controls.put("/company.do", new Companyform()); // 회사
 		
 		//영훈
@@ -79,7 +81,6 @@ public class MainController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("service 실행");
-		
 		String uri = req.getRequestURI();
 		String context = req.getContextPath();
 		String path = uri.substring(context.length());
