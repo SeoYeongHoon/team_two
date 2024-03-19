@@ -31,7 +31,6 @@ public class LoginControl implements Control {
     	   resp.sendRedirect("main.do");
        }else {
     	   req.setAttribute("message", "아이디와 비밀번호가 일치하지않습니다.");
-    	   System.out.println("실패");
     	   String path = "jsp/loginForm.tiles";
     	   req.getRequestDispatcher(path).forward(req, resp);
        }

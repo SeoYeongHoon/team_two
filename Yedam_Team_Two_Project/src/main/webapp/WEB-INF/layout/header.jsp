@@ -11,13 +11,13 @@
 	</div>
 	<!-- Logo -->
 	<div class="logo">
-		<a href="index.html"><img src="../../static/img/core-img/logo.png"
+		<a href="main.do"><img src="../../static/img/core-img/logo.png"
 			alt=""></a>
 	</div>
 	<!-- Amado Nav -->
 	<nav class="amado-nav">
 		<ul>
-			<li class="active"><a href="index.html">Home</a></li>
+			<li class="active"><a href="main.do">Home</a></li>
 			<li><a href="shop.html">Shop</a></li>
 			<li><a href="product-details.html">Product</a></li>
 			<li><a href="cart.html">Cart</a></li>
