@@ -90,6 +90,7 @@ public class MainController extends HttpServlet {
 		controls.put("/admin.do", new AdminControl());
 		controls.put("/request.do", new RequestControl()); // 관리자 페이지에 등록된 유저 요청건의 확인 버튼 클릭 시 이동되는 페이지
 		controls.put("/management.do", new ManageControl()); // 개인 판매자용 상품 관리 페이지
+		controls.put("/manageForm.do", new ManageForm());
 	}
 
 	@Override
