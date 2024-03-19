@@ -86,20 +86,30 @@
 </div>
 
 <script type="text/javascript">
-// 버튼 누르면 객체 전송하는 기능 구현
-//document.getElementById('btnSave').addEventListener('click', function(e) {
-//	fetch('../qna.do', {
-//		method: 'post',
-//		headers: {
-//			'Content-Type': 'text/json'
-//		},
-//		body: JSON.stringify()
-//	})
-//		.then(resolve => resolve.text())
-//		.then(result => console.log(result))
-//		.catch(err => console.log(err));
-//
-//})
+// 버튼 누르면 정보가 json 형식으로 전달하는?게 맞지 않나. 폼 형식으로?..잘모르겠지만 일단 제이슨.
+document.getElementById('btnSave').addEventListener('click', function(e) {
+    var qnaTitle = document.getElementById('qnaTitle').value;
+    var qnaContent = document.getElementById('qnaContent').value;
+    
+    if(qnaTitle.trim() === '' || qnaContent.trim() === '') {
+        alert("내용을 작성하세요.");
+    } else {
+        var xhr = new XMLHttpRequest();
+        var url = '/qnaControl';
+        var params = 'qnaTitle=' + encodeURIComponent(qnaTitle) + '&qnaContent=' + encodeURIComponent(qnaContent);
+        
+        xhr.open('POST', url, true);
+        xhr.setRequestHeader('application/json', 'application/x-www-form-urlencoded');
+        
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState == 4 && xhr.status == 200) {
+                alert("고객님의 문의가 접수되었습니다.");
+            }
+        };
+        
+        xhr.send(params);
+    }
+});
 
 
 $(document).ready(function(){
