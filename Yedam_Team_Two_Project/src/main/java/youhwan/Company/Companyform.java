@@ -1,4 +1,4 @@
-package changoh.Payment;
+package youhwan.Company;
 
 import java.io.IOException;
 
@@ -8,11 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Control;
 
-public class TestPaymentRequestControl implements Control {
+public class Companyform implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute(null, resp);
+
+		String path = "jsp/Company.tiles";
+		
+		req.getRequestDispatcher(path).forward(req, resp);
 	}
 
 }
