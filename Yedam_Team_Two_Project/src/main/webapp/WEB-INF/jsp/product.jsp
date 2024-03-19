@@ -8,6 +8,7 @@
                     <div class="col-12">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mt-50">
+                            <!-- 상단 태그 -->
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Furniture</a></li>
                                 <li class="breadcrumb-item"><a href="#">Chairs</a></li>
@@ -37,7 +38,7 @@
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <a class="gallery_img" href="../../static/img/product-img/pro-big-1.jpg">
-                                            <!-- <img class="d-block w-100" src="#" alt="First slide"> -->
+                                            <!-- <img class=`"d-block w-100" src="#" alt="First slide"> -->
                                         </a>
                                     </div>
                                     
@@ -66,9 +67,9 @@
                             <!-- Product Meta Data -->
                             <div class="product-meta-data">
                                 <div class="line"></div>
-                                <p class="product-price">${price }</p>
-                                <a href="product-details.html">
-                                    <h6>상품명</h6>
+                                <p class="product-price">5000(가격)${Goods.price }</p>
+                                <a>
+                                    <h6>의자(상품명)</h6>
                                 </a>
                                 <!-- Ratings & Review -->
                                 <!-- 별 갯수 -->
@@ -80,16 +81,20 @@
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                     </div>
-                                    <div class="review">
+                                <!--     <div class="review">
                                         <a href="#">리뷰를 작성해주세요</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- Avaiable -->
-                                <p class="avaibility"><i class="fa fa-circle"></i> 해쉬태그</p>
+                                <p class="avaibility" id="hashtag"><!-- <i class="fa fa-circle"></i> -->#의자 #책상 #혼밥 (해쉬태그)${Goods.hashtag }</p>
                             </div>
 
                             <div class="short_overview my-5">
-                                <p>${description }</p>
+                                <p>해쉬 태그:</p>
+                                <p>파일 형식:</p>
+                                <p>파일 크기:</p>
+                                <p>슬라이드 사이즈:</p>
+                                <p>슬라이드 구성:</p>
                             </div>
 
                             <!-- Add to Cart Form -->
@@ -102,7 +107,7 @@
                                         <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
                                     </div> -->
                                     <input value="댓글창" size="40px" type="text">
-                                    <button type="submit" name="addtocart" value="5" class="btn amado-btn">등록</button>
+                                    <input type="submit" name="addtocart" value="등록" id="button" size="20px"></button>
                                 </div>
                                 <div class="d-flex">
                                     <button type="submit" name="addtocart" value="5" class="btn amado-btn">찜하기</button>
@@ -118,12 +123,4 @@
         </div>
         <!-- Product Details Area End -->
     </div>
-    <script>
-    #.ajax{
-    	url:"/product.do",
-    	data:{name},
-    	type:"get",
-    	dataType:"JSON"
-    }
-    </script>
 </body>

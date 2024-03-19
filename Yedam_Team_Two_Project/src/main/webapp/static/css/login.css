@@ -14,7 +14,10 @@ html, body {
   margin-left:300px;
   height: 100%;
 }
-
+#buttonCenter{
+	margin:5px auto;
+	text-align: center;
+}
 
 #loginBox {
   width: 450px;
