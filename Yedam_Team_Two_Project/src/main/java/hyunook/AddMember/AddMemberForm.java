@@ -1,4 +1,4 @@
-package hyunook.MainPage;
+package hyunook.AddMember;
 
 import java.io.IOException;
 
@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Control;
 
-public class MainPage implements Control {
+public class AddMemberForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String path = "jsp/mainPage.tiles"; //web-inf/view/loginForm.jsp
+        
+		String path = "jsp/addMemberForm.tiles";
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 
