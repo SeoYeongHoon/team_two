@@ -12,8 +12,8 @@ public class GoodsListServiceImpl implements GoodsListService{
    GoodsMapper mapper = session.getMapper(GoodsMapper.class);
    
    //개인상품 리스트
-   public List<Goods> privateProductList(Goods goods){
-	   return mapper.privateProductList(goods);
+   public List<Goods> privateProductList(){
+	   return mapper.privateProductList();
    }
 
 
