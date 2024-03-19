@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Magazine {
-	private int magazine_id;
+	private int magazineId;
 	private String title;
 	private String content;
 	private String image;
