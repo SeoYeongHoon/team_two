@@ -1,4 +1,3 @@
-
 package common;
 
 import java.io.IOException;
@@ -106,3 +105,4 @@ public class MainController extends HttpServlet {
     }
 
 	}
+
