@@ -22,5 +22,10 @@ public class GoodsListServiceImpl implements GoodsListService{
 	public List<Goods> goodsList() {
 		return mapper.goodsList();
 	}
-
+   @Override
+   //개인판매 리스트
+	public List<Goods> privateProductList() {
+	   return mapper.privateProductList();
+	}
+   
 }
