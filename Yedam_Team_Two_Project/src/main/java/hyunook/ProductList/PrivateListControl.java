@@ -12,7 +12,6 @@ import com.google.gson.GsonBuilder;
 
 import common.Control;
 import common.Goods;
-import common.Member;
 
 public class PrivateListControl implements Control {
 
@@ -20,17 +19,13 @@ public class PrivateListControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 req.setCharacterEncoding("utf-8");
 		 resp.setContentType("text/json;charset=utf-8");
-	     String type = "SELLER";
-		
-	     Goods goods=new Goods();
+	     GoodsListService svc = new GoodsListServiceImpl();
+	     List<Goods> list = svc.privateProductList();
+         Gson gson = new GsonBuilder().create();
+	     String json = gson.toJson(list);
+         req.setAttribute("json", json);	     
+	     System.out.println("json"+json);
 	    
-	    GoodsListService svc = new GoodsListServiceImpl();
-	    List<Goods> list = svc.privateProductList(goods);
-	    Gson gson = new GsonBuilder().create();
-	    
-	    String json = gson.toJson(list);
-	    System.out.println("json"+json);
-	    
-	    resp.getWriter().print(json);
+	     resp.getWriter().print(json);
 	}
 }
