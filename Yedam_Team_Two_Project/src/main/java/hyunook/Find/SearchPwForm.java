@@ -1,4 +1,4 @@
-package hyunook.addMember;
+package hyunook.Find;
 
 import java.io.IOException;
 
@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Control;
 
-public class AddMemberControl implements Control {
+public class SearchPwForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		String pw = req.getParameter("pw");
-		String name= req.getParameter("name");
-
+		
+		String path = "/jsp/searchPwForm.tiles"; 
+		req.getRequestDispatcher(path).forward(req, resp);
 	}
+
 }

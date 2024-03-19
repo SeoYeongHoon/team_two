@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hyunook.ProductList.GoodsMapper">
+	<select id="privateProductList" resultType="common.Goods">
+	   <!-- 개인판매자 조회 -->
+	   SELECT * 
+       FROM goods
+       WHERE member_id IN (SELECT member_id
+                          FROM member
+                          WHERE member_type='SELLER')
+	</select>
+	
+	<select id="goodsList">
+		SELECT name,
+			   description,
+			   price
+		FROM goods			   
+	</select>
+</mapper>

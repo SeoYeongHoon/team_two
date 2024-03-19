@@ -55,4 +55,10 @@ public class Member {
 	}
 	private String email;
 	private String tel;
+	
+	public enum MemberType{
+		CLIENT, //고객
+		SELLER, //개인 판매자
+		MANAGER //관리자
+	}
 }

@@ -43,6 +43,8 @@
     <mapper resource="dongwon/QnA/QnAMapper.xml" />
     <mapper resource="dongwon/Support/SupportMapper.xml" />
     <mapper resource="hyunook/Login/MemberMapper.xml" />
+    <mapper resource="hyunook/ProductList/GoodsMapper.xml" />
+    
     <mapper resource="changoh/Payment/PaymentMapper.xml" />
     <mapper resource="changoh/Magazine/MagazineMapper.xml" />
   </mappers>

@@ -3,15 +3,59 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="hyunook.Login.MemberMapper">
+	<!-- 로그인 -->
 	<select id="selectMember" parameterType="common.Member" resultType="common.Member">
 		SELECT member_id,name,member_type,password
 		FROM member
 		WHERE member_id= #{memberId }
 		and password= #{password }
 	</select>
-
-	<!-- <insert id="insertMember" parameterType="member">
-		INSERT INTO tbl_member(id,pw,name, image)
-		values (#{id },#{pw },#{name },#{image })
-	</insert> -->
+	<!-- 아이디찾기 -->
+    <select id="searchId" parameterType="common.Member" >
+       SELECT member_id 
+       FROM member
+       WHERE name = #{name }
+       AND email = #{email } 
+    </select>
+	<!-- 비밀번호찾기 -->
+	<select id="searchPw" parameterType="common.Member" >
+       SELECT password
+       FROM member
+       WHERE  member_id = #{memberId }
+       AND name = #{name} 
+    </select>
+    <!-- 회원가입 -->
+	<insert id="insertMember" parameterType="common.Member">
+		INSERT INTO member(member_id,
+		                   member_type,
+		                   name,
+		                   password,
+		                   email,
+		                   tel)
+        VALUES (#{memberId },
+                #{memberType},
+                #{name },
+                #{password },
+                #{email}, 
+                #{tel})
+	</insert>
+	<!-- 중복아이디조회 -->
+	<select id="sameId" parameterType="String" resultType="int">
+	  SELECT COUNT(*)
+	  FROM Member
+	  WHERE member_id=#{memberId}
+	</select>
+	<!-- 중복Email조회 -->
+	<select id="sameEmail" parameterType="String" resultType="int">
+	  SELECT COUNT(*)
+	  FROM Member
+	  WHERE email=#{email}
+	</select>
+	<!-- 중복Tel조회 -->
+	<select id="sameTel" parameterType="String" resultType="int">
+	  SELECT COUNT(*)
+	  FROM Member
+	  WHERE tel=#{tel }
+	</select>
+	
 </mapper>

@@ -1,4 +1,4 @@
-package hyunook.addMember;
+package hyunook.ProductList;
 
 import java.io.IOException;
 
@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Control;
 
-public class AddMemberForm implements Control {
+public class PrivateListForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-		String path = "jsp/addMemberForm.tiles";
+
+		String path = "jsp/private.tiles"; //web-inf/view/loginForm.jsp
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 
