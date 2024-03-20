@@ -16,11 +16,12 @@ public class ModifyForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		String goodsId = req.getParameter("goodsId");
-//		GoodsListService svc = new GoodsListServiceImpl();
-//		Goods goods = svc.getGoods(Integer.parseInt(goodsId));
+		int goodsId = 105;
+		
+		GoodsListService svc = new GoodsListServiceImpl();
+		Goods goods = svc.getGoods(goodsId);
 //		
-//		req.setAttribute("goods", goods);
+		req.setAttribute("goods", goods);
 		
 		String path = "jsp/modifyGoods.tiles";
 		RequestDispatcher dispatch = req.getRequestDispatcher(path);

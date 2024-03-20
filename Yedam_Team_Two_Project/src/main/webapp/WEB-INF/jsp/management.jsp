@@ -37,21 +37,21 @@
 			})
 		}) */
 	</script>
-	<form action="modifyForm.do">
 		<%-- <input type="hidden" value="${goods.goodsId }" name="goodsId"> --%>
-		<div class="container-fluid py-4">
-			<div class="row">
-				<div class="col-12">
-					<div class="card my-4 dashboard">
-						<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-							<div
-								class="bg-gradient-user shadow-primary border-radius-lg pt-4 pb-3">
-								<h6 class="text-white text-capitalize dashboard_title">상품 관리</h6>
-							</div>
+	<div class="container-fluid py-4">
+		<div class="row">
+			<div class="col-12">
+				<div class="card my-4 dashboard">
+					<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+						<div
+							class="bg-gradient-user shadow-primary border-radius-lg pt-4 pb-3">
+							<h6 class="text-white text-capitalize dashboard_title">상품 관리</h6>
 						</div>
-	
-						<div class="card-body px-0 pb-2">
-							<div class="table-responsive p-0">
+					</div>
+
+					<div class="card-body px-0 pb-2">
+						<div class="table-responsive p-0">
+							<form action="modifyForm.do" method="post">
 								<table class="table align-items-center mb-0">
 									<thead>
 										<tr>
@@ -66,21 +66,24 @@
 									<tbody>
 										<c:forEach var="goods" items="${list }">
 										<tr>
-											<td><c:out value="${goods.goodsId }" /></td>
-											<td>${goods.name }</td>
-											<td>${goods.description }</td>
-											<td><fmt:formatDate value="${goods.reqDate }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+											<td><input type="hidden" name="goodsId"><c:out value="${goods.goodsId }" /></td>
+											<td><input type="hidden" name="name">${goods.name }</td>
+											<td><input type="hidden" name="description">${goods.description }</td>
+											<td><input type="hidden" name="reqDate"><fmt:formatDate value="${goods.reqDate }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+											<!-- <td><a href="#" onclick="modifyGoods()" class="badge badge-sm bg-gradient-success">수정</a></td> -->
+											<td><button type="submit" class="badge badge-sm bg-gradient-success">수정</button></td>
+											<td><a href="#" onclick="removeGoods()" class="badge badge-sm bg-gradient-danger" >삭제</a></td>
 										</tr>
 										</c:forEach>
 									</tbody>
 								</table>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</form>
+	</div>
 	<script src="../../static/js/management.js"></script>
 	<script src="../../static/js/request.js"></script>
 	<script>
