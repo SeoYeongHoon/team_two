@@ -46,6 +46,8 @@
     <mapper resource="hyunook/ProductList/GoodsMapper.xml" />
     
     <mapper resource="changoh/Payment/PaymentMapper.xml" />
+    
+    <mapper resource="youhwan/Product/ProductMapper.xml" />
     <mapper resource="changoh/Magazine/MagazineMapper.xml" />
   </mappers>
 </configuration>
