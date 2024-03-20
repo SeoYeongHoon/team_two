@@ -1,14 +1,10 @@
 package youhwan.Product;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import common.Control;
 import common.Goods;
@@ -18,24 +14,20 @@ public class ProductControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	    String name = "상품1";
-	    
-		Goods goods = new Goods();
-		
-	    goods.setName(name);
-	    
 		resp.setContentType("text/json;charset=utf-8");
+		// 상세페이지 데이터 가져오기
+		String gid = "1";
 		ProductService svc = new ProductServiceImpl();
+		Goods goods = svc.getGoods(Integer.parseInt(gid));
+		req.setAttribute("goods", goods);
 		
-		List<Goods> list = svc.ProductList(goods);
-		Gson gson = new GsonBuilder().create();
-		String json = gson.toJson(list);
-		
-		System.out.println("json" + json);
-		System.out.println(list);
+		// 리뷰데이터 가져오기
 		
 		
 		
+	    String path = "jsp/product.tiles";
+	    req.getRequestDispatcher(path).forward(req, resp);
+	    
 	}
 
 }

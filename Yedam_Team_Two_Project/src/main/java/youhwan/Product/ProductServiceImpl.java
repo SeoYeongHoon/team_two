@@ -18,6 +18,11 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.ProductList(goods);
 	}
 	
+	@Override
+	public Goods getGoods(int gid) {
+		// TODO Auto-generated method stub
+		return mapper.selectGoods(gid);
+	}
 	
 
 }

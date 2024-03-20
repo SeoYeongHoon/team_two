@@ -47,6 +47,7 @@
     
     <mapper resource="changoh/Payment/PaymentMapper.xml" />
     
+    <mapper resource="youhwan/Company/CompanyMapper.xml" />
     <mapper resource="youhwan/Product/ProductMapper.xml" />
     <mapper resource="changoh/Magazine/MagazineMapper.xml" />
   </mappers>
