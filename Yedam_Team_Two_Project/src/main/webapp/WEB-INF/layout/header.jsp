@@ -18,8 +18,8 @@
 	<nav class="amado-nav">
 		<ul>
 			<li class="active"><a href="main.do">Home</a></li>
-			<li><a href="shop.html">Shop</a></li>
-			<li><a href="product-details.html">Product</a></li>
+			<li><a href="privateListForm.do">개인 판매 템플릿</a></li>
+			<li><a href="product-details.html">기업 판매</a></li>
 			<li><a href="cart.html">Cart</a></li>
 			<li><a href="checkout.html">Checkout</a></li>
 		</ul>
