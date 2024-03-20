@@ -61,7 +61,7 @@
 			<form name='frm' id='frm' method="POST">
 			<input type='HIDDEN' id='strMode' name='strMode' value="NEW">
 			<input type='HIDDEN' name='returnUrl' id='returnUrl' value="/customer/qnaReg.php">			<input type='HIDDEN' name='memberSeq' id='memberSeq' value='40283'>
-			<input type='HIDDEN' name='memberMail' id='memberMail' value='6321kang@naver.com'>
+			<input type='HIDDEN' name='memberMail' id='memberMail' value='amado@amado.com'>
 			<table>
 				<tr>
 					<th><label for="qnaTitle">제목</label></th>
