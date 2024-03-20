@@ -8,7 +8,7 @@
 </head>
 <body>
 <script>
-	
+	// mypageEdit.do에서 
 </script>
 </body>
 </html>

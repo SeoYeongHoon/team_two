@@ -1,5 +1,7 @@
 package dongwon.Mypage;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import common.DataSource;
@@ -19,6 +21,12 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public boolean showMember(Member member) {
 		return mapper.showMember(member) == 1;
+	}
+
+	@Override
+	public List<Member> memberInfoList(String info) {
+		//List<Member> memberList = mapper.g
+		return null;
 	}
 
 }

@@ -12,7 +12,6 @@ public class MypageEditControl implements Control{
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
 		
 		
 		

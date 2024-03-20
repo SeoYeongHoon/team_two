@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <body>
-
     <!-- ##### Main Content Wrapper Start ##### -->
     <div class="main-content-wrapper d-flex clearfix">
 
@@ -72,34 +72,19 @@
 
                             <div class="cart-btn mt-100">
                                 <a href="/cart.do" class="btn amado-btn w-100">장바구니(내상품 관리 페이지는 로그인시 아래에 나옴)</a>
-                            </div>
-                            
-                            <%
-							String isLoggedIn = (String)session.getAttribute("isLoggedIn");
-							%>
-							
-							<div class="cart-btn mt-100" id="cartBtnDiv" style="<% if (isLoggedIn == null) out.print("display: none;"); %>">
-							    <a href="#" class="btn amado-btn w-100">내 상품 관리 페이지 (only for Seller)</a>
+                            </div>    
+							<div class="cart-btn mt-100" id="cartBtnDiv">
+							        <a href="#" class="btn amado-btn w-100">내 상품 관리 페이지 (only for Seller)</a>
 							</div>
+						                  
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </body>
     <!-- ##### Main Content Wrapper End ##### -->
 	<script>
-    window.onload = function() {
-        var isLoggedIn = '<%= session.getAttribute("isLoggedIn") %>';
-        
-        if (!isLoggedIn) {
-            alert("로그인이 필요합니다.");
-            window.location.href = "/loginForm.do";
-        }
-    };
-	
-	
     document.getElementById("editBtn").addEventListener("click", function() {
         var xhr = new XMLHttpRequest(); // XMLHttpRequest 객체 생성
 
@@ -116,30 +101,23 @@
             tel: document.getElementById("tel").value
         });
 
-        // 비동기 POST 요청 설정
         xhr.open("POST", url, true);
         
-        // POST 요청 헤더 설정
         xhr.setRequestHeader("Content-Type", "application/json");
 
         // 요청 완료 시 실행될 콜백 함수
         xhr.onload = function() {
             if (xhr.status >= 200 && xhr.status < 300) {
-                // 요청이 성공한 경우 응답 데이터를 처리
                 var res = JSON.parse(xhr.responseText);
                 alert(res.code);
             } else {
-                // 요청이 실패한 경우 에러 처리
                 alert("오류가 발생했습니다.");
             }
         };
-
-        // 요청 실패 시 실행될 콜백 함수
         xhr.onerror = function() {
             alert("오류가 발생했습니다.");
         };
 
-        // 요청 보내기
         xhr.send(params);
     });
 </script>
