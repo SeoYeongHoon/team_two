@@ -96,13 +96,13 @@ public class MainController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("service 실행");
-
+		
 		String uri = req.getRequestURI();
 		String context = req.getContextPath();
 		String path = uri.substring(context.length());
-
+		
 		Control control = controls.get(path);
-		control.exec(req, resp); // 요점 url에 따른 실행컨트롤을 호출
-	}
+		control.exec(req,  resp); //요점 url에 따른 실행컨트롤을 호출
+    }
 
 }
