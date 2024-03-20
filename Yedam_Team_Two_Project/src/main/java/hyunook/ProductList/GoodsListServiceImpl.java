@@ -42,5 +42,4 @@ public class GoodsListServiceImpl implements GoodsListService {
 	public Goods getGoods(int goodsId) {
 		return mapper.selectGoods(goodsId);
 	}
-
 }
