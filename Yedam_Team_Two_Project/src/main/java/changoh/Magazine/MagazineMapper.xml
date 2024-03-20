@@ -7,23 +7,31 @@
 	<!-- id="xxMapper의 함수이름" resultType="반환되는 타입" parameterType="파라미터 타입"-->
 	<!-- 반환, 파라미터 타입 경우 : resources/config/mybatis-config.xml 파일의 typeAlias설정되어있는지 확인 -->
 	<select id="getMagazineList" resultType="magazine" parameterType="int">
-		SELECT magazine_id,
+        SELECT magazine_id,
                title,
                content,
+               thumbnail,
                image,
-               member_id
+               create_date,
+               member_id,
+               mc_name
 		FROM  (SELECT /*+ INDEX(m SYS_C008724) */
                       ROWNUM rn,
                       magazine_id,
                       title,
                       content,
+                      thumbnail,
                       image,
-                      member_id
-       		   FROM   magazine m
-       		   <![CDATA[
-               WHERE  ROWNUM <= (#{page} * 5)) subTBL       		   
-       		   ]]>
-        WHERE  subTBL.rn > (#{page} - 1) * 5    
+                      create_date,
+                      member_id,
+                      m.mc_id,
+                      c.mc_name
+        	   FROM   magazine m JOIN MCategories c
+                            ON(m.mc_id = c.mc_id)
+               <![CDATA[
+               WHERE  ROWNUM <= (#{page} * 5)) subTBL 
+               ]]>                         
+		WHERE  subTBL.rn > (#{page} - 1) * 5
 	</select>
 	<select id="getTotalCount" resultType="int">
 		SELECT   COUNT(*)
@@ -33,9 +41,13 @@
 		SELECT magazine_id,
 		       title,
 		       content,
+		       thumbnail,
 		       image,
-		       member_id
-        FROM   magazine
+		       create_date,
+		       member_id,
+		       mc_name
+        FROM   magazine m JOIN MCategories c
+                            ON (m.mc_id = c.mc_id)
         WHERE  magazine_id = #{magazineId}		       
 	</select>
 </mapper>
