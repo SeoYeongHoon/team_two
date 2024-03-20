@@ -52,7 +52,6 @@ public class MainController extends HttpServlet {
 		// 실행시킬 URL.do, 요청 및 응답처리 할 클래스 => exec함수 구현
 		// xx.do, xxControl()로 구현할 것
 		// 작성 예시 : controls.put("/test.do", new testControl());
-		controls.put("/test.do", new TestControl());
 		// 우선은 이름으로 컨트롤 분리하고, 나중에 기능으로 묶어서 일괄 분리 한번 더 할게요~
 
 		// 창오
