@@ -1,21 +1,20 @@
-package younghun.Manage;
+package hyunook.AddMember;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.Control;
 
-public class ManageForm implements Control {
+public class AddMemberForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		String path = "jsp/management.tiles";
-//		RequestDispatcher dispatch = req.getRequestDispatcher(path);
-//		dispatch.forward(req, resp);
+        
+		String path = "jsp/addMemberForm.tiles";
+		req.getRequestDispatcher(path).forward(req, resp);
 	}
 
 }

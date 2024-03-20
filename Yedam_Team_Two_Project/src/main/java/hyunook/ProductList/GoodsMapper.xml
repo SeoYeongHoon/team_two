@@ -24,7 +24,7 @@
                req_date,
                member_id
 		FROM goods
-		ORDER BY req_date DESC  
+		ORDER BY goods_id desc
 	</select>
 	
 	<select id="selectGoods" parameterType="int" resultType="goods">
