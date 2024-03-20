@@ -152,7 +152,7 @@
 			</div>
 		</div>
 	</div>
-
+<!-- 주석 -->
 	<script>
       $.ajax({
 	  url:'privateListControl.do',
