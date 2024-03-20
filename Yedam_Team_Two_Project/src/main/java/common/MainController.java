@@ -17,11 +17,11 @@ import dongwon.Cart.CartControl;
 import dongwon.Mypage.MypageControl;
 import dongwon.QnA.QnAControl;
 import dongwon.Support.SupportControl;
-import hyunook.AddMember.AddMemberControl;
-import hyunook.AddMember.AddMemberForm;
-import hyunook.AddMember.SameEmailControl;
-import hyunook.AddMember.SameIdControl;
-import hyunook.AddMember.SameTelControl;
+import hyunook.AddMembers.AddMemberControl;
+import hyunook.AddMembers.AddMemberForm;
+import hyunook.AddMembers.SameEmailControl;
+import hyunook.AddMembers.SameIdControl;
+import hyunook.AddMembers.SameTelControl;
 import hyunook.Find.SearchIdControl;
 import hyunook.Find.SearchIdForm;
 import hyunook.Find.SearchPwControl;
@@ -73,8 +73,8 @@ public class MainController extends HttpServlet {
 		controls.put("/addMemberForm.do", new AddMemberForm()); // 회원가입
 		controls.put("/addMember.do", new AddMemberControl());
 		controls.put("/sameId.do", new SameIdControl());
-		controls.put("/sameEmail.do", new SameEmailControl());
 		controls.put("/sameTel.do", new SameTelControl());
+		controls.put("/sameEmail.do", new SameEmailControl());
 		controls.put("/searchIdForm.do", new SearchIdForm());// 아이디조회 폼
 		controls.put("/searchPwForm.do", new SearchPwForm());// 비밀번호조회 폼
 		controls.put("/seachIdControl.do", new SearchIdControl());// 아이디조회 컨트롤
@@ -105,5 +105,4 @@ public class MainController extends HttpServlet {
 		control.exec(req,  resp); //요점 url에 따른 실행컨트롤을 호출
     }
 
-	}
-
+}

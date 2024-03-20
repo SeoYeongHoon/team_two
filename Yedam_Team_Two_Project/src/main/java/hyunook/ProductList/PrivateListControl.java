@@ -23,7 +23,6 @@ public class PrivateListControl implements Control {
 	     List<Goods> list = svc.privateProductList();
          Gson gson = new GsonBuilder().create();
 	     String json = gson.toJson(list);
-         req.setAttribute("json", json);	     
 	     System.out.println("json"+json);
 	    
 	     resp.getWriter().print(json);
