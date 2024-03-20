@@ -34,4 +34,23 @@
 		FROM   goods
 		WHERE  goods_id = #{goodsId}		       
 	</select>
+	<select id="getCartList" resultType="goods" parameterType="member">
+		SELECT g.goods_id,
+		       g.name,
+		       g.description,
+		       g.price,
+		       g.hashtag,
+		       g.view_cnt,
+		       g.image,
+		       g.goods_state,
+		       g.req_type,
+		       g.req_date,
+		       g.resp_date,
+		       g.category_id,
+		       g.member_id,
+		       g.score_id
+		FROM   cart c JOIN goods g
+		                ON (c.goods_id = g.goods_id)
+		WHERE  g.member_id = #{memberId}
+	</select>
 </mapper>

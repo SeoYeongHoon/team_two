@@ -2,8 +2,12 @@ package youhwan.Product;
 
 import java.util.List;
 
+import common.Goods;
+
 public interface ProductMapper {
-	List<String> ProductList();
+	List<Goods> ProductList(Goods goods);
+	
+	Goods selectGoods(int gid);
 	
 	
 }

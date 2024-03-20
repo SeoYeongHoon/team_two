@@ -6,17 +6,30 @@
 <!-- 방법1 -->
 	<!-- id="xxMapper의 함수이름" resultType="반환되는 타입" parameterType="파라미터 타입"-->
 	<!-- 반환, 파라미터 타입 경우 : resources/config/mybatis-config.xml 파일의 typeAlias설정되어있는지 확인 -->
+	<select id="ProductList" parameterType="goods">
 	
-	<select id="ProductList" resultType="String" parameterType="goods">
-	
-	SELECT  name,
+	</select>
+	<select id="selectGoods" parameterType="int" resultType="goods">
+	SELECT  goods_id,
+			name,
 	        description,
 	        price,
 	        hashtag,
 	        image
-	FROM goods_id
-	WHERE name = #{name}
-	
+	FROM goods
+	WHERE goods_id = #{Gid } 
 	</select>
-
+	
+<!-- 	<select id="selectReview" parameterType="int" resultType="Review">
+	SELECT review_id,
+	       title,
+	       content,
+	       create_date,
+	       member_id,
+	       goods_id,
+	       score_id
+	 FROM review
+	 WHERE goods_id = #{Gid }
+	</select>
+ -->
 </mapper>

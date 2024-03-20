@@ -5,7 +5,7 @@ WHERE  object_type = 'TABLE';
 
 --테이블 일괄 삭제
 DROP TABLE MEMBER CASCADE CONSTRAINTS;
-DROP TABLE MAGAZINE CASCADE CONSTRAINTS;
+DROP TABLE MCATEGORIES CASCADE CONSTRAINTS;
 DROP TABLE CATEGORIES CASCADE CONSTRAINTS;
 DROP TABLE SCOREGRADE CASCADE CONSTRAINTS;
 DROP TABLE GOODS CASCADE CONSTRAINTS;
@@ -13,6 +13,8 @@ DROP TABLE QNA CASCADE CONSTRAINTS;
 DROP TABLE CART CASCADE CONSTRAINTS;
 DROP TABLE REVIEW CASCADE CONSTRAINTS;
 DROP TABLE WISH_LIST CASCADE CONSTRAINTS;
+DROP TABLE MAGAZINE CASCADE CONSTRAINTS;
+DROP TABLE PURCHASEHISTORY CASCADE CONSTRAINTS;
 
 --시퀀스 일괄 삭제문 출력
 SELECT 'DROP SEQUENCE ' || object_name || ' ;'
@@ -20,6 +22,7 @@ FROM user_objects
 WHERE object_type = 'SEQUENCE';
 
 --시퀀스 일괄 삭제
+DROP SEQUENCE P_ID_SEQ ;
 DROP SEQUENCE MEMBER_ID_SEQ ;
 DROP SEQUENCE GOODS_ID_SEQ ;
 DROP SEQUENCE MAGAZINE_ID_SEQ ;
@@ -36,6 +39,11 @@ CREATE TABLE Member(
 	password	VARCHAR2(30),
 	email	    VARCHAR2(50),
 	tel	        VARCHAR2(30)
+);
+
+CREATE TABLE MCategories(
+    mc_id     NUMBER  PRIMARY KEY,
+    mc_name   VARCHAR(40)
 );
 
 CREATE TABLE Categories(
@@ -74,7 +82,7 @@ CREATE TABLE QnA(
 );
 
 CREATE TABLE Cart(
-	cart_id	    NUMBER       PRIMARY KEY,
+	cart_id	    VARCHAR(50)  PRIMARY KEY,
 	goods_id	NUMBER       REFERENCES Goods(goods_id),
 	member_id	VARCHAR2(30) REFERENCES Member(member_id)
 );
@@ -99,8 +107,18 @@ CREATE TABLE Magazine (
     magazine_id NUMBER        PRIMARY KEY,
     title       VARCHAR(100),
     content     VARCHAR(1000),
+    thumbnail   VARCHAR(300),
     image       VARCHAR(300),
-    member_id   VARCHAR(30)   REFERENCES Member(member_id)
+    create_date DATE          DEFAULT SYSDATE,
+    member_id   VARCHAR(30)   REFERENCES Member(member_id),
+    mc_id       NUMBER        REFERENCES MCategories(mc_id)
+);
+
+CREATE TABLE PurchaseHistory (
+    p_id      NUMBER       PRIMARY KEY,
+    p_date    DATE DEFAULT SYSDATE,
+    member_id VARCHAR(30)  REFERENCES Member(member_id),
+    goods_id  NUMBER       REFERENCES Goods(goods_id)
 );
 
 --시퀀스 생성
@@ -166,6 +184,15 @@ CREATE SEQUENCE review_id_seq
        NOCYCLE
        NOCACHE
        NOORDER;
+
+CREATE SEQUENCE p_id_seq
+       INCREMENT BY 1
+       START WITH   0
+       MINVALUE     0
+       MAXVALUE     99999
+       NOCYCLE
+       NOCACHE
+       NOORDER;    
        
 --더미값 넣기(100개 씩)
 BEGIN
@@ -199,6 +226,27 @@ INSERT INTO ScoreGrade(score_id,
                        score)
 VALUES                (5,
                        100);    
+
+INSERT INTO MCategories(mc_id,
+                        mc_name)
+VALUES                 (0,
+                        '꿀팁');
+INSERT INTO MCategories(mc_id,
+                        mc_name)
+VALUES                 (1,
+                        '트렌드');
+INSERT INTO MCategories(mc_id,
+                        mc_name)
+VALUES                 (2,
+                        '소식');
+INSERT INTO MCategories(mc_id,
+                        mc_name)
+VALUES                 (3,
+                        '이슈');
+INSERT INTO MCategories(mc_id,
+                        mc_name)
+VALUES                 (4,
+                        '기타');                       
 COMMIT;
 
 BEGIN
@@ -281,7 +329,7 @@ VALUES                 (goods_id_seq.NEXTVAL,
                         1000 + goods_id_seq.CURRVAL,
                         '#',
                         0,
-                        '이미지1',
+                        'IT 테크 템플릿 뒷면',
                         'SALE',
                         'NONE',
                         SYSDATE,
@@ -320,13 +368,19 @@ BEGIN
       INSERT INTO Magazine(magazine_id,
                            title,
                            content,
+                           thumbnail,
                            image,
-                           member_id)
+                           create_date,
+                           member_id,
+                           mc_id)
       VALUES              (magazine_id_seq.NEXTVAL,
                            '제목' || magazine_id_seq.CURRVAL,
                            '내용' || magazine_id_seq.CURRVAL,
-                           '이미지2',
-                           'userId1');
+                           '건설 건축 템플릿',
+                           'IT 테크 템플릿 뒷면',
+                           SYSDATE,
+                           'userId1',
+                           1);
       END LOOP;
       COMMIT;
 END;
@@ -348,4 +402,19 @@ BEGIN
       COMMIT;
 END;
 /
+BEGIN
+      FOR i IN 1..100
+      LOOP
+      INSERT INTO PurchaseHistory(p_id,
+                                  p_date,
+                                  member_id,
+                                  goods_id)
+      VALUES                     (p_id_seq.NEXTVAL,
+                                  SYSDATE,
+                                  'userId1',
+                                  1);
+      END LOOP;
+      COMMIT;
+END;
+/                     
 COMMIT;
