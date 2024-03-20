@@ -24,19 +24,23 @@
 			<div class="widget-desc">
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" name="category" type="radio" value="" id="amado">
+					<input class="form-check-input" name="category" type="radio" id="category"value="">
+					<label class="form-check-label" for="amado">전체</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" name="category" type="radio" id="category"value="카테고리1">
 					<label class="form-check-label" for="amado">카테고리1</label>
 				</div>
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" name="category" type="radio" value="" id="ikea">
+					<input class="form-check-input" name="category" type="radio" id="category" value="카테고리2">
 					<label class="form-check-label" for="ikea">카테고리2</label>
 				</div>
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" name="category" type="radio" value=""id="furniture"> 
-					<label class="form-check-label"
-						for="furniture">카테고리3</label>
+					<input class="form-check-input" name="category" type="radio" id="category" value="카테고리3"> 
+					<label class="form-check-label" for="furniture">카테고리3</label>
+						
 				</div>
 			</div>
 		</div>
@@ -82,10 +86,10 @@
 							<div class="sort-by-date d-flex align-items-center mr-15">
 								<p>Sort by</p>
 								<form action="#" method="get">
-									<select name="select" id="sortBydate">
-										<option value="value">Date</option>
-										<option value="value">Newest</option>
-										<option value="value">Popular</option>
+									<select name="order" id="order" >
+										<option value="new">최근순</option>
+										<option value="old">오래된순</option>
+										<option value="popular">인기순</option>
 									</select>
 								</form>
 							</div>
@@ -117,14 +121,16 @@
 	</div>
 <!-- 주석 -->
 	<script>
-	function showList(categori){
+	 function showList(category,order){
+	  $('#productList').html('');
+	  console.log('리절트'+category);
       $.ajax({
 	  url:'privateListControl.do',
 	  method:'post',
-	  data : 
+	  data : {category : category, order : order},
 	  success:function(result){
-		  console.log(result)
-		  result.forEach(prop =>{
+		      console.log(result)
+		      result.forEach(prop =>{
 			  console.log(prop.image)
 			  //별배열 담기
 			  let stars = [];
@@ -183,7 +189,22 @@
           console.error(error);
       }
    })
-}//function 끝 
+} 
+//카테고리
+$('.form-check').on("change", function(){
+	let category =$('input[name=category]:checked').val()
+	let order = $(this).val();
+	showList(category,order);
+})
+showList();
+//정렬순
+$(document).ready(function(){
+    $('#order').on("change", function(){
+    	let category = $('input[name=category]:checked').val();
+        let order = $(this).val();
+        showList(category, order);
+    });
+});
 	</script>
 
 </body>

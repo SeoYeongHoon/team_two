@@ -5,14 +5,29 @@
 <mapper namespace="hyunook.ProductList.GoodsMapper">
 	<select id="privateProductList" resultType="common.Goods" parameterType="String">
 	   <!-- 개인판매자 조회 -->
-	    SELECT * 
+	   SELECT * 
        FROM goods
        WHERE member_id IN (SELECT member_id
                           FROM member
                           WHERE member_type='SELLER')
+     <if test="category != null and category != ''">
        AND category_id IN(SELECT category_id
-                           FROM CATEGORIES
-                           WHERE name = #{name } )
+                          FROM CATEGORIES
+                          WHERE category_id = category_id
+                          AND name = #{category} )   </if>
+        <choose>
+            <when test ="order='popular'">  
+                order by 6 desc 
+            </when>  
+            <when test ="order='old'">  
+                 order by 10 
+            </when>
+            <otherwise>
+                 order by 10 desc
+            </otherwise>  
+        </choose>                   
+                                                                   
+                                       
        
 	</select>
 	
