@@ -13,9 +13,9 @@ public class GoodsListServiceImpl implements GoodsListService {
 
 
 	@Override
+	// 개인판매 리스트
 	public List<Goods> privateProductList(String goods) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.privateProductList(goods);
 	}
 
 	@Override

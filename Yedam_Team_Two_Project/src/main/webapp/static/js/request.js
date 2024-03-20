@@ -5,7 +5,7 @@
 function showImage() {
 	var newImage = document.getElementById('image-show').lastElementChild;
 	newImage.style.visibility = "visible";
-
+	
 	document.getElementById('image-upload').style.visibility = 'hidden';
 
 	document.getElementById('fileName').textContent = null;     //기존 파일 이름 지우기
@@ -29,4 +29,3 @@ function loadFile(input) {
 	var container = document.getElementById('image-show');
 	container.appendChild(newImage);
 };
-
