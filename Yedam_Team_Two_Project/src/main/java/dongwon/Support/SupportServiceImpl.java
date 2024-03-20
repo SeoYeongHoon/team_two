@@ -3,7 +3,6 @@ package dongwon.Support;
 import org.apache.ibatis.session.SqlSession;
 
 import common.DataSource;
-import common.TestMapper;
 
 public class SupportServiceImpl implements SupportService {
 

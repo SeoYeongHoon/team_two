@@ -13,7 +13,6 @@
   <!-- Mapper에서 지정될 parameterType의 별칭 설정 -->
   <typeAliases>
   	<!-- <typeAlias alias="search" type="co.yedam.common.SearchVO"/> -->
-  	<typeAlias alias="Test" type="common.TestClass"/>
   	<typeAlias alias="QnA" type="dongwon.QnA.QnA"/>
   	<typeAlias alias="Cart" type="dongwon.Cart.Cart"/> 	
   	<typeAlias alias="member" type="common.Member"/>
@@ -37,7 +36,6 @@
   <mappers>
   	<!-- 생성 예제 -->
     <!-- <mapper resource="co/yedam/board/mapper/BoardMapper.xml"/> -->
-    <mapper resource="common/testMapper.xml" />
     <mapper resource="dongwon/Mypage/MypageMapper.xml" />
     <mapper resource="dongwon/Cart/CartMapper.xml" />
     <mapper resource="dongwon/QnA/QnAMapper.xml" />
