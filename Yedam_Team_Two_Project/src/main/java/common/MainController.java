@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import changoh.Magazine.MagazineControl;
 import changoh.Magazine.MagazineListControl;
+import changoh.Payment.PaymentAjaxControl;
 import changoh.Payment.PaymentControl;
 import changoh.Payment.PaymentResultControl;
 import dongwon.Cart.CartControl;
@@ -58,6 +59,7 @@ public class MainController extends HttpServlet {
 		controls.put("/magazineList.do", new MagazineListControl()); // 뉴스 리스트 페이지
 		controls.put("/magazine.do", new MagazineControl()); // 뉴스 단일 페이지
 		controls.put("/payment.do", new PaymentControl());
+		controls.put("/paymentAjax.do", new PaymentAjaxControl());
 		controls.put("/paymentResult.do", new PaymentResultControl());
 		// 동원
 		controls.put("/mypage.do", new MypageControl());

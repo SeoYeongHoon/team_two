@@ -9,7 +9,6 @@
 .magazine-writer{
 	width: 100%;
 	text-align: right;
-	margin-right: 5%;
 }
 .magazineList-img{
 	height: 100px;
@@ -28,4 +27,19 @@
 	border: none;
 	background-color: black;
 	color: white;	
+}
+.magazine-image-parent{
+	margin: auto;
+    max-width: 70%;
+    width: 70%;
+    height: auto;
+}
+.magazine-image{
+	margin-bottom: 5%;
+}
+.magazine-returnToTitleButton{
+	text-align: center;
+}
+.magazine-returnToTitleButton Button{
+    width: 20%;
 }
