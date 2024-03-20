@@ -82,7 +82,7 @@ CREATE TABLE QnA(
 );
 
 CREATE TABLE Cart(
-	cart_id	    NUMBER       PRIMARY KEY,
+	cart_id	    VARCHAR(50)  PRIMARY KEY,
 	goods_id	NUMBER       REFERENCES Goods(goods_id),
 	member_id	VARCHAR2(30) REFERENCES Member(member_id)
 );
@@ -107,6 +107,7 @@ CREATE TABLE Magazine (
     magazine_id NUMBER        PRIMARY KEY,
     title       VARCHAR(100),
     content     VARCHAR(1000),
+    thumbnail   VARCHAR(300),
     image       VARCHAR(300),
     create_date DATE          DEFAULT SYSDATE,
     member_id   VARCHAR(30)   REFERENCES Member(member_id),
@@ -329,7 +330,7 @@ VALUES                 (goods_id_seq.NEXTVAL,
                         '#',
                         0,
                         'IT 테크 템플릿 뒷면',
-                        'sale',
+                        'SALE',
                         'NONE',
                         SYSDATE,
                         SYSDATE,
@@ -367,6 +368,7 @@ BEGIN
       INSERT INTO Magazine(magazine_id,
                            title,
                            content,
+                           thumbnail,
                            image,
                            create_date,
                            member_id,
@@ -374,6 +376,7 @@ BEGIN
       VALUES              (magazine_id_seq.NEXTVAL,
                            '제목' || magazine_id_seq.CURRVAL,
                            '내용' || magazine_id_seq.CURRVAL,
+                           '건설 건축 템플릿',
                            'IT 테크 템플릿 뒷면',
                            SYSDATE,
                            'userId1',
