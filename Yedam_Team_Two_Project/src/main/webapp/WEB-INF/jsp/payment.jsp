@@ -7,30 +7,109 @@
 	 <div class="cart-table-area section-padding-100">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 col-lg-8">
-                        <div class="checkout_details_area mt-50 clearfix">
-
-                            <div class="cart-title">
-                                <h2>Checkout</h2>
-                            </div>
-							
-							<div class="box" style="width: 100%; height: 500px; background: white; color: black; overflow-y: scroll;">
-								<div class="payment-goods">
-									<div style="width: 100px; display:inline-block">
-										<ul class="summary-table">
-			                            	<li>
-					                            <p>${상품이름}</p>
-			                            	</li>
-			                                <li>
-			                                	<span>가격: </span> <span>${가격}</span>
-			                                </li>
-			                            </ul>
-									</div>
-										<span><img class="payment-goodsImg" src="../static/img/bg-img/${이미지}.jpg" alt=""></span>
-	                        	</div>						
-							</div>
-                        </div>
-                    </div>
+                    <div class="col-12 col-lg-8">    
+                   		<div class="cart-title">
+                               <h2>Checkout</h2>
+                       	</div>
+                    	<div class="cart-table clearfix">
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>상품번호</th>
+                                        <th>상품이름</th>
+                                        <th>이미지</th>
+                                        <th>가격</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                	<tr>
+                                		<td class="cart_product_desc">
+											<h5>상품번호</h5>
+                                       	</td>
+                                		<td class="cart_product_desc">
+											<h5>상품이름</h5>
+                                       	</td>
+                                       	<td class="cart_product_img">
+                                           	<a href="#"><img class="magazineList-img" src="../static/img/bg-img/건설 건축 템플릿 뒷면.png" alt="Product"></a>
+                                       	</td>                                	
+                                		<td class="cart_product_desc">
+											<h5>가격</h5>
+                                       	</td>
+                                	</tr>
+                                	<tr>
+                                		<td class="cart_product_desc">
+											<h5>상품번호</h5>
+                                       	</td>
+                                		<td class="cart_product_desc">
+											<h5>상품이름</h5>
+                                       	</td>
+                                       	<td class="cart_product_img">
+                                           	<a href="#"><img class="magazineList-img" src="../static/img/bg-img/건설 건축 템플릿 뒷면.png" alt="Product"></a>
+                                       	</td>                                	
+                                		<td class="cart_product_desc">
+											<h5>가격</h5>
+                                       	</td>
+                                	</tr>
+                                	<tr>
+                                		<td class="cart_product_desc">
+											<h5>상품번호</h5>
+                                       	</td>
+                                		<td class="cart_product_desc">
+											<h5>상품이름</h5>
+                                       	</td>
+                                       	<td class="cart_product_img">
+                                           	<a href="#"><img class="magazineList-img" src="../static/img/bg-img/건설 건축 템플릿 뒷면.png" alt="Product"></a>
+                                       	</td>                                	
+                                		<td class="cart_product_desc">
+											<h5>가격</h5>
+                                       	</td>
+                                	</tr>
+                                	<tr>
+                                		<td class="cart_product_desc">
+											<h5>상품번호</h5>
+                                       	</td>
+                                		<td class="cart_product_desc">
+											<h5>상품이름</h5>
+                                       	</td>
+                                       	<td class="cart_product_img">
+                                           	<a href="#"><img class="magazineList-img" src="../static/img/bg-img/건설 건축 템플릿 뒷면.png" alt="Product"></a>
+                                       	</td>                                	
+                                		<td class="cart_product_desc">
+											<h5>가격</h5>
+                                       	</td>
+                                	</tr>
+                                	<tr>
+                                		<td class="cart_product_desc">
+											<h5>상품번호</h5>
+                                       	</td>
+                                		<td class="cart_product_desc">
+											<h5>상품이름</h5>
+                                       	</td>
+                                       	<td class="cart_product_img">
+                                           	<a href="#"><img class="magazineList-img" src="../static/img/bg-img/건설 건축 템플릿 뒷면.png" alt="Product"></a>
+                                       	</td>                                	
+                                		<td class="cart_product_desc">
+											<h5>가격</h5>
+                                       	</td>
+                                	</tr>
+                                	<tr>
+                                		<td class="cart_product_desc">
+											<h5>상품번호</h5>
+                                       	</td>
+                                		<td class="cart_product_desc">
+											<h5>상품이름</h5>
+                                       	</td>
+                                       	<td class="cart_product_img">
+                                           	<a href="#"><img class="magazineList-img" src="../static/img/bg-img/건설 건축 템플릿 뒷면.png" alt="Product"></a>
+                                       	</td>                                	
+                                		<td class="cart_product_desc">
+											<h5>가격</h5>
+                                       	</td>
+                                	</tr>
+                                </tbody>
+                            </table>
+                        </div>					
+					</div>
                     <div class="col-12 col-lg-4">
                         <div class="cart-summary payment-cart-summary">
                             <h5>Cart Total</h5>
@@ -45,9 +124,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                 </div>
+              </div>
+		</div>
 </body>
 <script>
 	const memberId = '${memberId}';
@@ -64,6 +143,19 @@
 		.done(function(result){
 			console.log(result);
 			
+			$.each(result, function(idx, item){
+				$('.box').append(
+					$('<div class="payment-goods" />').append(
+						$('<div style="width: 100px; display:inline-block" />').append(
+							$('<ul class="summary-table" />').append(
+								$('<li />').append($('<p />').text(item.name)),
+								$('<li />').append($('<p />').text("가격: "), $('<p />').text(item.price))
+							)	
+						),
+						$('<span />').append($('<img class="payment-goodsImg" />').attr({'src': '../static/img/bg-img/' + item.image + '.jpg'}))
+					)		
+				)
+			});
 		})
 		.fail(function(error){
 			console.log(error);
@@ -76,8 +168,20 @@
 			dataType: 'json'
 		})
 		.done(function(result){
-			result.forEach(item => {
-				
+			console.log(result);
+			
+			$.each(result, function(idx, item){
+				$('.box').append(
+					$('<div class="payment-goods" />').append(
+						$('<div style="width: 100px; display:inline-block" />').append(
+							$('<ul class="summary-table" />').append(
+								$('<li />').append($('<p />').text(item.name)),
+								$('<li />').append($('<p />').text("가격: "), $('<p />').text(item.price))
+							)	
+						),
+						$('<span />').append($('<img class="payment-goodsImg" />').attr({'src': '../static/img/bg-img/' + item.image + '.jpg'}))
+					)		
+				)
 			});
 		})
 		.fail(function(error){

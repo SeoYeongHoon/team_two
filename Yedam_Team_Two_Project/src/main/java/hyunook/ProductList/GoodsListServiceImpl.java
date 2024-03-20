@@ -13,9 +13,9 @@ public class GoodsListServiceImpl implements GoodsListService {
 
 
 	@Override
-	// 개인판매 리스트
-	public List<Goods> privateProductList() {
-		return mapper.privateProductList();
+	public List<Goods> privateProductList(String goods) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -42,5 +42,4 @@ public class GoodsListServiceImpl implements GoodsListService {
 	public Goods getGoods(int goodsId) {
 		return mapper.selectGoods(goodsId);
 	}
-
 }
