@@ -15,62 +15,36 @@
 		<!-- ##### Single Widget ##### -->
 		<div class="widget catagory mb-50">
 			<!-- Widget Title -->
-			<h6 class="widget-title mb-30">Catagories</h6>
 
 			<!--  Catagories  -->
-			<div class="catagories-menu">
-				<ul>
-					<li class="active"><a href="#">카테고리1</a></li>
-					<li><a href="#">카테고리2</a></li>
-					<li><a href="#">카테고리3</a></li>
-					<li><a href="#">카테고리4</a></li>
-				</ul>
-			</div>
-		</div>
-
-		<!-- ##### Single Widget ##### -->
-		<div class="widget brands mb-50">
+			<div class="widget brands mb-50">
 			<!-- Widget Title -->
-			<h6 class="widget-title mb-30">Brands</h6>
+			<h6 class="widget-title mb-30">category</h6>
 
 			<div class="widget-desc">
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value="" id="amado">
-					<label class="form-check-label" for="amado">테마</label>
+					<input class="form-check-input" name="category" type="radio" value="" id="amado">
+					<label class="form-check-label" for="amado">카테고리1</label>
 				</div>
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value="" id="ikea">
-					<label class="form-check-label" for="ikea">테마</label>
+					<input class="form-check-input" name="category" type="radio" value="" id="ikea">
+					<label class="form-check-label" for="ikea">카테고리2</label>
 				</div>
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value=""
-						id="furniture"> <label class="form-check-label"
-						for="furniture">테마</label>
+					<input class="form-check-input" name="category" type="radio" value=""id="furniture"> 
+					<label class="form-check-label"
+						for="furniture">카테고리3</label>
 				</div>
 			</div>
+		</div>
 		</div>
 
 		<!-- ##### Single Widget ##### -->
-		<div class="widget color mb-50">
-			<!-- Widget Title -->
-			<h6 class="widget-title mb-30">Color</h6>
 
-			<div class="widget-desc">
-				<ul class="d-flex">
-					<li><a href="#" class="color1"></a></li>
-					<li><a href="#" class="color2"></a></li>
-					<li><a href="#" class="color3"></a></li>
-					<li><a href="#" class="color4"></a></li>
-					<li><a href="#" class="color5"></a></li>
-					<li><a href="#" class="color6"></a></li>
-					<li><a href="#" class="color7"></a></li>
-					<li><a href="#" class="color8"></a></li>
-				</ul>
-			</div>
-		</div>
+		<!-- ##### Single Widget ##### -->
 
 		<!-- ##### Single Widget ##### -->
 		<div class="widget price mb-50">
@@ -115,17 +89,6 @@
 									</select>
 								</form>
 							</div>
-							<div class="view-product d-flex align-items-center">
-								<p>View</p>
-								<form action="#" method="get">
-									<select name="select" id="viewProduct">
-										<option value="value">12</option>
-										<option value="value">24</option>
-										<option value="value">48</option>
-										<option value="value">96</option>
-									</select>
-								</form>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -154,17 +117,28 @@
 	</div>
 <!-- 주석 -->
 	<script>
+	function showList(categori){
       $.ajax({
 	  url:'privateListControl.do',
-	  method:'get',
+	  method:'post',
+	  data : 
 	  success:function(result){
 		  console.log(result)
 		  result.forEach(prop =>{
 			  console.log(prop.image)
+			  //별배열 담기
 			  let stars = [];
               for (let i = 0; i < prop.scoreId; i++) {
                  stars.push($("<i>", { class: 'fa fa-star', 'aria-hidden': 'true' }));
                      }
+              //해시태그 배열 만들기
+              $('.inlineHash').text("");
+              let hashTags = [];
+              let hashTag = prop.hashtag;
+              console.log(prop.hashtag);
+              hashTags = hashTag.split("#");
+              console.log(hashTags);
+              //전체목록 표시
 			      $("#productList").append(
 					    $("<div>", { class: 'col-2 col-sm-4 col-md-6 col-xl-4' }).append(
 					        $("<div>", { class: 'single-product-wrapper' }).append(
@@ -173,14 +147,15 @@
 					                    $("<img>", { src: "../../static/img/bg-img/"+prop.image+"", alt: '', class: 'product-image' }), // 제품 이미지
 					                    $("<div>", { class: 'hover-content1' }).append(
 					                        $("<div>", { class: 'line' }),
-					                        $("<p>", { text: prop.name }), // 가격
-					                        $("<p>", { text: prop.price+"원" }) // 제품명
+					                        $("<h4>", { text: prop.name }), // 가격
+					                        $("<p> ------------------ </p>"),
+					                        $("<p>", { text: prop.description }) // 제품명					                        	
 					                    )
 					                )
 					            ),
 					            $("<div>", { class: 'product-description d-flex align-items-center justify-content-between' }).append(
-					                $("<div>", { class: 'product-meta-data' }).append(
-					                    $("<a>", { class: 'product-price', href: 'product-details.html', text: prop.name }), // 가격
+					                $("<div>", { class: 'product-meta-data1' }).append(
+					                    $("<a>", { class: 'product-price', href: 'product-details.html', text:prop.name }), // 가격
 					                    $("<a>", { href: 'product-details.html' }).append(
 					                        $("<h6>", { text: prop.price+"원" }) // 제품명
 					                    )
@@ -197,12 +172,18 @@
 					        )
 					    )
 					);
+			      hashTags.forEach(item => {
+			    	  $(".product-meta-data1").prepend($("<a>", {class:'inlineHash', href: 'product-details.html', text: "#"+ item })); // 해쉬테그	
+			      	       
+			      	})
+               
 		  })
 	  },
 	  error: function(xhr, status, error) {
           console.error(error);
       }
-})
+   })
+}//function 끝 
 	</script>
 
 </body>

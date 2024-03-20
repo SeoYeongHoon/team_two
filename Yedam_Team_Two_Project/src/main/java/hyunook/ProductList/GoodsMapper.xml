@@ -3,13 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="hyunook.ProductList.GoodsMapper">
-	<select id="privateProductList" resultType="common.Goods">
+	<select id="privateProductList" resultType="common.Goods" parameterType="String">
 	   <!-- 개인판매자 조회 -->
-	   SELECT * 
+	    SELECT * 
        FROM goods
        WHERE member_id IN (SELECT member_id
                           FROM member
                           WHERE member_type='SELLER')
+       AND category_id IN(SELECT category_id
+                           FROM CATEGORIES
+                           WHERE name = #{name } )
+       
 	</select>
 	
 	<select id="goodsList">
