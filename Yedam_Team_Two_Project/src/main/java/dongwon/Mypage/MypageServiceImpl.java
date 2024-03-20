@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.DataSource;
 import common.Member;
-import common.TestMapper;
+
 
 public class MypageServiceImpl implements MypageService {
 
@@ -25,7 +25,6 @@ public class MypageServiceImpl implements MypageService {
 
 	@Override
 	public List<Member> memberInfoList(String info) {
-		//List<Member> memberList = mapper.g
 		return null;
 	}
 

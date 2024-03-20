@@ -3,19 +3,77 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="hyunook.ProductList.GoodsMapper">
-	<select id="privateProductList" resultType="common.Goods">
+	<select id="privateProductList" resultType="common.Goods" parameterType="String">
 	   <!-- 개인판매자 조회 -->
-	   SELECT * 
+	    SELECT * 
        FROM goods
        WHERE member_id IN (SELECT member_id
                           FROM member
                           WHERE member_type='SELLER')
+       AND category_id IN(SELECT category_id
+                           FROM CATEGORIES
+                           WHERE name = #{name } )
+       
 	</select>
 	
 	<select id="goodsList">
-		SELECT name,
-			   description,
-			   price
-		FROM goods			   
+		SELECT goods_id,
+               name,
+               description,
+               price,
+               req_date,
+               member_id
+		FROM goods
+		ORDER BY req_date DESC  
 	</select>
+	
+	<select id="selectGoods" parameterType="int" resultType="goods">
+		SELECT goods_id,
+			   name,
+			   description
+		FROM goods
+		WHERE goods_id = #{goodsId}
+	</select>
+	
+	<insert id="insertGoods" parameterType="common.Goods">
+		INSERT INTO goods  (goods_id,
+	                        name,
+	                        description,
+	                        price,
+	                        hashtag,
+	                        view_cnt,
+	                        image,
+	                        goods_state,
+	                        req_type,
+	                        req_date,
+	                        resp_date,
+	                        category_id,
+	                        member_id,
+	                        score_id)
+		VALUES (goods_id_seq.NEXTVAL,
+                #{name},
+                #{description},
+                1000,
+                '#',
+                0,
+                #{image},
+                'sale',
+                'NONE',
+                SYSDATE,
+                SYSDATE,
+                1,
+                'userId1',
+                1)
+	</insert>
+	
+	<delete id="removeGoods" parameterType="int">
+		delete goods where goods_id = #{goodsId}
+	</delete>
+	
+	<update id="updateGoods" parameterType="goods">
+		UPDATE goods
+		SET    name = #{name},
+			   description = #{description}
+		WHERE goods_id = #{goodsId}
+	</update>
 </mapper>
