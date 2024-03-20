@@ -21,9 +21,9 @@ enum RequestType{
 //@AllArgsConstructor
 //@NoArgsConstructor
 public class Goods {
-	private int goodsId;
-	private String name;
-	private String description;
+	private int goodsId;    
+	private String name;   
+	private String description; 
 	private int price;
 	private String hashtag; //해쉬태그 => 
 							//하나의 문자열 타입(예시 : "#기분좋음#~~함#~~~함" 방식으로 값 저장하고,

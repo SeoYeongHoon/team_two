@@ -1,4 +1,4 @@
-package hyunook.addMember;
+package hyunook.AddMember;
 
 import java.io.IOException;
 

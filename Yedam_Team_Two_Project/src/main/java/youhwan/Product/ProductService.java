@@ -2,6 +2,11 @@ package youhwan.Product;
 
 import java.util.List;
 
+import common.Goods;
+
 public interface ProductService {
-	List<String> ProductList();
+	List<Goods> ProductList(Goods goods);
+	
+	
+	
 }
