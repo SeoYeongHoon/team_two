@@ -36,8 +36,10 @@ import youhwan.Company.Companyform;
 import youhwan.Product.Productform;
 import younghun.Admin.AdminControl;
 import younghun.Admin.RequestControl;
+import younghun.Admin.RequestForm;
 import younghun.Manage.ManageControl;
 import younghun.Manage.ManageForm;
+import younghun.Manage.RemoveControl;
 
 public class MainController extends HttpServlet {
 
@@ -52,7 +54,6 @@ public class MainController extends HttpServlet {
 		// 실행시킬 URL.do, 요청 및 응답처리 할 클래스 => exec함수 구현
 		// xx.do, xxControl()로 구현할 것
 		// 작성 예시 : controls.put("/test.do", new testControl());
-		controls.put("/test.do", new TestControl());
 		// 우선은 이름으로 컨트롤 분리하고, 나중에 기능으로 묶어서 일괄 분리 한번 더 할게요~
 
 		// 창오
@@ -88,9 +89,11 @@ public class MainController extends HttpServlet {
 
 		// 영훈
 		controls.put("/admin.do", new AdminControl());
-		controls.put("/request.do", new RequestControl()); // 관리자 페이지에 등록된 유저 요청건의 확인 버튼 클릭 시 이동되는 페이지
-		controls.put("/management.do", new ManageControl()); // 개인 판매자용 상품 관리 페이지
-		controls.put("/manageForm.do", new ManageForm());
+		controls.put("/request.do", new RequestControl()); 
+		controls.put("/requestForm.do", new RequestForm()); // 관리자 페이지에 등록된 유저 요청건의 확인 버튼 클릭 시 이동되는 페이지
+		controls.put("/manageForm.do", new ManageControl()); 
+		controls.put("/management.do", new ManageForm()); // 개인 판매자용 상품 관리 페이지
+		controls.put("/removeGoods.do", new RemoveControl());
 	}
 
 	@Override
@@ -105,5 +108,4 @@ public class MainController extends HttpServlet {
 		control.exec(req,  resp); //요점 url에 따른 실행컨트롤을 호출
     }
 
-	}
-
+}

@@ -10,4 +10,6 @@ public interface GoodsMapper {
 	List<Goods> privateProductList(String goods);
 	
 	List<Goods> goodsList();
+	int insertGoods(Goods goods);
+	int removeGoods(String goodsId);
 }
