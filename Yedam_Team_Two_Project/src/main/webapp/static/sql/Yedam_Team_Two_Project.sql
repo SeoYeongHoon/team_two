@@ -5,7 +5,7 @@ WHERE  object_type = 'TABLE';
 
 --테이블 일괄 삭제
 DROP TABLE MEMBER CASCADE CONSTRAINTS;
-DROP TABLE PURCHASEHISTORY CASCADE CONSTRAINTS;
+DROP TABLE MCATEGORIES CASCADE CONSTRAINTS;
 DROP TABLE CATEGORIES CASCADE CONSTRAINTS;
 DROP TABLE SCOREGRADE CASCADE CONSTRAINTS;
 DROP TABLE GOODS CASCADE CONSTRAINTS;
@@ -14,6 +14,7 @@ DROP TABLE CART CASCADE CONSTRAINTS;
 DROP TABLE REVIEW CASCADE CONSTRAINTS;
 DROP TABLE WISH_LIST CASCADE CONSTRAINTS;
 DROP TABLE MAGAZINE CASCADE CONSTRAINTS;
+DROP TABLE PURCHASEHISTORY CASCADE CONSTRAINTS;
 
 --시퀀스 일괄 삭제문 출력
 SELECT 'DROP SEQUENCE ' || object_name || ' ;'
@@ -38,6 +39,11 @@ CREATE TABLE Member(
 	password	VARCHAR2(30),
 	email	    VARCHAR2(50),
 	tel	        VARCHAR2(30)
+);
+
+CREATE TABLE MCategories(
+    mc_id     NUMBER  PRIMARY KEY,
+    mc_name   VARCHAR(40)
 );
 
 CREATE TABLE Categories(
@@ -103,14 +109,15 @@ CREATE TABLE Magazine (
     content     VARCHAR(1000),
     image       VARCHAR(300),
     create_date DATE          DEFAULT SYSDATE,
-    member_id   VARCHAR(30)   REFERENCES Member(member_id)
+    member_id   VARCHAR(30)   REFERENCES Member(member_id),
+    mc_id       NUMBER        REFERENCES MCategories(mc_id)
 );
 
 CREATE TABLE PurchaseHistory (
-      p_id      NUMBER       PRIMARY KEY,
-      p_date    DATE DEFAULT SYSDATE,
-      member_id VARCHAR(30)  REFERENCES Member(member_id),
-      goods_id  NUMBER       REFERENCES Goods(goods_id)
+    p_id      NUMBER       PRIMARY KEY,
+    p_date    DATE DEFAULT SYSDATE,
+    member_id VARCHAR(30)  REFERENCES Member(member_id),
+    goods_id  NUMBER       REFERENCES Goods(goods_id)
 );
 
 --시퀀스 생성
@@ -218,6 +225,27 @@ INSERT INTO ScoreGrade(score_id,
                        score)
 VALUES                (5,
                        100);    
+
+INSERT INTO MCategories(mc_id,
+                        mc_name)
+VALUES                 (0,
+                        '꿀팁');
+INSERT INTO MCategories(mc_id,
+                        mc_name)
+VALUES                 (1,
+                        '트렌드');
+INSERT INTO MCategories(mc_id,
+                        mc_name)
+VALUES                 (2,
+                        '소식');
+INSERT INTO MCategories(mc_id,
+                        mc_name)
+VALUES                 (3,
+                        '이슈');
+INSERT INTO MCategories(mc_id,
+                        mc_name)
+VALUES                 (4,
+                        '기타');                       
 COMMIT;
 
 BEGIN
@@ -300,7 +328,7 @@ VALUES                 (goods_id_seq.NEXTVAL,
                         1000 + goods_id_seq.CURRVAL,
                         '#',
                         0,
-                        '이미지1',
+                        'IT 테크 템플릿 뒷면',
                         'sale',
                         'NONE',
                         SYSDATE,
@@ -341,13 +369,15 @@ BEGIN
                            content,
                            image,
                            create_date,
-                           member_id)
+                           member_id,
+                           mc_id)
       VALUES              (magazine_id_seq.NEXTVAL,
                            '제목' || magazine_id_seq.CURRVAL,
                            '내용' || magazine_id_seq.CURRVAL,
-                           '이미지2',
+                           'IT 테크 템플릿 뒷면',
                            SYSDATE,
-                           'userId1');
+                           'userId1',
+                           1);
       END LOOP;
       COMMIT;
 END;
@@ -383,5 +413,5 @@ BEGIN
       END LOOP;
       COMMIT;
 END;
-/
+/                     
 COMMIT;
