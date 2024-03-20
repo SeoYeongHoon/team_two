@@ -25,7 +25,7 @@
 					$('<td />').text(item.price),
 					$('<td />').text(item.reqDate),
 					$('<td class="align-middle" />')
-						.append($('<a href="#" class="confirm_btn bg-gradient-danger mb-0 toast-btn" />').text('확인'))
+						.append($('<a href="confirm.do" class="confirm_btn bg-gradient-danger mb-0 toast-btn" />').text('확인'))
 				).appendTo($('table'));
 			})
 		})
@@ -60,5 +60,17 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		function confirmRequest(name = "", description = "", successCall, errorCall) {
+			$.ajax({
+				url: '/confirmRequest.do',
+				method: 'post',
+				data: { name, description },
+				dataType: 'json'
+			})
+				.done(successCall)
+				.fail(errorCall)
+		}
+	</script>
 </body>
 </html>

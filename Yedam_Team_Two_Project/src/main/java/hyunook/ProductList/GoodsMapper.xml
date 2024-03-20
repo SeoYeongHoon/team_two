@@ -27,6 +27,14 @@
 		ORDER BY req_date DESC  
 	</select>
 	
+	<select id="selectGoods" parameterType="int" resultType="goods">
+		SELECT goods_id,
+			   name,
+			   description
+		FROM goods
+		WHERE goods_id = #{goodsId}
+	</select>
+	
 	<insert id="insertGoods" parameterType="common.Goods">
 		INSERT INTO goods  (goods_id,
 	                        name,
@@ -58,7 +66,14 @@
                 1)
 	</insert>
 	
-	<delete id="removeGoods" parameterType="string">
+	<delete id="removeGoods" parameterType="int">
 		delete goods where goods_id = #{goodsId}
 	</delete>
+	
+	<update id="updateGoods" parameterType="goods">
+		UPDATE goods
+		SET    name = #{name},
+			   description = #{description}
+		WHERE goods_id = #{goodsId}
+	</update>
 </mapper>

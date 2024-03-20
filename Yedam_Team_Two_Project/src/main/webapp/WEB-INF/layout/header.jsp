@@ -10,9 +10,8 @@
 		<i class="fa fa-close" aria-hidden="true"></i>
 	</div>
 	<!-- Logo -->
-	<div class="logo">
-		<a href="main.do"><img src="../../static/img/core-img/logo.png"
-			alt=""></a>
+	<div class="logo" style="margin: -75px;">
+		<a href="main.do"><img src="../../static/img/core-img/logo.jpg" alt=""></a>
 	</div>
 	<!-- Amado Nav -->
 	<nav class="amado-nav">

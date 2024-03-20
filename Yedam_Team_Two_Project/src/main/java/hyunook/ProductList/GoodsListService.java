@@ -11,6 +11,8 @@ public interface GoodsListService {
 	List<Goods> privateProductList(String goods);
 	
 	List<Goods> goodsList();
+	Goods getGoods(int goodsId);
 	boolean addGoods(Goods goods);
-	boolean removeGoods(String goodsId);
+	boolean modifyGoods(Goods goods);
+	boolean removeGoods(int goodsId);
 }
