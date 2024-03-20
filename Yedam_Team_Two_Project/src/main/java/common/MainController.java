@@ -14,10 +14,12 @@ import changoh.Magazine.MagazineListControl;
 import changoh.Payment.PaymentAjaxControl;
 import changoh.Payment.PaymentControl;
 import changoh.Payment.PaymentResultControl;
+
 import dongwon.Cart.CartControl;
 import dongwon.Mypage.MypageControl;
 import dongwon.QnA.QnAControl;
 import dongwon.Support.SupportControl;
+
 import hyunook.AddMembers.AddMemberControl;
 import hyunook.AddMembers.AddMemberForm;
 import hyunook.AddMembers.SameEmailControl;
@@ -33,12 +35,20 @@ import hyunook.Login.LogoutControl;
 import hyunook.MainPage.MainPage;
 import hyunook.ProductList.PrivateListControl;
 import hyunook.ProductList.PrivateListForm;
+
 import youhwan.Company.Companyform;
 import youhwan.Product.Productform;
+import youhwan.Product.ReviewControl;
 import younghun.Admin.AdminControl;
-import younghun.Admin.RequestControl;
+import younghun.Admin.ConfirmControl;
 import younghun.Manage.ManageControl;
 import younghun.Manage.ManageForm;
+import younghun.Manage.ModifyControl;
+import younghun.Manage.ModifyForm;
+import younghun.Manage.RemoveControl;
+import younghun.Manage.RemoveGoodsForm;
+import younghun.Manage.RequestControl;
+import younghun.Manage.RequestForm;
 
 public class MainController extends HttpServlet {
 
@@ -61,6 +71,7 @@ public class MainController extends HttpServlet {
 		controls.put("/payment.do", new PaymentControl());
 		controls.put("/paymentAjax.do", new PaymentAjaxControl());
 		controls.put("/paymentResult.do", new PaymentResultControl());
+		
 		// 동원
 		controls.put("/mypage.do", new MypageControl());
 		controls.put("/cart.do", new CartControl());
@@ -85,13 +96,24 @@ public class MainController extends HttpServlet {
 
 		// 유환
 		controls.put("/product.do", new Productform()); // 상세페이지
+		controls.put("/review.do", new ReviewControl()); // 상세페이지
 		controls.put("/company.do", new Companyform()); // 회사
 
 		// 영훈
 		controls.put("/admin.do", new AdminControl());
-		controls.put("/request.do", new RequestControl()); // 관리자 페이지에 등록된 유저 요청건의 확인 버튼 클릭 시 이동되는 페이지
-		controls.put("/management.do", new ManageControl()); // 개인 판매자용 상품 관리 페이지
-		controls.put("/manageForm.do", new ManageForm());
+		
+		controls.put("/request.do", new RequestControl()); 
+		controls.put("/requestForm.do", new RequestForm()); // 관리자 페이지에 등록된 유저 요청건의 확인 버튼 클릭 시 이동되는 페이지
+		
+		controls.put("/manageForm.do", new ManageControl()); 
+		controls.put("/management.do", new ManageForm()); // 개인 판매자용 상품 관리 페이지
+		
+		controls.put("/modifyForm.do", new ModifyForm());
+		controls.put("/modifyGoods.do", new ModifyControl());
+		
+		controls.put("/removeForm.do", new RemoveGoodsForm());
+		controls.put("/removeGoods.do", new RemoveControl());
+		controls.put("/confirmRequest.do", new ConfirmControl());
 	}
 
 	@Override
@@ -105,5 +127,4 @@ public class MainController extends HttpServlet {
 		Control control = controls.get(path);
 		control.exec(req,  resp); //요점 url에 따른 실행컨트롤을 호출
     }
-
 }

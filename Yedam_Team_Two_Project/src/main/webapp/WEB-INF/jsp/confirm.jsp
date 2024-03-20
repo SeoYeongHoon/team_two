@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,7 @@
 						<form action="request.do" method="post">
 						    <div class="row">
 						        <div class="col-md-12 mb-3">
-						            <input type="text" class="form-control title_info" name="title_info" id="title_info" placeholder="제목" value="">
+						            <input type="text" class="form-control title_info" name="title_info" id="title_info" placeholder="${name }" value="">
 						        </div>
 						        
 						        <div>
@@ -40,7 +41,7 @@
 							    	<div class="image-show" id="image-show"></div>
 							    </div>
 						        <div class="col-md-12 mb-3">
-						        	<p><textarea class="form-control content_info" name="content_info" id="content_info" placeholder="내용"  cols="50" rows="10"></textarea></p>
+						        	<p><textarea class="form-control content_info" name="content_info" id="content_info" placeholder="${description }"  cols="50" rows="10"></textarea></p>
 						        </div>
 						        <div class="col-12 mb-3">
 	                                <select class="w-100" id="country" name="type_info">

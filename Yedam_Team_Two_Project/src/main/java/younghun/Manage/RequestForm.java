@@ -1,4 +1,4 @@
-package younghun.Admin;
+package younghun.Manage;
 
 import java.io.IOException;
 
@@ -9,14 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Control;
 
-public class RequestControl implements Control {
+public class RequestForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		resp.setContentType("text/json;charset=utf-8");
 		String path = "jsp/request.tiles";
 		RequestDispatcher dispatch = req.getRequestDispatcher(path);
 		dispatch.forward(req, resp);
-
 	}
 
 }
