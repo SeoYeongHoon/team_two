@@ -12,34 +12,25 @@
 </head>
 <body>
 	<script>
-		$.get('../management.do', (result) => {
+		$.get('../manageForm.do', (result) => {
 			result.forEach((item, idx, ary) => {
 				
 			});
 			
 			$(result).each((idx, item, ary) => {
 				$('<tr />').append(
+					$('<td />').text(item.goodsId),
 					$('<td />').text(item.name),
 					$('<td />').text(item.description),
-					$('<td />').text(item.price),
+					$('<td />').text(item.reqDate),
 					$('<td class="align-middle text-center" />')
-						.append($('<a href="#" class="badge badge-sm bg-gradient-success" />').text('수정')),
+						.append($('<a href="#" id="modBtn" class="badge badge-sm bg-gradient-success" />').text('수정')),
 					$('<td class="align-middle" />')
-						.append($('<a href="#" class="badge badge-sm bg-gradient-danger" />').text('삭제'))
+						.append($('<a href="#" onclick="removeGoods()" class="badge badge-sm bg-gradient-danger" />').text('삭제'))
 				).appendTo($('table'));
 			})
 		})
-		
-		/* $(document).ready(() => {
-			
-		}) */
 	</script>
-	<%-- <%
-		String title = request.getParameter("title_info");
-		String content = request.getParameter("content_info");
-		String image = request.getParameter("chooseFile");
-		String type = request.getParameter("type_info");
-	%> --%>
 	<div class="container-fluid py-4">
 		<div class="row">
 			<div class="col-12">
@@ -53,55 +44,17 @@
 
 					<div class="card-body px-0 pb-2">
 						<div class="table-responsive p-0">
-							<table class="table align-items-center mb-0" style="padding: 10px;">
+							<table class="table align-items-center mb-0" style="margin: 20px;">
 								<thead>
 									<tr>
+										<th class="font-weight-bolder">상품번호</th>
 										<th class="font-weight-bolder">제목</th>
 										<th class="font-weight-bolder">내용</th>
-										<th class="font-weight-bold">유형</th>
+										<th class="font-weight-bold">신청일자</th>
 										<th></th>
 										<th class="align-middle"><a href="request.do" class="confirm_btn bg-gradient-danger mb-0 toast-btn">등록</a></th>
 									</tr>
 								</thead>
-								<%-- <tbody>
-									<tr>
-										<td class="align-middle">
-											<span>${title }</span>
-										</td>
-										<td class="align-middle">
-											<span>${content }</span>
-										</td>
-										<td class="align-middle text-center">
-											<span>${type }</span>
-										</td>
-										<td class="align-middle text-center">
-											<a href="#" class="badge badge-sm bg-gradient-success">수정</a>
-										</td>
-										<td class="align-middle">
-											<a href="#" class="badge badge-sm bg-gradient-danger">삭제</a>
-										</td>
-									</tr>
-									
-									<!-- <tr>
-										<td>
-											<div>
-												<img src="../../static/img/user/dog.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-											</div>
-										</td>
-										<td class="align-middle">
-											<span class="text-secondary text-xs font-weight-bold">서영훈의 템플릿</span>
-										</td>
-										<td class="align-middle text-center">
-											<span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-										</td>
-										<td class="align-middle text-center">
-											<a href="#" class="badge badge-sm bg-gradient-success">수정</a>
-										</td>
-										<td class="align-middle">
-											<a href="#" class="badge badge-sm bg-gradient-danger">삭제</a>
-										</td>
-									</tr> -->
-								</tbody> --%>
 							</table>
 						</div>
 					</div>
@@ -111,5 +64,17 @@
 	</div>
 	<script src="../../static/js/management.js"></script>
 	<script src="../../static/js/request.js"></script>
+	<script>
+		function removeGoods(goodsId = 1, successCall, errorCall) {
+			$.ajax({
+				url: 'removeGoods.do',
+				method: 'post',
+				data: { goodsId },
+				dataType: 'json'
+			})
+				.done(successCall)
+				.fail(errorCall)
+		}
+	</script>
 </body>
 </html>
