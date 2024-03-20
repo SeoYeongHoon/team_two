@@ -13,9 +13,48 @@
 	</select>
 	
 	<select id="goodsList">
-		SELECT name,
-			   description,
-			   price
-		FROM goods			   
+		SELECT goods_id,
+               name,
+               description,
+               price,
+               req_date,
+               member_id
+		FROM goods
+		ORDER BY req_date DESC  
 	</select>
+	
+	<insert id="insertGoods" parameterType="common.Goods">
+		INSERT INTO goods  (goods_id,
+	                        name,
+	                        description,
+	                        price,
+	                        hashtag,
+	                        view_cnt,
+	                        image,
+	                        goods_state,
+	                        req_type,
+	                        req_date,
+	                        resp_date,
+	                        category_id,
+	                        member_id,
+	                        score_id)
+		VALUES (goods_id_seq.NEXTVAL,
+                #{name},
+                #{description},
+                1000,
+                '#',
+                0,
+                #{image},
+                'sale',
+                'NONE',
+                SYSDATE,
+                SYSDATE,
+                1,
+                'userId1',
+                1)
+	</insert>
+	
+	<delete id="removeGoods" parameterType="string">
+		delete goods where goods_id = #{goodsId}
+	</delete>
 </mapper>

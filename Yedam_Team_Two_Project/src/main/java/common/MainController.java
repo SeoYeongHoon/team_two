@@ -36,8 +36,10 @@ import youhwan.Company.Companyform;
 import youhwan.Product.Productform;
 import younghun.Admin.AdminControl;
 import younghun.Admin.RequestControl;
+import younghun.Admin.RequestForm;
 import younghun.Manage.ManageControl;
 import younghun.Manage.ManageForm;
+import younghun.Manage.RemoveControl;
 
 public class MainController extends HttpServlet {
 
@@ -87,9 +89,11 @@ public class MainController extends HttpServlet {
 
 		// 영훈
 		controls.put("/admin.do", new AdminControl());
-		controls.put("/request.do", new RequestControl()); // 관리자 페이지에 등록된 유저 요청건의 확인 버튼 클릭 시 이동되는 페이지
-		controls.put("/management.do", new ManageControl()); // 개인 판매자용 상품 관리 페이지
-		controls.put("/manageForm.do", new ManageForm());
+		controls.put("/request.do", new RequestControl()); 
+		controls.put("/requestForm.do", new RequestForm()); // 관리자 페이지에 등록된 유저 요청건의 확인 버튼 클릭 시 이동되는 페이지
+		controls.put("/manageForm.do", new ManageControl()); 
+		controls.put("/management.do", new ManageForm()); // 개인 판매자용 상품 관리 페이지
+		controls.put("/removeGoods.do", new RemoveControl());
 	}
 
 	@Override
