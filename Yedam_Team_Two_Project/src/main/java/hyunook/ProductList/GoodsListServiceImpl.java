@@ -33,8 +33,18 @@ public class GoodsListServiceImpl implements GoodsListService {
 	}
 
 	@Override
-	public boolean removeGoods(String goodsId) {
+	public boolean removeGoods(int goodsId) {
 		return mapper.removeGoods(goodsId) == 1;
+	}
+
+	@Override
+	public boolean modifyGoods(Goods goods) {
+		return mapper.updateGoods(goods) == 1;
+	}
+
+	@Override
+	public Goods getGoods(int goodsId) {
+		return mapper.selectGoods(goodsId);
 	}
 
 }

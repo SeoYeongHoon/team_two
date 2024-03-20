@@ -13,6 +13,8 @@ public interface GoodsMapper {
 	List<Goods> privateProductList(Goods goods);
 	
 	List<Goods> goodsList();
+	Goods selectGoods(int goodsId);
 	int insertGoods(Goods goods);
-	int removeGoods(String goodsId);
+	int removeGoods(int goodsId);
+	int updateGoods(Goods goods);
 }
