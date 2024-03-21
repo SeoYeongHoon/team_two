@@ -18,6 +18,7 @@
   	<typeAlias alias="member" type="common.Member"/>
   	<typeAlias alias="goods" type="common.Goods"/>
   	<typeAlias alias="magazine" type="changoh.Magazine.Magazine"></typeAlias>
+  	<typeAlias alias="purchaseHistory" type="changoh.Payment.PurchaseHistory"></typeAlias>
   </typeAliases>
   
   <environments default="development">
