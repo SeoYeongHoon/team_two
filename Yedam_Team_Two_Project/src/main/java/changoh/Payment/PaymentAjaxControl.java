@@ -48,6 +48,11 @@ public class PaymentAjaxControl implements Control {
 			
 			req.setAttribute("list", list);
 			
+			System.out.println(foundMemberInfo.toString());
+			for(int i = 0; i < list.size(); ++i) {
+				System.out.println(list.get(i).toString());
+			}
+			
 			Gson gson = new GsonBuilder().create();
 			String json = gson.toJson(list);
 			resp.getWriter().print(json);

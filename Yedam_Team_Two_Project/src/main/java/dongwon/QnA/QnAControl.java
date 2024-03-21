@@ -48,11 +48,20 @@ public class QnAControl implements Control {
 		//이 QnA 패키지에서 구현하고자 하는 기능(메소드)을 담은 Service 객체를 생성함.*객체를 생성해야 해당 메소드를 쓰므
 		// int qnaId; 시퀀스 값
 		// Date qnaDate; SYSDATE 값
+<<<<<<< HEAD
 //		HttpSession session = req.getSession();
 //		String memberId = (String) session.getAttribute("memberId");
+=======
+
+>>>>>>> branch 'younghun' of https://github.com/SeoYeongHoon/team_two.git
 		String title = req.getParameter("qnaTitle");
 		String content = req.getParameter("qnaContent");
+<<<<<<< HEAD
 //		QnA qna = new QnA();
+=======
+
+
+>>>>>>> branch 'younghun' of https://github.com/SeoYeongHoon/team_two.git
 		qna.setMemberId(memberId);
 		qna.setTitle(title);
 		qna.setContent(content);
