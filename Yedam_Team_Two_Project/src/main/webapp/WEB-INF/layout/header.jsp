@@ -15,7 +15,7 @@
 	</div>
 	<!-- Logo -->
 	<div class="logo" style="margin: -75px;">
-		<a href="main.do"><img src="../../static/img/core-img/logo.jpg" alt=""></a>
+		<a href="main.do"><img src="../../static/img/core-img/logo.jpg" style="margin-top:-50px; " alt=""></a>
 	</div>
 	<!-- Amado Nav -->
 	<nav class="amado-nav">
