@@ -17,10 +17,6 @@ public class ConfirmControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		GoodsListService svc = new GoodsListServiceImpl();
-//		List<Goods> list = svc.goodsList();
-//		req.setAttribute("list", list);
-		
 		String path = "jsp/confirm.tiles";
 		RequestDispatcher dispatch = req.getRequestDispatcher(path);
 		dispatch.forward(req, resp);

@@ -78,7 +78,6 @@
 											<td>${goods.name }</td>
 											<td>${goods.description }</td>
 											<td><fmt:formatDate value="${goods.reqDate }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-											<!-- <td><a href="#" onclick="modifyGoods()" class="badge badge-sm bg-gradient-success">수정</a></td> -->
 											<td><a href="modifyForm.do?goodsId=${goods.goodsId }" class="badge badge-sm bg-gradient-success">수정</a></td>
 											<td><a href="removeForm.do?goodsId=${goods.goodsId }" class="badge badge-sm bg-gradient-danger" >삭제</a></td>
 										</tr>

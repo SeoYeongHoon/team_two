@@ -17,15 +17,6 @@
 	</select>
 	
 	<select id="goodsList" resultType="common.Goods">
-		<!-- SELECT goods_id,
-               name,
-               description,
-               price,
-               req_date,
-               member_id
-		FROM goods
-		ORDER BY goods_id desc -->
-		
 		SELECT goods_id,
                name,
                description,
@@ -92,7 +83,7 @@
 		delete goods cascade where goods_id = #{goodsId}
 	</delete>
 	
-	<update id="updateGoods" parameterType="goods">
+	<update id="updateGoods" parameterType="common.Goods" >
 		UPDATE goods
 		SET    name = #{name},
 			   description = #{description},

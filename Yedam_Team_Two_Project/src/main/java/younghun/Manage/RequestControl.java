@@ -18,12 +18,6 @@ public class RequestControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		// String title = req.getParameter("title_info");
-		// String content = req.getParameter("content_info");
-		// String type = req.getParameter("type_info");
-		// String image = req.getParameter("chooseFile");
-		
 
 		String savePath = req.getServletContext().getRealPath("static/img/user");
 		int maxSize = 1024 * 1024 * 15;
