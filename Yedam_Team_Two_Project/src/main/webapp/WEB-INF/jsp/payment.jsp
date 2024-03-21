@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <link rel="stylesheet" href="../../static/css/payment.css">
 <body>
 	 <div class="cart-table-area section-padding-100">
@@ -15,123 +16,45 @@
                             <table class="table table-responsive">
                                 <thead>
                                     <tr>
-                                        <th>상품번호</th>
+                                        <th><input type="checkbox" id="checkAll" checked>상품번호</th>
                                         <th>상품이름</th>
                                         <th>이미지</th>
                                         <th>가격</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	<tr>
-                                		<td class="cart_product_desc">
-											<h5>상품번호</h5>
-                                       	</td>
-                                		<td class="cart_product_desc">
-											<h5>상품이름</h5>
-                                       	</td>
-                                       	<td class="cart_product_img">
-                                           	<a href="#"><img class="magazineList-img" src="../static/img/bg-img/건설 건축 템플릿 뒷면.png" alt="Product"></a>
-                                       	</td>                                	
-                                		<td class="cart_product_desc">
-											<h5>가격</h5>
-                                       	</td>
-                                	</tr>
-                                	<tr>
-                                		<td class="cart_product_desc">
-											<h5>상품번호</h5>
-                                       	</td>
-                                		<td class="cart_product_desc">
-											<h5>상품이름</h5>
-                                       	</td>
-                                       	<td class="cart_product_img">
-                                           	<a href="#"><img class="magazineList-img" src="../static/img/bg-img/건설 건축 템플릿 뒷면.png" alt="Product"></a>
-                                       	</td>                                	
-                                		<td class="cart_product_desc">
-											<h5>가격</h5>
-                                       	</td>
-                                	</tr>
-                                	<tr>
-                                		<td class="cart_product_desc">
-											<h5>상품번호</h5>
-                                       	</td>
-                                		<td class="cart_product_desc">
-											<h5>상품이름</h5>
-                                       	</td>
-                                       	<td class="cart_product_img">
-                                           	<a href="#"><img class="magazineList-img" src="../static/img/bg-img/건설 건축 템플릿 뒷면.png" alt="Product"></a>
-                                       	</td>                                	
-                                		<td class="cart_product_desc">
-											<h5>가격</h5>
-                                       	</td>
-                                	</tr>
-                                	<tr>
-                                		<td class="cart_product_desc">
-											<h5>상품번호</h5>
-                                       	</td>
-                                		<td class="cart_product_desc">
-											<h5>상품이름</h5>
-                                       	</td>
-                                       	<td class="cart_product_img">
-                                           	<a href="#"><img class="magazineList-img" src="../static/img/bg-img/건설 건축 템플릿 뒷면.png" alt="Product"></a>
-                                       	</td>                                	
-                                		<td class="cart_product_desc">
-											<h5>가격</h5>
-                                       	</td>
-                                	</tr>
-                                	<tr>
-                                		<td class="cart_product_desc">
-											<h5>상품번호</h5>
-                                       	</td>
-                                		<td class="cart_product_desc">
-											<h5>상품이름</h5>
-                                       	</td>
-                                       	<td class="cart_product_img">
-                                           	<a href="#"><img class="magazineList-img" src="../static/img/bg-img/건설 건축 템플릿 뒷면.png" alt="Product"></a>
-                                       	</td>                                	
-                                		<td class="cart_product_desc">
-											<h5>가격</h5>
-                                       	</td>
-                                	</tr>
-                                	<tr>
-                                		<td class="cart_product_desc">
-											<h5>상품번호</h5>
-                                       	</td>
-                                		<td class="cart_product_desc">
-											<h5>상품이름</h5>
-                                       	</td>
-                                       	<td class="cart_product_img">
-                                           	<a href="#"><img class="magazineList-img" src="../static/img/bg-img/건설 건축 템플릿 뒷면.png" alt="Product"></a>
-                                       	</td>                                	
-                                		<td class="cart_product_desc">
-											<h5>가격</h5>
-                                       	</td>
-                                	</tr>
+                                	
                                 </tbody>
                             </table>
                         </div>					
 					</div>
                     <div class="col-12 col-lg-4">
                         <div class="cart-summary payment-cart-summary">
-                            <h5>Cart Total</h5>
+                            <h5>Payment Total</h5>
                             <ul class="summary-table">
-                                <li><span>subtotal:</span> <span>$140.00</span></li>
-                                <li><span>delivery:</span> <span>Free</span></li>
-                                <li><span>total:</span> <span>$140.00</span></li>
+                                <li><span>Total:</span> <span id="totalPrice"></span></li>
                             </ul>
 
                             <div class="cart-btn mt-100">
-                                <a href="#" class="btn amado-btn w-100">Checkout</a>
+                                <a href="#" class="btn amado-btn w-100" id="paymentBtn">결제</a>
                             </div>
                         </div>
                     </div>
                  </div>
               </div>
 		</div>
+		
+		<!-- 결제 완료 페이지 요청 -->
+		<form id="paymentResult" action="paymentResult.do" method="post" >
+		<input type="hidden" name="member">
+		<input type="hidden" name="pId">
+		<input type="hidden" name="price">
+		</form>
 </body>
 <script>
 	const memberId = '${memberId}';
 	const goodsId = "${goodsId}";
-	
+	let list = [];
 	//장바구니 내역 구매
 	if (goodsId == null || goodsId == ''){
 		$.ajax({
@@ -140,22 +63,23 @@
 			data: {memberId},
 			dataType: 'json'
 		})
-		.done(function(result){
-			console.log(result);
-			
+		.done(function(result){			
+			let totalPrice = 0;
+			list = result;
 			$.each(result, function(idx, item){
-				$('.box').append(
-					$('<div class="payment-goods" />').append(
-						$('<div style="width: 100px; display:inline-block" />').append(
-							$('<ul class="summary-table" />').append(
-								$('<li />').append($('<p />').text(item.name)),
-								$('<li />').append($('<p />').text("가격: "), $('<p />').text(item.price))
-							)	
-						),
-						$('<span />').append($('<img class="payment-goodsImg" />').attr({'src': '../static/img/bg-img/' + item.image + '.jpg'}))
-					)		
-				)
+				$('tbody').append(
+						$('<tr />').append(
+							$('<td class="cart_product_desc" />').append(
+									$('<input type="checkbox" name="checkboxName">').val(item.price),
+									$('<span />').text(item.goodsId)),
+							$('<td class="cart_product_desc" />').append($('<span />').text(item.name)),
+							$('<td class="cart_product_img" />').append($('<a href="#" />').append(
+									$('<img class="magazineList-img" />').attr({'src': '../static/img/bg-img/' + item.image + '.jpg'}))),
+							$('<td class="cart_product_desc" />').append($('<span />').text(item.price))
+						)
+				);
 			});
+			checkAllEvent();			
 		})
 		.fail(function(error){
 			console.log(error);
@@ -167,26 +91,164 @@
 			data: {memberId, goodsId},
 			dataType: 'json'
 		})
-		.done(function(result){
-			console.log(result);
-			
+		.done(function(result){			
+			let totalPrice = 0;
+			list = result;
 			$.each(result, function(idx, item){
-				$('.box').append(
-					$('<div class="payment-goods" />').append(
-						$('<div style="width: 100px; display:inline-block" />').append(
-							$('<ul class="summary-table" />').append(
-								$('<li />').append($('<p />').text(item.name)),
-								$('<li />').append($('<p />').text("가격: "), $('<p />').text(item.price))
-							)	
-						),
-						$('<span />').append($('<img class="payment-goodsImg" />').attr({'src': '../static/img/bg-img/' + item.image + '.jpg'}))
-					)		
-				)
+				$('tbody').append(
+						$('<tr />').append(
+							$('<td class="cart_product_desc" />').append(
+									$('<input type="checkbox" name="checkboxName">').val(item.price),
+									$('<span />').text(item.goodsId)),
+							$('<td class="cart_product_desc" />').append($('<span />').text(item.name)),
+							$('<td class="cart_product_img" />').append($('<a href="#" />').append(
+									$('<img class="magazineList-img" />').attr({'src': '../static/img/bg-img/' + item.image + '.jpg'}))),
+							$('<td class="cart_product_desc" />').append($('<span />').text(item.price))
+						)
+				);
 			});
+			checkAllEvent();			
 		})
 		.fail(function(error){
 			console.log(error);
 		})
 	}
 	
+	//테이블 tr클릭 시 체크박스 활성화
+	$(".table-responsive").on('click', 'tr', function(e){
+		 e.stopPropagation();
+		 
+		if( $(e.target).is('input:checkbox') ) return;
+		var chkbox = $(this).find('td:first-child :checkbox');
+		chkbox.prop('checked', !chkbox.prop('checked'));
+		
+		var total = $("input[name=checkboxName]").length;
+		var checked = $("input[name=checkboxName]:checked").length;
+
+		if(total != checked) $("#checkAll").prop("checked", false);
+		else $("#checkAll").prop("checked", true);
+		
+		updateTotalPrice();
+	});
+	
+	//th의 체크박스 선택 시 모든 항목 체크
+	$(document).ready(function() {	
+		$("#checkAll").click(checkAllEvent);
+	});
+	
+	//체크박스(모두선택)눌렀을 때 각 체크박스 처리 이벤트
+	function checkAllEvent(){
+		if($("#checkAll").is(":checked")) $("input[name=checkboxName]").prop("checked", true);
+		else $("input[name=checkboxName]").prop("checked", false);
+		
+		updateTotalPrice();
+	}
+	
+	//체크 항목에 따라서 totalPrice 값 변경
+	function updateTotalPrice(){
+		let totalPrice = 0;
+		let checkBoxes = $("input[name=checkboxName]");
+		$.each(checkBoxes, function(idx, item){
+			if ($(item).is(":checked")){
+				totalPrice += parseInt(item.value);
+			}
+		})
+		
+		$('#totalPrice').text(totalPrice);
+	}
+	
+	//결제버튼 이벤트
+	let newOrderNum = null;
+	let foundMember = null;
+	let totalPrice = null;
+	$('#paymentBtn').on('click', function(e){
+		totalPrice = parseInt($('#totalPrice').text());
+		
+		if (totalPrice <= 0){
+			alert("최소 1개 이상 선택 필수");
+		} else{
+			//새로운 주문번호 생성
+			let newPHnum = createNewPurchaseHistoryNum();
+			foundMember = getMemberInfo();
+			
+			console.log('새로 추가될 구매번호: ' + newPHnum);
+			console.log('구매자: ' + foundMember);
+			console.log('결제 가격: ' + totalPrice);
+			
+			requestPay(totalPrice, newPHnum, foundMember);
+		}
+	});
+	
+	//결제함수
+	function requestPay(totalPrice, newPHnum, memberInfo) {
+		
+		  newPid = "ORDER-" + memberId + "-" + newPHnum;
+		  var IMP = window.IMP; // 생략가능
+		  IMP.init('imp75601502'); 
+		    IMP.request_pay({
+		      pg: "tosstest",
+		      pay_method: "card",
+		      merchant_uid: newPid,   // 주문번호
+		      name: newPid,
+		      amount: totalPrice,                         // 숫자 타입
+		      buyer_email: memberInfo.email,
+		      buyer_name: memberInfo.name,
+		      buyer_tel: memberInfo.tel,		    
+		    },function (rsp) {
+		        console.log(rsp);
+		        if (rsp.success) {
+		          var msg = '결제가 완료되었습니다.';
+		          alert(msg);
+		          //location.href = "paymentResult.do";
+		          let subForm = $('#paymentResult');
+		          
+		          //결제 완료 페이지로 넘기기
+		          subForm.find('input[name=member]').val(JSON.stringify(memberInfo));
+		          subForm.find('input[name=pId]').val(JSON.stringify(newPid));
+		          subForm.find('input[name=price]').val(JSON.stringify(totalPrice));
+		          subForm.submit();
+		        } else {
+		          var msg = '결제에 실패하였습니다.';
+		          msg += '에러내용 : ' + rsp.error_msg;
+		          alert(msg);
+		        }
+		      });
+	}
+	//멤버 정보 가져오는 AJAX
+	function getMemberInfo(){
+		let a = null;
+		$.ajax({
+			url: 'paymentMemberInfoAjax.do',
+			method: 'post',
+			data: {memberId},
+			async : false,
+			dataType: 'json',
+			success : function(result){
+				a = result;
+			},
+			error : function(result){
+				console.log("getMemberInfo() 오류");
+			}
+		});
+		return a;
+	}
+	
+	//새로운 주문번호 생성하는 AJAX
+	function createNewPurchaseHistoryNum(){
+		let a = null;
+		$.ajax({
+			url: 'paymentPurchaseAjax.do',
+			method: 'post',
+			data: {memberId},
+			async: false,
+			dataType: 'json',
+			success : function(result){
+				a = result;
+			},
+			error : function(error){
+				console.log("createNewPurchaseHistoryNum() 오류");
+			}
+		});
+		return a;
+	}
 </script>

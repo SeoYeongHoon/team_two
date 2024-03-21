@@ -25,4 +25,12 @@ public class PaymentServiceImpl implements PaymentService{
 	public List<Goods> getCartList(Member member) {
 		return mapper.getCartList(member);
 	}
+	@Override
+	public int getNewPurchaseHistoryNum(Member member) {
+		return mapper.getNewPurchaseHistoryNum(member);
+	}
+	@Override
+	public int createPurchaseHistoryData(PurchaseHistory purchaseHistory) {
+		return mapper.createPurchaseHistoryData(purchaseHistory);
+	}
 }

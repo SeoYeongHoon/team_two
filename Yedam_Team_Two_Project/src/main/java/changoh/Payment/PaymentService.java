@@ -9,4 +9,6 @@ public interface PaymentService {
 	Member getMember(Member member);
 	Goods getGoods(Goods goods);
 	List<Goods> getCartList(Member member);
+	int getNewPurchaseHistoryNum(Member member);
+	int createPurchaseHistoryData(PurchaseHistory purchaseHistory);
 }

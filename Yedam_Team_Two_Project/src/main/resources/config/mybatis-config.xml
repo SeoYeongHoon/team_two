@@ -19,6 +19,7 @@
   	<typeAlias alias="goods" type="common.Goods"/>
   	<typeAlias alias="review" type="youhwan.Product.Review"/>
   	<typeAlias alias="magazine" type="changoh.Magazine.Magazine"></typeAlias>
+  	<typeAlias alias="purchaseHistory" type="changoh.Payment.PurchaseHistory"></typeAlias>
   </typeAliases>
   
   <environments default="development">
