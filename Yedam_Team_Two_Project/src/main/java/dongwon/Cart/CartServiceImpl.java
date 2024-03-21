@@ -3,7 +3,6 @@ package dongwon.Cart;
 import org.apache.ibatis.session.SqlSession;
 
 import common.DataSource;
-import common.TestMapper;
 
 public class CartServiceImpl implements CartService {
 

@@ -8,6 +8,8 @@ public interface MypageMapper {
 	// 추후에 필히 수정/보완이 필요할 것으로 보임.
 	
 	Member info(Member member); //마이페이지의 고객정보 출력과 관련
+
+	int modifyMember(Member member);
 	
-	
+	int showMember(Member member);
 }

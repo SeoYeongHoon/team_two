@@ -1,0 +1,221 @@
+/* .single-products-catagory1 요소 */
+.single-products-catagory1 {
+	position: relative;
+	z-index: 1;
+	width: auto; /* 이미지 크기에 제약을 가하지 않음 */
+	top: 0;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.single-products-catagory1 {
+		width: 50%;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.single-products-catagory1 {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.single-products-catagory1 {
+		width: 100%;
+	}
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+	.single-products-catagory1 {
+		width: 50%;
+	}
+}
+
+.single-products-catagory1 a {
+	display: block;
+	width: 100%;
+	position: relative;
+	z-index: 10;
+}
+
+.single-products-catagory1 a::after {
+	-webkit-transition-duration: 250ms;
+	transition-duration: 250ms;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	content: '';
+	background-color: rgba(60, 60, 60, 0.7);
+	z-index: 1;
+	opacity: 0;
+	visibility: hidden; /* 기본적으로는 숨김 */
+}
+
+.single-products-catagory1:hover a::after, .single-products-catagory1:focus a::after
+	{
+	opacity: 1;
+	visibility: visible; /* 호버할 때 보이도록 변경 */
+}
+
+.single-products-catagory1 a img {
+	width: 100%;
+	height: auto; /* 이미지의 높이를 자동으로 조정 */
+}
+
+.single-products-catagory1 .hover-content1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+
+@media only screen and (max-width: 767px) {
+	.single-products-catagory1 .hover-content1 {
+		top: 0;
+		left: 0;
+	}
+}
+
+.single-products-catagory1 .hover-content1 .line {
+	width: 80px;
+	height: 3px;
+	background-color: #fbb710;
+	display: block;
+	margin-bottom: 15px;
+}
+
+.single-products-catagory1 .hover-content1 p {
+	font-size: 16px;
+	color: #6d6d6d;
+	line-height: 1;
+	margin-bottom: 5px;
+	transition-duration: 250ms;
+	visibility: hidden; /* 기본적으로는 숨김 */
+}
+
+.single-products-catagory1 .hover-content1 h4 {
+	margin-bottom: 0;
+	transition-duration: 250ms;
+	visibility: hidden; /* 기본적으로는 숨김 */
+}
+
+.single-products-catagory1:hover .hover-content1 p,
+	.single-products-catagory1:hover .hover-content1 h4,
+	.single-products-catagory1:focus .hover-content1 p,
+	.single-products-catagory1:focus .hover-content1 h4 {
+	color: #fff;
+	visibility: visible; /* 호버할 때 보이도록 변경 */
+}
+
+.inlineHash {
+	display: inline;
+	margin-right: 5px; /* 여백을 추가하여 각 해시태그 사이에 간격을 만듭니다. */
+	margin-bottom: 5px; text-decoration : none;
+	background-color: yellow;
+	text-decoration: none;
+}
+
+
+
+.product-meta-data1 a:nth-child(5){
+	display: block;
+}
+
+.main-content-wrapper .single-product-area .single_product_desc .line
+	{
+	width: 80px;
+	height: 3px;
+	background-color: #fbb710;
+	margin-bottom: 15px;
+	display: block;
+}
+
+
+.main-content-wrapper .single-product-area .single_product_desc .product-meta-data1 .product-price
+	{
+	font-size: 24px;
+	font-weight: 400;
+	color: #fbb710;
+	line-height: 1;
+	margin-bottom: 10px;
+}
+
+.main-content-wrapper .single-product-area .single_product_desc 
+	{
+	display: block;
+}
+
+.main-content-wrapper .single-product-area .single_product_desc .product-meta-data1 a h6
+	{
+	font-size: 30px;
+	margin-bottom: 5px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.main-content-wrapper .single-product-area .single_product_desc .product-meta-data1 a h6
+		{
+		font-size: 20px;
+	}
+}
+
+.main-content-wrapper .single-product-area .single_product_desc .product-meta-data1 .ratings-review .ratings i
+	{
+	font-size: 10px;
+	color: #fbb710;
+}
+
+.main-content-wrapper .single-product-area .single_product_desc .ratings-review .review a
+	{
+	display: inline-block;
+	color: #6b6b6b;
+	font-size: 14px;
+}
+.product-meta-data1 {
+	color: #6b6b6b;
+	font-size: 14px;
+}
+
+.main-content-wrapper .single-product-area .single_product_desc .product-meta-data1 .avaibility
+	{
+	margin-bottom: 0;
+	font-size: 12px;
+	color: #6b6b6b;
+	line-height: 1;
+}
+
+.single-product-wrapper .product-description {
+	position: relative;
+	z-index: 1;
+	margin-top: 25px;
+}
+
+.single-product-wrapper .product-description .product-meta-data1 .line {
+	width: 80px;
+	height: 3px;
+	background-color: #fbb710;
+	margin-bottom: 15px;
+	display: block;
+}
+
+.single-product-wrapper .product-description .product-meta-data1 .product-price
+	{
+	line-height: 1;
+	color: #fbb710;
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.single-product-wrapper .product-description  {
+	display: inline-block;
+}
+
+.single-product-wrapper .product-description .product-meta-data1 a h6 {
+	margin-bottom: 0;
+}
+
+.main-content-wrapper .single-product-area .single_product_desc .product-meta-data1 .avaibility i
+	{
+	color: #20d34a;
+	font-size: 12px;
+}

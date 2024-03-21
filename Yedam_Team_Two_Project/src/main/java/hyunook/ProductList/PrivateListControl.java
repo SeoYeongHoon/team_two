@@ -19,11 +19,12 @@ public class PrivateListControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 req.setCharacterEncoding("utf-8");
 		 resp.setContentType("text/json;charset=utf-8");
+		 String goods ="카테고리1";
+		 System.out.println(goods);
 	     GoodsListService svc = new GoodsListServiceImpl();
-	     List<Goods> list = svc.privateProductList();
+	     List<Goods> list = svc.privateProductList(goods);
          Gson gson = new GsonBuilder().create();
 	     String json = gson.toJson(list);
-         req.setAttribute("json", json);	     
 	     System.out.println("json"+json);
 	    
 	     resp.getWriter().print(json);
