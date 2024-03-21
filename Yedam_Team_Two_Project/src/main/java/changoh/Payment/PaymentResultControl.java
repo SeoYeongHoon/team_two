@@ -32,7 +32,7 @@ public class PaymentResultControl implements Control {
 		
 		
 		newPH.setPrice(Integer.parseInt(price));
-		newPH.setPId(pId);
+		newPH.setpId(pId);
 		newPH.setMemberId(member.getMemberId());
 		
 		if (svc.createPurchaseHistoryData(newPH) > 0) {

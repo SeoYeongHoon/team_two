@@ -28,7 +28,6 @@ public class QnAControl implements Control {
 		
 		//요청객체의 파라미터에서 qnaContent의 값을 가져옴
 		String content = req.getParameter("content");
-		// 이 값들을 담은 객체에 저장하
 
 		QnAService svc = new QnAServiceImpl();
 		svc.insertQnA(memberId, title, content);
