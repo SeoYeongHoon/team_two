@@ -13,12 +13,15 @@ import changoh.Magazine.MagazineControl;
 import changoh.Magazine.MagazineListControl;
 import changoh.Payment.PaymentAjaxControl;
 import changoh.Payment.PaymentControl;
+import changoh.Payment.PaymentMemberInfoAjaxControl;
+import changoh.Payment.PaymentPurchaseAjaxControl;
 import changoh.Payment.PaymentResultControl;
 
 import dongwon.Cart.CartControl;
 import dongwon.Mypage.MypageControl;
 import dongwon.QnA.QnAControl;
 import dongwon.Support.SupportControl;
+
 
 import hyunook.AddMembers.AddMemberControl;
 import hyunook.AddMembers.AddMemberForm;
@@ -39,10 +42,14 @@ import hyunook.ProductList.PrivateListForm;
 import youhwan.Company.Companyform;
 import youhwan.Product.Productform;
 import youhwan.Product.ReviewControl;
+
+import youhwan.Product.ReviewTotalCount;
+
+import younghun.Admin.AdminConfirmControl;
+
 import younghun.Admin.AdminControl;
 import younghun.Admin.ConfirmControl;
 import younghun.Manage.ManageControl;
-import younghun.Manage.ManageForm;
 import younghun.Manage.ModifyControl;
 import younghun.Manage.ModifyForm;
 import younghun.Manage.RemoveControl;
@@ -69,8 +76,10 @@ public class MainController extends HttpServlet {
 		controls.put("/magazineList.do", new MagazineListControl()); // 뉴스 리스트 페이지
 		controls.put("/magazine.do", new MagazineControl()); // 뉴스 단일 페이지
 		controls.put("/payment.do", new PaymentControl());
-		controls.put("/paymentAjax.do", new PaymentAjaxControl());
 		controls.put("/paymentResult.do", new PaymentResultControl());
+		controls.put("/paymentAjax.do", new PaymentAjaxControl());
+		controls.put("/paymentPurchaseAjax.do", new PaymentPurchaseAjaxControl());
+		controls.put("/paymentMemberInfoAjax.do", new PaymentMemberInfoAjaxControl());
 		
 		// 동원
 		controls.put("/mypage.do", new MypageControl());
@@ -97,23 +106,26 @@ public class MainController extends HttpServlet {
 		// 유환
 		controls.put("/product.do", new Productform()); // 상세페이지
 		controls.put("/review.do", new ReviewControl()); // 상세페이지
+		controls.put("/reviewcount.do", new ReviewTotalCount()); // 리뷰 총페이지
 		controls.put("/company.do", new Companyform()); // 회사
 
 		// 영훈
 		controls.put("/admin.do", new AdminControl());
+		controls.put("/adminConfirm.do", new AdminConfirmControl());
+		controls.put("/confirmGoods.do", new ConfirmControl());
+		
+		controls.put("/management.do", new ManageControl()); // 개인 판매자용 상품 관리 페이지
 		
 		controls.put("/request.do", new RequestControl()); 
 		controls.put("/requestForm.do", new RequestForm()); // 관리자 페이지에 등록된 유저 요청건의 확인 버튼 클릭 시 이동되는 페이지
 		
-		controls.put("/manageForm.do", new ManageControl()); 
-		controls.put("/management.do", new ManageForm()); // 개인 판매자용 상품 관리 페이지
+		controls.put("/management.do", new ManageControl()); // 개인 판매자용 상품 관리 페이지
 		
 		controls.put("/modifyForm.do", new ModifyForm());
 		controls.put("/modifyGoods.do", new ModifyControl());
 		
 		controls.put("/removeForm.do", new RemoveGoodsForm());
 		controls.put("/removeGoods.do", new RemoveControl());
-		controls.put("/confirmRequest.do", new ConfirmControl());
 	}
 
 	@Override

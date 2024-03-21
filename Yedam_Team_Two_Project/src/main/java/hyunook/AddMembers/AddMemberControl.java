@@ -7,11 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 import common.Control;
 import common.Member;
+import common.MemberType;
 import hyunook.Login.MemberService;
 import hyunook.Login.MemberServiceImpl;
 
@@ -45,7 +43,7 @@ public class AddMemberControl implements Control {
         member.setName(name);
         member.setEmail(email);
         member.setTel(tel);
-        member.setMemberType(Member.MemberType.valueOf(memberType));
+        member.setMemberType(MemberType.valueOf(memberType));
         MemberService svc = new MemberServiceImpl();
         if (svc.addMember(member)) {
         	HttpSession session = req.getSession();

@@ -36,7 +36,11 @@ public class QnAControl implements Control {
 		qna.setMemberId(memberId);
 		qna.setTitle(title);
 		qna.setContent(content);
-		//이 QnA 패키지에서 구현하고자 하는 기능(메소드)을 담은 Service 객체를 생성함.*객체를 생성해야 해당 메소드를 쓰니까
+		
+		//여기까지 분석하고, 아래 QnAService svc = new QnAServiceImpl()를 해석하기 위해
+		//QnAService와 QnAServiceImpl에서 분석 시작
+		
+		//이 QnA 패키지에서 구현하고자 하는 기능(메소드)을 담은 Service 객체를 생성함.*객체를 생성해야 해당 메소드를 씀
 		QnAService svc = new QnAServiceImpl();
 		qna = svc.infoQnA(qna);
 		//qna 객체에, 기능(메소드)를 적용시킴, 단 여기서는 기능상 딱히 필요가 없을 듯.

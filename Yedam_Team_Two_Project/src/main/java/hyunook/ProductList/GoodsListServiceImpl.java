@@ -14,8 +14,11 @@ public class GoodsListServiceImpl implements GoodsListService {
 
 	@Override
 	// 개인판매 리스트
-	public List<Goods> privateProductList() {
-		return mapper.privateProductList();
+
+	public List<Goods> privateProductList(GoodsSearch search) {
+		return mapper.privateProductList(search);
+
+
 	}
 
 	@Override
@@ -29,8 +32,8 @@ public class GoodsListServiceImpl implements GoodsListService {
 	}
   
   	@Override
-	public List<Goods> goodsList() {
-		return mapper.goodsList();
+	public List<Goods> goodsList(int page) {
+		return mapper.goodsList(page);
 	}
 
 	@Override
@@ -43,4 +46,8 @@ public class GoodsListServiceImpl implements GoodsListService {
 		return mapper.selectGoods(goodsId);
 	}
 
+	@Override
+	public int boardTotalCnt() {
+		return mapper.getTotalCnt();
+	}
 }
