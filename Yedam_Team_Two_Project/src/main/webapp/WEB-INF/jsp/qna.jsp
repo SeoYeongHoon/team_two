@@ -4,11 +4,14 @@
 <!DOCTYPE html>
 <html lang="ko">   
 <%
-		if(session.getAttribute("member")==null)
-		{
-			response.sendRedirect("loginForm.do");
-		}
-	%>
+//비로그인 상태면 로그인폼.do로 보내려고 하는데 이 코드가 안 먹는 이유를 잘 모르겠다.
+    String memberId = (String) session.getAttribute("memberId");
+    if (memberId == null || memberId.isEmpty()) {
+        response.sendRedirect("loginForm.do");
+    } else {
+        session.setAttribute("memberId", memberId);
+    }
+%>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <title>PAPATA LABS</title>
 
@@ -111,22 +114,6 @@ document.getElementById('btnSave').addEventListener('click', function(e) {
         xhr.send(params);
     }
 });
-
-// 버튼 누르면 객체 전송하는 기능 구현
-//document.getElementById('btnSave').addEventListener('click', function(e) {
-//	fetch('../qna.do', {
-//		method: 'post',
-//		headers: {
-//			'Content-Type': 'text/json'
-//		},
-//		body: JSON.stringify()
-//	})
-//		.then(resolve => resolve.text())
-//		.then(result => console.log(result))
-//		.catch(err => console.log(err));
-//
-//})
-
 
 
 $(document).ready(function(){
