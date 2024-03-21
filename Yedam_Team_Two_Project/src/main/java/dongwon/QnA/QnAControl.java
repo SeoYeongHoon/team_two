@@ -28,31 +28,10 @@ public class QnAControl implements Control {
 		
 		//요청객체의 파라미터에서 qnaContent의 값을 가져옴
 		String content = req.getParameter("content");
-		
-		//가져온 위 3가지 값을 담아줄 qna 객체를 생성함
-		QnA qna = new QnA();
-		
-		//qna 클래스의 setter 메소드를 사용하여, 객체에 값을 담음 (롬복 사용)
-		qna.setMemberId(memberId);
-		qna.setTitle(title);
-		qna.setContent(content);
-		
-		//여기까지 분석하고, 아래 QnAService svc = new QnAServiceImpl()를 해석하기 위해
-		//QnAService와 QnAServiceImpl에서 분석 시작
-		
-		//이 QnA 패키지에서 구현하고자 하는 기능(메소드)을 담은 Service 객체를 생성함.*객체를 생성해야 해당 메소드를 씀
-		QnAService svc = new QnAServiceImpl();
-		qna = svc.infoQnA(qna);
-		//qna 객체에, 기능(메소드)를 적용시킴, 단 여기서는 기능상 딱히 필요가 없을 듯.
-		
-		//완성된 객체를, 요청 객체에 담아서 (+ title과 content까지 담아서.)
-		req.setAttribute("qna", qna);
-		req.setAttribute("qnaTitle", title);
-		req.setAttribute("qnaContent", content);
 
+		QnAService svc = new QnAServiceImpl();
+		svc.insertQnA(memberId, title, content);
 		//이 경로에 보내겠다. * 이 경로는 관리자의 요청 처리 페이지가 되어야 한다.
-		//추후 논의하고 수정이 필요하다는 소리다.
-		//근데 이렇게 되면.. 그냥 QnAControl에서 Service에서 할것까지 다 한거 아닌가?
 		String path = "jsp/qna.tiles";
 		RequestDispatcher dispatch = req.getRequestDispatcher(path);
 		dispatch.forward(req, resp);
