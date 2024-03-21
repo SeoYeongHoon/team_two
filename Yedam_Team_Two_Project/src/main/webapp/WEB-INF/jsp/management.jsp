@@ -1,5 +1,3 @@
-
-<%@page import="common.Goods" %>
 <%@page import="common.PageDTO" %>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -79,7 +77,6 @@
 											<td>${goods.name }</td>
 											<td>${goods.description }</td>
 											<td><fmt:formatDate value="${goods.reqDate }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-											<!-- <td><a href="#" onclick="modifyGoods()" class="badge badge-sm bg-gradient-success">수정</a></td> -->
 											<td><a href="modifyForm.do?goodsId=${goods.goodsId }" class="badge badge-sm bg-gradient-success">수정</a></td>
 											<td><a href="removeForm.do?goodsId=${goods.goodsId }" class="badge badge-sm bg-gradient-danger" >삭제</a></td>
 										</tr>

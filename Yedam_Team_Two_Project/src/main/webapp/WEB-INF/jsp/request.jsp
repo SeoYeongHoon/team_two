@@ -17,7 +17,6 @@
 						<div class="cart-title">
 							<h2>개인 판매자 신청페이지</h2>
 						</div>
-						<!-- <form id="form" action="management.do" method="post" enctype="multipart/form-data"> -->
 						<form action="request.do" method="post" enctype="multipart/form-data">
 						    <div class="row">
 						        <div class="col-md-12 mb-3">
@@ -26,15 +25,15 @@
 						        
 						        <div class="col-md-12">
 							        <p>이미지 업로드</p>
-								    <input type="file" id="chooseFile" name="image">
+								    <input type="file" id="chooseFile" name="image" onchange="loadFile(this)">
 						        </div>
-							    <!-- <div class="fileInput col-md-12">
+							    <div class="fileInput col-md-12">
 				                    <p>파일이름: </p>
 				                    <p id="fileName"></p>
 				                </div>
 							    <div class="col-md-12 mb-3">
 							    	<div class="image-show" id="image-show"></div>
-							    </div> -->
+							    </div>
 							    
 						        <div class="col-md-12 mb-3">
 						        	<p><textarea class="form-control content_info" name="content_info" id="content_info" placeholder="내용"  cols="50" rows="10"></textarea></p>
