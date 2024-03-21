@@ -10,7 +10,8 @@ public class QnAServiceImpl implements QnAService {
 	
 	@Override
 	public QnA infoQnA(QnA qna) {
-		return mapper.qnaInfo(qna);
+		return null;
 	}
+	
 
 }

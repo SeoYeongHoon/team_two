@@ -1,6 +1,6 @@
 package dongwon.QnA;
+import java.util.List;
 
 public interface QnAMapper {
-	//QNA 작성한것 보내주기
-	QnA qnaInfo(QnA qna);
+    List<QnA> qnaInfo(QnA qna);
 }
