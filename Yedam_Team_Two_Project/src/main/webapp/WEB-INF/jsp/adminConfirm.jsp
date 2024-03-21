@@ -22,8 +22,8 @@
 	<div class="" style="margin-top: 100px; max-width: 100%;">
 		<div class="row">
 			<div class="col-12">
-				<h3>컨텐츠 수정</h3>
-				<form action="modifyGoods.do">
+				<h3><%=goods.getMemberId() %> 님의 상품</h3>
+				<form action="confirmGoods.do">
 					<input type="hidden" value="<%=goods.getGoodsId() %>" name="goodsId">
 					<table class="table">
 						<tr>
@@ -33,21 +33,16 @@
 						<tr>
 							<th>글제목</th>
 							<td colspan="3"><input class="form-control" type="text"
-								name="title" value="<%=goods.getName()%>"></td>
+								name="title" value="<%=goods.getName()%>" disabled></td>
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td colspan="3"><textarea class="form-control" name="content" cols="50" rows="10"><%=goods.getDescription()%></textarea></td>
+							<td colspan="3"><textarea class="form-control" name="content" cols="50" rows="10" placeholder="<%=goods.getDescription()%>" disabled></textarea></td>
 						</tr>
 						<tr>
 							<th>이미지</th>
 							<td colspan="3">
-								<img style="max-width: 300px; height: 50%;" src="static/img/user/<%=goods.getImage() %>">
-							</td>
-						</tr>
-						<tr>
-							<td colspan="3">
-								<input class="col-md-12" type="file" id="chooseFile" name="chooseFile">
+								<img style="width: 50%; height: 50%;" src="static/img/user/<%=goods.getImage() %>">
 							</td>
 						</tr>
 						<tr>
@@ -56,7 +51,7 @@
 						</tr>
 						<tr>
 							<td colspan="4" align="center">
-								<button type="submit" class="btn btn-primary">저장</button>
+								<button type="submit" class="btn btn-primary">승인</button>
 								<button type="reset" class="btn btn-secondary">취소</button>
 							</td>
 						</tr>

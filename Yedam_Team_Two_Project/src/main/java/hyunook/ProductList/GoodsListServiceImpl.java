@@ -29,8 +29,8 @@ public class GoodsListServiceImpl implements GoodsListService {
 	}
   
   	@Override
-	public List<Goods> goodsList() {
-		return mapper.goodsList();
+	public List<Goods> goodsList(int page) {
+		return mapper.goodsList(page);
 	}
 
 	@Override
@@ -41,5 +41,10 @@ public class GoodsListServiceImpl implements GoodsListService {
 	@Override
 	public Goods getGoods(int goodsId) {
 		return mapper.selectGoods(goodsId);
+	}
+
+	@Override
+	public int boardTotalCnt() {
+		return mapper.getTotalCnt();
 	}
 }

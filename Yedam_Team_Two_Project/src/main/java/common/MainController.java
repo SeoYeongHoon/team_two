@@ -40,7 +40,7 @@ import hyunook.ProductList.PrivateListForm;
 import youhwan.Company.Companyform;
 import youhwan.Product.Productform;
 import youhwan.Product.ReviewControl;
-
+import younghun.Admin.AdminConfirmControl;
 import younghun.Admin.AdminControl;
 import younghun.Admin.ConfirmControl;
 import younghun.Manage.ManageControl;
@@ -103,6 +103,8 @@ public class MainController extends HttpServlet {
 
 		// 영훈
 		controls.put("/admin.do", new AdminControl());
+		controls.put("/adminConfirm.do", new AdminConfirmControl());
+		controls.put("/confirmGoods.do", new ConfirmControl());
 		
 		controls.put("/management.do", new ManageControl()); // 개인 판매자용 상품 관리 페이지
 		controls.put("/manageForm.do", new ManageForm());
@@ -118,7 +120,6 @@ public class MainController extends HttpServlet {
 		
 		controls.put("/removeForm.do", new RemoveGoodsForm());
 		controls.put("/removeGoods.do", new RemoveControl());
-		controls.put("/confirmRequest.do", new ConfirmControl());
 	}
 
 	@Override
