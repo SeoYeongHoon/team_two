@@ -56,21 +56,43 @@
        
 	</select>
 	
-	<select id="goodsList">
-		SELECT goods_id,
+	<select id="goodsList" resultType="common.Goods">
+		<!-- SELECT goods_id,
                name,
                description,
                price,
                req_date,
                member_id
 		FROM goods
-		ORDER BY req_date DESC  
+		ORDER BY goods_id desc -->
+		
+		SELECT goods_id,
+               name,
+               description,
+               price,
+               req_date,
+               member_id
+		FROM (SELECT /*+ INDEX_DESC(b SYS_C008505) */ rownum rn, b.*
+			  FROM goods b
+			  <![CDATA[
+			  WHERE rownum <= (#{page} * 5)
+			  ]]>
+			  ) a
+		WHERE a.rn > (#{page} - 1) * 5
+	</select>
+	
+	<select id="getTotalCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM goods
 	</select>
 	
 	<select id="selectGoods" parameterType="int" resultType="goods">
 		SELECT goods_id,
 			   name,
-			   description
+			   description,
+			   image,
+			   req_date,
+			   member_id
 		FROM goods
 		WHERE goods_id = #{goodsId}
 	</select>
@@ -107,13 +129,14 @@
 	</insert>
 	
 	<delete id="removeGoods" parameterType="int">
-		delete goods where goods_id = #{goodsId}
+		delete goods cascade where goods_id = #{goodsId}
 	</delete>
 	
 	<update id="updateGoods" parameterType="goods">
 		UPDATE goods
 		SET    name = #{name},
-			   description = #{description}
+			   description = #{description},
+			   image = #{image}
 		WHERE goods_id = #{goodsId}
 	</update>
 </mapper>

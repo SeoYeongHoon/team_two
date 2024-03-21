@@ -10,9 +10,11 @@ public interface GoodsListService {
 
 	List<Goods> privateProductList(GoodsSearch search);
 	
-	List<Goods> goodsList();
+	List<Goods> goodsList(int page);
 	Goods getGoods(int goodsId);
 	boolean addGoods(Goods goods);
 	boolean modifyGoods(Goods goods);
 	boolean removeGoods(int goodsId);
+	
+	int boardTotalCnt();
 }

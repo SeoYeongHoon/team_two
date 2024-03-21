@@ -36,13 +36,17 @@
   <mappers>
   	<!-- 생성 예제 -->
     <!-- <mapper resource="co/yedam/board/mapper/BoardMapper.xml"/> -->
-    <mapper resource="common/testMapper.xml" />
     <mapper resource="dongwon/Mypage/MypageMapper.xml" />
     <mapper resource="dongwon/Cart/CartMapper.xml" />
     <mapper resource="dongwon/QnA/QnAMapper.xml" />
     <mapper resource="dongwon/Support/SupportMapper.xml" />
     <mapper resource="hyunook/Login/MemberMapper.xml" />
+    <mapper resource="hyunook/ProductList/GoodsMapper.xml" />
+    
     <mapper resource="changoh/Payment/PaymentMapper.xml" />
+    
+    <mapper resource="youhwan/Company/CompanyMapper.xml" />
+    <mapper resource="youhwan/Product/ProductMapper.xml" />
     <mapper resource="changoh/Magazine/MagazineMapper.xml" />
   </mappers>
 </configuration>

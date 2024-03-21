@@ -1,4 +1,6 @@
+
 <%@page import="common.Goods" %>
+<%@page import="common.PageDTO" %>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -15,43 +17,50 @@
 <link href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css" rel="stylesheet" />
 <script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
 </head>
+<style>
+.center {
+  text-align: center;
+  width: 60%;
+  margin: auto;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  /*border: 1px solid #ddd;*/
+  /*margin: 0 4px;*/
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
 <body>
-	<script>
-		/* $.get('../manageForm.do', (result) => {
-			result.forEach((item, idx, ary) => {
-				
-			});
-			
-			$(result).each((idx, item, ary) => {
-				$('<tr />').append(
-					$('<td />').text(item.goodsId).append($('<input name="goodsId" />')),
-					$('<td />').text(item.name),
-					$('<td />').text(item.description),
-					$('<td />').text(item.reqDate),
-					$('<td class="align-middle text-center" />')
-						// .append($('<a href="#" onclick="modifyGoods()" class="badge badge-sm bg-gradient-success" />').text('수정')),
-						.append($('<button type="submit" class="badge badge-sm bg-gradient-success" />').text('수정')),
-					$('<td class="align-middle" />')
-						.append($('<a href="#" onclick="removeGoods()" class="badge badge-sm bg-gradient-danger" />').text('삭제'))
-				).appendTo($('table'));
-			})
-		}) */
-	</script>
-	<form action="modifyForm.do">
-		<%-- <input type="hidden" value="${goods.goodsId }" name="goodsId"> --%>
-		<div class="container-fluid py-4">
-			<div class="row">
-				<div class="col-12">
-					<div class="card my-4 dashboard">
-						<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-							<div
-								class="bg-gradient-user shadow-primary border-radius-lg pt-4 pb-3">
-								<h6 class="text-white text-capitalize dashboard_title">상품 관리</h6>
-							</div>
+	<div class="container-fluid py-4">
+		<div class="row">
+			<div class="col-12">
+				<div class="card my-4 dashboard">
+					<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+						<div
+							class="bg-gradient-user shadow-primary border-radius-lg pt-4 pb-3">
+							<h6 class="text-white text-capitalize dashboard_title">상품 관리</h6>
 						</div>
-	
-						<div class="card-body px-0 pb-2">
-							<div class="table-responsive p-0">
+					</div>
+
+					<div class="card-body px-0 pb-2">
+						<div class="table-responsive p-0">
+							<form action="modifyForm.do" method="post">
 								<table class="table align-items-center mb-0">
 									<thead>
 										<tr>
@@ -70,33 +79,41 @@
 											<td>${goods.name }</td>
 											<td>${goods.description }</td>
 											<td><fmt:formatDate value="${goods.reqDate }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+											<!-- <td><a href="#" onclick="modifyGoods()" class="badge badge-sm bg-gradient-success">수정</a></td> -->
+											<td><a href="modifyForm.do?goodsId=${goods.goodsId }" class="badge badge-sm bg-gradient-success">수정</a></td>
+											<td><a href="removeForm.do?goodsId=${goods.goodsId }" class="badge badge-sm bg-gradient-danger" >삭제</a></td>
 										</tr>
 										</c:forEach>
 									</tbody>
 								</table>
-							</div>
+							</form>
+								<div class="center">
+								    <div class="pagination">
+									    <c:if test="${page.prev }">
+									      <a href="management.do?page=${page.starPage - 1 }"> &laquo; </a>
+									    </c:if>
+									    <c:forEach begin="${page.starPage }" end="${page.endPage }" var="p">
+									      <c:choose>
+									        <c:when test="${p eq page.page }">
+									          <a href="management.do?page=${p }" class="active">${p }</a>
+									        </c:when>
+									        <c:otherwise>
+									          <a href="management.do?page=${p }">${p }</a>
+									        </c:otherwise>
+									      </c:choose>
+									    </c:forEach>
+									    <c:if test="${page.next }">
+									      <a href="management.do?page=${page.endPage + 1 }"> &raquo; </a>
+									    </c:if>
+								    </div>
+								</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</form>
+	</div>
 	<script src="../../static/js/management.js"></script>
 	<script src="../../static/js/request.js"></script>
-	<script>
-		/* function modifyGoods() {
-			let form = document.querySelector('form');
-			console.log(form.action);
-			form.action = 'modifyGoods.do';
-			form.submit();
-		} */
-	
-		function removeGoods() {
-			let form = document.querySelector('form');
-			console.log(form.action);
-			form.action = 'removeForm.do';
-			form.submit();
-		}
-	</script>
 </body>
 </html>

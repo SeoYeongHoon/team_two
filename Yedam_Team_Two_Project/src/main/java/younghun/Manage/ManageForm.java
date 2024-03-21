@@ -13,9 +13,9 @@ public class ManageForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = "jsp/management.tiles";
-		RequestDispatcher dispatch = req.getRequestDispatcher(path);
-		dispatch.forward(req, resp);
+//		String path = "jsp/management.tiles";
+//		RequestDispatcher dispatch = req.getRequestDispatcher(path);
+//		dispatch.forward(req, resp);
 	}
 
 }

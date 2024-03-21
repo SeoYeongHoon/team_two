@@ -18,8 +18,6 @@ public class Member {
 	private MemberType memberType;
 	private String name;
 	private String password;
-	private String email;
-	private String tel;
 
 	public String getMemberId() {
 		return memberId;
@@ -68,6 +66,9 @@ public class Member {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+
+	private String email;
+	private String tel;
 
 	public enum MemberType {
 		CLIENT, // 고객
