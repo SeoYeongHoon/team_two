@@ -24,19 +24,23 @@
 			<div class="widget-desc">
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" name="category" type="radio" value="" id="amado">
+					<input class="form-check-input" name="category" type="radio" id="category"value="">
+					<label class="form-check-label" for="amado">전체</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" name="category" type="radio" id="category"value="카테고리1">
 					<label class="form-check-label" for="amado">카테고리1</label>
 				</div>
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" name="category" type="radio" value="" id="ikea">
+					<input class="form-check-input" name="category" type="radio" id="category" value="카테고리2">
 					<label class="form-check-label" for="ikea">카테고리2</label>
 				</div>
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" name="category" type="radio" value=""id="furniture"> 
-					<label class="form-check-label"
-						for="furniture">카테고리3</label>
+					<input class="form-check-input" name="category" type="radio" id="category" value="카테고리3"> 
+					<label class="form-check-label" for="furniture">카테고리3</label>
+						
 				</div>
 			</div>
 		</div>
@@ -53,16 +57,17 @@
 
 			<div class="widget-desc">
 				<div class="slider-range">
-					<div data-min="10" data-max="1000" data-unit="$"
+					<div data-min="10000" data-max="50000" data-unit=""
 						class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-						data-value-min="10" data-value-max="1000" data-label-result="">
+						data-value-min="10000" data-value-max="50000" data-label-result="">
 						<div class="ui-slider-range ui-widget-header ui-corner-all"></div>
 						<span class="ui-slider-handle ui-state-default ui-corner-all"
 							tabindex="0"></span> <span
 							class="ui-slider-handle ui-state-default ui-corner-all"
 							tabindex="0"></span>
 					</div>
-					<div class="range-price">$10 - $1000</div>
+					<div class="range-price">10000  50000</div>
+					<input type="button" value="가격검색" id="rangeBtn">
 				</div>
 			</div>
 		</div>
@@ -81,13 +86,11 @@
 						<div class="product-sorting d-flex">
 							<div class="sort-by-date d-flex align-items-center mr-15">
 								<p>Sort by</p>
-								<form action="#" method="get">
-									<select name="select" id="sortBydate">
-										<option value="value">Date</option>
-										<option value="value">Newest</option>
-										<option value="value">Popular</option>
+									<select name="order" id="order" >
+										<option value="new">최근순</option>
+										<option value="old">오래된순</option>
+										<option value="popular">인기순</option>
 									</select>
-								</form>
 							</div>
 						</div>
 					</div>
@@ -117,15 +120,14 @@
 	</div>
 <!-- 주석 -->
 	<script>
-	function showList(categori){
+	 function showList(category,order,price1=10000,price2=50000){
+	  $('#productList').html('');
       $.ajax({
 	  url:'privateListControl.do',
 	  method:'post',
-	  data : 
+	  data : {category : category, order : order, price1 : price1, price2 : price2},
 	  success:function(result){
-		  console.log(result)
-		  result.forEach(prop =>{
-			  console.log(prop.image)
+		      result.forEach(prop =>{
 			  //별배열 담기
 			  let stars = [];
               for (let i = 0; i < prop.scoreId; i++) {
@@ -135,9 +137,7 @@
               $('.inlineHash').text("");
               let hashTags = [];
               let hashTag = prop.hashtag;
-              console.log(prop.hashtag);
               hashTags = hashTag.split("#");
-              console.log(hashTags);
               //전체목록 표시
 			      $("#productList").append(
 					    $("<div>", { class: 'col-2 col-sm-4 col-md-6 col-xl-4' }).append(
@@ -155,7 +155,7 @@
 					            ),
 					            $("<div>", { class: 'product-description d-flex align-items-center justify-content-between' }).append(
 					                $("<div>", { class: 'product-meta-data1' }).append(
-					                    $("<a>", { class: 'product-price', href: 'product-details.html', text:prop.name }), // 가격
+					                    $("<a>", { class: 'product-price', href: 'product-details.html', text:prop.name}), // 이름
 					                    $("<a>", { href: 'product-details.html' }).append(
 					                        $("<h6>", { text: prop.price+"원" }) // 제품명
 					                    )
@@ -183,7 +183,54 @@
           console.error(error);
       }
    })
-}//function 끝 
+} 
+//카테고리
+$('.form-check').on("change", function(){
+	let price = $('.range-price').text()
+	console.log(price);
+	let priceSlice1 = price.substring(0,6);
+    let priceSlice2 = price.substring(7);
+    let price1 = priceSlice1.trim();
+    let price2 = priceSlice2.trim();
+	let category =$('input[name=category]:checked').val()
+	let order = $('select[name=order]').val();
+	console.log('지금'+order+category+price1+price2)
+	showList(category,order,price1,price2);  
+})
+
+//정렬순
+$(document).ready(function(){
+    $('#order').on("change", function(){
+    	let category = $('input[name=category]:checked').val();
+        let order = $(this).val();
+        let price = $('.range-price').text()
+        console.log(price);
+    	let priceSlice1 = price.substring(0,6);
+        let priceSlice2 = price.substring(7);
+        let price1 = priceSlice1.trim();
+        let price2 = priceSlice2.trim();
+        console.log('now'+order+category+price1+price2)
+        showList(category,order,price1,price2);  
+    });
+});
+//가격순
+
+$('#rangeBtn').on("click", function(){
+	let price = $('.range-price').text();
+    $('#productList').html('');
+    console.log(price);
+    let priceSlice1 = price.substring(0,6);
+    let priceSlice2 = price.substring(7);
+    let price1 = priceSlice1.trim();
+    let price2 = priceSlice2.trim();
+    let order = $('select[name=order]').val();
+    let category =$('input[name=category]:checked').val()
+    showList(category,order,price1,price2);  
+});
+
+
+
+showList();
 	</script>
 
 </body>

@@ -6,6 +6,7 @@
   <!-- SQL문도 이렇게 작성하는게 맞는지 확신 안섬. -->
   <!-- 일단 작성해놓고 후에 점검.. -->
     <select id="info" resultType="Member">
+    <!-- 세션에서 받아와야 하므로, 파라미터를 붙여야 할 것으로 예상함. -->
 		SELECT member_id, 
 			   member_type,
 			   name,
@@ -14,4 +15,16 @@
 			   tel
 		FROM   Member
 	</select>
+	
+    <update id="edit" parameterType="Member">
+		UPDATE Member
+		SET    member_id = #{memberId}, 
+			   member_type = #{memberType},
+			   name = #{name},
+			   password = #{password},
+			   email = #{email},
+			   tel = #{tel}
+	   WHERE   member_id = #{MemberId}
+    </update>
+
 </mapper>

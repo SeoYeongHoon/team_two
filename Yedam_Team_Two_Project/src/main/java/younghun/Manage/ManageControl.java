@@ -3,34 +3,36 @@ package younghun.Manage;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import common.Control;
 import common.Goods;
+import common.PageDTO;
 import hyunook.ProductList.GoodsListService;
 import hyunook.ProductList.GoodsListServiceImpl;
 
 public class ManageControl implements Control {
 
 	@Override
-	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/json;charset=utf-8");
+	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
+
+		String page = req.getParameter("page");
+		page = page == null ? "1" : page;
+		
+		int boardCountInPage = Integer.parseInt(page);
 		
 		GoodsListService svc = new GoodsListServiceImpl();
-		List<Goods> list = svc.goodsList();
+		List<Goods> list = svc.goodsList(boardCountInPage);
 		
-		Gson gson = new GsonBuilder().create();
+		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), svc.boardTotalCnt(), 5);
 		
-		String json = gson.toJson(list);
+		req.setAttribute("list", list);
+		req.setAttribute("page", pageDTO);
 		
-		resp.getWriter().print(json);
-		System.out.println(json);
+		String path = "jsp/management.tiles";
+		req.getRequestDispatcher(path).forward(req, resp);
 	}
 
 }

@@ -19,12 +19,26 @@ public class PrivateListControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 req.setCharacterEncoding("utf-8");
 		 resp.setContentType("text/json;charset=utf-8");
-		 String goods ="카테고리1";
-		 System.out.println(goods);
+		 String category = req.getParameter("category");
+		 String order = req.getParameter("order");
+		 String price1 = req.getParameter("price1");
+		 String price2 = req.getParameter("price2");
+		 System.out.println("category"+category);
+		 System.out.println("order"+order);
+		 System.out.println("price1"+price1);
+		 System.out.println("price2"+price2);
+		 GoodsSearch search = new GoodsSearch();
+		 search.setCategory(category);
+		 search.setOrder(order);
+		 search.setPrice1(Integer.parseInt(price1));
+		 search.setPrice2(Integer.parseInt(price2));
 	     GoodsListService svc = new GoodsListServiceImpl();
-	     List<Goods> list = svc.privateProductList(goods);
+	     List<Goods> list = svc.privateProductList(search);
+	     
+	     System.out.println(search);
+	     
          Gson gson = new GsonBuilder().create();
-	     String json = gson.toJson(list);
+	     String json = gson.toJson(list); //자동으로 ajax 
 	     System.out.println("json"+json);
 	    
 	     resp.getWriter().print(json);
