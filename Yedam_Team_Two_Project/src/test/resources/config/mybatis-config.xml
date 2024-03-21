@@ -17,7 +17,9 @@
   	<typeAlias alias="Cart" type="dongwon.Cart.Cart"/> 	
   	<typeAlias alias="member" type="common.Member"/>
   	<typeAlias alias="goods" type="common.Goods"/>
+  	
   	<typeAlias alias="magazine" type="changoh.Magazine.Magazine"></typeAlias>
+  	<typeAlias alias="purchaseHistory" type="changoh.Payment.PurchaseHistory"></typeAlias>
   </typeAliases>
   
   <environments default="development">
@@ -48,5 +50,7 @@
     <mapper resource="youhwan/Company/CompanyMapper.xml" />
     <mapper resource="youhwan/Product/ProductMapper.xml" />
     <mapper resource="changoh/Magazine/MagazineMapper.xml" />
+    
+    
   </mappers>
 </configuration>

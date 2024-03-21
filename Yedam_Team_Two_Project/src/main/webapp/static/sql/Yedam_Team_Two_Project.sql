@@ -5,6 +5,8 @@ WHERE  object_type = 'TABLE';
 
 --테이블 일괄 삭제
 DROP TABLE MEMBER CASCADE CONSTRAINTS;
+DROP TABLE WISH_LIST CASCADE CONSTRAINTS;
+DROP TABLE PURCHASEHISTORY CASCADE CONSTRAINTS;
 DROP TABLE MCATEGORIES CASCADE CONSTRAINTS;
 DROP TABLE CATEGORIES CASCADE CONSTRAINTS;
 DROP TABLE SCOREGRADE CASCADE CONSTRAINTS;
@@ -12,9 +14,7 @@ DROP TABLE GOODS CASCADE CONSTRAINTS;
 DROP TABLE QNA CASCADE CONSTRAINTS;
 DROP TABLE CART CASCADE CONSTRAINTS;
 DROP TABLE REVIEW CASCADE CONSTRAINTS;
-DROP TABLE WISH_LIST CASCADE CONSTRAINTS;
 DROP TABLE MAGAZINE CASCADE CONSTRAINTS;
-DROP TABLE PURCHASEHISTORY CASCADE CONSTRAINTS;
 
 --시퀀스 일괄 삭제문 출력
 SELECT 'DROP SEQUENCE ' || object_name || ' ;'
@@ -22,7 +22,6 @@ FROM user_objects
 WHERE object_type = 'SEQUENCE';
 
 --시퀀스 일괄 삭제
-DROP SEQUENCE P_ID_SEQ ;
 DROP SEQUENCE MEMBER_ID_SEQ ;
 DROP SEQUENCE GOODS_ID_SEQ ;
 DROP SEQUENCE MAGAZINE_ID_SEQ ;
@@ -30,6 +29,7 @@ DROP SEQUENCE QNA_ID_SEQ ;
 DROP SEQUENCE WISH_GOODS_ID_SEQ ;
 DROP SEQUENCE CART_ID_SEQ ;
 DROP SEQUENCE REVIEW_ID_SEQ ;
+DROP SEQUENCE P_ID_SEQ ;
 
 --테이블 생성
 CREATE TABLE Member(
@@ -115,10 +115,10 @@ CREATE TABLE Magazine (
 );
 
 CREATE TABLE PurchaseHistory (
-    p_id      NUMBER       PRIMARY KEY,
+    p_id      VARCHAR(50)  PRIMARY KEY,
     p_date    DATE DEFAULT SYSDATE,
-    member_id VARCHAR(30)  REFERENCES Member(member_id),
-    goods_id  NUMBER       REFERENCES Goods(goods_id)
+    price     NUMBER,
+    member_id VARCHAR(30)  REFERENCES Member(member_id)
 );
 
 --시퀀스 생성
@@ -184,7 +184,7 @@ CREATE SEQUENCE review_id_seq
        NOCYCLE
        NOCACHE
        NOORDER;
-
+       
 CREATE SEQUENCE p_id_seq
        INCREMENT BY 1
        START WITH   0
@@ -192,8 +192,7 @@ CREATE SEQUENCE p_id_seq
        MAXVALUE     99999
        NOCYCLE
        NOCACHE
-       NOORDER;    
-       
+       NOORDER;       
 --더미값 넣기(100개 씩)
 BEGIN
       FOR i IN 1..30
@@ -407,12 +406,12 @@ BEGIN
       LOOP
       INSERT INTO PurchaseHistory(p_id,
                                   p_date,
-                                  member_id,
-                                  goods_id)
-      VALUES                     (p_id_seq.NEXTVAL,
+                                  price,
+                                  member_id)
+      VALUES                     ('ORDER-userId1-2' || p_id_seq.NEXTVAL,
                                   SYSDATE,
-                                  'userId1',
-                                  1);
+                                  1000,
+                                  'userId1');
       END LOOP;
       COMMIT;
 END;

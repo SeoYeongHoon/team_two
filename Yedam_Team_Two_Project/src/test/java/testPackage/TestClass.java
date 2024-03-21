@@ -18,8 +18,7 @@ public class TestClass {
 		member.setMemberId("userId1");
 		
 		System.out.println(member.toString());
-		List<Goods> list = mapper.getCartList(member);
-		
-		System.out.println(list);
+		int newNumTest = mapper.getNewPurchaseHistoryNum(member);
+		System.out.println(newNumTest + 1);
 	}
 }

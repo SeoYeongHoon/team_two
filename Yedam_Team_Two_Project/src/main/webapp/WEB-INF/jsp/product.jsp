@@ -51,7 +51,7 @@
 								<div class="carousel-item active">
 									<a class="gallery_img"
 										href="../../static/img/product-img/pro-big-1.jpg"> <img
-										class=` "d-block
+										class=` "d-block1
 										w-100" src="../../static/img/product-img/pro-big-1.jpg"
 										alt="First slide">
 									</a>
@@ -120,19 +120,34 @@
 						<!-- Add to Cart Form -->
 						<form class="cart clearfix" method="post">
 							<div class="cart-btn d-flex mb-50">
-								<!-- <p>Qty</p>
+							<!-- 	 <p>Qty</p>
                                     <div class="quantity">
                                         <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
                                         <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
                                         <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
-                                    </div> -->
+                                    </div>  -->
 
 							</div>
 							<div class="review">
-
-								<input id="review" value="" size="40px" type="text"
-									placeholder="리뷰"> <input type="submit" name="addtocart"
-									value="등록" id="button" size="20px">
+								<input id="review" size="40px" type="text" placeholder="리뷰">
+								<input id="reviewbutton" type="submit" value="등록" id="button" size="20px">
+								<hr />
+								<table id="reviewtable">
+									<tr>
+										<th>아이디</th>
+									</tr>
+									<tr>
+										<th>제목</th>
+									</tr>
+										<th>내용</th>
+									<tr>
+										<th>게시날짜</th>
+									</tr>
+									<tr>
+										<th>점수</th>
+									</tr>
+									
+								</table>
 							</div>
 							<br>
 							<div class="d-flex">
@@ -151,9 +166,31 @@
 
 	</div>
 	<!-- Product Details Area End -->
-
 	</div>
 	<script>
+	
+	 	fetch('../review.do')
+		.then(result => result.json())
+		.then(result => {
+			console.log(result);
+		}) 
+		
+		fetch('../reviewcount.do')
+		.then(result => result.json())
+		.then(result => {
+			console.log(result);
+		})
+		// 
+		$('.reviewbutton').on('click', function(e) {
+			let review = $('/review').val();
+			
+			let delBtn = $('<button />삭제</button>')
+			delBtn.on('click', function(e) {
+				delBtn.parent().remove();
+			})
+			$('')
+		})
+		
 		
 	</script>
 </body>

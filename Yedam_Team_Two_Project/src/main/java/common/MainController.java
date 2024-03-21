@@ -13,6 +13,8 @@ import changoh.Magazine.MagazineControl;
 import changoh.Magazine.MagazineListControl;
 import changoh.Payment.PaymentAjaxControl;
 import changoh.Payment.PaymentControl;
+import changoh.Payment.PaymentMemberInfoAjaxControl;
+import changoh.Payment.PaymentPurchaseAjaxControl;
 import changoh.Payment.PaymentResultControl;
 
 import dongwon.Cart.CartControl;
@@ -40,7 +42,11 @@ import hyunook.ProductList.PrivateListForm;
 import youhwan.Company.Companyform;
 import youhwan.Product.Productform;
 import youhwan.Product.ReviewControl;
+
+import youhwan.Product.ReviewTotalCount;
+
 import younghun.Admin.AdminConfirmControl;
+
 import younghun.Admin.AdminControl;
 import younghun.Admin.ConfirmControl;
 import younghun.Manage.ManageControl;
@@ -70,8 +76,10 @@ public class MainController extends HttpServlet {
 		controls.put("/magazineList.do", new MagazineListControl()); // 뉴스 리스트 페이지
 		controls.put("/magazine.do", new MagazineControl()); // 뉴스 단일 페이지
 		controls.put("/payment.do", new PaymentControl());
-		controls.put("/paymentAjax.do", new PaymentAjaxControl());
 		controls.put("/paymentResult.do", new PaymentResultControl());
+		controls.put("/paymentAjax.do", new PaymentAjaxControl());
+		controls.put("/paymentPurchaseAjax.do", new PaymentPurchaseAjaxControl());
+		controls.put("/paymentMemberInfoAjax.do", new PaymentMemberInfoAjaxControl());
 		
 		// 동원
 		controls.put("/mypage.do", new MypageControl());
@@ -98,6 +106,7 @@ public class MainController extends HttpServlet {
 		// 유환
 		controls.put("/product.do", new Productform()); // 상세페이지
 		controls.put("/review.do", new ReviewControl()); // 상세페이지
+		controls.put("/reviewcount.do", new ReviewTotalCount()); // 리뷰 총페이지
 		controls.put("/company.do", new Companyform()); // 회사
 
 		// 영훈

@@ -63,7 +63,7 @@
                price,
                req_date,
                member_id
-		FROM (SELECT /*+ INDEX_DESC(b SYS_C008505) */ rownum rn, b.*
+		FROM (SELECT /*+ INDEX_DESC(b SYS_C008318) */ rownum rn, b.*
 			  FROM goods b
 			  <![CDATA[
 			  WHERE rownum <= (#{page} * 5)

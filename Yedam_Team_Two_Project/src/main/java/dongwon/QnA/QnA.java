@@ -57,47 +57,4 @@ public class QnA {
 
 	private String content;
 
-<<<<<<< HEAD
-=======
-	public int getQnaId() {
-		return qnaId;
-	}
-
-	public void setQnaId(int qnaId) {
-		this.qnaId = qnaId;
-	}
-
-	public Date getQnaDate() {
-		return qnaDate;
-	}
-
-	public void setQnaDate(Date qnaDate) {
-		this.qnaDate = qnaDate;
-	}
-
-	public String getMemberId() {
-		return memberId;
-	}
-
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
->>>>>>> branch 'younghun' of https://github.com/SeoYeongHoon/team_two.git
 }
