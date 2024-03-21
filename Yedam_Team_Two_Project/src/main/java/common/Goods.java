@@ -24,6 +24,119 @@ enum RequestType {
 public class Goods {
 	private int goodsId;
 	private String name;
+
+	public int getGoodsId() {
+		return goodsId;
+	}
+
+	public void setGoodsId(int goodsId) {
+		this.goodsId = goodsId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public String getHashtag() {
+		return hashtag;
+	}
+
+	public void setHashtag(String hashtag) {
+		this.hashtag = hashtag;
+	}
+
+	public int getViewCnt() {
+		return viewCnt;
+	}
+
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public GoodsState getGoodsState() {
+		return goodsState;
+	}
+
+	public void setGoodsState(GoodsState goodsState) {
+		this.goodsState = goodsState;
+	}
+
+	public RequestType getReqType() {
+		return reqType;
+	}
+
+	public void setReqType(RequestType reqType) {
+		this.reqType = reqType;
+	}
+
+	public Date getReqDate() {
+		return reqDate;
+	}
+
+	public void setReqDate(Date reqDate) {
+		this.reqDate = reqDate;
+	}
+
+	public Date getRespDate() {
+		return respDate;
+	}
+
+	public void setRespDate(Date respDate) {
+		this.respDate = respDate;
+	}
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+	public int getScoreId() {
+		return scoreId;
+	}
+
+	public void setScoreId(int scoreId) {
+		this.scoreId = scoreId;
+	}
+
 	private String description;
 	private int price;
 	private String hashtag; // 해쉬태그 =>
