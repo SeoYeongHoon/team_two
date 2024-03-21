@@ -14,8 +14,10 @@ public class GoodsListServiceImpl implements GoodsListService {
 
 	@Override
 	// 개인판매 리스트
-	public List<Goods> privateProductList(String goods) {
-		return mapper.privateProductList(goods);
+
+	public List<Goods> privateProductList(GoodsSearch search) {
+		return mapper.privateProductList(search);
+
 	}
 
 	@Override
