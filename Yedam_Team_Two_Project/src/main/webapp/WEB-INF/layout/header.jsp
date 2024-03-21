@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="../../static/css/admin.css">
+<link href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css" rel="stylesheet" />
+<script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
 <!-- <link rel="stylesheet" href="../../static/css/test.css"> -->
 
 <header class="header-area clearfix">
