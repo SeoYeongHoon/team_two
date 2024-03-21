@@ -38,7 +38,7 @@ import hyunook.Login.LogoutControl;
 import hyunook.MainPage.MainPage;
 import hyunook.ProductList.PrivateListControl;
 import hyunook.ProductList.PrivateListForm;
-
+import hyunook.ProductList.ProductPageDTO;
 import youhwan.Company.Companyform;
 import youhwan.Product.Productform;
 import youhwan.Product.ReviewControl;
@@ -102,6 +102,7 @@ public class MainController extends HttpServlet {
 		controls.put("/seachPwControl.do", new SearchPwControl());// 비밀번호조회 컨트롤
 		controls.put("/privateListForm.do", new PrivateListForm());// 개인상품 리스트
 		controls.put("/privateListControl.do", new PrivateListControl());// 개인상품 리스트 컨트롤
+		controls.put("/privateCount.do", new ProductPageDTO());
 
 		// 유환
 		controls.put("/product.do", new Productform()); // 상세페이지

@@ -227,10 +227,65 @@ $('#rangeBtn').on("click", function(){
     let category =$('input[name=category]:checked').val()
     showList(category,order,price1,price2);  
 });
+//총페이지 갯수만들기
+    function countButton() {
+    let price = $('.range-price').text();
+    let priceSlice1 = price.substring(0, 5);
+    let priceSlice2 = price.substring(6);
+    let price1 = priceSlice1.trim();
+    let price2 = priceSlice2.trim();
+    let category = $('input[name=category]:checked').val();
+    $.ajax({
+        url: 'privateCount.do',
+        method: 'post',
+        dataType: 'json',
+        data: {
+            category: category,
+            price1: price1,
+            price2: price2
+        },
+        success: function(result) {
+            let pagination = $('.pagination');
+            pagination.html('');
+            let totalCnt = result.totalCount;
+            let startPage, endPage;
+            let next, prev;
+            let realEnd = Math.ceil(totalCnt / 5); // 한 페이지 당 5개의 아이템이라 가정합니다.
+            endPage = Math.ceil(totalCnt / 5); // 첫 페이지는 항상 1이므로 endPage를 totalCnt로 설정합니다.
+            startPage = 1;
+            next = false; // next 버튼을 비활성화합니다.
+            prev = false; // prev 버튼을 비활성화합니다.
 
+            // 페이지가 1보다 큰 경우에만 prev 버튼을 활성화합니다.
+            if (endPage > 1) {
+                prev = true;
+            }
 
+            // prev 버튼을 추가합니다.
+            if (prev) {
+                $('<a/>').attr('href', '#').attr('data-page', 1).html('&laquo;').appendTo(pagination);
+            }
 
+            // 페이지 번호를 추가합니다.
+            for (let p = startPage; p <= endPage; p++) {
+                $('<a/>').attr('href', '#').attr('data-page', p).html(p).appendTo(pagination);
+            }
+
+            // next 버튼을 추가합니다.
+            if (next) {
+                $('<a/>').attr('href', '#').attr('data-page', 2).html('&raquo;').appendTo(pagination);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
+
+$(document).ready(function(){
 showList();
+countButton();
+});
 	</script>
 
 </body>

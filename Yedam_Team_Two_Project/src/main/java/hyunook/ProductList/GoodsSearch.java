@@ -8,4 +8,5 @@ public class GoodsSearch {
    private String order;
    private int price1;
    private int price2;
+   private int page;
 }
