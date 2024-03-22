@@ -1,3 +1,4 @@
+
 package hyunook.ProductList;
 
 import lombok.Data;
@@ -42,3 +43,4 @@ public class GoodsSearch {
 
 	private int price2;
 }
+

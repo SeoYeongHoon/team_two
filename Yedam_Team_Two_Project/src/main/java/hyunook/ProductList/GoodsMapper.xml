@@ -5,57 +5,80 @@
 <mapper namespace="hyunook.ProductList.GoodsMapper">
 	<select id="privateProductList" resultType="common.Goods" parameterType="hyunook.ProductList.GoodsSearch">
 	   <!-- 개인판매자 조회 -->
-	   SELECT * 
-       FROM (SELECT /*+ INDEX(m SYS_C008499) */
-                        ROWNUM rn,
-                        GOODS_ID,
-                        NAME,
-                        DESCRIPTION,
-                        PRICE,
-                        HASHTAG,
-                        VIEW_CNT,
-                        IMAGE,
-                        GOODS_STATE,
-                        REQ_TYPE,
-                        REQ_DATE,
-                        RESP_DATE,
-                        CATEGORY_ID,
-                        MEMBER_ID,
-                        SCORE_ID
-                FROM   goods
-                <![CDATA[
-                WHERE ROWNUM <= (#{page}*5) )b
-                 ]]>  
-           <choose>
-              <when test = "order == 'popular'">  
-                order by 6 desc
-              </when>  
-               <when test = "order == 'old'">  
-                 order by 10 desc
-              </when>
-              <otherwise>
-                 order by 10
-             </otherwise>  
-        </choose>                   
-         WHERE member_id IN (SELECT member_id
-                             FROM member
-                             WHERE member_type='SELLER')
-       AND b.rn >(#{page}-1)*5  
-     <if test="category != null and category != ''">
-          AND category_id IN(SELECT category_id
-                          FROM CATEGORIES
-                          WHERE category_id = category_id
-                          AND name = #{category} )   
-       </if>
-       AND price between ${price1} AND ${price2}                 
-       AND b.rn > (#{rpage} -1)*5
-        
-          
-                                                                   
-                                       
-       
+       SELECT GOODS_ID,
+              NAME,
+              DESCRIPTION,
+              PRICE,
+              HASHTAG,
+              VIEW_CNT,
+              IMAGE,
+              GOODS_STATE,
+              REQ_TYPE,
+              REQ_DATE,
+              RESP_DATE,
+              CATEGORY_ID,
+              MEMBER_ID,
+              SCORE_ID
+        FROM (SELECT /*+ INDEX(m SYS_C008499) */
+                         ROWNUM rn,
+                         GOODS_ID,
+                         NAME,
+                         DESCRIPTION,
+                         PRICE,
+                         HASHTAG,
+                         VIEW_CNT,
+                         IMAGE,
+                         GOODS_STATE,
+                         REQ_TYPE,
+                         REQ_DATE,
+                         RESP_DATE,
+                         CATEGORY_ID,
+                         MEMBER_ID,
+                         SCORE_ID
+               FROM (SELECT *
+                     FROM GOODS
+                     WHERE MEMBER_ID IN (SELECT MEMBER_ID
+                                         FROM MEMBER
+                                         WHERE MEMBER_TYPE='SELLER')
+                     <if test="category != null and category != ''">
+                     AND CATEGORY_ID IN (SELECT CATEGORY_ID
+                                        FROM CATEGORIES
+                                        WHERE NAME = #{category})
+                     </if>
+                     AND PRICE BETWEEN ${price1} AND ${price2}
+                  <choose>
+                    <when test = "order == 'popular'">    
+                     ORDER BY VIEW_CNT DESC
+                    </when>
+                     <when test = "order == 'old'">  
+                     ORDER BY req_date 
+                     </when>
+                     <otherwise>
+                     ORDER BY req_date DESC
+                     </otherwise>
+                  </choose> 
+                   )
+              <![CDATA[
+                WHERE ROWNUM <= (${page}*6)) b
+              ]]> 
+      WHERE rn > (${page} - 1) * 6
+                                                                         
+                                             
 	</select>
-	
+	<select id="privateCnt" resultType="int" parameterType="hyunook.ProductList.GoodsSearch">
+		            SELECT COUNT(*)
+                     FROM GOODS
+                     WHERE MEMBER_ID IN (SELECT MEMBER_ID
+                                         FROM MEMBER
+                                         WHERE MEMBER_TYPE='SELLER')
+                     <if test="category != null and category != ''">
+                     AND CATEGORY_ID IN (SELECT CATEGORY_ID
+                                        FROM CATEGORIES
+                                        WHERE NAME = #{category})
+                     </if>
+                     AND PRICE BETWEEN ${price1} AND ${price2}
+                  
+	</select>
 	<select id="goodsList" resultType="common.Goods">
 		SELECT goods_id,
                name,

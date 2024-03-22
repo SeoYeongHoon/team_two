@@ -16,13 +16,11 @@ import changoh.Payment.PaymentControl;
 import changoh.Payment.PaymentMemberInfoAjaxControl;
 import changoh.Payment.PaymentPurchaseAjaxControl;
 import changoh.Payment.PaymentResultControl;
-
 import dongwon.Cart.CartControl;
 import dongwon.Mypage.MypageControl;
 import dongwon.QnA.QnAControl;
+import dongwon.QnA.QnAResultControl;
 import dongwon.Support.SupportControl;
-
-
 import hyunook.AddMembers.AddMemberControl;
 import hyunook.AddMembers.AddMemberForm;
 import hyunook.AddMembers.SameEmailControl;
@@ -38,15 +36,12 @@ import hyunook.Login.LogoutControl;
 import hyunook.MainPage.MainPage;
 import hyunook.ProductList.PrivateListControl;
 import hyunook.ProductList.PrivateListForm;
-
+import hyunook.ProductList.ProductPageDTO;
 import youhwan.Company.Companyform;
 import youhwan.Product.Productform;
 import youhwan.Product.ReviewControl;
-
 import youhwan.Product.ReviewTotalCount;
-
 import younghun.Admin.AdminConfirmControl;
-
 import younghun.Admin.AdminControl;
 import younghun.Admin.ConfirmControl;
 import younghun.Manage.ManageControl;
@@ -86,6 +81,7 @@ public class MainController extends HttpServlet {
 		controls.put("/cart.do", new CartControl());
 		controls.put("/qna.do", new QnAControl());
 		controls.put("/support.do", new SupportControl());
+		controls.put("/qnaReult.do", new QnAResultControl());
 		// 현욱
 		controls.put("/main.do", new MainPage()); // 메인페이지
 		controls.put("/loginForm.do", new LoginForm());// 로그인
@@ -102,6 +98,7 @@ public class MainController extends HttpServlet {
 		controls.put("/seachPwControl.do", new SearchPwControl());// 비밀번호조회 컨트롤
 		controls.put("/privateListForm.do", new PrivateListForm());// 개인상품 리스트
 		controls.put("/privateListControl.do", new PrivateListControl());// 개인상품 리스트 컨트롤
+		controls.put("/privateCount.do", new ProductPageDTO());
 
 		// 유환
 		controls.put("/product.do", new Productform()); // 상세페이지

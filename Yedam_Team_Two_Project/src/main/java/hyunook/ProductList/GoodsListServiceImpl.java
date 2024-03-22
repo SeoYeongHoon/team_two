@@ -16,9 +16,11 @@ public class GoodsListServiceImpl implements GoodsListService {
 
 	public List<Goods> privateProductList(GoodsSearch search) {
 		return mapper.privateProductList(search);
-
+    
 	}
-
+    public int privateCnt(GoodsSearch search) {
+    	return mapper.privateCnt(search);
+    }
 	@Override
 	public boolean addGoods(Goods goods) {
 		return mapper.insertGoods(goods) == 1;
