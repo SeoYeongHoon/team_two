@@ -21,6 +21,7 @@ public class RemoveControl implements Control {
 		GoodsListService svc = new GoodsListServiceImpl();
 		
 		if (svc.removeGoods(Integer.parseInt(goodsId))) {
+			req.setAttribute("success", "삭제성공");
 			resp.sendRedirect("management.do");
 		} else {
 			req.setAttribute("message", "삭제 중 에러가 발생했습니다.");

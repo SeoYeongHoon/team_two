@@ -64,4 +64,6 @@ public class PageDTO {
 		this.prev = this.starPage > 1;
 		this.next = this.endPage < realEnd;
 	}
+	
+
 }

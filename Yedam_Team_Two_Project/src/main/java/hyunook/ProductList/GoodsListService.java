@@ -9,7 +9,7 @@ public interface GoodsListService {
     //개인판매 리스트
 
 	List<Goods> privateProductList(GoodsSearch search);
-	
+	int privateCnt(GoodsSearch search);
 	List<Goods> goodsList(int page);
 	Goods getGoods(int goodsId);
 	boolean addGoods(Goods goods);
@@ -17,4 +17,6 @@ public interface GoodsListService {
 	boolean removeGoods(int goodsId);
 	
 	int boardTotalCnt();
+	
+	boolean updateConfirm(Goods goods);
 }

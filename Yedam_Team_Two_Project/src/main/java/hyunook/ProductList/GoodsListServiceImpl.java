@@ -11,16 +11,16 @@ public class GoodsListServiceImpl implements GoodsListService {
 	SqlSession session = DataSource.getInstance().openSession(true);
 	GoodsMapper mapper = session.getMapper(GoodsMapper.class);
 
-
 	@Override
 	// 개인판매 리스트
 
 	public List<Goods> privateProductList(GoodsSearch search) {
 		return mapper.privateProductList(search);
-
-
+    
 	}
-
+    public int privateCnt(GoodsSearch search) {
+    	return mapper.privateCnt(search);
+    }
 	@Override
 	public boolean addGoods(Goods goods) {
 		return mapper.insertGoods(goods) == 1;
@@ -30,8 +30,8 @@ public class GoodsListServiceImpl implements GoodsListService {
 	public boolean removeGoods(int goodsId) {
 		return mapper.removeGoods(goodsId) == 1;
 	}
-  
-  	@Override
+
+	@Override
 	public List<Goods> goodsList(int page) {
 		return mapper.goodsList(page);
 	}
@@ -50,4 +50,10 @@ public class GoodsListServiceImpl implements GoodsListService {
 	public int boardTotalCnt() {
 		return mapper.getTotalCnt();
 	}
+
+	@Override
+	public boolean updateConfirm(Goods goods) {
+		return mapper.updateConfirm(goods) == 1;
+	}
+
 }
