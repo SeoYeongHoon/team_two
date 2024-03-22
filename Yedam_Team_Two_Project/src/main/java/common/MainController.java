@@ -29,6 +29,7 @@ import hyunook.AddMembers.AddMemberForm;
 import hyunook.AddMembers.SameEmailControl;
 import hyunook.AddMembers.SameIdControl;
 import hyunook.AddMembers.SameTelControl;
+import hyunook.CartAdd.CartAddControl;
 import hyunook.Find.SearchIdControl;
 import hyunook.Find.SearchIdForm;
 import hyunook.Find.SearchPwControl;
@@ -102,6 +103,7 @@ public class MainController extends HttpServlet {
 		controls.put("/privateListForm.do", new PrivateListForm());// 개인상품 리스트
 		controls.put("/privateListControl.do", new PrivateListControl());// 개인상품 리스트 컨트롤
 		controls.put("/privateCount.do", new ProductPageDTO());
+		controls.put("/cartAdd.do", new CartAddControl());
 
 		// 유환
 		controls.put("/product.do", new Productform()); // 상세페이지

@@ -17,7 +17,7 @@ public class Productform implements Control {
 		
 		resp.setContentType("text/json;charset=utf-8");
 		
-		String gid = "1";
+		String gid = req.getParameter("pno");
 		
 		ProductService svc = new ProductServiceImpl();
 		

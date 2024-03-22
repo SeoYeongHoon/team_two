@@ -117,6 +117,8 @@
 	</div>
 <!-- 주석 -->
 	<script>
+	let id = '${logid}';
+	console.log(id);
 	let page= 1;
 	 function showList(category,order,price1=10000,price2=50000,page =1){
 	  $('#productList').html('');
@@ -132,14 +134,15 @@
                  stars.push($("<i>", { class: 'fa fa-star', 'aria-hidden': 'true' }));
                      }
               //해시태그 배열 만들기
-              $('.inlineHash').text("");
+              $('.inlineHash').remove();
               let hashTags = [];
               let hashTag = prop.hashtag;
               hashTags = hashTag.split("#");
               //전체목록 표시
 			      $("#productList").append(
 					    $("<div>", { class: 'col-2 col-sm-4 col-md-6 col-xl-4' }).append(
-					        $("<div>", { class: 'single-product-wrapper' }).append(
+					       $("<a>", { href: 'product.do?pno='+prop.goodsId}).append(
+					         $("<div>", { class: 'single-product-wrapper' }).append(
 					            $("<div>", { class: 'single-products-catagory1 clearfix' }).append(
 					                $("<a>", { href: 'shop.html' }).append(
 					                    $("<img>", { src: "../../static/img/bg-img/"+prop.image+"", alt: '', class: 'product-image' }), // 제품 이미지
@@ -153,25 +156,26 @@
 					            ),
 					            $("<div>", { class: 'product-description d-flex align-items-center justify-content-between' }).append(
 					                $("<div>", { class: 'product-meta-data1' }).append(
-					                    $("<a>", { class: 'product-price', href: 'product-details.html', text:prop.name}), // 이름
-					                    $("<a>", { href: 'product-details.html' }).append(
-					                        $("<h6>", { text: prop.price+"원" }) // 제품명
+					                    $("<p>", { class: 'product-price', href: 'product-details.html', text:prop.name}), // 이름
+					                    $("<p>", { href: 'product-details.html' }).append(
+					                        $("<h6>", { text: prop.price+"원" }) // 가격
 					                    )
 					                ),
 					                $("<div>", { class: 'ratings-cart text-right' }).append(
 					                    $("<div>", { class: 'ratings' }).append(stars),
 					                    $("<div>", { class: 'cart' }).append(
-					                        $("<a>", { href: 'cart.html', 'data-toggle': 'tooltip', 'data-placement': 'left', title: 'Add to Cart' }).append(
-					                            $("<img>", { src: '../../static/img/core-img/cart.png', alt: '' }) // 장바구니 아이콘
-					                        )
-					                    )
+					                    	    $("<a>", { href: '#', 'data-toggle': 'tooltip', 'data-placement': 'left', title: 'Add to Cart', 'data-product-id': prop.goodsId }).append(
+					                    	        $("<img>", { src: '../../static/img/core-img/cart.png', alt: '' }) // 장바구니 아이콘
+					                    	    )
+					                    	)
 					                )
 					            )
 					        )
-					    )
+					      )
+					   )
 					);
 			      hashTags.forEach(item => {
-			    	  $(".product-meta-data1").prepend($("<p>", {class:'inlineHash', href: 'product-details.html', text:"#"+item })); // 해쉬테그	
+			    	  $(".product-meta-data1").prepend($("<a>", {class:'inlineHash', href: 'product-details.html', text:"#"+item })); // 해쉬테그	
 			      	       
 			      	})
                
@@ -184,6 +188,7 @@
 } 
 //카테고리
 $('.form-check').on("change", function(){
+	page=1
 	let price = $('.range-price').text()
 	console.log(price);
 	let priceSlice1 = price.substring(0,6);
@@ -193,7 +198,7 @@ $('.form-check').on("change", function(){
 	let category =$('input[name=category]:checked').val()
 	let order = $('select[name=order]').val();
 	console.log('지금'+order+category+price1+price2)
-	showList(category,order,price1,price2);  
+	showList(category,order,price1,price2,page);  
 	countButton(category,price1,price2)
 })
 
@@ -210,13 +215,12 @@ $(document).ready(function(){
         let priceSlice2 = price.substring(7);
         let price1 = priceSlice1.trim();
         let price2 = priceSlice2.trim();
-        console.log('now'+order+category+price1+price2)
+        console.log('now'+order+category+price1+price2);
         showList(category,order,price1,price2,page);  
         countButton(category,price1,price2)
     });
 });
 //가격순
-
 $('#rangeBtn').on("click", function(){
 	page =1;
 	let price = $('.range-price').text();
@@ -227,7 +231,7 @@ $('#rangeBtn').on("click", function(){
     let price1 = priceSlice1.trim();
     let price2 = priceSlice2.trim();
     let order = $('select[name=order]').val();
-    let category =$('input[name=category]:checked').val()
+    let category =$('input[name=category]:checked').val();
     showList(category,order,price1,price2,page);  
     countButton(category,price1,price2);
 });
@@ -250,7 +254,7 @@ $('#rangeBtn').on("click", function(){
             let totalCnt = result.totalCount;
             let startPage, endPage; //1~5, 6~10
         	let next, prev;
-        	let realEnd = Math.ceil(totalCnt / 5);
+        	let realEnd = Math.ceil(totalCnt / 6);
         	endPage = Math.ceil(page / 5) * 5;
         	startPage = endPage - 4;
         	endPage = endPage > realEnd ? realEnd : endPage;
@@ -258,7 +262,7 @@ $('#rangeBtn').on("click", function(){
         	prev = startPage > 1;
 
         	if (prev) {
-        		$('<li class="page-item"/>').append($('<a class="page-link"/>').attr('href', '#').attr('data-page',startPage - 1)).html('&laquo;').appendTo(pagination)
+        		$('<li class="page-item"/>').append($('<a class="page-link"/>').attr('href', '#').attr('data-page',startPage - 1).html('&laquo;')).appendTo(pagination)
         	}
 
             
@@ -270,8 +274,8 @@ $('#rangeBtn').on("click", function(){
         	}
 
         	if (next) {
-        		$('<li class="page-item"/>').append($('<a class="page-link"/>')).attr('href', '#').attr('data-page', endPage + 1).
-        			html('&raquo;').appendTo(pagination)
+        		$('<li class="page-item"/>').append($('<a class="page-link"/>').attr('href', '#').attr('data-page', endPage + 1).
+        			html('&raquo;')).appendTo(pagination)
         	}
         },
         error: function(xhr, status, error) {
@@ -292,12 +296,46 @@ $('.pagination').on('click', 'a', function(e){
     let category =$('input[name=category]:checked').val()
     
     showList(category,order,price1,price2,page);
-    countButton();
+    countButton(category,price1,price2);
 })
+//장바구니 등록
+$(document).on('mouseover', '.cart', function(e){
+    e.preventDefault(); 
+    e.stopPropagation(); // 이벤트 전파 중단
+    $(this).css('backgroundColor', '#ffff00');
+});
+$(document).on('mouseout', '.cart', function(e){
+    e.preventDefault(); 
+    e.stopPropagation(); 
+    $(this).css('backgroundColor', '#ffffff');
+});
+$(document).on('click', 'a[data-product-id]', function(e){
+    e.preventDefault(); 
+    e.stopPropagation();
+    let pno = $(this).data('product-id'); // ★★★★★★★★상품 값 가져오기★★★★★★★★★★★★
+    console.log('pno: '+pno);
+    $.ajax({
+        url:'cartAdd.do',
+        method:'post',
+        data:{ pno: pno, id: id },
+        success:function(result){
+            if(result.retCode == 'OK'){
+                alert('장바구니에 등록되었습니다.');
+            } else {
+                alert('로그인 후 사용하세요');
+                window.open('loginForm.do', '_blank');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    })
+});
 
 $(document).ready(function(){
 showList();
 countButton();
+
 });
 	</script>
 
