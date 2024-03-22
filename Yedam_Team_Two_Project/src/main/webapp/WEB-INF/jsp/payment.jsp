@@ -75,7 +75,7 @@
 									$('<span />').text(item.goodsId)),
 							$('<td class="cart_product_desc" />').append($('<span />').text(item.name)),
 							$('<td class="cart_product_img" />').append($('<a href="#" />').append(
-									$('<img class="magazineList-img" />').attr({'src': '../static/img/bg-img/' + item.image + '.jpg'}))),
+									$('<img class="magazineList-img" />').attr({'src': '../static/img/bg-img/' + item.image}))),
 							$('<td class="cart_product_desc" />').append($('<span />').text(item.price))
 						)
 				);
@@ -103,7 +103,7 @@
 									$('<span />').text(item.goodsId)),
 							$('<td class="cart_product_desc" />').append($('<span />').text(item.name)),
 							$('<td class="cart_product_img" />').append($('<a href="#" />').append(
-									$('<img class="magazineList-img" />').attr({'src': '../static/img/bg-img/' + item.image + '.jpg'}))),
+									$('<img class="magazineList-img" />').attr({'src': '../static/img/bg-img/' + item.image}))),
 							$('<td class="cart_product_desc" />').append($('<span />').text(item.price))
 						)
 				);
@@ -179,14 +179,6 @@
 		
 		  newPid = 'ORDER-' + memberId + '-' + newPHnum;
 		  
-		  let subForm = $('#paymentResult');
-		  subForm.find('input[name=member]').val(JSON.stringify(memberInfo));
-          subForm.find('input[name=pId]').val(JSON.stringify(newPid));
-          subForm.find('input[name=price]').val(JSON.stringify(totalPrice));
-          subForm.find('input[name=purchasedGoodsList]').val(JSON.stringify(list));
-          subForm.submit();
-          
-          /*
 		  var IMP = window.IMP; // 생략가능
 		  IMP.init('imp75601502'); 
 		    IMP.request_pay({
@@ -204,9 +196,14 @@
 			          var msg = '결제가 완료되었습니다.';
 			          alert(msg);
 			          //location.href = "paymentResult.do";
-			          let subForm = $('#paymentResult');
 			          
 			          //결제 완료 페이지로 넘기기
+			          let subForm = $('#paymentResult');
+					  subForm.find('input[name=member]').val(JSON.stringify(memberInfo));
+			          subForm.find('input[name=pId]').val(JSON.stringify(newPid));
+			          subForm.find('input[name=price]').val(JSON.stringify(totalPrice));
+			          subForm.find('input[name=purchasedGoodsList]').val(JSON.stringify(list));
+			          subForm.submit();
 			         
 		        } else {
 			          var msg = '결제에 실패하였습니다.';
@@ -214,7 +211,7 @@
 			          alert(msg);
 		        }
 		      });
-		    */
+		    
 	}
 	//멤버 정보 가져오는 AJAX
 	function getMemberInfo(){
