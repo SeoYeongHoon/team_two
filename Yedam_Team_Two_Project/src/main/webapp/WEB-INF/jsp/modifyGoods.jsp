@@ -51,6 +51,12 @@
 							</td>
 						</tr>
 						<tr>
+							<th>가격</th>
+							<td colspan="3">
+								<input class="form-control" type="number" name="price" value="<%=goods.getPrice() %>">
+							</td>
+						</tr>
+						<tr>
 							<th>작성자</th><td><%=goods.getMemberId() %></td>
 							<th>작성일자</th><td><%=goods.getReqDate() %></td>
 						</tr>

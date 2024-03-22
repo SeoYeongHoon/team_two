@@ -10,4 +10,20 @@ import lombok.NoArgsConstructor;
 public class PurchaseDetail {
 	private String pId;
 	private int goodsId;
+
+	public String getpId() {
+		return pId;
+	}
+
+	public void setpId(String pId) {
+		this.pId = pId;
+	}
+
+	public int getGoodsId() {
+		return goodsId;
+	}
+
+	public void setGoodsId(int goodsId) {
+		this.goodsId = goodsId;
+	}
 }

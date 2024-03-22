@@ -21,7 +21,7 @@ public class MainTest {
 		newPh.setMemberId("userId1");
 		
 		PurchaseDetail pd = new PurchaseDetail();
-		pd.setPId("1");
+		pd.setpId("1");
 		pd.setGoodsId(1);
 		
 		if (mapper.createPurchaseHistoryData(newPh)  > 0 &&

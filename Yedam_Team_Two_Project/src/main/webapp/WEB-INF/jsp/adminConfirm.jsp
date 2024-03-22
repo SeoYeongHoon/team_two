@@ -46,6 +46,12 @@
 							</td>
 						</tr>
 						<tr>
+							<th>가격</th>
+							<td colspan="3">
+								<input class="form-control" type="number" name="price" value="<%=goods.getPrice() %>" disabled>
+							</td>
+						</tr>
+						<tr>
 							<th>작성자</th><td><%=goods.getMemberId() %></td>
 							<th>작성일자</th><td><%=goods.getReqDate() %></td>
 						</tr>
@@ -54,7 +60,7 @@
 								<!-- <button type="submit" class="btn btn-primary">승인</button>
 								<button type="reset" class="btn btn-secondary">취소</button> -->
 								<a href="confirmGoods.do?goodsId=${goods.goodsId }" class="btn btn-primary">승인</a>
-								<a href="admin.do" class="btn btn-secondary">취소</button>
+								<a href="admin.do" class="btn btn-secondary">취소</a>
 							</td>
 						</tr>
 					</table>

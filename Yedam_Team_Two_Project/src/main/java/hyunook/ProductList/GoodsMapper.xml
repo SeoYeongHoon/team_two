@@ -86,12 +86,13 @@
                price,
                req_date,
                member_id
-		FROM (SELECT /*+ INDEX_DESC(b SYS_C008505) */ rownum rn, b.*
+		FROM (SELECT /*+ INDEX_DESC(b PK_GOODS) */ rownum rn, b.*
 			  FROM goods b
 			  <![CDATA[
 			  WHERE rownum <= (#{page} * 5)
 			  ]]>
-			  AND isConfirm = 1
+			  <!-- AND isConfirm = 1 -->
+			  AND goods_state = 'SALE'
 			  ) a
 		WHERE (a.rn > (#{page} - 1) * 5)
 	</select>
@@ -106,8 +107,10 @@
 			   name,
 			   description,
 			   image,
+			   price,
 			   req_date,
-			   member_id
+			   member_id,
+			   goods_state
 		FROM goods
 		WHERE goods_id = #{goodsId}
 	</select>
@@ -130,12 +133,12 @@
 		VALUES (goods_id_seq.NEXTVAL,
                 #{name},
                 #{description},
-                1000,
+                #{price},
                 '#',
                 0,
                 #{image},
-                'sale',
-                'NONE',
+                #{goodsState},
+                #{reqType},
                 SYSDATE,
                 SYSDATE,
                 1,
@@ -151,13 +154,14 @@
 		UPDATE goods
 		SET    name = #{name},
 			   description = #{description},
-			   image = #{image}
+			   image = #{image},
+			   price = #{price}
 		WHERE goods_id = #{goodsId}
 	</update>
 	
 	<update id="updateConfirm" parameterType="common.Goods">
 		UPDATE goods
-		SET    isConfirm = 0
-		WHERE goods_id = #{goodsId}
+		SET    goods_state = #{goodsState}
+		WHERE  goods_id = #{goodsId}
 	</update>
 </mapper>

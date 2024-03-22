@@ -5,7 +5,12 @@
 <mapper namespace="hyunook.Login.MemberMapper">
 	<!-- 로그인 -->
 	<select id="selectMember" parameterType="common.Member" resultType="common.Member">
-		SELECT member_id,name,member_type,password
+		SELECT member_id,
+		       name,
+		       member_type,
+		       password, 
+		       email, 
+		       tel
 		FROM member
 		WHERE member_id= #{memberId }
 		and password= #{password }

@@ -30,23 +30,27 @@ public class RequestControl implements Control {
 		String title = multi.getParameter("title_info");
 		String content = multi.getParameter("content_info");
 		String image = multi.getFilesystemName("image");
+		String price = multi.getParameter("price");
 		
 		System.out.println(image);
 
 		Goods goods = new Goods();
 		goods.setName(title);
 		goods.setDescription(content);
+		goods.setPrice(Integer.parseInt(price));
 		goods.setReqType(RequestType.ADD);
-		goods.setGoodsState(GoodsState.SOLDOUT);
+		goods.setGoodsState(GoodsState.valueOf("SALE"));
 		goods.setImage(image);
 		
 		GoodsListService svc = new GoodsListServiceImpl();
 		
 		if (svc.addGoods(goods)) {
-			resp.getWriter().print("{\"retCode\": \"OK\"}");
 			resp.sendRedirect("management.do");
+			System.out.println(goods);
 		} else {
-			resp.getWriter().print("{\"retCode\": \"NG\"}");
+			req.setAttribute("message", "수정 중 에러가 발생했습니다.");
+			String path = "jsp/mainPage.jsp";
+			req.getRequestDispatcher(path).forward(req, resp);
 		}
 	}
 

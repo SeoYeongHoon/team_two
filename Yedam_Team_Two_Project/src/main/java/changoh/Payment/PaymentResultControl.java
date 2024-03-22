@@ -56,7 +56,7 @@ public class PaymentResultControl implements Control {
 		
 		for(Goods goods : goodsAry) {
 			PurchaseDetail pd = new PurchaseDetail();
-			pd.setPId(newPid);
+			pd.setpId(newPid);
 			pd.setGoodsId(goods.getGoodsId());
 			
 			System.out.println(pd);
