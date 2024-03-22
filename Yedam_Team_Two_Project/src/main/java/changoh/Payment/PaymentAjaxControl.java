@@ -53,7 +53,7 @@ public class PaymentAjaxControl implements Control {
 				System.out.println(list.get(i).toString());
 			}
 			
-			Gson gson = new GsonBuilder().create();
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 			String json = gson.toJson(list);
 			resp.getWriter().print(json);
 		} else {

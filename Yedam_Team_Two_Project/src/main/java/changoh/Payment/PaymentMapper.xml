@@ -53,11 +53,6 @@
 		                ON (c.goods_id = g.goods_id)
 		WHERE  g.member_id = #{memberId}
 	</select>
-	<select id="getNewPurchaseHistoryNum" resultType="int" parameterType="member">
-		SELECT NVL(MAX(TO_NUMBER(REGEXP_SUBSTR(p_id,'[^-]+', 1, 3))), 0)
-        FROM   PurchaseHistory p
-        WHERE  member_id = #{memberId}
-	</select>
 	<update id="createPurchaseHistoryData" parameterType="purchaseHistory">
 		INSERT INTO PurchaseHistory(p_id,
                                     price,
@@ -66,5 +61,14 @@
 		                            #{price},
 		                            #{memberId}
 		)		                                   	
+	</update>
+	<update id="createPurchaseDetailData" parameterType="purchaseDetail">
+		INSERT INTO PurchaseDetails(pd_id,
+                            		p_id,
+                            		goods_id)
+		VALUES                     (#{pId}||pd_id_seq.NEXTVAL,
+		                            #{pId},
+		                            #{goodsId}
+		)                              	
 	</update>
 </mapper>
