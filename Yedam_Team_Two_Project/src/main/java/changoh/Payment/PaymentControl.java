@@ -6,6 +6,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import common.Control;
 import common.Goods;
@@ -14,7 +15,8 @@ import common.Member;
 public class PaymentControl implements Control{
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String memberId = req.getParameter("memberId");
+		HttpSession session = req.getSession();
+		String memberId = (String)session.getAttribute("logid");
 		String goodsId = req.getParameter("goodsId");
 		
 		req.setAttribute("memberId", memberId);

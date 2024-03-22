@@ -68,11 +68,8 @@ public class PaymentResultControl implements Control {
 		
 		//SQL에 주문 정보와 상세주문 정보 모두 올바르게 넣었다면 주문 정보 ID 를 SetAttribute하고 다음 페이지 이동
 		if (isCreatedPurchaseHistoryData && isCreatedPurchaseDetailData) {
-			req.setAttribute("price", price);
-			req.setAttribute("member", member);
-			req.setAttribute("pId", newPid);
 			
-			String path = "jsp/paymentResult.tiles";
+			String path = "jsp/downLoadMyGoods.tiles";
 			req.getRequestDispatcher(path).forward(req, resp);
 		}
 	}
