@@ -16,7 +16,7 @@ public class ProductControl implements Control {
 		// TODO Auto-generated method stub
 		resp.setContentType("text/json;charset=utf-8");
 		// 상세페이지 데이터 가져오기
-		String gid = "1";
+		String gid = req.getParameter("pno");
 		ProductService svc = new ProductServiceImpl();
 		Goods goods = svc.getGoods(Integer.parseInt(gid));
 		req.setAttribute("goods", goods);

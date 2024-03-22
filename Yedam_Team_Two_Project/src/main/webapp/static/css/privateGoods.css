@@ -219,3 +219,7 @@
 	color: #20d34a;
 	font-size: 12px;
 }
+.cart a:hover img {
+    /* 여기에 마우스 호버 시 변경할 스타일을 추가하세요 */
+    filter: brightness(80%); /* 예시: 이미지를 조금 어둡게 만듭니다 */
+}

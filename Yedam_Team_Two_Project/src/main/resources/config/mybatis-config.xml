@@ -45,6 +45,7 @@
     <mapper resource="dongwon/Support/SupportMapper.xml" />
     <mapper resource="hyunook/Login/MemberMapper.xml" />
     <mapper resource="hyunook/ProductList/GoodsMapper.xml" />
+    <mapper resource="hyunook/CartAdd/CartAddMapper.xml" />
     <mapper resource="changoh/Payment/PaymentMapper.xml" />
     <mapper resource="youhwan/Company/CompanyMapper.xml" />
     <mapper resource="youhwan/Product/ProductMapper.xml" />
