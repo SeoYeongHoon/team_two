@@ -57,7 +57,7 @@
 						<tr>
 							<td colspan="4" align="center">
 								<button type="submit" class="btn btn-primary">저장</button>
-								<button type="reset" class="btn btn-secondary">취소</button>
+								<a href="management.do" class="btn btn-secondary">취소</a>
 							</td>
 						</tr>
 					</table>

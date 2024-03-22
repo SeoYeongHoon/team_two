@@ -17,4 +17,6 @@ public interface GoodsListService {
 	boolean removeGoods(int goodsId);
 	
 	int boardTotalCnt();
+	
+	boolean updateConfirm(Goods goods);
 }
