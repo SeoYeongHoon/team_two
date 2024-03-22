@@ -49,12 +49,13 @@
 		<input type="hidden" name="member">
 		<input type="hidden" name="pId">
 		<input type="hidden" name="price">
+		<input type="hidden" name="purchasedGoodsList">
 		</form>
 </body>
 <script>
 	const memberId = '${memberId}';
 	const goodsId = "${goodsId}";
-	let list = [];
+	let list = []; //구매 할 상품(단일 상품 or 장바구니 내역)
 	//장바구니 내역 구매
 	if (goodsId == null || goodsId == ''){
 		$.ajax({
@@ -158,23 +159,17 @@
 	}
 	
 	//결제버튼 이벤트
-	let newOrderNum = null;
-	let foundMember = null;
-	let totalPrice = null;
 	$('#paymentBtn').on('click', function(e){
-		totalPrice = parseInt($('#totalPrice').text());
+		let totalPrice = parseInt($('#totalPrice').text());
 		
 		if (totalPrice <= 0){
 			alert("최소 1개 이상 선택 필수");
 		} else{
 			//새로운 주문번호 생성
 			let newPHnum = createNewPurchaseHistoryNum();
-			foundMember = getMemberInfo();
+			let foundMember = getMemberInfo();
 			
-			console.log('새로 추가될 구매번호: ' + newPHnum);
-			console.log('구매자: ' + foundMember);
-			console.log('결제 가격: ' + totalPrice);
-			
+			//결제 진행
 			requestPay(totalPrice, newPHnum, foundMember);
 		}
 	});
@@ -182,7 +177,16 @@
 	//결제함수
 	function requestPay(totalPrice, newPHnum, memberInfo) {
 		
-		  newPid = "ORDER-" + memberId + "-" + newPHnum;
+		  newPid = 'ORDER-' + memberId + '-' + newPHnum;
+		  
+		  let subForm = $('#paymentResult');
+		  subForm.find('input[name=member]').val(JSON.stringify(memberInfo));
+          subForm.find('input[name=pId]').val(JSON.stringify(newPid));
+          subForm.find('input[name=price]').val(JSON.stringify(totalPrice));
+          subForm.find('input[name=purchasedGoodsList]').val(JSON.stringify(list));
+          subForm.submit();
+          
+          /*
 		  var IMP = window.IMP; // 생략가능
 		  IMP.init('imp75601502'); 
 		    IMP.request_pay({
@@ -197,22 +201,20 @@
 		    },function (rsp) {
 		        console.log(rsp);
 		        if (rsp.success) {
-		          var msg = '결제가 완료되었습니다.';
-		          alert(msg);
-		          //location.href = "paymentResult.do";
-		          let subForm = $('#paymentResult');
-		          
-		          //결제 완료 페이지로 넘기기
-		          subForm.find('input[name=member]').val(JSON.stringify(memberInfo));
-		          subForm.find('input[name=pId]').val(JSON.stringify(newPid));
-		          subForm.find('input[name=price]').val(JSON.stringify(totalPrice));
-		          subForm.submit();
+			          var msg = '결제가 완료되었습니다.';
+			          alert(msg);
+			          //location.href = "paymentResult.do";
+			          let subForm = $('#paymentResult');
+			          
+			          //결제 완료 페이지로 넘기기
+			         
 		        } else {
-		          var msg = '결제에 실패하였습니다.';
-		          msg += '에러내용 : ' + rsp.error_msg;
-		          alert(msg);
+			          var msg = '결제에 실패하였습니다.';
+			          msg += '에러내용 : ' + rsp.error_msg;
+			          alert(msg);
 		        }
 		      });
+		    */
 	}
 	//멤버 정보 가져오는 AJAX
 	function getMemberInfo(){
@@ -235,20 +237,14 @@
 	
 	//새로운 주문번호 생성하는 AJAX
 	function createNewPurchaseHistoryNum(){
-		let a = null;
-		$.ajax({
-			url: 'paymentPurchaseAjax.do',
-			method: 'post',
-			data: {memberId},
-			async: false,
-			dataType: 'json',
-			success : function(result){
-				a = result;
-			},
-			error : function(error){
-				console.log("createNewPurchaseHistoryNum() 오류");
-			}
-		});
-		return a;
+		let date = new Date();
+		let year = date.getFullYear();
+		let month = ('0' + (date.getMonth() + 1)).slice(-2);
+		let day = ('0' + date.getDate()).slice(-2);
+		let hours = ('0' + date.getHours()).slice(-2);
+		let min = ('0' + date.getMinutes()).slice(-2);
+		let sec = ('0' + date.getSeconds()).slice(-2);
+		let dateStr = year + month + day + hours + min + sec;
+		return dateStr;
 	}
 </script>

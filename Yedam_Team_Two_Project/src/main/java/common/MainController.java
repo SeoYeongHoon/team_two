@@ -14,7 +14,6 @@ import changoh.Magazine.MagazineListControl;
 import changoh.Payment.PaymentAjaxControl;
 import changoh.Payment.PaymentControl;
 import changoh.Payment.PaymentMemberInfoAjaxControl;
-import changoh.Payment.PaymentPurchaseAjaxControl;
 import changoh.Payment.PaymentResultControl;
 import dongwon.Cart.CartControl;
 import dongwon.Mypage.MypageControl;
@@ -73,7 +72,6 @@ public class MainController extends HttpServlet {
 		controls.put("/payment.do", new PaymentControl());
 		controls.put("/paymentResult.do", new PaymentResultControl());
 		controls.put("/paymentAjax.do", new PaymentAjaxControl());
-		controls.put("/paymentPurchaseAjax.do", new PaymentPurchaseAjaxControl());
 		controls.put("/paymentMemberInfoAjax.do", new PaymentMemberInfoAjaxControl());
 		
 		// 동원

@@ -26,11 +26,11 @@ public class PaymentServiceImpl implements PaymentService{
 		return mapper.getCartList(member);
 	}
 	@Override
-	public int getNewPurchaseHistoryNum(Member member) {
-		return mapper.getNewPurchaseHistoryNum(member);
-	}
-	@Override
 	public int createPurchaseHistoryData(PurchaseHistory purchaseHistory) {
 		return mapper.createPurchaseHistoryData(purchaseHistory);
+	}
+	@Override
+	public int createPurchaseDetailData(PurchaseDetail purchaseDetail) {
+		return mapper.createPurchaseDetailData(purchaseDetail);
 	}
 }
