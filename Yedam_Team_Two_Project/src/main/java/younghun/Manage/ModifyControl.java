@@ -20,6 +20,7 @@ public class ModifyControl implements Control {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String image = req.getParameter("chooseFile");
+		String price = req.getParameter("price");
 
 		Goods goods = new Goods();
 
@@ -27,6 +28,7 @@ public class ModifyControl implements Control {
 		goods.setName(title);
 		goods.setDescription(content);
 		goods.setImage(image);
+		goods.setPrice(Integer.parseInt(price));
 
 		GoodsListService svc = new GoodsListServiceImpl();
 

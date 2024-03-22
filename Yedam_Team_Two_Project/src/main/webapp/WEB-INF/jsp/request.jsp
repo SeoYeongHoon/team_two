@@ -20,7 +20,7 @@
 						<form action="request.do" method="post" enctype="multipart/form-data">
 						    <div class="row">
 						        <div class="col-md-12 mb-3">
-						            <input type="text" class="form-control title_info" name="title_info" id="title_info" placeholder="제목" required>
+						            <input type="text" class="form-control title_info" name="title_info" id="title_info" placeholder="상품 이름" required>
 						        </div>
 						        
 						        <div class="col-md-12">
@@ -38,11 +38,8 @@
 						        <div class="col-md-12 mb-3">
 						        	<p><textarea class="form-control content_info" name="content_info" id="content_info" placeholder="내용"  cols="50" rows="10" required></textarea></p>
 						        </div>
-						        <div class="col-12 mb-3">
-	                                <select class="w-100" id="country" name="type_info">
-	                                    <option value="템플릿 등록">템플릿 등록</option>
-	                                    <option value="강의 등록">강의 등록</option>
-	                                </select>
+	                            <div class="col-md-12 mb-3">
+	                            	<input type="number" class="form-control" name="price" placeholder="가격" required>
 	                            </div>
 						        <div class="cart-btn ml-3">
                                 	<input id="submitButton" type="submit" value="신청" class="btn amado-btn w-100">

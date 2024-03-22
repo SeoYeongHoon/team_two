@@ -17,6 +17,9 @@ import changoh.Payment.PaymentControl;
 import changoh.Payment.PaymentMemberInfoAjaxControl;
 import changoh.Payment.PaymentResultControl;
 import dongwon.Cart.CartControl;
+import dongwon.Mypage.CheckPassForm;
+import dongwon.Mypage.EditInfoControl;
+import dongwon.Mypage.EditInfoForm;
 import dongwon.Mypage.MypageControl;
 import dongwon.QnA.QnAControl;
 import dongwon.QnA.QnAResultControl;
@@ -123,6 +126,10 @@ public class MainController extends HttpServlet {
 		
 		controls.put("/removeForm.do", new RemoveGoodsForm());
 		controls.put("/removeGoods.do", new RemoveControl());
+		
+		controls.put("/checkPass.do", new CheckPassForm());	// 마이페이지 수정을 위한 비밀번호 체크
+		controls.put("/editMyInfo.do", new EditInfoControl());
+		controls.put("/editForm.do", new EditInfoForm());
 	}
 
 	@Override
