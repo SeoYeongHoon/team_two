@@ -151,4 +151,23 @@ public class Goods {
 	private int categoryId;
 	private String memberId; // 해당 상품을 등록했던 판매자 아이디
 	private int scoreId;
+	private int isConfirm;
+
+	public int getIsConfirm() {
+		return isConfirm;
+	}
+
+	public void setIsConfirm(int isConfirm) {
+		this.isConfirm = isConfirm;
+	}
+
+	@Override
+	public String toString() {
+		return "Goods [goodsId=" + goodsId + ", name=" + name + ", description=" + description + ", price=" + price
+				+ ", hashtag=" + hashtag + ", viewCnt=" + viewCnt + ", image=" + image + ", goodsState=" + goodsState
+				+ ", reqType=" + reqType + ", reqDate=" + reqDate + ", respDate=" + respDate + ", categoryId="
+				+ categoryId + ", memberId=" + memberId + ", scoreId=" + scoreId + "]";
+	}
+	
+	
 }

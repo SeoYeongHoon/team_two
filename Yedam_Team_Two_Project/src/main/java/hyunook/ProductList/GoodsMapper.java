@@ -16,4 +16,6 @@ public interface GoodsMapper {
 	int updateGoods(Goods goods);
 	
 	int getTotalCnt();
+	
+	int updateConfirm(Goods goods);
 }

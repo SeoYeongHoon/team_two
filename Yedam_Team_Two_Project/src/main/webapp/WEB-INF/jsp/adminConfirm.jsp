@@ -51,8 +51,10 @@
 						</tr>
 						<tr>
 							<td colspan="4" align="center">
-								<button type="submit" class="btn btn-primary">승인</button>
-								<button type="reset" class="btn btn-secondary">취소</button>
+								<!-- <button type="submit" class="btn btn-primary">승인</button>
+								<button type="reset" class="btn btn-secondary">취소</button> -->
+								<a href="confirmGoods.do?goodsId=${goods.goodsId }" class="btn btn-primary">승인</a>
+								<a href="admin.do" class="btn btn-secondary">취소</button>
 							</td>
 						</tr>
 					</table>

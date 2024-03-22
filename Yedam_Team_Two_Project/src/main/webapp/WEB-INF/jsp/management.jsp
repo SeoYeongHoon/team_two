@@ -78,7 +78,7 @@
 											<td>${goods.description }</td>
 											<td><fmt:formatDate value="${goods.reqDate }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 											<td><a href="modifyForm.do?goodsId=${goods.goodsId }" class="badge badge-sm bg-gradient-success">수정</a></td>
-											<td><a href="removeForm.do?goodsId=${goods.goodsId }" class="badge badge-sm bg-gradient-danger" >삭제</a></td>
+											<td><a href="removeForm.do?goodsId=${goods.goodsId }" class="badge badge-sm delete-btn bg-gradient-danger" data-goodsid="${goods.goodsId}">삭제</a></td>
 										</tr>
 										</c:forEach>
 									</tbody>
@@ -110,6 +110,36 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	$(document).ready(function() {
+	    // 삭제 버튼 클릭 시
+	    $('.delete-btn').click(function(e) {
+	    	if (!confirm('삭제하시겠습니까?')) {
+	    		return false;
+	    	}
+	    	
+	        e.preventDefault();
+	        
+	        // 삭제할 상품 ID 가져오기
+	        var goodsId = $(this).data('goodsid');
+	        // Ajax 요청
+	        $.ajax({
+	            url: 'removeGoods.do',
+	            type: 'POST',
+	            data: { goodsId: goodsId },
+	            success: function(response) {
+	                // 삭제 성공 시 페이지 재로드
+	                location.reload();
+	            },
+	            error: function(xhr, status, error) {
+	                // 에러 처리
+	                console.error(error);
+	            }
+	        });
+	    });
+	});
+
+	</script>
 	<script src="../../static/js/management.js"></script>
 	<script src="../../static/js/request.js"></script>
 </body>
