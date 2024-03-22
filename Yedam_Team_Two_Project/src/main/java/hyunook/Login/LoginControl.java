@@ -23,6 +23,7 @@ public class LoginControl implements Control {
        member.setPassword(pw);
        MemberService svc = new MemberServiceImpl();
        member = svc.loginCheck(member);
+       
        if(member != null) {
     	   HttpSession session = req.getSession();
     	   session.setAttribute("logid", id);

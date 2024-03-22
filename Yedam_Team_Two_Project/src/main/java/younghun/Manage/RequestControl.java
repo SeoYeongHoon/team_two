@@ -11,6 +11,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import common.Control;
 import common.Goods;
+import common.GoodsState;
+import common.RequestType;
 import hyunook.ProductList.GoodsListService;
 import hyunook.ProductList.GoodsListServiceImpl;
 
@@ -34,6 +36,8 @@ public class RequestControl implements Control {
 		Goods goods = new Goods();
 		goods.setName(title);
 		goods.setDescription(content);
+		goods.setReqType(RequestType.ADD);
+		goods.setGoodsState(GoodsState.SOLDOUT);
 		goods.setImage(image);
 		
 		GoodsListService svc = new GoodsListServiceImpl();
