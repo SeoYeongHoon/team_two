@@ -136,10 +136,10 @@
 									class="btn amado-btn">바로 구매</button>
 							</div>
 							
-								<div id=""><input id="reviewtext" type="text" placeholder="리뷰">
+								<div><input id="reviewtext" type="text" placeholder="리뷰">
 								<input id="reviewBtn" type="submit" value="등록"></div>
 								<hr />
-								<div class="reviewbox">
+								<!-- <div class="reviewbox">
 								<ul>
 									<li><span class="reviewId">아이디</span>
 										<span class="reviewscore">점수</span>
@@ -149,16 +149,19 @@
 									</li>
 								</ul>
 									<hr />
-								</div>
-							<!-- 	<div class="reviewtable">
-								<table rowspan="3">
+								</div> -->
+						<div class="reviewtable" >
+								<table rowspan="3" style="overflow:auto">
+								<thead>
 									<tr>
-										<th>아이디</td>
-										<th>제목</td>
-										<th>내용</td>
-										<th>게시날짜</td>
-										<th>점수</td>
+										<th>아이디</th>
+										<th>제목</th>
+										<th>내용</th>
+										<th>게시날짜</th>
+										<th>점수</th>
 									</tr>
+								</thead>
+								<tbody id="list">
 									<tr>
 										<td>youhwan</td>
 										<td>제목</td>
@@ -166,8 +169,9 @@
 										<td>24-03-22</td>
 										<td>4점</td>
 									</tr>
+								</tbody>
 								</table>
-								</div> -->
+								</div>
 						</form>
 					
 				</div>
@@ -177,30 +181,38 @@
 	<!-- Product Details Area End -->
 	</div>
 	<script>
-		$('.reviewBtn').on('click', function(e) {
-			let val = $('')
-		})
+ 		$('#reviewBtn').on('click', function(e) {
+			let val = $('#reviewtext').val();
+			let reviewId =$(reviewId)
+			
+			$('tbody#list').append($('<tr />').append(
+					$('<td />').append($('<input'/>).attr('type', 'checkbox')), // 체크박스
+					$('<td />').text(),
+					$('<td />').text(),
+					$('<td />').text(),
+					$('<td />').text(),
+					))
+			})
+		}) 
 		
 		
 	 	fetch('../review.do')
 		.then(result => result.json())
 		.then(result => {
-			
-			console.log(result);
-			result.forEach(prop => {
+			 result.forEach(review => {
 				//document.getElementById('')
 				//console.log(prop.reviewId, prop.content,)
-		const review = ["reviewId", "title", "content", "createDate", "memberId", "goodsId", "scoreId"]
+		//const review = ["reviewId", "title", "content", "createDate", "memberId", "goodsId", "scoreId"]
+		console.log(result);
 		console.log(review);
 				
 			})
 			
-		}) 
 		
 		fetch('../reviewcount.do')
 		.then(result => result.json())
 		.then(count => {
-			//console.log(count);
+			console.log(count);
 		})
 		// 
 

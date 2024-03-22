@@ -17,6 +17,7 @@ public class Productform implements Control {
 		
 		resp.setContentType("text/json;charset=utf-8");
 		
+		// gid = 페이지 변경값 
 		String gid = "1";
 		
 		ProductService svc = new ProductServiceImpl();
