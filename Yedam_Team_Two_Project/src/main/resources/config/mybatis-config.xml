@@ -14,7 +14,8 @@
   <typeAliases>
   	<!-- <typeAlias alias="search" type="co.yedam.common.SearchVO"/> -->
   	<typeAlias alias="QnA" type="dongwon.QnA.QnA"/>
-  	<typeAlias alias="Cart" type="dongwon.Cart.Cart"/> 	
+  	<typeAlias alias="Cart" type="dongwon.Cart.Cart"/>
+	<typeAlias alias="WishGoods" type="dongwon.WishList.WishGoods"/> 	 	
   	<typeAlias alias="member" type="common.Member"/>
   	<typeAlias alias="goods" type="common.Goods"/>
   	<typeAlias alias="review" type="youhwan.Product.Review"/>
@@ -42,6 +43,7 @@
     <mapper resource="dongwon/Mypage/MypageMapper.xml" />
     <mapper resource="dongwon/Cart/CartMapper.xml" />
     <mapper resource="dongwon/QnA/QnAMapper.xml" />
+    <mapper resource="dongwon/WishList/WishListMapper.xml" />
     <mapper resource="dongwon/Support/SupportMapper.xml" />
     <mapper resource="hyunook/Login/MemberMapper.xml" />
     <mapper resource="hyunook/ProductList/GoodsMapper.xml" />
