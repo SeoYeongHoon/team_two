@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link rel="stylesheet" src="../../static/css/Review.css">	
 <body>
 	<div class="single-product-area section-padding-100 clearfix">
 		<div class="container-fluid">
@@ -97,13 +98,13 @@
 							<!-- 별 갯수 -->
 							<div
 								class="ratings-review mb-15 d-flex align-items-center justify-content-between">
-								<div class="ratings">
+								<!-- <div class="ratings">
 									<i class="fa fa-star" aria-hidden="true"></i>  <i
 										class="fa fa-star" aria-hidden="true"></i> <i
 										class="fa fa-star" aria-hidden="true"></i> <i
 										class="fa fa-star" aria-hidden="true"></i> <i
 										class="fa fa-star" aria-hidden="true"></i>
-								</div>
+								</div> -->
 							</div>
 							<!-- Avaiable -->
 							<p class="avaibility" id="hashtag">
@@ -116,40 +117,16 @@
 
 							<p>${goods.description }</p>
 						</div>
-
+						</div>
 						<!-- Add to Cart Form -->
 						<form class="cart clearfix" method="post">
-							<div class="cart-btn d-flex mb-50">
+							
 							<!-- 	 <p>Qty</p>
                                     <div class="quantity">
                                         <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
                                         <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
                                         <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
                                     </div>  -->
-
-							</div>
-							<div class="review">
-								<input id="review" size="40px" type="text" placeholder="리뷰">
-								<input id="reviewbutton" type="submit" value="등록" id="button" size="20px">
-								<hr />
-								<table id="reviewtable">
-									<tr>
-										<th>아이디</th>
-									</tr>
-									<tr>
-										<th>제목</th>
-									</tr>
-										<th>내용</th>
-									<tr>
-										<th>게시날짜</th>
-									</tr>
-									<tr>
-										<th>점수</th>
-									</tr>
-									
-								</table>
-							</div>
-							<br>
 							<div class="d-flex">
 								<button type="submit" name="addtocart" value="5"
 									class="btn amado-btn">찜하기</button>
@@ -158,38 +135,75 @@
 								<button type="submit" name="addtocart" value="5"
 									class="btn amado-btn">바로 구매</button>
 							</div>
+							
+								<div id=""><input id="reviewtext" type="text" placeholder="리뷰">
+								<input id="reviewBtn" type="submit" value="등록"></div>
+								<hr />
+								<div class="reviewbox">
+								<ul>
+									<li><span class="reviewId">아이디</span>
+										<span class="reviewscore">점수</span>
+										<span class="reviewtitle">제목</span>
+										<span class="reviewtime">게시날짜</span>
+										<span class="reviewcontent">내용</span>
+									</li>
+								</ul>
+									<hr />
+								</div>
+							<!-- 	<div class="reviewtable">
+								<table rowspan="3">
+									<tr>
+										<th>아이디</td>
+										<th>제목</td>
+										<th>내용</td>
+										<th>게시날짜</td>
+										<th>점수</td>
+									</tr>
+									<tr>
+										<td>youhwan</td>
+										<td>제목</td>
+										<td>내용</td>
+										<td>24-03-22</td>
+										<td>4점</td>
+									</tr>
+								</table>
+								</div> -->
 						</form>
-					</div>
+					
 				</div>
 			</div>
 		</div>
-
 	</div>
 	<!-- Product Details Area End -->
 	</div>
 	<script>
-	
+		$('.reviewBtn').on('click', function(e) {
+			let val = $('')
+		})
+		
+		
 	 	fetch('../review.do')
 		.then(result => result.json())
 		.then(result => {
+			
 			console.log(result);
+			result.forEach(prop => {
+				//document.getElementById('')
+				//console.log(prop.reviewId, prop.content,)
+		const review = ["reviewId", "title", "content", "createDate", "memberId", "goodsId", "scoreId"]
+		console.log(review);
+				
+			})
+			
 		}) 
 		
 		fetch('../reviewcount.do')
 		.then(result => result.json())
-		.then(result => {
-			console.log(result);
+		.then(count => {
+			//console.log(count);
 		})
 		// 
-		$('.reviewbutton').on('click', function(e) {
-			let review = $('/review').val();
-			
-			let delBtn = $('<button />삭제</button>')
-			delBtn.on('click', function(e) {
-				delBtn.parent().remove();
-			})
-			$('')
-		})
+
 		
 		
 	</script>
