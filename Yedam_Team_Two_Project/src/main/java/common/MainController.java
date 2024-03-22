@@ -21,6 +21,7 @@ import dongwon.Mypage.MypageControl;
 import dongwon.QnA.QnAControl;
 import dongwon.QnA.QnAResultControl;
 import dongwon.Support.SupportControl;
+import dongwon.WishList.WishListControl;
 import hyunook.AddMembers.AddMemberControl;
 import hyunook.AddMembers.AddMemberForm;
 import hyunook.AddMembers.SameEmailControl;
@@ -82,6 +83,7 @@ public class MainController extends HttpServlet {
 		controls.put("/qna.do", new QnAControl());
 		controls.put("/support.do", new SupportControl());
 		controls.put("/qnaReult.do", new QnAResultControl());
+		controls.put("/wishList.do", new WishListControl());
 		// 현욱
 		controls.put("/main.do", new MainPage()); // 메인페이지
 		controls.put("/loginForm.do", new LoginForm());// 로그인
