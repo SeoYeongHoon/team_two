@@ -24,21 +24,21 @@
 			<div class="widget-desc">
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" name="category" type="radio" class="category"value="">
+					<input class="form-check-input" name="category" type="radio" id="category"value="">
 					<label class="form-check-label" for="amado">전체</label>
 				</div>
 				<div class="form-check">
-					<input class="form-check-input" name="category" type="radio" class="category"value="카테고리1">
+					<input class="form-check-input" name="category" type="radio" id="category"value="카테고리1">
 					<label class="form-check-label" for="amado">카테고리1</label>
 				</div>
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" name="category" type="radio" class="category" value="카테고리2">
+					<input class="form-check-input" name="category" type="radio" id="category" value="카테고리2">
 					<label class="form-check-label" for="ikea">카테고리2</label>
 				</div>
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" name="category" type="radio" class="category" value="카테고리3"> 
+					<input class="form-check-input" name="category" type="radio" id="category" value="카테고리3"> 
 					<label class="form-check-label" for="furniture">카테고리3</label>
 						
 				</div>
@@ -108,7 +108,10 @@
 					<!-- Pagination -->
 					<nav aria-label="navigation">
 						<ul class="pagination justify-content-end mt-50">
-						
+							<li class="page-item active"><a class="page-link" href="#">01.</a></li>
+							<li class="page-item"><a class="page-link" href="#">02.</a></li>
+							<li class="page-item"><a class="page-link" href="#">03.</a></li>
+							<li class="page-item"><a class="page-link" href="#">04.</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -171,7 +174,7 @@
 					    )
 					);
 			      hashTags.forEach(item => {
-			    	  $(".product-meta-data1").prepend($("<p>", {class:'inlineHash', href: 'product-details.html', text:"#"+item })); // 해쉬테그	
+			    	  $(".product-meta-data1").prepend($("<a>", {class:'inlineHash', href: 'product-details.html', text: "#"+ item })); // 해쉬테그	
 			      	       
 			      	})
                
@@ -199,7 +202,6 @@ $('.form-check').on("change", function(){
 
 //정렬순
 $(document).ready(function(){
-	page =1;
     $('#order').on("change", function(){
     	page =1;
     	let category = $('input[name=category]:checked').val();
@@ -244,8 +246,7 @@ $('#rangeBtn').on("click", function(){
             price2: price2
         },
         success: function(result) {
-            let pagination = $('.pagination.justify-content-end.mt-50');
-            console.log('page', pagination)
+            let pagination = $('pagination justify-content-end mt-50');
             pagination.html('');
             let totalCnt = result.totalCount;
             let startPage, endPage; //1~5, 6~10
@@ -258,20 +259,24 @@ $('#rangeBtn').on("click", function(){
         	prev = startPage > 1;
 
         	if (prev) {
-        		$('<li class="page-item"/>').append($('<a class="page-link"/>').attr('href', '#').attr('data-page',startPage - 1)).html('&laquo;').appendTo(pagination)
+        		$('<a/>').attr('href', '#').attr('data-page', startPage - 1).
+        			html('&laquo;').appendTo(pagination)
         	}
 
             
         	for (let p = startPage; p <= endPage; p++) {
-        		let aTag = $('<li class="page-item"/>').append($('<a class="page-link"/>').attr('href', '#').attr('data-page', p).html(p)).appendTo(pagination)
+        		let aTag = $('<a/>').attr('href', '#').attr('data-page', p).
+        			html(p).appendTo(pagination)
         		if (p == page) {
-        			aTag.addClass('active');
+        			aTag.addClass('page-item active');
         		}
         	}
 
+            
         	if (next) {
-        		$('<li class="page-item"/>').append($('<a class="page-link"/>')).attr('href', '#').attr('data-page', endPage + 1).
+        		$('<a/>').attr('href', '#').attr('data-page', endPage + 1).
         			html('&raquo;').appendTo(pagination)
+
         	}
         },
         error: function(xhr, status, error) {
@@ -281,7 +286,6 @@ $('#rangeBtn').on("click", function(){
 }
 //링크페이지 이동
 $('.pagination').on('click', 'a', function(e){
-	
 	page=$(this).data('page')
     let price = $('.range-price').text()
 	let priceSlice1 = price.substring(0,6);
@@ -291,8 +295,7 @@ $('.pagination').on('click', 'a', function(e){
     let order = $('select[name=order]').val();
     let category =$('input[name=category]:checked').val()
     
-    showList(category,order,price1,price2,page);
-    countButton();
+    showList(category,order,price1,price2,page); 
 })
 
 $(document).ready(function(){
