@@ -120,12 +120,13 @@
 	</div>
 <!-- 주석 -->
 	<script>
-	 function showList(category,order,price1=10000,price2=50000){
+	let page= 1;
+	 function showList(category,order,price1=10000,price2=50000,page =1){
 	  $('#productList').html('');
       $.ajax({
 	  url:'privateListControl.do',
 	  method:'post',
-	  data : {category : category, order : order, price1 : price1, price2 : price2},
+	  data : {category : category, order : order, price1 : price1, price2 : price2, page : page},
 	  success:function(result){
 		      result.forEach(prop =>{
 			  //별배열 담기
@@ -196,11 +197,13 @@ $('.form-check').on("change", function(){
 	let order = $('select[name=order]').val();
 	console.log('지금'+order+category+price1+price2)
 	showList(category,order,price1,price2);  
+	countButton(category,price1,price2)
 })
 
 //정렬순
 $(document).ready(function(){
     $('#order').on("change", function(){
+    	page =1;
     	let category = $('input[name=category]:checked').val();
         let order = $(this).val();
         let price = $('.range-price').text()
@@ -210,12 +213,14 @@ $(document).ready(function(){
         let price1 = priceSlice1.trim();
         let price2 = priceSlice2.trim();
         console.log('now'+order+category+price1+price2)
-        showList(category,order,price1,price2);  
+        showList(category,order,price1,price2,page);  
+        countButton(category,price1,price2)
     });
 });
 //가격순
 
 $('#rangeBtn').on("click", function(){
+	page =1;
 	let price = $('.range-price').text();
     $('#productList').html('');
     console.log(price);
@@ -225,12 +230,78 @@ $('#rangeBtn').on("click", function(){
     let price2 = priceSlice2.trim();
     let order = $('select[name=order]').val();
     let category =$('input[name=category]:checked').val()
-    showList(category,order,price1,price2);  
+    showList(category,order,price1,price2,page);  
+    countButton(category,price1,price2);
 });
+//총페이지 갯수만들기
+    function countButton(category='',price1=10000,price2=50000) {
+    let price = $('.range-price').text();
+    $.ajax({
+        url: 'privateCount.do',
+        method: 'post',
+        dataType: 'json',
+        data: {
+            category: category,
+            price1: price1,
+            price2: price2
+        },
+        success: function(result) {
+            let pagination = $('.pagination');
+            pagination.html('');
+            let totalCnt = result.totalCount;
+            let startPage, endPage; //1~5, 6~10
+        	let next, prev;
+        	let realEnd = Math.ceil(totalCnt / 5);
+        	endPage = Math.ceil(page / 5) * 5;
+        	startPage = endPage - 4;
+        	endPage = endPage > realEnd ? realEnd : endPage;
+        	next = endPage < realEnd ? true : false;
+        	prev = startPage > 1;
 
+        	if (prev) {
+        		$('<a/>').addClass('').attr('href', '#').attr('data-page', startPage - 1).
+        			html('&laquo;').appendTo(pagination)
+        	}
 
+            
+        	for (let p = startPage; p <= endPage; p++) {
+        		let aTag = $('<a/>').attr('href', '#').attr('data-page', p).
+        			html(p).appendTo(pagination)
+        		if (p == page) {
+        			aTag.addClass('page-item active');
+        		}
+        	}
 
+            
+        	if (next) {
+        		$('<a/>').attr('href', '#').attr('data-page', endPage + 1).
+        			html('&raquo;').appendTo(pagination)
+
+        	}
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
+//링크페이지 이동
+$('.pagination').on('click', 'a', function(e){
+	page=$(this).data('page')
+    let price = $('.range-price').text()
+	let priceSlice1 = price.substring(0,6);
+    let priceSlice2 = price.substring(7);
+    let price1 = priceSlice1.trim();
+    let price2 = priceSlice2.trim();
+    let order = $('select[name=order]').val();
+    let category =$('input[name=category]:checked').val()
+    
+    showList(category,order,price1,price2,page); 
+})
+
+$(document).ready(function(){
 showList();
+countButton();
+});
 	</script>
 
 </body>
