@@ -61,7 +61,7 @@
               <![CDATA[
                 WHERE ROWNUM <= (${page}*6)) b
               ]]> 
-      WHERE rn > (${page} - 1) * 5
+      WHERE rn > (${page} - 1) * 6
                                                                          
                                              
 	</select>

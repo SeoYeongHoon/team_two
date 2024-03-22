@@ -35,6 +35,7 @@ public class PrivateListControl implements Control {
 		 search.setPrice1(Integer.parseInt(price1));
 		 search.setPrice2(Integer.parseInt(price2));
 		 search.setPage(Integer.parseInt(page));
+		 System.out.println("page: "+page);
 	     GoodsListService svc = new GoodsListServiceImpl();
 	     List<Goods> list = svc.privateProductList(search);
 	     System.out.println(search);
