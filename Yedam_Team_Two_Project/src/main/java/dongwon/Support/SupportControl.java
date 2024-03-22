@@ -13,9 +13,7 @@ public class SupportControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		SupportService svc = new SupportServiceImpl();
-		
+				
 		String path = "jsp/support.tiles";
 		RequestDispatcher dispatch = req.getRequestDispatcher(path);
 		dispatch.forward(req, resp);
