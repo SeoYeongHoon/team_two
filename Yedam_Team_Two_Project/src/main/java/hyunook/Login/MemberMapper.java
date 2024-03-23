@@ -20,4 +20,5 @@ public interface MemberMapper {
 	//중복전화번호조회
 	int sameTel(String tel);
 	
+	int updateUserInfo(Member member);
 }
