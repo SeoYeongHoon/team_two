@@ -17,6 +17,7 @@ public class WishListControl implements Control {
 		
 		//위시리스트 페이지는 마이페이지에서 넘어옴
 		//즉 이미 로그인 되어있다는 뜻. 세션에서 id값 받아올 수 있음
+		//현재 memberId가 null값이 뜨는데, 이유가 뭘까?
 		HttpSession session = req.getSession();
 		String memberId = (String) session.getAttribute("memberId");
 		
@@ -24,6 +25,16 @@ public class WishListControl implements Control {
 		WishListService svc = new WishListServiceImpl();
 		List<WishGoods> wishGoodsList = svc.getWishList(memberId);
 		
+		//잘 가져왔는지 확인해보는 코드 
+		System.out.println("memberId :" + memberId);
+        if (wishGoodsList != null) {
+            for (WishGoods wishGoods : wishGoodsList) {
+                System.out.println("Wish Goods ID: " + wishGoods.getWishGoodsId());
+                System.out.println("Member ID: " + wishGoods.getMemberId());
+                System.out.println("Goods ID: " + wishGoods.getGoodsId());
+            }
+        }
+        
 		//wishGoodsList가 null이면, 관심상품이 없다는 소리이므로 마이페이지로 이동시킴
 		String path = "";
 		if (wishGoodsList != null) {

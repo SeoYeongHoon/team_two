@@ -12,9 +12,18 @@ public class WishGoods {
 	private int wishGoodsId;
 	private String memberId;
 	private int goodsId;
+	private String image;
+	//	private String description;
+	//  private int price;
 	
 	//재확인했으나 역시 롬복이 작동되지 않음
 	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public int getWishGoodsId() {
 		return wishGoodsId;
 	}
