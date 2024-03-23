@@ -1,10 +1,10 @@
 
-package hyunook.ProductList;
+package hyunook.CompanyList;
 
 import lombok.Data;
 
 @Data
-public class GoodsSearch {
+public class CompanySearch {
 	private String category;
 	private String order;
 	private String sl;

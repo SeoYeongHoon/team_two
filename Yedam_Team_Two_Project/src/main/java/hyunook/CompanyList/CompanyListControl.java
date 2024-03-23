@@ -1,4 +1,4 @@
-package hyunook.ProductList;
+package hyunook.CompanyList;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,7 +13,7 @@ import com.google.gson.GsonBuilder;
 import common.Control;
 import common.Goods;
 
-public class PrivateListControl implements Control {
+public class CompanyListControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,15 +31,15 @@ public class PrivateListControl implements Control {
 		 System.out.println("price2: "+price2);
 		 System.out.println("page: "+page);
 		 System.out.println("look: "+sl);
-		 GoodsSearch search = new GoodsSearch();
+		 CompanySearch search = new CompanySearch();
 		 search.setCategory(category);
 		 search.setOrder(order);
 		 search.setPrice1(Integer.parseInt(price1));
 		 search.setPrice2(Integer.parseInt(price2));
 		 search.setPage(Integer.parseInt(page));
 		 search.setSl(sl);
-	     GoodsListService svc = new GoodsListServiceImpl();
-	     List<Goods> list = svc.privateProductList(search);
+	     CompanysListService svc = new CompanyListServiceImpl();
+	     List<Goods> list = svc.companyProductList(search);
 	     System.out.println(search);
          Gson gson = new GsonBuilder().create();
 	     String json = gson.toJson(list); //자동으로 ajax 

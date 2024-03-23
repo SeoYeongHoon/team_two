@@ -1,4 +1,4 @@
-package hyunook.ProductList;
+package hyunook.CompanyList;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +10,7 @@ import com.google.gson.GsonBuilder;
 import common.Control;
 
 
-public class ProductPageDTO implements Control {
+public class CompanyPageDTO implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,13 +21,13 @@ public class ProductPageDTO implements Control {
 		 String price2 = req.getParameter("price2");
 		 String sl = req.getParameter("sl");
 		
-		GoodsSearch search = new GoodsSearch();
+		CompanySearch search = new CompanySearch();
 		search.setCategory(category);
 		search.setPrice1(Integer.parseInt(price1));
 		search.setPrice2(Integer.parseInt(price2));
 		search.setSl(sl);
-		 GoodsListService svc = new GoodsListServiceImpl();
-		 int cnt = svc.privateCnt(search);
+		 CompanysListService svc = new CompanyListServiceImpl();
+		 int cnt = svc.companyCnt(search);
 		 System.out.println("count: "+cnt);
 	    
 		 resp.getWriter().print("{\"totalCount\":"+cnt+"}");

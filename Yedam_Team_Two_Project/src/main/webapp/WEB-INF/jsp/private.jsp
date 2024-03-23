@@ -85,7 +85,7 @@
 						<!-- Sorting -->
 						<div class="product-sorting d-flex">
 							<div class="sort-by-date d-flex align-items-center mr-15">
-								<p>Sort by</p>
+								<p>정렬</p>
 									<select name="order" id="order" >
 										<option value="new">최근순</option>
 										<option value="old">오래된순</option>
@@ -96,7 +96,10 @@
 					</div>
 				</div>
 			</div>
-
+             <div class="search1">
+                                 <input type="text" placeholder="검색어 입력" name="look" class="input1"value="">
+                                 <a href="#"><img class="img1"src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"></a>
+            </div>
 			<div class="row" id=productList>
 
 				<!-- 상품리스트 넣는곳 -->
@@ -120,12 +123,17 @@
 	let id = '${logid}';
 	console.log(id);
 	let page= 1;
-	 function showList(category,order,price1=10000,price2=50000,page =1){
+	 function showList(category,order,price1=10000,price2=50000,page =1,sl){
 	  $('#productList').html('');
       $.ajax({
 	  url:'privateListControl.do',
 	  method:'post',
-	  data : {category : category, order : order, price1 : price1, price2 : price2, page : page},
+	  data : {category : category,
+		      order : order,
+		      price1 : price1,
+		      price2 : price2,
+		      page : page,
+		      sl : sl},
 	  success:function(result){
 		      result.forEach(prop =>{
 			  //별배열 담기
@@ -144,7 +152,7 @@
 					       $("<a>", { href: 'product.do?pno='+prop.goodsId}).append(
 					         $("<div>", { class: 'single-product-wrapper' }).append(
 					            $("<div>", { class: 'single-products-catagory1 clearfix' }).append(
-					                $("<a>", { href: 'shop.html' }).append(
+					                $("<a>", { href: 'product.do?pno='+prop.goodsId}).append(
 					                    $("<img>", { src: "../../static/img/bg-img/"+prop.image+"", alt: '', class: 'product-image' }), // 제품 이미지
 					                    $("<div>", { class: 'hover-content1' }).append(
 					                        $("<div>", { class: 'line' }),
@@ -175,7 +183,7 @@
 					   )
 					);
 			      hashTags.forEach(item => {
-			    	  $(".product-meta-data1").prepend($("<a>", {class:'inlineHash', href: 'product-details.html', text:"#"+item })); // 해쉬테그	
+			    	  $(".product-meta-data1").prepend($("<a>", {class:'inlineHash', href: 'product.do?pno='+prop.goodsId, text:"#"+item })); // 해쉬테그	
 			      	       
 			      	})
                
@@ -198,8 +206,9 @@ $('.form-check').on("change", function(){
 	let category =$('input[name=category]:checked').val()
 	let order = $('select[name=order]').val();
 	console.log('지금'+order+category+price1+price2)
-	showList(category,order,price1,price2,page);  
-	countButton(category,price1,price2)
+	let sl = $('input[name=look]').val()
+	showList(category,order,price1,price2,page,sl);  
+	countButton(category,price1,price2,sl)
 })
 
 //정렬순
@@ -216,8 +225,9 @@ $(document).ready(function(){
         let price1 = priceSlice1.trim();
         let price2 = priceSlice2.trim();
         console.log('now'+order+category+price1+price2);
-        showList(category,order,price1,price2,page);  
-        countButton(category,price1,price2)
+        let sl = $('input[name=look]').val()
+        showList(category,order,price1,price2,page,sl);  
+        countButton(category,price1,price2,sl)
     });
 });
 //가격순
@@ -232,11 +242,40 @@ $('#rangeBtn').on("click", function(){
     let price2 = priceSlice2.trim();
     let order = $('select[name=order]').val();
     let category =$('input[name=category]:checked').val();
-    showList(category,order,price1,price2,page);  
-    countButton(category,price1,price2);
+    let sl = $('input[name=look]').val()
+    showList(category,order,price1,price2,page,sl);  
+    countButton(category,price1,price2,sl);
 });
+//검색클릭
+$('.img1').on("click", function(){
+	let sl = $('input[name=look]').val()
+	let price = $('.range-price').text();
+	let priceSlice1 = price.substring(0,6);
+    let priceSlice2 = price.substring(7);
+    let price1 = priceSlice1.trim();
+    let price2 = priceSlice2.trim();
+    let order = $('select[name=order]').val();
+    let category =$('input[name=category]:checked').val();
+    showList(category,order,price1,price2,page,sl);  
+    countButton(category,price1,price2,sl);
+})
+//검색엔터
+$('.input1').on("keyup", function(key){
+	if(key.keyCode==13){
+	let sl = $('input[name=look]').val()
+	let price = $('.range-price').text();
+	let priceSlice1 = price.substring(0,6);
+    let priceSlice2 = price.substring(7);
+    let price1 = priceSlice1.trim();
+    let price2 = priceSlice2.trim();
+    let order = $('select[name=order]').val();
+    let category =$('input[name=category]:checked').val();
+    showList(category,order,price1,price2,page,sl);  
+    countButton(category,price1,price2,sl);
+	}
+})
 //총페이지 갯수만들기
-    function countButton(category='',price1=10000,price2=50000) {
+    function countButton(category='',price1=10000,price2=50000,sl) {
     let price = $('.range-price').text();
     $.ajax({
         url: 'privateCount.do',
@@ -245,7 +284,8 @@ $('#rangeBtn').on("click", function(){
         data: {
             category: category,
             price1: price1,
-            price2: price2
+            price2: price2,
+            sl : sl
         },
         success: function(result) {
             let pagination = $('.pagination.justify-content-end.mt-50');
@@ -285,7 +325,6 @@ $('#rangeBtn').on("click", function(){
 }
 //링크페이지 이동
 $('.pagination').on('click', 'a', function(e){
-	
 	page=$(this).data('page')
     let price = $('.range-price').text()
 	let priceSlice1 = price.substring(0,6);
@@ -294,9 +333,9 @@ $('.pagination').on('click', 'a', function(e){
     let price2 = priceSlice2.trim();
     let order = $('select[name=order]').val();
     let category =$('input[name=category]:checked').val()
-    
-    showList(category,order,price1,price2,page);
-    countButton(category,price1,price2);
+    let sl = $('input[name=look]').val()
+    showList(category,order,price1,price2,page,sl);
+    countButton(category,price1,price2,sl);
 })
 //장바구니 등록
 $(document).on('mouseover', '.cart', function(e){
@@ -309,6 +348,7 @@ $(document).on('mouseout', '.cart', function(e){
     e.stopPropagation(); 
     $(this).css('backgroundColor', '#ffffff');
 });
+//장바구니 등록
 $(document).on('click', 'a[data-product-id]', function(e){
     e.preventDefault(); 
     e.stopPropagation();
