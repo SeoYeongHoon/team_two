@@ -22,7 +22,7 @@
 		<ul>
 			<li class="active"><a href="main.do">Home</a></li>
 			<li><a href="privateListForm.do">Template By Seller</a></li>
-			<li><a href="#">Template By Company</a></li>
+			<li><a href="companyListForm.do">Template By Company</a></li>
 			<li><a href="magazineList.do">Magazine</a></li>
 			<li><a href="support.do">Support</a></li>
 		</ul>

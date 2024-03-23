@@ -85,17 +85,28 @@
 				 $('#sameTel:contains("이미")').length>0){
 			alert('중복된 값이 있습니다.')
 			return false;
-		} else {
+		} else if($('#sameId:contains("세요")').length>0||$('#sameEmail:contains("세요")').length>0||
+				 $('#sameTel:contains("세요")').length>0){
+			alert('입력값을 다시 한번 입력하세요.')
+			return false;
+		} else{
 			return true;
 		}
 	}
 
 	//아이디 중복확인
-	$("#id").on("focusout", function() {
+	$("#id").on("input", function() {
 	    let id = $("#id").val();
-	    if (id == '' || id.length == 0) {
+	    let expIdText=/^(?=.*[0-9]+)[a-zA-Z][a-zA-Z0-9]{5,10}$/g;
+	    
+	    if (id == '' || id.length < 1) {
 	    	 $("#id").css("border","3px solid red");
 	        $("#sameId").css('color', 'red').text("ID를 입력해주세요");
+	        return false;
+	    }
+	    if(!expIdText.test(id)|| id.length<6){
+	    	$("#id").css("border","3px solid red");
+	        $("#sameId").css('color', 'red').text("아이디는 6자 이상 20자 이하의 대소문자와 숫자를 조합하세요")
 	        return false;
 	    }
 	    
@@ -107,7 +118,7 @@
 	        	console.log(result);
 	            if (result > 0) {
 	            	 $("#id").css("border","3px solid red");
-	                $("#sameId").css('color', 'red').text("이미 사용 중인 ID입니다");
+	                $("#sameId").css('color', 'red').text("이미 사용 중인 ID입니다 다시 입력하세요");
 	            } else {
 	            	 $("#id").css("border","3px solid green");
 	                $("#sameId").css('color', 'green').text("사용 가능한 ID입니다");
@@ -119,12 +130,17 @@
 	    });
 	});
 	//이메일 중복확인
-	$("#email").on("focusout", function() {
+	$("#email").on("input", function() {
 	    let email = $("#email").val();
-	    
-	    if (email == '' || email.length == 0) {
+	    let expEmailText = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+$/
+	    if (email == '' || email.length<1) {
          	$("#email").css("border","3px solid red");
 	        $("#sameEmail").css('color', 'red').text("이메일을 입력해주세요");
+	        return false;
+	    }
+	    if(!expEmailText.test(email)){
+	    	$("#email").css("border","3px solid red");
+	        $("#sameEmail").css('color', 'red').text("이메일 형식을 확인하세요");
 	        return false;
 	    }
 	    
@@ -136,7 +152,7 @@
 	        	console.log(result);
 	            if (result > 0) {
 	            	$("#email").css("border","3px solid red");
-	                $("#sameEmail").css('color', 'red').text("이미 가입한 정보가 있습니다");
+	                $("#sameEmail").css('color', 'red').text("이미 가입한 email이 있어 다른 email 사용해주세요");
 	            } else {
 	            	$("#email").css("border","3px solid green");
 	                $("#sameEmail").css('color', 'green').text("사용 가능한 이메일 입니다");
@@ -148,12 +164,17 @@
 	    });
 	});
 	//전화번호 중복 확인
-	$("#tel").on("focusout", function() {
+	$("#tel").on("input", function() {
 	    let tel = $("#tel").val();
-	    
-	    if (tel == '' || tel.length == 0) {
+	    let telCheck = /^[0-9]{10,11}$/;
+	    if (tel == '' || tel.length < 1) {
         	$("#tel").css("border","3px solid red");
 	        $("#sameTel").css('color', 'red').text("전화번호를 입력해주세요");
+	        return false;
+	    }
+	    if(!telCheck.test(tel)){
+	    	$("#tel").css("border","3px solid red");
+	        $("#sameTel").css('color', 'red').text("숫자형태만 입력하세요");
 	        return false;
 	    }
 	    
@@ -165,7 +186,7 @@
 	        	console.log(result);
 	            if (result > 0) {
 	            	$("#tel").css("border","3px solid red");
-	                $("#sameTel").css('color', 'red').text("이미 가입한 정보가 있습니다");
+	                $("#sameTel").css('color', 'red').text("이미 가입한 정보가 있어 다시 입력해주세요");
 	            } else {
 	            	$("#tel").css("border","3px solid green");
 	                $("#sameTel").css('color', 'green').text("사용 가능한 번호 입니다");

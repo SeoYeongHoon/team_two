@@ -31,6 +31,9 @@ import hyunook.AddMembers.SameEmailControl;
 import hyunook.AddMembers.SameIdControl;
 import hyunook.AddMembers.SameTelControl;
 import hyunook.CartAdd.CartAddControl;
+import hyunook.CompanyList.CompanyListControl;
+import hyunook.CompanyList.CompanyListForm;
+import hyunook.CompanyList.CompanyPageDTO;
 import hyunook.Find.SearchIdControl;
 import hyunook.Find.SearchIdForm;
 import hyunook.Find.SearchPwControl;
@@ -42,7 +45,6 @@ import hyunook.MainPage.MainPage;
 import hyunook.ProductList.PrivateListControl;
 import hyunook.ProductList.PrivateListForm;
 import hyunook.ProductList.ProductPageDTO;
-import youhwan.Company.Companyform;
 import youhwan.Product.Productform;
 import youhwan.Product.ReviewControl;
 import youhwan.Product.ReviewTotalCount;
@@ -105,13 +107,15 @@ public class MainController extends HttpServlet {
 		controls.put("/privateListForm.do", new PrivateListForm());// 개인상품 리스트
 		controls.put("/privateListControl.do", new PrivateListControl());// 개인상품 리스트 컨트롤
 		controls.put("/privateCount.do", new ProductPageDTO());
+		controls.put("/companyListForm.do", new CompanyListForm());// 기업회사 상품 리스트
+		controls.put("/companyListControl.do", new CompanyListControl());// 기업회사 상품 컨트롤
+		controls.put("/companyCount.do", new CompanyPageDTO());// 페이지갯수
 		controls.put("/cartAdd.do", new CartAddControl());
 
 		// 유환
 		controls.put("/product.do", new Productform()); // 상세페이지
 		controls.put("/review.do", new ReviewControl()); // 상세페이지
 		controls.put("/reviewcount.do", new ReviewTotalCount()); // 리뷰 총페이지
-		controls.put("/company.do", new Companyform()); // 회사
 
 		// 영훈
 		controls.put("/admin.do", new AdminControl());

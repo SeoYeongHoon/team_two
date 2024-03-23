@@ -19,6 +19,7 @@ public interface MemberService {
     public int sameEmail(String email);
     //중복전화번호조회
     public int sameTel(String tel);
+    
 }
 
 

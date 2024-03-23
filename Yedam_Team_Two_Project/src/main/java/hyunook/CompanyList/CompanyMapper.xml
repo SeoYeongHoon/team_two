@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="hyunook.ProductList.GoodsMapper">
-	<select id="privateProductList" resultType="common.Goods" parameterType="hyunook.ProductList.GoodsSearch">
+<mapper namespace="hyunook.CompanyList.CompanyMapper">
+	<select id="companyProductList" resultType="common.Goods" parameterType="hyunook.CompanyList.CompanySearch">
 	   <!-- 개인판매자 조회 -->
        SELECT GOODS_ID,
               NAME,
@@ -39,7 +39,7 @@
                      FROM GOODS
                      WHERE MEMBER_ID IN (SELECT MEMBER_ID
                                          FROM MEMBER
-                                         WHERE MEMBER_TYPE='SELLER')
+                                         WHERE MEMBER_TYPE='MANAGER')
                      <if test="category != null and category != ''">
                      AND CATEGORY_ID IN (SELECT CATEGORY_ID
                                         FROM CATEGORIES
@@ -68,12 +68,12 @@
                                                                          
                                              
 	</select>
-	<select id="privateCnt" resultType="int" parameterType="hyunook.ProductList.GoodsSearch">
+	<select id="companyCnt" resultType="int" parameterType="hyunook.CompanyList.CompanySearch">
 		            SELECT COUNT(*)
                      FROM GOODS
                      WHERE MEMBER_ID IN (SELECT MEMBER_ID
                                          FROM MEMBER
-                                         WHERE MEMBER_TYPE='SELLER')
+                                         WHERE MEMBER_TYPE='MANAGER')
                      <if test="category != null and category != ''">
                      AND CATEGORY_ID IN (SELECT CATEGORY_ID
                                         FROM CATEGORIES
@@ -85,89 +85,5 @@
                      AND PRICE BETWEEN ${price1} AND ${price2}
                   
 	</select>
-	<select id="goodsList" resultType="common.Goods">
-		SELECT goods_id,
-               name,
-               description,
-               price,
-               req_date,
-               member_id
-		FROM (SELECT /*+ INDEX_DESC(b PK_GOODS) */ rownum rn, b.*
-			  FROM goods b
-			  <![CDATA[
-			  WHERE rownum <= (#{page} * 5)
-			  ]]>
-			  <!-- AND isConfirm = 1 -->
-			  AND goods_state = 'SALE'
-			  ) a
-		WHERE (a.rn > (#{page} - 1) * 5)
-	</select>
 	
-	<select id="getTotalCnt" resultType="int">
-		SELECT COUNT(*)
-		FROM goods
-	</select>
-	
-	<select id="selectGoods" parameterType="int" resultType="goods">
-		SELECT goods_id,
-			   name,
-			   description,
-			   image,
-			   price,
-			   req_date,
-			   member_id,
-			   goods_state
-		FROM goods
-		WHERE goods_id = #{goodsId}
-	</select>
-	
-	<insert id="insertGoods" parameterType="common.Goods">
-		INSERT INTO goods  (goods_id,
-	                        name,
-	                        description,
-	                        price,
-	                        hashtag,
-	                        view_cnt,
-	                        image,
-	                        goods_state,
-	                        req_type,
-	                        req_date,
-	                        resp_date,
-	                        category_id,
-	                        member_id,
-	                        score_id)
-		VALUES (goods_id_seq.NEXTVAL,
-                #{name},
-                #{description},
-                #{price},
-                '#',
-                0,
-                #{image},
-                #{goodsState},
-                #{reqType},
-                SYSDATE,
-                SYSDATE,
-                1,
-                'userId1',
-                1)
-	</insert>
-	
-	<delete id="removeGoods" parameterType="int">
-		delete goods cascade where goods_id = #{goodsId}
-	</delete>
-	
-	<update id="updateGoods" parameterType="common.Goods" >
-		UPDATE goods
-		SET    name = #{name},
-			   description = #{description},
-			   image = #{image},
-			   price = #{price}
-		WHERE goods_id = #{goodsId}
-	</update>
-	
-	<update id="updateConfirm" parameterType="common.Goods">
-		UPDATE goods
-		SET    goods_state = #{goodsState}
-		WHERE  goods_id = #{goodsId}
-	</update>
 </mapper>
