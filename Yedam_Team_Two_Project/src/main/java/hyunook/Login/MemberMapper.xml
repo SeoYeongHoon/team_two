@@ -63,4 +63,13 @@
 	  WHERE tel=#{tel }
 	</select>
 	
+	<update id="updateUserInfo" parameterType="common.Member">
+		UPDATE member
+		SET    member_id = #{memberId},
+			   name = #{name},
+			   password = #{password},
+			   email = #{email},
+			   tel = #{tel}
+		WHERE  member_id = #{memberId}
+	</update>
 </mapper>
