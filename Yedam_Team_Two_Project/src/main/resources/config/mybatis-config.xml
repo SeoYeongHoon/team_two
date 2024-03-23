@@ -22,6 +22,7 @@
   	<typeAlias alias="magazine" type="changoh.Magazine.Magazine"></typeAlias>
   	<typeAlias alias="purchaseHistory" type="changoh.Payment.PurchaseHistory"></typeAlias>
   	<typeAlias alias="purchaseDetail" type="changoh.Payment.PurchaseDetail"></typeAlias>
+  	<typeAlias alias="myCart" type="changoh.MyCart.MyCart"></typeAlias>
   </typeAliases>
   
   <environments default="development">
@@ -52,6 +53,8 @@
     <mapper resource="youhwan/Company/CompanyMapper.xml" />
     <mapper resource="youhwan/Product/ProductMapper.xml" />
     <mapper resource="changoh/Magazine/MagazineMapper.xml" />
+    <mapper resource="changoh/Download/DownloadMapper.xml" />
+    <mapper resource="changoh/MyCart/MyCartMapper.xml" />
     
   </mappers>
 </configuration>

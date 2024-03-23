@@ -36,7 +36,7 @@
                             </ul>
 
                             <div class="cart-btn mt-100">
-                                <a href="#" class="btn amado-btn w-100" id="paymentBtn">결제</a>
+                                <a href="#" class="btn amado-btn w-100" id="paymentBtn">Purchase</a>
                             </div>
                         </div>
                     </div>

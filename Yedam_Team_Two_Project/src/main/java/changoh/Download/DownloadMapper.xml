@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="changoh.Download.DownloadMapper">
+<!-- 방법1 -->
+	<!-- id="xxMapper의 함수이름" resultType="반환되는 타입" parameterType="파라미터 타입"-->
+	<!-- 반환, 파라미터 타입 경우 : resources/config/mybatis-config.xml 파일의 typeAlias설정되어있는지 확인 -->
+	<select id="getPurchasedGoodsList" resultType="Goods" parameterType="member">
+		SELECT pd.goods_id,
+               g.name,
+               g.image
+		FROM   PurchaseDetails pd JOIN PurchaseHistory p
+                                    ON (pd.p_id = p.p_id)
+                                  JOIN Goods g
+                                    ON (pd.goods_id = g.goods_id)
+		WHERE  p.member_id = #{memberId}
+	</select>
+</mapper>

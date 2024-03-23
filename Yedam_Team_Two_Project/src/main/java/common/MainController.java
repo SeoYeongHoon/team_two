@@ -9,9 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import changoh.Download.DownloadAjaxControl;
+import changoh.Download.DownloadMyGoodsControl;
+import changoh.Download.DownloadProcessControl;
 import changoh.Magazine.MagazineControl;
 import changoh.Magazine.MagazineListControl;
-import changoh.Mypage.DownLoadMyGoodsControl;
+import changoh.MyCart.CartListAjaxControl;
+import changoh.MyCart.CartListControl;
+import changoh.MyCart.CartRemoveAjaxControl;
 import changoh.Payment.PaymentAjaxControl;
 import changoh.Payment.PaymentControl;
 import changoh.Payment.PaymentMemberInfoAjaxControl;
@@ -77,9 +82,14 @@ public class MainController extends HttpServlet {
 		controls.put("/magazine.do", new MagazineControl()); // 뉴스 단일 페이지
 		controls.put("/payment.do", new PaymentControl());
 		controls.put("/paymentResult.do", new PaymentResultControl());
-		controls.put("/downLoadMyGoods.do", new DownLoadMyGoodsControl());
+		controls.put("/downloadMyGoods.do", new DownloadMyGoodsControl());
+		controls.put("/myCart.do", new CartListControl());
 		controls.put("/paymentAjax.do", new PaymentAjaxControl());
 		controls.put("/paymentMemberInfoAjax.do", new PaymentMemberInfoAjaxControl());
+		controls.put("/downloadAjax.do", new DownloadAjaxControl());
+		controls.put("/downloadProcess.do", new DownloadProcessControl());
+		controls.put("/myCartListAjax.do", new CartListAjaxControl());
+		controls.put("/myCartRemoveAjax.do", new CartRemoveAjaxControl());
 		
 		// 동원
 		controls.put("/mypage.do", new MypageControl());
