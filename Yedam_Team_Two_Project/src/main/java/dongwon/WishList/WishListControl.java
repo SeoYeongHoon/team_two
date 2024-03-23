@@ -14,23 +14,18 @@ public class WishListControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//로그인한 회원의 위시리스트를 가져와야 하므로 세션이 필요함
+		
+		//위시리스트 페이지는 마이페이지에서 넘어옴
+		//즉 이미 로그인 되어있다는 뜻. 세션에서 id값 받아올 수 있음
 		HttpSession session = req.getSession();
-
-		//세션에서 memberId값을 얻어 옴
 		String memberId = (String) session.getAttribute("memberId");
 		
-		//해당 memberId가 보유한 위시리스트를 가져와야 함. sql이 필요함, service를 써야 함.
+		//세션에서 id가져온 것으로 sql 실행
 		WishListService svc = new WishListServiceImpl();
-		
-		//원하는 바는, memberId로 WHERE 조건을 단 후 SELECT를 실행하여, 해당되는 위시리스트들을 가지고 오는 것
 		List<WishGoods> wishGoodsList = svc.getWishList(memberId);
 		
-		//결과를 요청 객체에 담는다.
-		
-		//보내기 전에, 조건문을 건다. 등록한 관심상품이 없으면 메세지를 주고 마이페이지 이동
+		//wishGoodsList가 null이면, 관심상품이 없다는 소리이므로 마이페이지로 이동시킴
 		String path = "";
-		
 		if (wishGoodsList != null) {
 			req.setAttribute("wishGoodsList", wishGoodsList);
 			path = "jsp/wishList.tiles";

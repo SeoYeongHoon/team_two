@@ -7,9 +7,9 @@
 	<!-- id="xxMapper의 함수이름" resultType="반환되는 타입" parameterType="파라미터 타입"-->
 	<!-- 반환, 파라미터 타입 경우 : resources/config/mybatis-config.xml 파일의 typeAlias설정되어있는지 확인 -->
 	<select id="getWishList" resultType="WishGoods" parameterType="String">
-        SELECT wish_goods_id,
-               member_id,
-               goods_id
+        SELECT wish_goods_id AS wishGoodsId,
+               member_id AS memberId,
+               goods_id AS goodsId
 		FROM  wish_list
 		WHERE member_id=#{memberId, jdbcType=VARCHAR}
 	</select>
