@@ -14,13 +14,15 @@
   <typeAliases>
   	<!-- <typeAlias alias="search" type="co.yedam.common.SearchVO"/> -->
   	<typeAlias alias="QnA" type="dongwon.QnA.QnA"/>
-  	<typeAlias alias="Cart" type="dongwon.Cart.Cart"/> 	
+  	<typeAlias alias="Cart" type="dongwon.Cart.Cart"/>
+	<typeAlias alias="WishGoods" type="dongwon.WishList.WishGoods"/> 	 	
   	<typeAlias alias="member" type="common.Member"/>
   	<typeAlias alias="goods" type="common.Goods"/>
   	<typeAlias alias="review" type="youhwan.Product.Review"/>
   	<typeAlias alias="magazine" type="changoh.Magazine.Magazine"></typeAlias>
   	<typeAlias alias="purchaseHistory" type="changoh.Payment.PurchaseHistory"></typeAlias>
   	<typeAlias alias="purchaseDetail" type="changoh.Payment.PurchaseDetail"></typeAlias>
+  	<typeAlias alias="myCart" type="changoh.MyCart.MyCart"></typeAlias>
   </typeAliases>
   
   <environments default="development">
@@ -42,13 +44,17 @@
     <mapper resource="dongwon/Mypage/MypageMapper.xml" />
     <mapper resource="dongwon/Cart/CartMapper.xml" />
     <mapper resource="dongwon/QnA/QnAMapper.xml" />
+    <mapper resource="dongwon/WishList/WishListMapper.xml" />
     <mapper resource="dongwon/Support/SupportMapper.xml" />
     <mapper resource="hyunook/Login/MemberMapper.xml" />
     <mapper resource="hyunook/ProductList/GoodsMapper.xml" />
+    <mapper resource="hyunook/CartAdd/CartAddMapper.xml" />
     <mapper resource="changoh/Payment/PaymentMapper.xml" />
     <mapper resource="youhwan/Company/CompanyMapper.xml" />
     <mapper resource="youhwan/Product/ProductMapper.xml" />
     <mapper resource="changoh/Magazine/MagazineMapper.xml" />
+    <mapper resource="changoh/Download/DownloadMapper.xml" />
+    <mapper resource="changoh/MyCart/MyCartMapper.xml" />
     
   </mappers>
 </configuration>
