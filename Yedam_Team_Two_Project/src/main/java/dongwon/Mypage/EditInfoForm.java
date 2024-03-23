@@ -12,8 +12,8 @@ public class EditInfoForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+    	String path = "jsp/mypageEdit.tiles";
+    	req.getRequestDispatcher(path).forward(req, resp);
 	}
 
 }

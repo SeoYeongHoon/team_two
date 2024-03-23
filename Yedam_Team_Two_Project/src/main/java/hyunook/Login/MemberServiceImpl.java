@@ -48,4 +48,8 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("전화번호service=" + result);
 		return result;
 	}
+	@Override
+	public boolean updateUserInfo(Member member) {
+		return mapper.updateUserInfo(member) == 1;
+	}
 }
