@@ -29,7 +29,10 @@ public class CartAddControl implements Control {
 	   
 	   CartAddService svc = new CartAddServiceImpl();
 	   Map<String,Object> map = new HashMap<>();
-	   if(id!="") {
+	   if(svc.cartCheck(cart)>1) {
+		   map.put("retCode", "SAME");
+	   }
+	   else if(id!="") {
 		   if(svc.cartAdd(cart)){
 		   map.put("retCode", "OK");
 		   map.put("retVal",cart);
