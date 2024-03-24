@@ -51,9 +51,11 @@ import hyunook.MainPage.MainPage;
 import hyunook.ProductList.PrivateListControl;
 import hyunook.ProductList.PrivateListForm;
 import hyunook.ProductList.ProductPageDTO;
+import youhwan.Product.AddCartControl;
 import youhwan.Product.Productform;
 import youhwan.Product.ReviewControl;
 import youhwan.Product.ReviewTotalCount;
+import youhwan.Product.WishGoodsControl;
 import younghun.Admin.AdminConfirmControl;
 import younghun.Admin.AdminControl;
 import younghun.Admin.ConfirmControl;
@@ -150,6 +152,9 @@ public class MainController extends HttpServlet {
 		controls.put("/editMyInfo.do", new EditInfoControl());
 		controls.put("/editForm.do", new EditInfoForm());
 		controls.put("/editConfirm.do", new EditConfirmControl());
+		
+		controls.put("/wishGoods.do", new WishGoodsControl()); // 찜하기 컨트롤
+		controls.put("/addCart.do", new AddCartControl()); 	// 장바구니에 추가 컨트롤
 	}
 
 	@Override

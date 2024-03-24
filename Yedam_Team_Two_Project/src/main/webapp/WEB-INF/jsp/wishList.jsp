@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<!DOCTYPE html>
-<html lang="ko">
 <link rel="stylesheet" href="../../static/css/wishList.css">
 
 <body>
@@ -33,6 +31,11 @@
                                         <td class="wL_product_name"><h5>${wishGoods.name}</h5></td>
                                         <td class="wL_product_description"><h5>${wishGoods.description}</h5></td>
                                         <td class="wL_product_price"><h5>${wishGoods.price}</h5></td>
+                                        <td class="cart_product_img"><a href="#"><img src="../../static/img/product-img/product1.jpg" alt="Product"></a></td>
+                                        <td class="cart_product_desc">
+                                            <h5>${wishGoods.goodsId}</h5>
+                                        </td>                                       
+
                                     </tr>
                                 </c:forEach>
                             </tbody>

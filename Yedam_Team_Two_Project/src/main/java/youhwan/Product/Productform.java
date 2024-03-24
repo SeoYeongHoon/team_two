@@ -28,7 +28,7 @@ public class Productform implements Control {
 	    String path = "jsp/product.tiles";
 	    req.getRequestDispatcher(path).forward(req, resp);
 		
-
+        
 	}
 
 }
