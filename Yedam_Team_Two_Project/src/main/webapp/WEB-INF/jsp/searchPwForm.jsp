@@ -41,7 +41,7 @@
 						<span>아이디 </span><input type="text" name="id" class="form-control">
 					</div>
 					<div class="input-form-box">
-						<span>이름 </span><input type="text" name="name" class="form-control">
+						<span>이메일 </span><input type="text" name="email" class="form-control">
 					</div>
 
 					<div class="button-login-box">
@@ -65,13 +65,13 @@
 	<script>
 	 $('#searchBtn').click (function(){
 	    	let id = $('input[name="id"]').val();
-	        let name = $('input[name="name"]').val();
+	        let email = $('input[name="email"]').val();
 	    	$.ajax({
 	    		url:'seachPwControl.do',
 	    		method:'post',
 	    		data:{
 	    			id: id,
-	    			name: name
+	    			email: email
 	    		},
 	    		success:function(result){
 	    			console.log(result)

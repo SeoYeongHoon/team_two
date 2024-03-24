@@ -9,9 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import changoh.Download.DownloadAjaxControl;
+import changoh.Download.DownloadMyGoodsControl;
+import changoh.Download.DownloadProcessControl;
 import changoh.Magazine.MagazineControl;
 import changoh.Magazine.MagazineListControl;
-import changoh.Mypage.DownLoadMyGoodsControl;
+import changoh.MyCart.CartListAjaxControl;
+import changoh.MyCart.CartListControl;
+import changoh.MyCart.CartRemoveAjaxControl;
 import changoh.Payment.PaymentAjaxControl;
 import changoh.Payment.PaymentControl;
 import changoh.Payment.PaymentMemberInfoAjaxControl;
@@ -25,11 +30,16 @@ import dongwon.Mypage.MypageControl;
 import dongwon.QnA.QnAControl;
 import dongwon.QnA.QnAResultControl;
 import dongwon.Support.SupportControl;
+import dongwon.WishList.WishListControl;
 import hyunook.AddMembers.AddMemberControl;
 import hyunook.AddMembers.AddMemberForm;
 import hyunook.AddMembers.SameEmailControl;
 import hyunook.AddMembers.SameIdControl;
 import hyunook.AddMembers.SameTelControl;
+import hyunook.CartAdd.CartAddControl;
+import hyunook.CompanyList.CompanyListControl;
+import hyunook.CompanyList.CompanyListForm;
+import hyunook.CompanyList.CompanyPageDTO;
 import hyunook.Find.SearchIdControl;
 import hyunook.Find.SearchIdForm;
 import hyunook.Find.SearchPwControl;
@@ -41,7 +51,6 @@ import hyunook.MainPage.MainPage;
 import hyunook.ProductList.PrivateListControl;
 import hyunook.ProductList.PrivateListForm;
 import hyunook.ProductList.ProductPageDTO;
-import youhwan.Company.Companyform;
 import youhwan.Product.AddCartControl;
 import youhwan.Product.Productform;
 import youhwan.Product.ReviewControl;
@@ -78,9 +87,14 @@ public class MainController extends HttpServlet {
 		controls.put("/magazine.do", new MagazineControl()); // 뉴스 단일 페이지
 		controls.put("/payment.do", new PaymentControl());
 		controls.put("/paymentResult.do", new PaymentResultControl());
-		controls.put("/downLoadMyGoods.do", new DownLoadMyGoodsControl());
+		controls.put("/downloadMyGoods.do", new DownloadMyGoodsControl());
+		controls.put("/myCart.do", new CartListControl());
 		controls.put("/paymentAjax.do", new PaymentAjaxControl());
 		controls.put("/paymentMemberInfoAjax.do", new PaymentMemberInfoAjaxControl());
+		controls.put("/downloadAjax.do", new DownloadAjaxControl());
+		controls.put("/downloadProcess.do", new DownloadProcessControl());
+		controls.put("/myCartListAjax.do", new CartListAjaxControl());
+		controls.put("/myCartRemoveAjax.do", new CartRemoveAjaxControl());
 		
 		// 동원
 		controls.put("/mypage.do", new MypageControl());
@@ -88,6 +102,7 @@ public class MainController extends HttpServlet {
 		controls.put("/qna.do", new QnAControl());
 		controls.put("/support.do", new SupportControl());
 		controls.put("/qnaReult.do", new QnAResultControl());
+		controls.put("/wishList.do", new WishListControl());
 		// 현욱
 		controls.put("/main.do", new MainPage()); // 메인페이지
 		controls.put("/loginForm.do", new LoginForm());// 로그인
@@ -105,12 +120,15 @@ public class MainController extends HttpServlet {
 		controls.put("/privateListForm.do", new PrivateListForm());// 개인상품 리스트
 		controls.put("/privateListControl.do", new PrivateListControl());// 개인상품 리스트 컨트롤
 		controls.put("/privateCount.do", new ProductPageDTO());
+		controls.put("/companyListForm.do", new CompanyListForm());// 기업회사 상품 리스트
+		controls.put("/companyListControl.do", new CompanyListControl());// 기업회사 상품 컨트롤
+		controls.put("/companyCount.do", new CompanyPageDTO());// 페이지갯수
+		controls.put("/cartAdd.do", new CartAddControl());
 
 		// 유환
 		controls.put("/product.do", new Productform()); // 상세페이지
 		controls.put("/review.do", new ReviewControl()); // 상세페이지
 		controls.put("/reviewcount.do", new ReviewTotalCount()); // 리뷰 총페이지
-		controls.put("/company.do", new Companyform()); // 회사
 
 		// 영훈
 		controls.put("/admin.do", new AdminControl());

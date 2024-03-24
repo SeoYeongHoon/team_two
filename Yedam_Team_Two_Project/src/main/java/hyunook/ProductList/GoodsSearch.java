@@ -3,11 +3,11 @@ package hyunook.ProductList;
 
 import lombok.Data;
 
-
 @Data
 public class GoodsSearch {
 	private String category;
 	private String order;
+	private String sl;
 	private int price1;
 	private int price2;
 	private int page;
@@ -42,6 +42,13 @@ public class GoodsSearch {
 	public void setPage(int page) {
 		this.page = page;
 	}
+	public String getSl() {
+	    return sl;
+	}
+	public void setSl(String sl) {
+		this.sl = sl;
+	}
+	
 	
 }
 

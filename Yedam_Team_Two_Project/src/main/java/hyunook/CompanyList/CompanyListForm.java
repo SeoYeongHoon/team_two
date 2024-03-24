@@ -1,4 +1,4 @@
-package changoh.Mypage;
+package hyunook.CompanyList;
 
 import java.io.IOException;
 
@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.Control;
 
-public class DownLoadMyGoodsControl implements Control {
+public class CompanyListForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = "jsp/downLoadMyGoods.tiles";
+
+		String path = "jsp/company.tiles"; //web-inf/view/loginForm.jsp
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 
