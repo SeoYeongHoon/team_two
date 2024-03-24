@@ -25,7 +25,6 @@ public class WishGoodsControl implements Control {
 		
 		if (svc.insertWishList(list)) {
 			req.setAttribute("success", "찜 성공");
-			resp.sendRedirect("product.do");
 		} else {
 			req.setAttribute("message", "에러가 발생했습니다.");
 			String path = "jsp/mainPage.tiles";
