@@ -27,8 +27,8 @@
                             <tbody>
                                 <c:forEach items="${wishGoodsList}" var="wishGoods">
                                     <tr>
-                                        <td class="wL_product_img" onclick="location.href='product.do?goodsId=${wishGoods.goodsId}'">
-                                        <img src="../../static/img/product-img/product1.jpg" alt="Product"></a></td>
+                                        <td class="wL_product_img" onclick="location.href='product.do?pno=${wishGoods.goodsId}'">
+                                        <img src="../../static/img/bg-img/${wishGoods.image}" alt="Product"></td>
                                         <td class="wL_product_goodsId"><h5>${wishGoods.goodsId}</h5></td>
                                         <td class="wL_product_name"><h5>${wishGoods.name}</h5></td>
                                         <td class="wL_product_description"><h5>${wishGoods.description}</h5></td>

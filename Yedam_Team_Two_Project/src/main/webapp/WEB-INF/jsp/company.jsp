@@ -356,12 +356,18 @@ $(document).on('click', 'a[data-product-id]', function(e){
         method:'post',
         data:{ pno: pno, id: id },
         success:function(result){
-            if(result.retCode == 'OK'){
-                alert('장바구니에 등록되었습니다.');
+        	if(result.retCode == 'SAME'){
+       	     	alert('이미 같은 상품을 장바구니에 등록하셨습니다.')	  
+       	  	}
+       	  	else if (result.retCode == 'PURCHASED'){
+       		  	alert('이미 구매된 상품입니다.')
+       	  	}
+             else if(result.retCode == 'OK'){
+               	alert('장바구니에 등록되었습니다.');
             } else {
-                alert('로그인 후 사용하세요');
-                window.open('loginForm.do', '_blank');
-            }
+               	alert('로그인 후 사용하세요');
+               	window.open('loginForm.do', '_blank');
+           }
         },
         error: function(xhr, status, error) {
             console.error(error);

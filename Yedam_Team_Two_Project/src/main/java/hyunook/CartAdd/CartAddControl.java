@@ -32,6 +32,9 @@ public class CartAddControl implements Control {
 	   if(svc.cartCheck(cart)>1) {
 		   map.put("retCode", "SAME");
 	   }
+	   else if (svc.purchaseCheck(cart) > 1) {
+		   map.put("retCode", "PURCHASED");
+	   }
 	   else if(id!="") {
 		   if(svc.cartAdd(cart)){
 		   map.put("retCode", "OK");

@@ -49,6 +49,7 @@
 			    <a href="mypage.do" class="cart-nav"><img src="../../static/img/core-img/mypage.png" alt="mypage"> My Page </a>
 				<a href="myCart.do" class="fav-nav"><img src="../../static/img/core-img/cart.png" alt="cart"> My Cart </a>
 				<a href="downloadMyGoods.do" class="fav-nav"><img src="../../static/img/core-img/mypage.png" alt="download"> Download </a>
+				<a href="wishList.do" class="fav-nav"><img src="../../static/img/core-img/mypage.png" alt="download"> WishList </a>
 	    	</c:when>
 	    	<c:when test ="${logMemberType =='MANAGER'}">
 	    		<p>Welcome, ${logName}</p> 
