@@ -11,28 +11,28 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-lg-8">
-                    <div class="cart-title mt-50">
+                    <div class="wL-title mt-50">
                         <h2>Wish List</h2>
                     </div>
 
-                    <div class="cart-table clearfix">
+                    <div class="wL-table clearfix">
                         <table class="table table-responsive">
                             <thead>
                                 <tr>
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th>price</th>
-                                    
+                                    <th>Price</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <c:forEach items="${wishGoodsList}" var="wishGoods">
                                     <tr>
-                                        <td class="cart_product_img"><a href="#"><img src="../../static/img/product-img/product1.jpg" alt="Product"></a></td>
-                                        <td class="cart_product_desc">
-                                            <h5>${wishGoods.name}</h5>
-                                        </td>                                       
+                                        <td class="wL_product_img"><a href="#"><img src="../../static/img/product-img/product1.jpg" alt="Product"></a></td>
+                                        <td class="wL_product_goodsId"><h5>${wishGoods.goodsId}</h5></td>
+                                        <td class="wL_product_name"><h5>${wishGoods.name}</h5></td>
+                                        <td class="wL_product_description"><h5>${wishGoods.description}</h5></td>
+                                        <td class="wL_product_price"><h5>${wishGoods.price}</h5></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

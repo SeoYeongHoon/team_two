@@ -10,17 +10,12 @@
         SELECT wl.wish_goods_id AS wishGoodsId,
 		       wl.member_id AS memberId,
 		       wl.goods_id AS goodsId,
-		       g.image AS image
+		       g.name AS name,
+		       g.image AS image,
+		       g.description AS description,
+		       g.price AS price 
 		FROM   wish_list wl
 		JOIN   goods g ON wl.goods_id = g.goods_id
 		WHERE  wl.member_id = #{memberId, jdbcType=VARCHAR}
-        
-        <!-- 
-        SELECT wish_goods_id AS wishGoodsId,
-               member_id AS memberId,
-               goods_id AS goodsId
-		FROM  wish_list
-		WHERE member_id=#{memberId, jdbcType=VARCHAR}
-         -->
 	</select>
 </mapper>
