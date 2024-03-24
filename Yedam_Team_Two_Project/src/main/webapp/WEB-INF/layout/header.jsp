@@ -53,9 +53,9 @@
 	    	<c:when test ="${logMemberType =='MANAGER'}">
 	    		<p>Welcome, ${logName}</p> 
 			    <a href="admin.do" class="cart-nav">
-				<img src="../../static/img/core-img/mypage.png" alt="mypage"> 관리자페이지 <span></span></a>
+				<img src="../../static/img/core-img/mypage.png" alt="mypage"> Management <span></span></a>
 			    <a href="#" class="fav-nav">
-				<img src="../../static/img/core-img/favorites.png" alt="">고객센터</a> <a href="#" class="search-nav">
+				<img src="../../static/img/core-img/favorites.png" alt="">Support</a> <a href="#" class="search-nav">
 				<img src="../../static/img/core-img/search.png" alt=""> FAQ</a>
 	    	</c:when>
 		</c:choose>	

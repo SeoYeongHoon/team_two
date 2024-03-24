@@ -16,15 +16,8 @@
 						<!-- 큰사진 -->
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<a class="gallery_img" href="../../static/img/product-img/pro-big-1.jpg"> 
-									<img class= "d-block1 w-100" src="../../static/img/product-img/pro-big-1.jpg" alt="First slide">
-								</a>
-							</div>
-							<div class="carousel-item">
-								<a class="gallery_img"
-									href="../../static/img/product-img/pro-big-4.jpg"> <img
-									class="d-block w-100"
-									src="static/img/product-img/pro-big-4.jpg" alt="Fourth slide">
+								<a class="gallery_img" href="../../static/img/bg-img/${goods.image}"> 
+									<img class= "d-block1 w-100" src="../../static/img/bg-img/${goods.image}" alt="First slide">
 								</a>
 							</div>
 						</div>

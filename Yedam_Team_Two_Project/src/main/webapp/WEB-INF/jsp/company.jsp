@@ -2,13 +2,8 @@
 	pageEncoding="UTF-8"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-<html>
-<head>
-<meta charset="UTF-8">
-<title>개인 판매 리스트</title>
 <link rel="stylesheet" href="../../static/css/privateGoods.css">
-</head>
+
 <body>
 	<div class="shop_sidebar_area">
 
@@ -380,4 +375,3 @@ countButton();
 	</script>
 
 </body>
-</html>
