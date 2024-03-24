@@ -19,7 +19,7 @@ public class WishListControl implements Control {
 		//즉 이미 로그인 되어있다는 뜻. 세션에서 id값 받아올 수 있음
 		//현재 memberId가 null값이 뜨는데, 이유가 뭘까?
 		HttpSession session = req.getSession();
-		String memberId = (String) session.getAttribute("memberId");
+		String memberId = (String) session.getAttribute("logid");
 		
 		//세션에서 id가져온 것으로 sql 실행
 		WishListService svc = new WishListServiceImpl();
