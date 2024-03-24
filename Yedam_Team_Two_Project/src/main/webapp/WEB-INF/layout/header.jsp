@@ -20,7 +20,7 @@
 	<!-- Amado Nav -->
 	<nav class="amado-nav">
 		<ul>
-			<li class="active"><a href="main.do">Home</a></li>
+			<li><a href="main.do">Home</a></li>
 			<li><a href="privateListForm.do">Template By Seller</a></li>
 			<li><a href="companyListForm.do">Template By Company</a></li>
 			<li><a href="magazineList.do">Magazine</a></li>
@@ -69,3 +69,24 @@
 			href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 	</div>
 </header>
+<script>
+    // 현재 페이지 URL
+    function getCurrentPage() {
+        var pathArray = window.location.pathname.split('/');
+        return pathArray[pathArray.length - 1];
+    }
+
+    // 현재 페이지에 해당하는 메뉴에 active 추가
+    function setActiveMenuItem() {
+        var currentPage = getCurrentPage();
+        var navLinks = document.querySelectorAll('.amado-nav ul li a');
+        
+        for (var i = 0; i < navLinks.length; i++) {
+            if (navLinks[i].getAttribute('href') === currentPage) {
+                navLinks[i].parentNode.classList.add('active');
+            }
+        }
+    }
+
+    window.onload = setActiveMenuItem;	// 페이지 호출(로드)
+</script>
