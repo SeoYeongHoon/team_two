@@ -38,6 +38,7 @@
 						<!-- Product Meta Data -->
 						<div class="product-meta-data">
 							<div class="line"></div>
+							<input type="hidden" name="pno" value="${goods.goodsId }">
 							<h3>${goods.name}</h3>
 							<div class="line"></div>
 							<p class="product-price" id="price">${goods.price}원</p>
@@ -104,7 +105,7 @@
 		    	
 		        e.preventDefault();
 		        
-		        // 찜할 상품 ID, 멤버 ID 가져오기
+		        // 장바구니에 넣을 상품 ID, 멤버 ID 가져오기
 		        var goodsId = $(this).data('goodsid');
 		        var memberId = $(this).data('memberid');
 		        console.log(memberId);

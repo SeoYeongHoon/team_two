@@ -26,7 +26,6 @@ public class AddCartControl implements Control {
 		
 		if (svc.insertCartList(list)) {
 			req.setAttribute("success", "장바구니 넣기 성공");
-			resp.sendRedirect("product.do");
 		} else {
 			req.setAttribute("message", "에러가 발생했습니다.");
 			String path = "jsp/mainPage.tiles";
