@@ -9,4 +9,10 @@
                #{goodsId},
                #{memberId})
     </insert>
+    <select id ="checkCart" parameterType="hyunook.CartAdd.AddCart">
+    SELECT COUNT(*)
+    FROM cart
+    WHERE goods_id =#{goodsId}
+    AND member_id = #{memberId}
+    </select>
   </mapper>

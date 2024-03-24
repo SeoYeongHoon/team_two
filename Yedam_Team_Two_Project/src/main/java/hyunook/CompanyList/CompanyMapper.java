@@ -11,4 +11,5 @@ public interface CompanyMapper {
 	
 	int companyCnt(CompanySearch search);
 	
+	
 }
