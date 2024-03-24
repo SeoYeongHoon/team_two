@@ -10,7 +10,7 @@ public interface MemberService {
     //아이디조회
     List<Member> searchId(Member member);
     //비밀번호
-    List<Member> searchPw(Member member);
+    boolean searchPw(Member member);
     //회원가입
     boolean addMember(Member member);
     //중복아이디조회

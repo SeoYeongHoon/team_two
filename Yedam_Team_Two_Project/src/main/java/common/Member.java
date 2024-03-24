@@ -14,6 +14,7 @@ public class Member {
 	private String password;
 	private String email;
 	private String tel;
+	private String randomCode;
 
 	public String getEmail() {
 		return email;
@@ -61,6 +62,14 @@ public class Member {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+ 
+	public String getRandomCode() {
+		return randomCode;
+	}
+
+	public void setRandomCode(String randomCode) {
+		this.randomCode = randomCode;
 	}
 
 	@Override

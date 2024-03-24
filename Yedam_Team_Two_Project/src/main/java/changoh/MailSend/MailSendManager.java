@@ -13,8 +13,10 @@ import javax.mail.internet.MimeMessage;
 
 public class MailSendManager {
 	public boolean Send(String passenger, String code) { //매개변수로 수신자이메일과 이메일 내용 넣기!
-		String user = "발신자아이디@gmail.com"; //발신자 이메일 아이디
-		String password = "ppts sycs cgvm zfqd"; //발신자 이메일의 앱비밀번호 입력
+		System.out.println("발신자"+passenger);
+		System.out.println("code"+code);
+		String user = "aosdnr54321@gmail.com"; //발신자 이메일 아이디
+		String password = "xptv sugw ktfe wazv"; //발신자 이메일의 앱비밀번호 입력
 		
 		//구글 계정 앱 비밀번호 생성법
 		//구글 홈페이지 내 계정 접속 후 우측 상단 계정 설정 클릭 > 상단 검색어 입력에 "앱비밀번호" 입력 후 본인인증 거치고, 앱비밀번호 설정

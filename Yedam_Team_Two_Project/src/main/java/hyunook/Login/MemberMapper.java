@@ -10,7 +10,7 @@ public interface MemberMapper {
 	//아이디 조회
 	List<Member> searchId(Member meber);
 	//비밀번호 조회
-	List<Member> searchPw(Member meber);
+	int searchPw(Member meber);
 	//회원가입
 	int insertMember(Member member);
     //중복아이디조회
