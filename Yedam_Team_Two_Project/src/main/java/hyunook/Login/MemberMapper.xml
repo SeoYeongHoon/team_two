@@ -27,7 +27,7 @@
        SELECT password
        FROM member
        WHERE  member_id = #{memberId }
-       AND name = #{name} 
+       AND email = #{email} 
     </select>
     <!-- 회원가입 -->
 	<insert id="insertMember" parameterType="common.Member">

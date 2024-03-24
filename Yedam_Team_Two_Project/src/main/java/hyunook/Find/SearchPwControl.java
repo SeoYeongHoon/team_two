@@ -22,12 +22,12 @@ public class SearchPwControl implements Control {
 		 req.setCharacterEncoding("utf-8");
 		   resp.setContentType("text/json;charset=utf-8");
 	       String id = req.getParameter("id");
-	       String name = req.getParameter("name");
+	       String email = req.getParameter("email");
 	       
 	       Member member = new Member();
 	       
 	       member.setMemberId(id);
-	       member.setName(name);
+	       member.setEmail(email);
 	       
 	       MemberService svc = new MemberServiceImpl();
 	       List<Member> list = svc.searchPw(member);
