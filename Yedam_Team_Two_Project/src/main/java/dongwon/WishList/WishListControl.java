@@ -28,7 +28,7 @@ public class WishListControl implements Control {
 		List<WishGoods> wishGoodsList = svc.getWishList(memberId);
 		
 		//잘 가져왔는지 확인해보는 코드 
-		System.out.println("logid :" + memberId);
+		System.out.println("logId :" + memberId);
         if (wishGoodsList != null) {
             for (WishGoods wishGoods : wishGoodsList) {
                 System.out.println("Wish Goods ID: " + wishGoods.getWishGoodsId());
