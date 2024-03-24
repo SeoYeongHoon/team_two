@@ -15,4 +15,8 @@ public class CartAddServiceImpl implements CartAddService{
 	public int cartCheck(AddCart addcart) {
 		return mapper.checkCart(addcart);
 	}
+	@Override
+	public int purchaseCheck(AddCart addcart) {
+		return mapper.purchaseCheck(addcart);
+	}
 }
