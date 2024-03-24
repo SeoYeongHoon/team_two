@@ -90,6 +90,8 @@
 										<option value="new">최근순</option>
 										<option value="old">오래된순</option>
 										<option value="popular">인기순</option>
+										<option value="lowPrice">낮은 가격순</option>
+										<option value="highPrice">높은 가격순</option>
 									</select>
 							</div>
 						</div>

@@ -24,7 +24,7 @@
 		       g.score_id
 		FROM   cart c JOIN goods g
 		                ON (c.goods_id = g.goods_id)
-		WHERE  g.member_id = #{memberId}
+		WHERE  c.member_id = #{memberId}
 	</select>
 	
 	<delete id="removeMyCart" parameterType="myCart">

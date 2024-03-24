@@ -12,4 +12,7 @@ public class CartAddServiceImpl implements CartAddService{
 	public boolean cartAdd(AddCart addcart) {
         return mapper.addCart(addcart) == 1;
 	}
+	public int cartCheck(AddCart addcart) {
+		return mapper.checkCart(addcart);
+	}
 }

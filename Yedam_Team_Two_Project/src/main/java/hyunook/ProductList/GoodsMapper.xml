@@ -56,6 +56,12 @@
                      <when test = "order == 'old'">  
                      ORDER BY req_date 
                      </when>
+                     <when test = "order == 'lowPrice'">  
+                     ORDER BY price 
+                     </when>
+                     <when test = "order == 'highPrice'">  
+                     ORDER BY price DESC 
+                     </when>
                      <otherwise>
                      ORDER BY req_date DESC
                      </otherwise>

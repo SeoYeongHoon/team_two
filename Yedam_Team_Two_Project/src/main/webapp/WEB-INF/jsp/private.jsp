@@ -90,6 +90,8 @@
 										<option value="new">최근순</option>
 										<option value="old">오래된순</option>
 										<option value="popular">인기순</option>
+										<option value="lowPrice">낮은 가격순</option>
+										<option value="highPrice">높은 가격순</option>
 									</select>
 							</div>
 						</div>
@@ -359,9 +361,12 @@ $(document).on('click', 'a[data-product-id]', function(e){
         method:'post',
         data:{ pno: pno, id: id },
         success:function(result){
-            if(result.retCode == 'OK'){
+        	  if(result.retCode == 'SAME'){
+        	     alert('이미 같은 상품을 장바구니에 등록하셨습니다')	  
+        	  }
+              else if(result.retCode == 'OK'){
                 alert('장바구니에 등록되었습니다.');
-            } else {
+             } else {
                 alert('로그인 후 사용하세요');
                 window.open('loginForm.do', '_blank');
             }
