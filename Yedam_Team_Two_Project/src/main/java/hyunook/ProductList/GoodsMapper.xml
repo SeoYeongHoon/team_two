@@ -154,7 +154,7 @@
                 SYSDATE,
                 SYSDATE,
                 1,
-                'userId1',
+                #{memberId},
                 1)
 	</insert>
 	

@@ -19,6 +19,7 @@
 						</div>
 						<form action="request.do" method="post" enctype="multipart/form-data">
 						    <div class="row">
+						    	<input type="hidden" name="memberId" value="${logid }">
 						        <div class="col-md-12 mb-3">
 						            <input type="text" class="form-control title_info" name="title_info" id="title_info" placeholder="상품 이름" required>
 						        </div>

@@ -31,8 +31,7 @@ public class RequestControl implements Control {
 		String content = multi.getParameter("content_info");
 		String image = multi.getFilesystemName("image");
 		String price = multi.getParameter("price");
-		
-		System.out.println(image);
+		String id = multi.getParameter("memberId");
 
 		Goods goods = new Goods();
 		goods.setName(title);
@@ -41,6 +40,8 @@ public class RequestControl implements Control {
 		goods.setReqType(RequestType.ADD);
 		goods.setGoodsState(GoodsState.valueOf("SALE"));
 		goods.setImage(image);
+		goods.setMemberId(id);
+		System.out.println("SELLER 멤버 ID: " + id);
 		
 		GoodsListService svc = new GoodsListServiceImpl();
 		
