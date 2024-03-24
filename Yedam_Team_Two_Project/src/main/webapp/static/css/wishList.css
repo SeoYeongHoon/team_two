@@ -1,45 +1,39 @@
-.magazineList-table{
-	flex: 100%;
+.cart-table-area {
+    padding: 100px 0;
+}
+
+.wL-title {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.wL-table {
+    overflow-x: auto;
     max-width: 100%;
 }
-.magazineList-tr:hover{
-	transition: 0.5s;
-	background-color: #fbb710;
+
+.wL-table table {
+    width: 100%;
+    border-collapse: collapse;
 }
-.magazine-writer{
-	width: 100%;
-	text-align: right;
+
+.wL-table th,
+.wL-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #fbb710;
 }
-.magazineList-img{
-	height: 100px;
-}
-.magazine-behindPageButton-parent{
-	text-align: center;
-}
-.magazine-behindPageButton{
-	border: none;
-	background-color: #fbb710;
-	color: white;
-	width: 30%;
-}
-.magazine-behindPageButton:hover{
-	transition: 0.3s;
-	border: none;
-	background-color: black;
-	color: white;	
-}
-.magazine-image-parent{
-	margin: auto;
-    max-width: 70%;
-    width: 70%;
+
+.wL-table td img {
+	cursor: pointer;
+    max-width: 100px;
     height: auto;
 }
-.magazine-image{
-	margin-bottom: 5%;
-}
-.magazine-returnToTitleButton{
-	text-align: center;
-}
-.magazine-returnToTitleButton Button{
-    width: 20%;
+
+.wL_product_goodsId,
+.wL_product_name,
+.wL_product_description,
+.wL_product_price {
+    vertical-align: middle;
 }
