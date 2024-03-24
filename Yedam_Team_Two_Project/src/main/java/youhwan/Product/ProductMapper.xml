@@ -37,5 +37,23 @@
 	from review
 	where goods_id = #{gid}
 	</select>
+	
+	<insert id="insertWishList" parameterType="common.WishList">
+		INSERT INTO wish_list (wish_goods_id,
+							   member_id,
+							   goods_id)
+		VALUES (wish_goods_id_seq.NEXTVAL,
+				#{memberId},
+				#{goodsId})
+	</insert>
+	
+	<insert id="insertCartList" parameterType="common.CartList">
+		INSERT INTO cart (cart_id,
+		                  goods_id,
+		                  member_id)
+		VALUES (cart_id_seq.NEXTVAL,
+		        #{goodsId},
+		        #{memberId})
+	</insert>
 
 </mapper>
