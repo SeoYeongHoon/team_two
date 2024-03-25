@@ -104,8 +104,6 @@
 			  <![CDATA[
 			  WHERE rownum <= (#{page} * 5)
 			  ]]>
-			  <!-- AND isConfirm = 1 -->
-			  AND goods_state = 'SALE'
 			  AND member_id = #{memberId}
 			  ) a
 		WHERE (a.rn > (#{page} - 1) * 5)
@@ -123,7 +121,7 @@
 			  <![CDATA[
 			  WHERE rownum <= (#{page} * 5)
 			  ]]>
-			  AND goods_state = 'SALE'
+			  AND goods_state = 'SOLDOUT'
 			  ) a
 		WHERE (a.rn > (#{page} - 1) * 5)
 	</select>

@@ -28,7 +28,7 @@ public class ConfirmControl implements Control {
 
 		req.setAttribute("goods", goods);
 		
-		goods.setGoodsState(GoodsState.valueOf("SOLDOUT"));
+		goods.setGoodsState(GoodsState.valueOf("SALE"));
 		
 		if (svc.updateConfirm(goods)) {
 			resp.sendRedirect("admin.do");

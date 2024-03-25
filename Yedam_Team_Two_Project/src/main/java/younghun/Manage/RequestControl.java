@@ -38,7 +38,7 @@ public class RequestControl implements Control {
 		goods.setDescription(content);
 		goods.setPrice(Integer.parseInt(price));
 		goods.setReqType(RequestType.ADD);
-		goods.setGoodsState(GoodsState.valueOf("SALE"));
+		goods.setGoodsState(GoodsState.valueOf("SOLDOUT"));
 		goods.setImage(image);
 		goods.setMemberId(id);
 		System.out.println("SELLER 멤버 ID: " + id);
