@@ -110,9 +110,32 @@
 		WHERE (a.rn > (#{page} - 1) * 5)
 	</select>
 	
+	<select id="confirmGoodsList" resultType="common.Goods">
+		SELECT goods_id,
+               name,
+               description,
+               price,
+               req_date,
+               member_id
+		FROM (SELECT /*+ INDEX_DESC(b PK_GOODS) */ rownum rn, b.*
+			  FROM goods b
+			  <![CDATA[
+			  WHERE rownum <= (#{page} * 5)
+			  ]]>
+			  AND goods_state = 'SALE'
+			  ) a
+		WHERE (a.rn > (#{page} - 1) * 5)
+	</select>
+	
 	<select id="getTotalCnt" resultType="int">
 		SELECT COUNT(*)
 		FROM goods
+	</select>
+	
+	<select id="myTotalCnt" resultType="int" parameterType="String">
+		SELECT COUNT(*)
+		FROM goods
+		WHERE member_id = #{memberId}
 	</select>
 	
 	<select id="selectGoods" parameterType="int" resultType="goods">
