@@ -40,6 +40,7 @@
                      WHERE MEMBER_ID IN (SELECT MEMBER_ID
                                          FROM MEMBER
                                          WHERE MEMBER_TYPE='SELLER')
+
                      AND GOODS_STATE = 'SALE'
                      <if test="category != null and category != ''">
                      AND CATEGORY_ID IN (SELECT CATEGORY_ID
@@ -104,8 +105,6 @@
 			  <![CDATA[
 			  WHERE rownum <= (#{page} * 5)
 			  ]]>
-			  <!-- AND isConfirm = 1 -->
-			  AND goods_state = 'SALE'
 			  AND member_id = #{memberId}
 			  ) a
 		WHERE (a.rn > (#{page} - 1) * 5)
@@ -123,7 +122,7 @@
 			  <![CDATA[
 			  WHERE rownum <= (#{page} * 5)
 			  ]]>
-			  AND goods_state = 'SALE'
+			  AND goods_state = 'SOLDOUT'
 			  ) a
 		WHERE (a.rn > (#{page} - 1) * 5)
 	</select>
@@ -131,6 +130,7 @@
 	<select id="getTotalCnt" resultType="int">
 		SELECT COUNT(*)
 		FROM goods
+		WHERE goods_state = 'SOLDOUT'
 	</select>
 	
 	<select id="myTotalCnt" resultType="int" parameterType="String">

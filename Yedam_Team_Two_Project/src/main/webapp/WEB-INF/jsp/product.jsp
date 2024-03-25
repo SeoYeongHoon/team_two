@@ -16,9 +16,7 @@
 						<!-- 큰사진 -->
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-							   <div class="short_overview my-5">
-							       <p>조회수:  ${goods.viewCnt}</p>
-							   </div>
+							   
 								<a class="gallery_img" href="../../static/img/bg-img/${goods.image}"> 
 									<img class= "d-block1 w-100" src="../../static/img/bg-img/${goods.image}" alt="First slide">
 								</a>
@@ -38,7 +36,7 @@
 							<h3>${goods.name}</h3>
 							<div class="line"></div>
 							<p class="product-price" id="price">${goods.price}원</p>
-
+							<p>조회수:  ${goods.viewCnt}</p>
 							<p class="avaibility" id="hashtag">${goods.hashtag }</p>
 						</div>
 						<div class="short_overview my-5">

@@ -42,7 +42,7 @@
 						<tr>
 							<th>이미지</th>
 							<td colspan="3">
-								<img style="max-width: 300px; height: 50%;" src="static/img/user/<%=goods.getImage() %>">
+								<img style="max-width: 300px; height: 50%;" src="../../static/img/bg-img/<%=goods.getImage() %>">
 							</td>
 						</tr>
 						<tr>
