@@ -22,6 +22,7 @@ public class CartAddControl implements Control {
 		
 	   String pno = req.getParameter("pno");
 	   String id = req.getParameter("id");
+	   System.out.println(pno);
 	   System.out.println("id값값 :"+id);
 	   AddCart cart = new AddCart();
 	   cart.setGoodsId(Integer.parseInt(pno));
@@ -29,10 +30,13 @@ public class CartAddControl implements Control {
 	   
 	   CartAddService svc = new CartAddServiceImpl();
 	   Map<String,Object> map = new HashMap<>();
-	   if(svc.cartCheck(cart)>1) {
+	   
+	   System.out.println(svc.cartCheck(cart));
+	   System.out.println(svc.purchaseCheck(cart));
+	   if(svc.cartCheck(cart)> 0) {
 		   map.put("retCode", "SAME");
 	   }
-	   else if (svc.purchaseCheck(cart) > 1) {
+	   else if (svc.purchaseCheck(cart) > 0) {
 		   map.put("retCode", "PURCHASED");
 	   }
 	   else if(id!="") {

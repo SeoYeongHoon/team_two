@@ -19,8 +19,8 @@
                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <a class="gallery_img" href="../static/img/bg-img/${magazine.image}.jpg">
-                                            <img class="d-block w-100" src="../static/img/bg-img/${magazine.image}.jpg" alt="First slide">
+                                        <a class="gallery_img" href="../static/img/bg-img/${magazine.image}">
+                                            <img class="d-block w-100" src="../static/img/bg-img/${magazine.image}" alt="First slide">
                                         </a>
                                     </div>
                                 </div>
