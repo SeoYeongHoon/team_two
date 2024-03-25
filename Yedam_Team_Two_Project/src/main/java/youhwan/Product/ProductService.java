@@ -14,7 +14,8 @@ public interface ProductService {
 	List<Review> ProductReview(int gid);
 	// 리뷰 전체 건수
 	int totalCount(int gid);
-
+    //조회수 확인 
+	boolean viewCount(int gid);
 	boolean insertWishList(WishList list);
 	boolean insertCartList(CartList list);
 }

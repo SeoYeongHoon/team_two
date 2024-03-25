@@ -48,7 +48,10 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.insertCartList(list) == 1;
 	}
 	
-
+   @Override
+   public boolean viewCount(int gid) {
+	    return mapper.viewCount(gid)==1;
+    }
 	
 	
 
