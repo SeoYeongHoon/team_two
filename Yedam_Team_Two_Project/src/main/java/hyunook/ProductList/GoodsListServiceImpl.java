@@ -32,8 +32,8 @@ public class GoodsListServiceImpl implements GoodsListService {
 	}
 
 	@Override
-	public List<Goods> goodsList(int page) {
-		return mapper.goodsList(page);
+	public List<Goods> goodsList(GoodsSearch search) {
+		return mapper.goodsList(search);
 	}
 
 	@Override

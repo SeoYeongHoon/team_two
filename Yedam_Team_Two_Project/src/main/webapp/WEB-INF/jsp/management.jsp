@@ -71,6 +71,7 @@
 										</tr>
 									</thead>
 									<tbody>
+									    
 										<c:forEach var="goods" items="${list }">
 										<tr>
 											<td><c:out value="${goods.goodsId }" /></td>
