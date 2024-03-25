@@ -91,7 +91,7 @@
                      AND PRICE BETWEEN ${price1} AND ${price2}
                   
 	</select>
-	<select id="goodsList" resultType="common.Goods">
+	<select id="goodsList" resultType="common.Goods" parameterType="hyunook.ProductList.GoodsSearch">
 		SELECT goods_id,
                name,
                description,
@@ -105,6 +105,7 @@
 			  ]]>
 			  <!-- AND isConfirm = 1 -->
 			  AND goods_state = 'SALE'
+			  AND member_id = #{memberId}
 			  ) a
 		WHERE (a.rn > (#{page} - 1) * 5)
 	</select>

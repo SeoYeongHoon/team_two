@@ -8,6 +8,7 @@ public class GoodsSearch {
 	private String category;
 	private String order;
 	private String sl;
+	private String memberId;
 	private int price1;
 	private int price2;
 	private int page;
