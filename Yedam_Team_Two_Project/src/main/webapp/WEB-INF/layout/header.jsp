@@ -53,7 +53,7 @@
 	    	</c:when>
 	    	<c:when test ="${logMemberType =='SELLER'}">
 	    	   <p>Welcome, ${logName}</p>
-	    	    <a href="requestForm.do" class="cart-nav"><img src="../../static/img/core-img/favorites.png" alt="addRequest">등록 신청</a>
+	    	    <a href="management.do" class="cart-nav"><img src="../../static/img/core-img/favorites.png" alt="addRequest">Management</a>
 	    	    <a href="mypage.do" class="cart-nav"><img src="../../static/img/core-img/mypage.png" alt="mypage"> My Page </a>
 				<a href="myCart.do" class="fav-nav"><img src="../../static/img/core-img/cart.png" alt="cart"> My Cart </a>
 				<a href="downloadMyGoods.do" class="fav-nav"><img src="../../static/img/core-img/mypage.png" alt="download"> Download </a>

@@ -21,7 +21,7 @@ public class RequestControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String savePath = req.getServletContext().getRealPath("static/img/user");
+		String savePath = req.getServletContext().getRealPath("static/img/bg-img");
 		int maxSize = 1024 * 1024 * 15;
 		String enc = "utf-8";
 		
@@ -38,7 +38,7 @@ public class RequestControl implements Control {
 		goods.setDescription(content);
 		goods.setPrice(Integer.parseInt(price));
 		goods.setReqType(RequestType.ADD);
-		goods.setGoodsState(GoodsState.valueOf("SALE"));
+		goods.setGoodsState(GoodsState.valueOf("SOLDOUT"));
 		goods.setImage(image);
 		goods.setMemberId(id);
 		System.out.println("SELLER 멤버 ID: " + id);
