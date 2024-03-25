@@ -129,6 +129,7 @@
 	<select id="getTotalCnt" resultType="int">
 		SELECT COUNT(*)
 		FROM goods
+		WHERE goods_state = 'SOLDOUT'
 	</select>
 	
 	<select id="myTotalCnt" resultType="int" parameterType="String">
