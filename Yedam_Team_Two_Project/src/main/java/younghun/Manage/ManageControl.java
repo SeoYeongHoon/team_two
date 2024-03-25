@@ -28,7 +28,7 @@ public class ManageControl implements Control {
 		GoodsSearch search = new GoodsSearch();
 		search.setMemberId(memberId);
 		GoodsListService svc = new GoodsListServiceImpl();
-		List<Goods> list = svc.goodsList(search);
+		List<Goods> list = svc.goodsList(Integer.parseInt(page));
 		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), svc.boardTotalCnt(), 5);
 		
 		req.setAttribute("list", list);
