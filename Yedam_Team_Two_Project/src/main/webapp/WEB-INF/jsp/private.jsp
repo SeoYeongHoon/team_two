@@ -28,19 +28,26 @@
 					<label class="form-check-label" for="amado">전체</label>
 				</div>
 				<div class="form-check">
-					<input class="form-check-input" name="category" type="radio" class="category"value="카테고리1">
-					<label class="form-check-label" for="amado">카테고리1</label>
+					<input class="form-check-input" name="category" type="radio" class="category"value="사업계획서">
+					<label class="form-check-label" for="amado">사업계획서</label>
 				</div>
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" name="category" type="radio" class="category" value="카테고리2">
-					<label class="form-check-label" for="ikea">카테고리2</label>
+					<input class="form-check-input" name="category" type="radio" class="category" value="자기소개서">
+					<label class="form-check-label" for="ikea">자기소개서</label>
 				</div>
 				<!-- Single Form Check -->
 				<div class="form-check">
-					<input class="form-check-input" name="category" type="radio" class="category" value="카테고리3"> 
-					<label class="form-check-label" for="furniture">카테고리3</label>
-						
+					<input class="form-check-input" name="category" type="radio" class="category" value="PPT"> 
+					<label class="form-check-label" for="furniture">PPT</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" name="category" type="radio" class="category" value="교육용"> 
+					<label class="form-check-label" for="furniture">교육용</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" name="category" type="radio" class="category" value="애니메이션"> 
+					<label class="form-check-label" for="furniture">애니메이션</label>
 				</div>
 			</div>
 		</div>
