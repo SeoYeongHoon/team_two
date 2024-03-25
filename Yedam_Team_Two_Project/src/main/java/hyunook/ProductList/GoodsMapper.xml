@@ -198,7 +198,8 @@
 	
 	<update id="updateConfirm" parameterType="common.Goods">
 		UPDATE goods
-		SET    goods_state = #{goodsState}
+		SET    goods_state = #{goodsState},
+		       req_type = #{reqType}
 		WHERE  goods_id = #{goodsId}
 	</update>
 </mapper>

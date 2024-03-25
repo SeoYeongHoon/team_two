@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import common.Control;
 import common.Goods;
 import common.GoodsState;
+import common.RequestType;
 import hyunook.ProductList.GoodsListService;
 import hyunook.ProductList.GoodsListServiceImpl;
 
@@ -29,6 +30,7 @@ public class ConfirmControl implements Control {
 		req.setAttribute("goods", goods);
 		
 		goods.setGoodsState(GoodsState.valueOf("SALE"));
+		goods.setReqType(RequestType.valueOf("NONE"));
 		
 		if (svc.updateConfirm(goods)) {
 			resp.sendRedirect("admin.do");
