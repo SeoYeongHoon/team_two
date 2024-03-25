@@ -12,6 +12,7 @@
 	<select id="selectGoods" parameterType="int" resultType="goods">
 	SELECT  goods_id,
 			name,
+			view_cnt,
 	        description,
 	        price,
 	        hashtag,
@@ -55,5 +56,10 @@
 		        #{goodsId},
 		        #{memberId})
 	</insert>
-
+     
+     <update id="viewCount" parameterType="int">
+        UPDATE goods
+        SET view_cnt = view_cnt+1
+        WHERE GOODS_ID = #{goodsId}
+     </update>
 </mapper>

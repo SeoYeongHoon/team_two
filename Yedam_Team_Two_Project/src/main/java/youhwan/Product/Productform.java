@@ -20,14 +20,13 @@ public class Productform implements Control {
 		String gid = req.getParameter("pno");
 		
 		ProductService svc = new ProductServiceImpl();
-		
-		Goods goods = svc.getGoods(Integer.parseInt(gid));
-		 
-	    req.setAttribute("goods", goods);
-		
-	    String path = "jsp/product.tiles";
-	    req.getRequestDispatcher(path).forward(req, resp);
-		
+        
+       if(svc.viewCount(Integer.parseInt(gid)))	{	
+    	 Goods goods = svc.getGoods(Integer.parseInt(gid));
+	     req.setAttribute("goods", goods);
+	     String path = "jsp/product.tiles";
+	     req.getRequestDispatcher(path).forward(req, resp);
+       }
         
 	}
 

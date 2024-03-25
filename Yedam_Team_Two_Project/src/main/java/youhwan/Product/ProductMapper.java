@@ -13,6 +13,8 @@ public interface ProductMapper {
 	// 리뷰 데이터
 	List<Review> selectReview(int gid);
 	
+	int viewCount(int gid);
+	
 	// 리뷰 전체를 계산
 	int selectCount(int gid);
 	
