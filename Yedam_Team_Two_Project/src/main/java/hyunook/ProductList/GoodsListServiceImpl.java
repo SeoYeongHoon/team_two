@@ -16,11 +16,13 @@ public class GoodsListServiceImpl implements GoodsListService {
 
 	public List<Goods> privateProductList(GoodsSearch search) {
 		return mapper.privateProductList(search);
-    
+
 	}
-    public int privateCnt(GoodsSearch search) {
-    	return mapper.privateCnt(search);
-    }
+
+	public int privateCnt(GoodsSearch search) {
+		return mapper.privateCnt(search);
+	}
+
 	@Override
 	public boolean addGoods(Goods goods) {
 		return mapper.insertGoods(goods) == 1;
@@ -37,6 +39,11 @@ public class GoodsListServiceImpl implements GoodsListService {
 	}
 
 	@Override
+	public List<Goods> confirmGoodsList(int page) {
+		return mapper.confirmGoodsList(page);
+	}
+
+	@Override
 	public boolean modifyGoods(Goods goods) {
 		return mapper.updateGoods(goods) == 1;
 	}
@@ -49,6 +56,11 @@ public class GoodsListServiceImpl implements GoodsListService {
 	@Override
 	public int boardTotalCnt() {
 		return mapper.getTotalCnt();
+	}
+
+	@Override
+	public int myTotalCnt(String memberId) {
+		return mapper.myTotalCnt(memberId);
 	}
 
 	@Override

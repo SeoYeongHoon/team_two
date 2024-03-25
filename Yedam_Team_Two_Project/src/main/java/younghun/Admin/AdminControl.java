@@ -23,7 +23,7 @@ public class AdminControl implements Control {
 		int boardCountInPage = Integer.parseInt(page);
 		
 		GoodsListService svc = new GoodsListServiceImpl();
-		List<Goods> list = svc.goodsList(boardCountInPage);
+		List<Goods> list = svc.confirmGoodsList(boardCountInPage);
 		
 		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), svc.boardTotalCnt(), 5);
 		

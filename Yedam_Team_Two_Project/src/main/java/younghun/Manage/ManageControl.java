@@ -20,16 +20,18 @@ public class ManageControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
 		HttpSession session = req.getSession();
+		
 		String page = req.getParameter("page");
 		String memberId = (String) session.getAttribute("logid");
 		page = page == null ? "1" : page;
-		int boardCountInPage = Integer.parseInt(page);
 		
 		GoodsSearch search = new GoodsSearch();
 		search.setMemberId(memberId);
+		search.setPage(Integer.parseInt(page));
+		
 		GoodsListService svc = new GoodsListServiceImpl();
-		List<Goods> list = svc.goodsList(Integer.parseInt(page));
-		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), svc.boardTotalCnt(), 5);
+		List<Goods> list = svc.goodsList(search);
+		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), svc.myTotalCnt(memberId), 5);
 		
 		req.setAttribute("list", list);
 		req.setAttribute("page", pageDTO);
