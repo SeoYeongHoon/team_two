@@ -40,6 +40,7 @@
                      WHERE MEMBER_ID IN (SELECT MEMBER_ID
                                          FROM MEMBER
                                          WHERE MEMBER_TYPE='SELLER')
+
                      AND GOODS_STATE = 'SALE'
                      <if test="category != null and category != ''">
                      AND CATEGORY_ID IN (SELECT CATEGORY_ID
