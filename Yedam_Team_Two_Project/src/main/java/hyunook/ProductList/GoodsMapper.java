@@ -10,12 +10,14 @@ public interface GoodsMapper {
 	List<Goods> privateProductList(GoodsSearch search);
 	int privateCnt(GoodsSearch search);
 	List<Goods> goodsList(GoodsSearch search);
+	List<Goods> confirmGoodsList(int page);
 	Goods selectGoods(int goodsId);
 	int insertGoods(Goods goods);
 	int removeGoods(int goodsId);
 	int updateGoods(Goods goods);
 	
 	int getTotalCnt();
+	int myTotalCnt(String memberId);
 	
 	int updateConfirm(Goods goods);
 }
