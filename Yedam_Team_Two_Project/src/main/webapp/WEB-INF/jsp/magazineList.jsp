@@ -28,7 +28,7 @@
 	                                            <h5><c:out value="${magazine.magazineId}"></c:out></h5>
 	                                        </td>
 	                                        <td class="cart_product_img">
-	                                            <a href="#"><img class="magazineList-img" src="../static/img/bg-img/${magazine.thumbnail}.png" alt="Product"></a>
+	                                            <a href="#"><img class="magazineList-img" src="../static/img/bg-img/${magazine.thumbnail}" alt="Product"></a>
 	                                        </td>
 	                                        <td class="cart_product_desc">
 	                                            <h5><c:out value="${magazine.title}"></c:out></h5>

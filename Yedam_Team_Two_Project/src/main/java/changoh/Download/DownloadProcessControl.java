@@ -41,7 +41,7 @@ public class DownloadProcessControl implements Control {
 		
 		for(int i = 0; i < goodsNameAry.length; ++i) {
 			//서버의 실제 절대 경로 및 파일 위치
-			sourceFiles.add("C:\\Users\\PC\\git\\team_two\\Yedam_Team_Two_Project\\src\\main\\webapp\\static\\downloadFile\\" + goodsNameAry[i] + ".jpg");
+			sourceFiles.add("C:\\Users\\admin\\git\\team_two\\Yedam_Team_Two_Project\\src\\main\\webapp\\static\\img\\bg-img\\" + goodsNameAry[i]);
 		}
 				
 		
