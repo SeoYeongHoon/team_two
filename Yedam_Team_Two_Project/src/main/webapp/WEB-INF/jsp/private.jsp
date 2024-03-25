@@ -148,6 +148,12 @@
               let hashTags = [];
               let hashTag = prop.hashtag;
               hashTags = hashTag.split("#");
+              
+              let divTag = $('<div />');
+              hashTags.forEach(item => {
+            	  divTag.append($("<a>", {class:'inlineHash', href: 'product.do?pno='+prop.goodsId, text:"#"+item }));
+		      })
+		      	
               //전체목록 표시
 			      $("#productList").append(
 					    $("<div>", { class: 'col-2 col-sm-4 col-md-6 col-xl-4' }).append(
@@ -165,7 +171,7 @@
 					                )
 					            ),
 					            $("<div>", { class: 'product-description d-flex align-items-center justify-content-between' }).append(
-					                $("<div>", { class: 'product-meta-data1' }).append(
+					                $("<div>", { class: 'product-meta-data1' }).append(divTag,
 					                    $("<p>", { class: 'product-price', href: 'product-details.html', text:prop.name}), // 이름
 					                    $("<p>", { href: 'product-details.html' }).append(
 					                        $("<h6>", { text: prop.price+"원" }) // 가격
@@ -184,11 +190,6 @@
 					      )
 					   )
 					);
-			      hashTags.forEach(item => {
-			    	  $(".product-meta-data1").prepend($("<a>", {class:'inlineHash', href: 'product.do?pno='+prop.goodsId, text:"#"+item })); // 해쉬테그	
-			      	       
-			      	})
-               
 		  })
 	  },
 	  error: function(xhr, status, error) {
