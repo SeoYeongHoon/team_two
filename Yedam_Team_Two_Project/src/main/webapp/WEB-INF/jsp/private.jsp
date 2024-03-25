@@ -151,7 +151,6 @@
                  stars.push($("<i>", { class: 'fa fa-star', 'aria-hidden': 'true' }));
                      }
               //해시태그 배열 만들기
-              $('.inlineHash').remove();
               let hashTags = [];
               let hashTag = prop.hashtag;
               hashTags = hashTag.split("#");
