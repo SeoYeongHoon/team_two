@@ -13,8 +13,10 @@ public class QnA {
 	private int qnaId;
 	private Date qnaDate;
 	private String memberId;
+
 	private String title;
 	private String content;	
+
 	
 	//롬복이 제대로 작동하지 않아 임의로 getter/setter 생성
 	public int getQnaId() {

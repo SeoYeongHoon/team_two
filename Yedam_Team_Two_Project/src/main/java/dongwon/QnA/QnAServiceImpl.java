@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import common.DataSource;
 
 public class QnAServiceImpl implements QnAService {
+
     
     @Override
     public void insertQnA(String memberId, String title, String content) {
@@ -32,4 +33,5 @@ public class QnAServiceImpl implements QnAService {
     public QnA infoQnA(QnA qna) {
         return null;
     }
+
 }
