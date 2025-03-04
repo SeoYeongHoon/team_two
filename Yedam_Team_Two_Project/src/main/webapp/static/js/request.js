@@ -11,9 +11,6 @@ function showImage() {
 	document.getElementById('fileName').textContent = null;     //기존 파일 이름 지우기
 }
 
-function checkImage() {
-	
-}
 
 function loadFile(input) {
 	var file = input.files[0];

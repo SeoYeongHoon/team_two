@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<link rel="stylesheet" href="../../static/css/admin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin.css">
 <link href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css" rel="stylesheet" />
 <script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
 </head>
@@ -141,7 +141,7 @@
 	});
 
 	</script>
-	<script src="../../static/js/management.js"></script>
-	<script src="../../static/js/request.js"></script>
+	<script src="${pageContext.request.contextPath}/static/js/management.js"></script>
+	<script src="${pageContext.request.contextPath}/static/js/request.js"></script>
 </body>
 </html>

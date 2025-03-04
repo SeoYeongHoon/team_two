@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<link rel="stylesheet" href="../../static/css/admin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin.css">
 <link href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css" rel="stylesheet" />
 <script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
 <title>Insert title here</title>

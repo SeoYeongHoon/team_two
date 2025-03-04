@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>개인 판매 리스트</title>
-<link rel="stylesheet" href="../../static/css/privateGoods.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/privateGoods.css">
 </head>
 <body>
 	<div class="shop_sidebar_area">
@@ -167,7 +167,7 @@
 					         $("<div>", { class: 'single-product-wrapper' }).append(
 					            $("<div>", { class: 'single-products-catagory1 clearfix' }).append(
 					                $("<a>", { href: 'product.do?pno='+prop.goodsId}).append(
-					                    $("<img>", { src: "../../static/img/bg-img/"+prop.image+"", alt: '', class: 'product-image' }), // 제품 이미지
+					                    $("<img>", { src: "${pageContext.request.contextPath}/static/img/bg-img/"+prop.image+"", alt: '', class: 'product-image' }), // 제품 이미지
 					                    $("<div>", { class: 'hover-content1' }).append(
 					                        $("<div>", { class: 'line' }),
 					                        $("<h4>", { text: prop.name }), // 가격
@@ -187,7 +187,7 @@
 					                    $("<div>", { class: 'ratings' }).append(stars),
 					                    $("<div>", { class: 'cart' }).append(
 					                    	    $("<a>", { href: '#', 'data-toggle': 'tooltip', 'data-placement': 'left', title: 'Add to Cart', 'data-product-id': prop.goodsId }).append(
-					                    	        $("<img>", { src: '../../static/img/core-img/cart.png', alt: '' }) // 장바구니 아이콘
+					                    	        $("<img>", { src: '${pageContext.request.contextPath}/static/img/core-img/cart.png', alt: '' }) // 장바구니 아이콘
 					                    	    )
 					                    	)
 					                )

@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<link rel="stylesheet" src="../../static/css/Review.css">
+<link rel="stylesheet" src="${pageContext.request.contextPath}/static/css/Review.css">
 <div class="single-product-area section-padding-100 clearfix">
 	<div class="container-fluid">
 		<div class="row" style="flex-wrap: nowrap">
@@ -17,8 +17,8 @@
 						<div class="carousel-inner">
 							<div class="carousel-item active">
 							   
-								<a class="gallery_img" href="../../static/img/bg-img/${goods.image}"> 
-									<img class= "d-block1 w-100" src="../../static/img/bg-img/${goods.image}" alt="First slide">
+								<a class="gallery_img" href="${pageContext.request.contextPath}/static/img/bg-img/${goods.image}"> 
+									<img class= "d-block1 w-100" src=".${pageContext.request.contextPath}/static/img/bg-img/${goods.image}" alt="First slide">
 								</a>
 							</div>
 						</div>

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../../static/css/core-style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/core-style.css">
 
 <title>Insert title here</title>
 </head>
@@ -19,7 +19,7 @@
                <c:forEach var="main" items="${list}">
                 <div class="single-products-catagory clearfix">
                     <a href="product.do?pno=${main.goodsId}">
-                        <img src="../../static/img/bg-img/${main.image}"  alt="">
+                        <img src="${pageContext.request.contextPath }/static/img/bg-img/${main.image}"  alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>

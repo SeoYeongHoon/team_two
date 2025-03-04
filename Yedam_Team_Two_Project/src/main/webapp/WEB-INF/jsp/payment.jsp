@@ -3,7 +3,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-<link rel="stylesheet" href="../../static/css/payment.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/payment.css">
 <body>
 	 <div class="cart-table-area section-padding-100">
             <div class="container-fluid">
@@ -75,7 +75,7 @@
 									$('<span />').text(item.goodsId)),
 							$('<td class="cart_product_desc" />').append($('<span />').text(item.name)),
 							$('<td class="cart_product_img" />').append($('<a href="#" />').append(
-									$('<img class="magazineList-img" />').attr({'src': '../static/img/bg-img/' + item.image}))),
+									$('<img class="magazineList-img" />').attr({'src': '/static/img/bg-img/' + item.image}))),
 							$('<td class="cart_product_desc" />').append($('<span />').text(item.price))
 						)
 				);
@@ -103,7 +103,7 @@
 									$('<span />').text(item.goodsId)),
 							$('<td class="cart_product_desc" />').append($('<span />').text(item.name)),
 							$('<td class="cart_product_img" />').append($('<a href="#" />').append(
-									$('<img class="magazineList-img" />').attr({'src': '../static/img/bg-img/' + item.image}))),
+									$('<img class="magazineList-img" />').attr({'src': '${pageContext.request.contextPath }/static/img/bg-img/' + item.image}))),
 							$('<td class="cart_product_desc" />').append($('<span />').text(item.price))
 						)
 				);

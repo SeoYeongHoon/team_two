@@ -35,13 +35,13 @@ public class DownloadProcessControl implements Control {
 		}
 		
 		//파일 압축하기
-		String zipFile = "C:/goods.zip";
+		String zipFile = "C:/temp/goods.zip";  // 예: 데스크톱으로 변경
 		String downloadFileName = "template";
 		List<String> sourceFiles = new ArrayList<String>();
 		
 		for(int i = 0; i < goodsNameAry.length; ++i) {
 			//서버의 실제 절대 경로 및 파일 위치
-			sourceFiles.add("C:\\Users\\admin\\git\\team_two\\Yedam_Team_Two_Project\\src\\main\\webapp\\static\\img\\bg-img\\" + goodsNameAry[i]);
+			sourceFiles.add("C:\\java\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\Yedam_Team_Two_Project\\static\\img\\bg-img\\" + goodsNameAry[i]);
 		}
 				
 		

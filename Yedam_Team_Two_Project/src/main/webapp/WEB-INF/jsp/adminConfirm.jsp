@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<link rel="stylesheet" href="../../static/css/admin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin.css">
 <link
 	href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css"
 	rel="stylesheet" />
@@ -42,7 +42,7 @@
 						<tr>
 							<th>이미지</th>
 							<td colspan="3">
-								<img style="width: 300px; height: 50%;" src="../../static/img/bg-img/<%=goods.getImage() %>">
+								<img style="width: 300px; height: 50%;" src="${pageContext.request.contextPath}/static/img/bg-img/<%=goods.getImage() %>">
 							</td>
 						</tr>
 						<tr>
@@ -68,6 +68,6 @@
 			</div>
 		</div>
 	</div>
-	<script src="../../static/js/request.js"></script>
+	<script src="${pageContext.request.contextPath}/static/js/request.js"></script>
 </body>
 </html>
