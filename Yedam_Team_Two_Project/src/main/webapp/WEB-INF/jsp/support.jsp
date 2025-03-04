@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-<html lang="ko">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html lang="utf-8">
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <title>PAPATA LABS</title>
 
@@ -49,7 +51,21 @@
 			<nav class="tab">
 				<ul>
 					<li class="on">FAQ</li>
-					<li><a href="/qna.do">Q&A</a></li>
+
+					<c:choose>
+					     <c:when test="${!empty logid }">
+					         <li id ="goToQna"><a href="/qna.do">Q&A</a></li>
+					      </c:when>
+					      <c:otherwise>
+					      <script>
+					     // document.getElementById('btnSave').addEventListener('click', function(e) {
+
+					      //alert("로그인이 필요합니다.");
+					      </script>
+					        <li><a href="/loginForm.do">Q&A</a></li>
+					      </c:otherwise>
+	                </c:choose>			
+
 				</ul>
 			</nav>
 			<div class="custom_phone">

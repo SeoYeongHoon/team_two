@@ -5,7 +5,12 @@
 <mapper namespace="hyunook.Login.MemberMapper">
 	<!-- 로그인 -->
 	<select id="selectMember" parameterType="common.Member" resultType="common.Member">
-		SELECT member_id,name,member_type,password
+		SELECT member_id,
+		       name,
+		       member_type,
+		       password, 
+		       email, 
+		       tel
 		FROM member
 		WHERE member_id= #{memberId }
 		and password= #{password }
@@ -18,12 +23,12 @@
        AND email = #{email } 
     </select>
 	<!-- 비밀번호찾기 -->
-	<select id="searchPw" parameterType="common.Member" >
-       SELECT password
-       FROM member
-       WHERE  member_id = #{memberId }
-       AND name = #{name} 
-    </select>
+	<update id="searchPw" parameterType="common.Member" >
+       UPDATE member
+       SET password =#{randomCode}
+       WHERE member_id = #{memberId}
+       AND email = #{email}
+    </update>
     <!-- 회원가입 -->
 	<insert id="insertMember" parameterType="common.Member">
 		INSERT INTO member(member_id,
@@ -58,4 +63,13 @@
 	  WHERE tel=#{tel }
 	</select>
 	
+	<update id="updateUserInfo" parameterType="common.Member">
+		UPDATE member
+		SET    member_id = #{memberId},
+			   name = #{name},
+			   password = #{password},
+			   email = #{email},
+			   tel = #{tel}
+		WHERE  member_id = #{memberId}
+	</update>
 </mapper>

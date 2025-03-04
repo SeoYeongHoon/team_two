@@ -1,5 +1,4 @@
 package dongwon.QnA;
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import common.Control;
 
+
 //QnA패키지의 목적은, 웹페이지의 1:1문의에서 클라이언트가 작성한 QnA의 정보를
 //DB의 QnA테이블에 저장하기 위함이다.
 
@@ -19,6 +19,15 @@ public class QnAControl implements Control {
 	//Control을 재정의하여, 요청을 받고 응답을 보내는데, 보내면서 뭘 하는지를 정의함
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+	
+		//QnAControl의 역할 : 로그인 체크 -- > JSP파일에서 구현하는게 더 바람직함.
+		//Control에서 구현하려면 DB와 대조하는 SQL문도 작성하는 등 소요되는 시간이 길다.
+		//그러므로, QnA컨트롤은 그냥 내버려 두자.
+		
+		//센드리다이렉트 코드 추가
+		
+		//이 경로에 보내겠다. * 이 경로는 관리자의 요청 처리 페이지가 되어야 한다.
 		// int qnaId; 시퀀스 값은 DB에서 생성함
 		// Date qnaDate; SYSDATE 값도 마찬가지
 		

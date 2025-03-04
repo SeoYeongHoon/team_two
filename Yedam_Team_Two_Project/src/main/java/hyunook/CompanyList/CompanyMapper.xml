@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hyunook.CompanyList.CompanyMapper">
+	<select id="companyProductList" resultType="common.Goods" parameterType="hyunook.CompanyList.CompanySearch">
+	   <!-- 개인판매자 조회 -->
+       SELECT GOODS_ID,
+              NAME,
+              DESCRIPTION,
+              PRICE,
+              HASHTAG,
+              VIEW_CNT,
+              IMAGE,
+              GOODS_STATE,
+              REQ_TYPE,
+              REQ_DATE,
+              RESP_DATE,
+              CATEGORY_ID,
+              MEMBER_ID,
+              SCORE_ID
+        FROM (SELECT /*+ INDEX(m SYS_C008499) */
+                         ROWNUM rn,
+                         GOODS_ID,
+                         NAME,
+                         DESCRIPTION,
+                         PRICE,
+                         HASHTAG,
+                         VIEW_CNT,
+                         IMAGE,
+                         GOODS_STATE,
+                         REQ_TYPE,
+                         REQ_DATE,
+                         RESP_DATE,
+                         CATEGORY_ID,
+                         MEMBER_ID,
+                         SCORE_ID
+               FROM (SELECT *
+                     FROM GOODS
+                     WHERE MEMBER_ID IN (SELECT MEMBER_ID
+                                         FROM MEMBER
+                                         WHERE MEMBER_TYPE='MANAGER')
+                     <if test="category != null and category != ''">
+                     AND CATEGORY_ID IN (SELECT CATEGORY_ID
+                                        FROM CATEGORIES
+                                        WHERE NAME = #{category})
+                     </if>
+                     <if test="sl != null and sl != ''">
+                       AND NAME LIKE '%'||#{sl}||'%'
+                     </if>
+                     AND PRICE BETWEEN ${price1} AND ${price2}
+                 <choose>
+                   <when test = "order == 'popular'">    
+                     ORDER BY score_id DESC
+                    </when>
+                     <when test = "order == 'old'">  
+                     ORDER BY req_date 
+                     </when>
+                      <when test = "order == 'lowPrice'">  
+                     ORDER BY price 
+                     </when>
+                     <when test = "order == 'highPrice'">  
+                     ORDER BY price DESC 
+                     </when>
+                     <otherwise>
+                     ORDER BY req_date DESC
+                     </otherwise>
+                  </choose> 
+                   )
+              <![CDATA[
+                WHERE ROWNUM <= (${page}*6)) b
+              ]]> 
+      WHERE rn > (${page} - 1) * 6
+                                                                         
+                                             
+	</select>
+	<select id="companyCnt" resultType="int" parameterType="hyunook.CompanyList.CompanySearch">
+		            SELECT COUNT(*)
+                     FROM GOODS
+                     WHERE MEMBER_ID IN (SELECT MEMBER_ID
+                                         FROM MEMBER
+                                         WHERE MEMBER_TYPE='MANAGER')
+                     <if test="category != null and category != ''">
+                     AND CATEGORY_ID IN (SELECT CATEGORY_ID
+                                        FROM CATEGORIES
+                                        WHERE NAME = #{category})
+                     </if>
+                     <if test="sl != null and sl != ''">
+                       AND NAME LIKE '%'||#{sl}||'%'
+                     </if>
+                     AND PRICE BETWEEN ${price1} AND ${price2}
+                  
+	</select>
+	
+</mapper>

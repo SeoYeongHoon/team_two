@@ -10,7 +10,7 @@
 					<!-- Logo -->
 					<div class="footer-logo mr-50">
 						<a href="index.html"><img
-							src="../../static/img/core-img/logo2.png" alt=""></a>
+							src="${pageContext.request.contextPath }/static/img/core-img/logo2.png" alt=""></a>
 					</div>
 					<!-- Copywrite Text -->
 					<p class="copywrite">

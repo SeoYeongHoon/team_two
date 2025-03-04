@@ -1,5 +1,7 @@
 package changoh.Payment;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import common.DataSource;
@@ -18,5 +20,17 @@ public class PaymentServiceImpl implements PaymentService{
 	@Override
 	public Goods getGoods(Goods goods) {
 		return mapper.getGoods(goods);
+	}
+	@Override
+	public List<Goods> getCartList(Member member) {
+		return mapper.getCartList(member);
+	}
+	@Override
+	public int createPurchaseHistoryData(PurchaseHistory purchaseHistory) {
+		return mapper.createPurchaseHistoryData(purchaseHistory);
+	}
+	@Override
+	public int createPurchaseDetailData(PurchaseDetail purchaseDetail) {
+		return mapper.createPurchaseDetailData(purchaseDetail);
 	}
 }

@@ -23,11 +23,15 @@ public class LoginControl implements Control {
        member.setPassword(pw);
        MemberService svc = new MemberServiceImpl();
        member = svc.loginCheck(member);
+       
        if(member != null) {
     	   HttpSession session = req.getSession();
     	   session.setAttribute("logid", id);
+    	   session.setAttribute("logPw", pw);
     	   session.setAttribute("logName", member.getName());
     	   session.setAttribute("logMemberType", member.getMemberType());
+    	   session.setAttribute("logEmail", member.getEmail());
+    	   session.setAttribute("logTel", member.getTel());
     	   resp.sendRedirect("main.do");
        }else {
     	   req.setAttribute("message", "아이디와 비밀번호가 일치하지않습니다.");

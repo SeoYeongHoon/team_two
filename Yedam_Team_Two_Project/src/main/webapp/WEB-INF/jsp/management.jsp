@@ -1,6 +1,9 @@
+<%@page import="common.PageDTO" %>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,38 +11,40 @@
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<link rel="stylesheet" href="../../static/css/admin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin.css">
+<link href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css" rel="stylesheet" />
+<script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
 </head>
+<style>
+.center {
+  text-align: center;
+  width: 60%;
+  margin: auto;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  /*border: 1px solid #ddd;*/
+  /*margin: 0 4px;*/
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
 <body>
-	<script>
-		$.get('../management.do', (result) => {
-			result.forEach((item, idx, ary) => {
-				
-			});
-			
-			$(result).each((idx, item, ary) => {
-				$('<tr />').append(
-					$('<td />').text(item.name),
-					$('<td />').text(item.description),
-					$('<td />').text(item.price),
-					$('<td class="align-middle text-center" />')
-						.append($('<a href="#" class="badge badge-sm bg-gradient-success" />').text('수정')),
-					$('<td class="align-middle" />')
-						.append($('<a href="#" class="badge badge-sm bg-gradient-danger" />').text('삭제'))
-				).appendTo($('table'));
-			})
-		})
-		
-		/* $(document).ready(() => {
-			
-		}) */
-	</script>
-	<%-- <%
-		String title = request.getParameter("title_info");
-		String content = request.getParameter("content_info");
-		String image = request.getParameter("chooseFile");
-		String type = request.getParameter("type_info");
-	%> --%>
 	<div class="container-fluid py-4">
 		<div class="row">
 			<div class="col-12">
@@ -53,63 +58,90 @@
 
 					<div class="card-body px-0 pb-2">
 						<div class="table-responsive p-0">
-							<table class="table align-items-center mb-0" style="padding: 10px;">
-								<thead>
-									<tr>
-										<th class="font-weight-bolder">제목</th>
-										<th class="font-weight-bolder">내용</th>
-										<th class="font-weight-bold">유형</th>
-										<th></th>
-										<th class="align-middle"><a href="request.do" class="confirm_btn bg-gradient-danger mb-0 toast-btn">등록</a></th>
-									</tr>
-								</thead>
-								<%-- <tbody>
-									<tr>
-										<td class="align-middle">
-											<span>${title }</span>
-										</td>
-										<td class="align-middle">
-											<span>${content }</span>
-										</td>
-										<td class="align-middle text-center">
-											<span>${type }</span>
-										</td>
-										<td class="align-middle text-center">
-											<a href="#" class="badge badge-sm bg-gradient-success">수정</a>
-										</td>
-										<td class="align-middle">
-											<a href="#" class="badge badge-sm bg-gradient-danger">삭제</a>
-										</td>
-									</tr>
-									
-									<!-- <tr>
-										<td>
-											<div>
-												<img src="../../static/img/user/dog.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-											</div>
-										</td>
-										<td class="align-middle">
-											<span class="text-secondary text-xs font-weight-bold">서영훈의 템플릿</span>
-										</td>
-										<td class="align-middle text-center">
-											<span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-										</td>
-										<td class="align-middle text-center">
-											<a href="#" class="badge badge-sm bg-gradient-success">수정</a>
-										</td>
-										<td class="align-middle">
-											<a href="#" class="badge badge-sm bg-gradient-danger">삭제</a>
-										</td>
-									</tr> -->
-								</tbody> --%>
-							</table>
+							<form action="modifyForm.do" method="post">
+								<table class="table align-items-center mb-0">
+									<thead>
+										<tr>
+											<th class="font-weight-bolder">상품번호</th>
+											<th class="font-weight-bolder">제목</th>
+											<th class="font-weight-bolder">내용</th>
+											<th class="font-weight-bold">신청일자</th>
+											<th></th>
+											<th class="align-middle"><a href="requestForm.do" class="confirm_btn bg-gradient-danger mb-0 toast-btn">등록</a></th>
+										</tr>
+									</thead>
+									<tbody>
+									    
+										<c:forEach var="goods" items="${list }">
+										<tr>
+											<td><c:out value="${goods.goodsId }" /></td>
+											<td>${goods.name }</td>
+											<td>${goods.description }</td>
+											<td><fmt:formatDate value="${goods.reqDate }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+											<td><a href="modifyForm.do?goodsId=${goods.goodsId }" class="badge badge-sm bg-gradient-success">수정</a></td>
+											<td><a href="removeForm.do?goodsId=${goods.goodsId }" class="badge badge-sm delete-btn bg-gradient-danger" data-goodsid="${goods.goodsId}">삭제</a></td>
+										</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</form>
+								<div class="center">
+								    <div class="pagination">
+									    <c:if test="${page.prev }">
+									      <a href="management.do?page=${page.starPage - 1 }"> &laquo; </a>
+									    </c:if>
+									    <c:forEach begin="${page.starPage }" end="${page.endPage }" var="p">
+									      <c:choose>
+									        <c:when test="${p eq page.page }">
+									          <a href="management.do?page=${p }" class="active">${p }</a>
+									        </c:when>
+									        <c:otherwise>
+									          <a href="management.do?page=${p }">${p }</a>
+									        </c:otherwise>
+									      </c:choose>
+									    </c:forEach>
+									    <c:if test="${page.next }">
+									      <a href="management.do?page=${page.endPage + 1 }"> &raquo; </a>
+									    </c:if>
+								    </div>
+								</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script src="../../static/js/management.js"></script>
-	<script src="../../static/js/request.js"></script>
+	<script>
+	$(document).ready(function() {
+	    // 삭제 버튼 클릭 시
+	    $('.delete-btn').click(function(e) {
+	    	if (!confirm('삭제하시겠습니까?')) {
+	    		return false;
+	    	}
+	    	
+	        e.preventDefault();
+	        
+	        // 삭제할 상품 ID 가져오기
+	        var goodsId = $(this).data('goodsid');
+	        // Ajax 요청
+	        $.ajax({
+	            url: 'removeGoods.do',
+	            type: 'POST',
+	            data: { goodsId: goodsId },
+	            success: function(response) {
+	                // 삭제 성공 시 페이지 재로드
+	                location.reload();
+	            },
+	            error: function(xhr, status, error) {
+	                // 에러 처리
+	                console.error(error);
+	            }
+	        });
+	    });
+	});
+
+	</script>
+	<script src="${pageContext.request.contextPath}/static/js/management.js"></script>
+	<script src="${pageContext.request.contextPath}/static/js/request.js"></script>
 </body>
 </html>

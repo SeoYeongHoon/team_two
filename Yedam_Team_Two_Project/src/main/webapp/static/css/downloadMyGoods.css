@@ -1,0 +1,53 @@
+.payment-goods{
+	background-color: #f5f7fa;
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+    padding: 30px 20px;
+}
+.payment-cart-summary{
+	margin-top: 70px !important;
+}
+body{
+ -ms-overflow-style: none;
+ }
+ 
+::-webkit-scrollbar {
+  display: none;
+}
+.payment-table{
+	max-height: 400px;
+	margin: 0;
+}
+table tbody {
+  display: block;
+  max-height: 350px;
+  overflow-y: scroll;
+}
+table thead, table tbody tr {
+  display: table;
+  width: 100%;
+}
+table tbody tr:hover{
+	transition: 0.3s;
+	background-color: #fbb710;
+}
+.downLoadMyGoods-div{
+	margin-left: auto;
+}
+.downLoadMyGoods-btn{
+	border: none;
+	width: 50%;
+	background-color: #fbb710;
+	color: white;
+}
+.downLoadMyGoods-btn:hover{
+	transition: 0.3s;
+	background-color: black;
+}
+.downLoadMyGoods-img{
+	max-width: 150px !important;
+}
+#downloadMyGoods-downloadbtn-div{
+	text-align: right;
+}

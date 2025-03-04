@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hyunook.MainPage.MainPageMapper">
+   <select id="mainPageList" resultType="common.Goods">
+      SELECT  GOODS_ID,
+              NAME,
+              DESCRIPTION,
+              PRICE,
+              HASHTAG,
+              VIEW_CNT,
+              IMAGE,
+              GOODS_STATE,
+              REQ_TYPE,
+              REQ_DATE,
+              RESP_DATE,
+              CATEGORY_ID,
+              MEMBER_ID,
+              SCORE_ID
+         FROM              (SELECT /*+ INDEX(m SYS_C008499)*/
+                                     ROWNUM rn,
+                                   GOODS_ID,
+                                     NAME,
+                                     DESCRIPTION,
+                                     PRICE,
+                                     HASHTAG,
+                                     VIEW_CNT,
+                                     IMAGE,
+                                     GOODS_STATE,
+                                      REQ_TYPE,
+                                      REQ_DATE,
+                                      RESP_DATE,
+                                      CATEGORY_ID,
+                                      MEMBER_ID,
+                                      SCORE_ID   
+                            FROM (SELECT *
+                                   FROM goods
+                                   ORDER BY view_cnt DESC)
+                             <![CDATA[
+                            WHERE ROWNUM <= 12) b
+                             ]]> 
+       WHERE rn> 0
+   </select>
+</mapper>

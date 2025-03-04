@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../static/css/core-style.css">
-<link rel="stylesheet" href="../../static/scss/style.scss">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/core-style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/static/scss/style.scss">
 <style>
 
 </style>
@@ -21,13 +21,13 @@
 </body>
 
 <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-<script src="../../static/js/jquery/jquery-2.2.4.min.js"></script>
+<script src="${pageContext.request.contextPath }/static/js/jquery/jquery-2.2.4.min.js"></script>
 <!-- Popper js -->
-<script src="../../static/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath }/static/js/popper.min.js"></script>
 <!-- Bootstrap js -->
-<script src="../../static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/static/js/bootstrap.min.js"></script>
 <!-- Plugins js -->
-<script src="../../static/js/plugins.js"></script>
+<script src="${pageContext.request.contextPath }/static/js/plugins.js"></script>
 <!-- Active js -->
-<script src="../../static/js/active.js"></script>
+<script src="${pageContext.request.contextPath }/static/js/active.js"></script>
 </html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="changoh.MyCart.MyCartMapper">
+<!-- 방법1 -->
+	<!-- id="xxMapper의 함수이름" resultType="반환되는 타입" parameterType="파라미터 타입"-->
+	<!-- 반환, 파라미터 타입 경우 : resources/config/mybatis-config.xml 파일의 typeAlias설정되어있는지 확인 -->
+	
+	<select id="getCartList" resultType="goods" parameterType="member">
+		SELECT g.goods_id,
+		       g.name,
+		       g.description,
+		       g.price,
+		       g.hashtag,
+		       g.view_cnt,
+		       g.image,
+		       g.goods_state,
+		       g.req_type,
+		       g.req_date,
+		       g.resp_date,
+		       g.category_id,
+		       g.member_id,
+		       g.score_id
+		FROM   cart c JOIN goods g
+		                ON (c.goods_id = g.goods_id)
+		WHERE  c.member_id = #{memberId}
+	</select>
+	
+	<delete id="removeMyCart" parameterType="myCart">
+		DELETE FROM Cart
+		WHERE  member_id = #{memberId}
+		AND    goods_id = #{goodsId}
+	</delete>
+</mapper>

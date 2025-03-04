@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<html lang="ko">   
+
     
 <!DOCTYPE html>
 <html lang="ko">   
@@ -9,6 +14,8 @@
 			response.sendRedirect("loginForm.do");
 		}
 	%>
+
+  
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <title>PAPATA LABS</title>
 
@@ -49,7 +56,9 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
 
-</script>		<div id="custom" class="c_write">
+
+<div id="custom" class="c_write">
+
 			<h2>고객센터</h2>
 			<p>파파타랩스의 모든 궁금증, 이곳에서 해결하세요!</p>
 			<nav class="tab">
@@ -61,15 +70,17 @@
 			<form name='frm' id='frm' method="POST">
 			<input type='HIDDEN' id='strMode' name='strMode' value="NEW">
 			<input type='HIDDEN' name='returnUrl' id='returnUrl' value="/customer/qnaReg.php">			<input type='HIDDEN' name='memberSeq' id='memberSeq' value='40283'>
-			<input type='HIDDEN' name='memberMail' id='memberMail' value='6321kang@naver.com'>
+
+			<input type='HIDDEN' name='memberMail' id='memberMail' value='amado@amado.com'>
 			<table>
 				<tr>
 					<th><label for="qnaTitle">제목</label></th>
-					<td><input type="text" name='qnaTitle' id="qnaTitle" placeholder="제목을 입력하세요."></td>
+					<td><input type="text" name='title' id="qnaTitle" placeholder="제목을 입력하세요."></td>
 				</tr>
 				<tr>
 					<th><label for="qnaContent">문의 내용</label></th>
-					<td><textarea name='qnaContent' id="qnaContent" placeholder="문의 내용을 입력하세요."></textarea></td>
+					<td><textarea name='content' id="qnaContent" placeholder="문의 내용을 입력하세요."></textarea></td>
+
 				</tr>
 			</table>
 			<div class="btn_wrap qna_btn">
@@ -82,54 +93,56 @@
 			<div id="sns">
 	<div class="row">
 		<div class='col-xs-4'>	<a href='https://www.youtube.com/channel/UC24VcwwJ64zmUt6fVvwkGyg?view_as=subscriber' class='box box1' target='_blank'>		<div class='box-center'>			<img src='/files/banner/fa0ed5b5c600145bdd9a299952b99651.jpg' alt=''>			<img class='hover_img' src='/files/banner/97f1dd66781eaf6bc93c8efa5731284d.jpg' alt=''>		</div>	</a></div><div class='col-xs-4'>	<a href='https://www.facebook.com/%ED%8C%8C%ED%8C%8C%ED%83%80%EB%9E%A9%EC%8A%A4-113567613763875/' class='box box2' target='_blank'>		<div class='box-center'>			<img src='/files/banner/35ce1d4eb0f666cd136987d34f64aedc.jpg' alt=''>			<img class='hover_img' src='/files/banner/5b53cf0c1bc2cd9b30c2abda1b6e1aaa.jpg' alt=''>		</div>	</a></div><div class='col-xs-4'>	<a href='https://www.instagram.com/papatalabs/' class='box box3' target='_blank'>		<div class='box-center'>			<img src='/files/banner/b7bd6536bf9b3071c642718c7a514eac.png' alt=''>			<img class='hover_img' src='/files/banner/0f9ff408fd37a30ad6af332b28f71165.png' alt=''>		</div>	</a></div>	</div>
-</div>
-</div>
 
+    </div>
+
+       </div>
+        <form id="qnaResult" action="qnaResult.do" method="post" >
+		<input type="hidden" name="memberId">
+		<input type="hidden" name="title">
+		<input type="hidden" name="content">
+		</form>
 <script type="text/javascript">
 
-// 버튼 누르면 정보가 json 형식으로 전달하는?게 맞지 않나. 폼 형식으로?..잘모르겠지만 일단 제이슨.
-document.getElementById('btnSave').addEventListener('click', function(e) {
-    var qnaTitle = document.getElementById('qnaTitle').value;
-    var qnaContent = document.getElementById('qnaContent').value;
-    
-    if(qnaTitle.trim() === '' || qnaContent.trim() === '') {
-        alert("내용을 작성하세요.");
-    } else {
-        var xhr = new XMLHttpRequest();
-        var url = '/qnaControl';
-        var params = 'qnaTitle=' + encodeURIComponent(qnaTitle) + '&qnaContent=' + encodeURIComponent(qnaContent);
-        
-        xhr.open('POST', url, true);
-        xhr.setRequestHeader('application/json', 'application/x-www-form-urlencoded');
-        
-        xhr.onreadystatechange = function() {
-            if(xhr.readyState == 4 && xhr.status == 200) {
-                alert("고객님의 문의가 접수되었습니다.");
-            }
-        };
-        
-        xhr.send(params);
-    }
-});
+function requestQnA(MemberId, title, content) {
+	          subForm.find('input[name=memberId]').val(JSON.stringify(memberId));
+	          subForm.find('input[name=title]').val(JSON.stringify(title));
+	          subForm.find('input[name=content]').val(JSON.stringify(content));
+	          subForm.submit();
+	          
+	        }
 
-// 버튼 누르면 객체 전송하는 기능 구현
-//document.getElementById('btnSave').addEventListener('click', function(e) {
-//	fetch('../qna.do', {
-//		method: 'post',
-//		headers: {
-//			'Content-Type': 'text/json'
-//		},
-//		body: JSON.stringify()
-//	})
-//		.then(resolve => resolve.text())
-//		.then(result => console.log(result))
-//		.catch(err => console.log(err));
-//
-//})
-
-
+//버튼 누르면 정보가 json 형식으로 전달하는?게 맞지 않나. 폼 형식으로?..잘모르겠지만 일단 제이슨.
+//document.getElementById('btnSave').addEventListener('click', function(requestQnA) {
+//	          alert("제출되었습니다.");	
+//}
+	//   var qnaTitle = document.getElementById('qnaTitle').value;
+//   var qnaContent = document.getElementById('qnaContent').value;
+//    
+//   if(qnaTitle.trim() === '' || qnaContent.trim() === '') {
+//        alert("내용을 작성하세요.");
+//    } else {
+//        var xhr = new XMLHttpRequest();
+//        var url = '/qnaControl';
+//       var params = 'title=' + encodeURIComponent(qnaTitle) + '&content=' + encodeURIComponent(qnaContent);
+//        
+//        xhr.open('POST', url, true);
+//        xhr.setRequestHeader('application/json', 'application/x-www-form-urlencoded');
+//        
+//        xhr.onreadystatechange = function() {
+//            if(xhr.readyState == 4 && xhr.status == 200) {
+//                alert("고객님의 문의가 접수되었습니다.");
+//            }
+//        };
+//        
+//        xhr.send(params);
+//    }
+//});
 
 $(document).ready(function(){
 	$("#p_footer").load("/footer.php")
 });
+
 </script>
+</html>
+

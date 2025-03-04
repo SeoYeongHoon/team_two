@@ -21,9 +21,12 @@ public class MagazineListControl implements Control {
 		MagazineService svc = new MagazineServiceImpl();
 		int boardCountInPage = Integer.parseInt(page);
 		List<Magazine> list = svc.getMagazineList(boardCountInPage);
+
+		for(int i = 0; i < list.size(); ++i) {
+			System.out.println(list.get(i).toString());
+		}
 		
 		PageDTO pageDTO = new PageDTO(boardCountInPage, svc.getTotalCount(), 5);
-		
 		req.setAttribute("list", list);
 		req.setAttribute("page", pageDTO);
 		

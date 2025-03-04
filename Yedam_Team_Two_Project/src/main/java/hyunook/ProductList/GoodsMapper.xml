@@ -3,19 +3,203 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="hyunook.ProductList.GoodsMapper">
-	<select id="privateProductList" resultType="common.Goods">
+	<select id="privateProductList" resultType="common.Goods" parameterType="hyunook.ProductList.GoodsSearch">
 	   <!-- 개인판매자 조회 -->
-	   SELECT * 
-       FROM goods
-       WHERE member_id IN (SELECT member_id
-                          FROM member
-                          WHERE member_type='SELLER')
+       SELECT GOODS_ID,
+              NAME,
+              DESCRIPTION,
+              PRICE,
+              HASHTAG,
+              VIEW_CNT,
+              IMAGE,
+              GOODS_STATE,
+              REQ_TYPE,
+              REQ_DATE,
+              RESP_DATE,
+              CATEGORY_ID,
+              MEMBER_ID,
+              SCORE_ID
+        FROM (SELECT /*+ INDEX(m SYS_C008499) */
+                         ROWNUM rn,
+                         GOODS_ID,
+                         NAME,
+                         DESCRIPTION,
+                         PRICE,
+                         HASHTAG,
+                         VIEW_CNT,
+                         IMAGE,
+                         GOODS_STATE,
+                         REQ_TYPE,
+                         REQ_DATE,
+                         RESP_DATE,
+                         CATEGORY_ID,
+                         MEMBER_ID,
+                         SCORE_ID
+               FROM (SELECT *
+                     FROM GOODS
+                     WHERE MEMBER_ID IN (SELECT MEMBER_ID
+                                         FROM MEMBER
+                                         WHERE MEMBER_TYPE='SELLER')
+
+                     AND GOODS_STATE = 'SALE'
+                     <if test="category != null and category != ''">
+                     AND CATEGORY_ID IN (SELECT CATEGORY_ID
+                                        FROM CATEGORIES
+                                        WHERE NAME = #{category})
+                     </if>
+                     <if test="sl != null and sl != ''">
+                       AND NAME LIKE '%'||#{sl}||'%'
+                     </if>
+                     AND PRICE BETWEEN ${price1} AND ${price2}
+                 <choose>
+                   <when test = "order == 'popular'">    
+                     ORDER BY score_id DESC
+                    </when>
+                     <when test = "order == 'old'">  
+                     ORDER BY req_date 
+                     </when>
+                     <when test = "order == 'lowPrice'">  
+                     ORDER BY price 
+                     </when>
+                     <when test = "order == 'highPrice'">  
+                     ORDER BY price DESC 
+                     </when>
+                     <otherwise>
+                     ORDER BY req_date DESC
+                     </otherwise>
+                  </choose> 
+                   )
+              <![CDATA[
+                WHERE ROWNUM <= (${page}*6)) b
+              ]]> 
+      WHERE rn > (${page} - 1) * 6
+                                                                         
+                                             
+	</select>
+	<select id="privateCnt" resultType="int" parameterType="hyunook.ProductList.GoodsSearch">
+		            SELECT COUNT(*)
+                     FROM GOODS
+                     WHERE MEMBER_ID IN (SELECT MEMBER_ID
+                                         FROM MEMBER
+                                         WHERE MEMBER_TYPE='SELLER')
+                     <if test="category != null and category != ''">
+                     AND CATEGORY_ID IN (SELECT CATEGORY_ID
+                                        FROM CATEGORIES
+                                        WHERE NAME = #{category})
+                     </if>
+                     <if test="sl != null and sl != ''">
+                       AND NAME LIKE '%'||#{sl}||'%'
+                     </if>
+                     AND PRICE BETWEEN ${price1} AND ${price2}
+                  
+	</select>
+	<select id="goodsList" resultType="common.Goods" parameterType="hyunook.ProductList.GoodsSearch">
+		SELECT goods_id,
+               name,
+               description,
+               price,
+               req_date,
+               member_id
+		FROM (SELECT /*+ INDEX_DESC(b PK_GOODS) */ rownum rn, b.*
+			  FROM goods b
+			  <![CDATA[
+			  WHERE rownum <= (#{page} * 5)
+			  ]]>
+			  AND member_id = #{memberId}
+			  ) a
+		WHERE (a.rn > (#{page} - 1) * 5)
 	</select>
 	
-	<select id="goodsList">
-		SELECT name,
-			   description,
-			   price
-		FROM goods			   
+	<select id="confirmGoodsList" resultType="common.Goods">
+		SELECT goods_id,
+               name,
+               description,
+               price,
+               req_date,
+               member_id
+		FROM (SELECT /*+ INDEX_DESC(b PK_GOODS) */ rownum rn, b.*
+			  FROM goods b
+			  <![CDATA[
+			  WHERE rownum <= (#{page} * 5)
+			  ]]>
+			  AND goods_state = 'SOLDOUT'
+			  ) a
+		WHERE (a.rn > (#{page} - 1) * 5)
 	</select>
+	
+	<select id="getTotalCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM goods
+		WHERE goods_state = 'SOLDOUT'
+	</select>
+	
+	<select id="myTotalCnt" resultType="int" parameterType="String">
+		SELECT COUNT(*)
+		FROM goods
+		WHERE member_id = #{memberId}
+	</select>
+	
+	<select id="selectGoods" parameterType="int" resultType="goods">
+		SELECT goods_id,
+			   name,
+			   description,
+			   image,
+			   price,
+			   req_date,
+			   member_id,
+			   goods_state
+		FROM goods
+		WHERE goods_id = #{goodsId}
+	</select>
+	
+	<insert id="insertGoods" parameterType="common.Goods">
+		INSERT INTO goods  (goods_id,
+	                        name,
+	                        description,
+	                        price,
+	                        hashtag,
+	                        view_cnt,
+	                        image,
+	                        goods_state,
+	                        req_type,
+	                        req_date,
+	                        resp_date,
+	                        category_id,
+	                        member_id,
+	                        score_id)
+		VALUES (goods_id_seq.NEXTVAL,
+                #{name},
+                #{description},
+                #{price},
+                '#',
+                0,
+                #{image},
+                #{goodsState},
+                #{reqType},
+                SYSDATE,
+                SYSDATE,
+                1,
+                #{memberId},
+                1)
+	</insert>
+	
+	<delete id="removeGoods" parameterType="int">
+		delete goods cascade where goods_id = #{goodsId}
+	</delete>
+	
+	<update id="updateGoods" parameterType="common.Goods" >
+		UPDATE goods
+		SET    name = #{name},
+			   description = #{description},
+			   image = #{image},
+			   price = #{price}
+		WHERE goods_id = #{goodsId}
+	</update>
+	
+	<update id="updateConfirm" parameterType="common.Goods">
+		UPDATE goods
+		SET    goods_state = #{goodsState},
+		       req_type = #{reqType}
+		WHERE  goods_id = #{goodsId}
+	</update>
 </mapper>

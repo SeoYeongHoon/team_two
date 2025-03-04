@@ -1,0 +1,40 @@
+.cart-table-area {
+    padding: 100px 0;
+}
+
+.wL-title {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.wL-table {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.wL-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.wL-table th,
+.wL-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: white;
+
+}
+
+.wL-table td img {
+	cursor: pointer;
+    max-width: 100px;
+    height: auto;
+}
+
+.wL_product_goodsId,
+.wL_product_name,
+.wL_product_description,
+.wL_product_price {
+    vertical-align: middle;
+}

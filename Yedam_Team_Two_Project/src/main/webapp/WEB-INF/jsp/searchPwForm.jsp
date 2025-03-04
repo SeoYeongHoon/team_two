@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <html>
 <head>
@@ -30,7 +31,7 @@
 		<div id="loginBox">
 
 			<!-- 로그인 페이지 타이틀 -->
-            <h1>비밀번호 조회</h1>
+			<h1>비밀번호 조회</h1>
 			<!-- 아이디, 비번, 버튼 박스 -->
 			<form action="" method="post">
 				<div id="inputBox">
@@ -41,7 +42,8 @@
 						<span>아이디 </span><input type="text" name="id" class="form-control">
 					</div>
 					<div class="input-form-box">
-						<span>이름 </span><input type="text" name="name" class="form-control">
+						<span>이메일 </span><input type="text" name="email"
+							class="form-control">
 					</div>
 
 					<div class="button-login-box">
@@ -65,25 +67,22 @@
 	<script>
 	 $('#searchBtn').click (function(){
 	    	let id = $('input[name="id"]').val();
-	        let name = $('input[name="name"]').val();
+	        let email = $('input[name="email"]').val();
 	    	$.ajax({
 	    		url:'seachPwControl.do',
 	    		method:'post',
 	    		data:{
 	    			id: id,
-	    			name: name
+	    			email: email
 	    		},
 	    		success:function(result){
-	    			console.log(result)
-	    		    if(result.length === 0){
-	        			$('.findId').css('color','black').text("정보를 조회할 수 없습니다");
-	    		    }
-	    		    else{ 
-	    			    result.forEach(prop =>{
-	    		        console.log(prop.password);
-	    		    	$('.findId').css('color','red').text("password: "+ prop.password);
-	    			   })
-	    			   }
+	    			 console.log(result.retCode)
+	    		    
+	    		    if(result.retCode =='OK'){ 
+	    		    	$('.findId').css('color','black').text("이메일에 해당 임시비밀번호를 전송했습니다");
+	    		    }else if(result.retCode =='NG'){
+		        	    $('.findId').css('color','red').text("정보를 조회할 수 없습니다");
+		    		}
 	    		},
 	    		error: function(xhr, status, error) {
 		            console.error(error);

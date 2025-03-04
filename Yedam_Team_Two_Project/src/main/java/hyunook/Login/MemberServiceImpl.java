@@ -20,8 +20,10 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.searchId(member);
 	}
 	// 비밀번호조회
-	public List<Member> searchPw(Member member) {
-		return mapper.searchPw(member);
+	public boolean searchPw(Member member) {
+		 Integer result = mapper.searchPw(member);
+		 System.out.println("야야야: "+result);
+		 return result == 1;
 	}
 	// 회원가입
 	public boolean addMember(Member member) {
@@ -47,5 +49,9 @@ public class MemberServiceImpl implements MemberService {
 		int result = mapper.sameTel(tel);
 		System.out.println("전화번호service=" + result);
 		return result;
+	}
+	@Override
+	public boolean updateUserInfo(Member member) {
+		return mapper.updateUserInfo(member) == 1;
 	}
 }
