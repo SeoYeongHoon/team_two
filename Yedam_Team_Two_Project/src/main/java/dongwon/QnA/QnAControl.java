@@ -51,20 +51,6 @@ public class QnAControl implements Control {
 		qna.setTitle(qnaTitle);
 		qna.setContent(qnaContent);
 		
-		//여기까지 분석하고, 아래 QnAService svc = new QnAServiceImpl()를 해석하기 위해
-		//QnAService와 QnAServiceImpl에서 분석 시작
-		
-		//이 QnA 패키지에서 구현하고자 하는 기능(메소드)을 담은 Service 객체를 생성함.*객체를 생성해야 해당 메소드를 쓰므
-		// int qnaId; 시퀀스 값
-		// Date qnaDate; SYSDATE 값
-		HttpSession session = req.getSession();
-		String memberId = (String) session.getAttribute("memberId");
-		String title = req.getParameter("qnaTitle");
-		String content = req.getParameter("qnaContent");
-		QnA qna = new QnA();
-		qna.setMemberId(memberId);
-		qna.setTitle(title);
-		qna.setContent(content);
 		QnAService svc = new QnAServiceImpl();
 		qna = svc.infoQnA(qna);
 		req.setAttribute("qna", qna);
